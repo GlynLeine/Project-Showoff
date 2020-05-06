@@ -18,7 +18,7 @@ public class Planet : MonoBehaviour
             if (invert)
                 transform.rotation = Quaternion.FromToRotation(newNormal, baseNormal) * transform.rotation;
             else
-                transform.rotation = Quaternion.FromToRotation(baseNormal, newNormal) * transform.rotation;
+                transform.rotation *= Quaternion.FromToRotation(baseNormal, newNormal);
         }
     }
 }
