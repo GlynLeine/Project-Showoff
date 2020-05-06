@@ -3,3 +3,5 @@
 obj/
 Export/
 Temp/
+!Assets/
+!Trailer/Export
