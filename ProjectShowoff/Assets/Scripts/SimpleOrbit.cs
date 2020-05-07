@@ -18,7 +18,7 @@ public class SimpleOrbit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += speed * range / 10000 * transform.up;
+        transform.position += (speed * range * Time.deltaTime) / 100 * transform.up;
         Vector3 normal = (transform.position - target.position).normalized;
         transform.position = target.position + (normal * range);
         transform.rotation = Quaternion.LookRotation(-normal, Vector3.Cross(right, normal));
