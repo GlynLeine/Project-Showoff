@@ -8,6 +8,8 @@ public class BuildingLocation : MonoBehaviour
 
     public LocationType locationType;
 
+    public List<BuildingLocation> neighbours;
+
     private void Start()
     {
         system = FindObjectOfType<BuildingSystem>();
