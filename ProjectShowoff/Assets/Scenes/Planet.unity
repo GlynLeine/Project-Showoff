@@ -1910,9 +1910,9 @@ MonoBehaviour:
   locationType: 1
   buildingPrefab: {fileID: 8437141464722699948, guid: b9df4e7cc34cc3246aa5953c3e09fd00,
     type: 3}
-  environmentEffect: 0
-  pollutionEffect: 0
-  happinessEffect: 0
+  environmentEffect: -1.5
+  pollutionEffect: 1.8
+  happinessEffect: 4
 --- !u!114 &1389056921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2059,9 +2059,9 @@ MonoBehaviour:
   locationType: 0
   buildingPrefab: {fileID: 8437141464722699948, guid: b9df4e7cc34cc3246aa5953c3e09fd00,
     type: 3}
-  environmentEffect: 0
-  pollutionEffect: 0
-  happinessEffect: 0
+  environmentEffect: 1
+  pollutionEffect: -0.5
+  happinessEffect: 0.5
 --- !u!114 &1392405675
 MonoBehaviour:
   m_ObjectHideFlags: 0
