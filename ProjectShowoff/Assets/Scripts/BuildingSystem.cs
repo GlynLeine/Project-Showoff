@@ -37,6 +37,9 @@ public class BuildingSystem : MonoBehaviour
             BuildingLocation location = locationsOfType[Random.Range(0, locationsOfType.Count)];
             Instantiate(buildingData.buildingPrefab, location.transform);
             locationsOfType.Remove(location);
+
+            GameManager.AddState(buildingData.environmentEffect, buildingData.pollutionEffect, buildingData.happinessEffect);
+
             Debug.Log("placed a building on a " + buildingData.locationType.ToString() + " location.");
         }
         else

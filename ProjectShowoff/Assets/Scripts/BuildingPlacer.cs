@@ -8,6 +8,10 @@ public class BuildingPlacer : MonoBehaviour
 
     public GameObject buildingPrefab;
 
+    public float environmentEffect;
+    public float pollutionEffect;
+    public float happinessEffect;
+
     private BuildingSystem system;
 
     private void Start()
