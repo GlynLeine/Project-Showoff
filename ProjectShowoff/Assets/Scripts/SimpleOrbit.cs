@@ -8,19 +8,27 @@ public class SimpleOrbit : MonoBehaviour
     public float speed;
     public float range;
     public Vector3 right;
+    public Vector3 forward;
 
     void Start()
     {
         range = (target.position - transform.position).magnitude;
+
+        Vector3 up = (transform.position - target.position).normalized;
         right = transform.right;
+        forward = Vector3.Cross(right, up).normalized;
+        right = Vector3.Cross(forward, up).normalized;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += (speed * range * Time.deltaTime) / 100 * transform.up;
+        Vector3 up = (transform.position - target.position).normalized;
+        forward = Vector3.Cross(right, up).normalized;
+        transform.position += (speed * range * Time.deltaTime) / 100 * forward;
+
         Vector3 normal = (transform.position - target.position).normalized;
         transform.position = target.position + (normal * range);
-        transform.rotation = Quaternion.LookRotation(-normal, Vector3.Cross(right, normal));
     }
 }

@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\Editors\BuildingLocationEditor.cs" />
     <Compile Include="Assets\Scripts\Editors\BuildingLocationTool.cs" />
     <Compile Include="Assets\Scripts\Editors\BuildingLocationToolEditor.cs" />
+    <Compile Include="Assets\Scripts\Focus.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\InputRedirect.cs" />
     <Compile Include="Assets\Scripts\Orbit.cs" />
