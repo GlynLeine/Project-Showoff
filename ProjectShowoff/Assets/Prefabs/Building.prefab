@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2301031783557810759}
   - component: {fileID: 8932106313631565850}
   - component: {fileID: 6363429576512115392}
-  - component: {fileID: 8585443078462603352}
+  - component: {fileID: 3325945029055883465}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Building
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,17 +80,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &8585443078462603352
-CapsuleCollider:
+--- !u!114 &3325945029055883465
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8437141464722699948}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cba9861708699c49b30441e82031535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  environmentEffect: 0
+  pollutionEffect: 5
+  happinessEffect: 0
+  effectPeriod: 5

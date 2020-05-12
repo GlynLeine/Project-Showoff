@@ -203,8 +203,16 @@ public class BuildingLocationToolEditor : Editor
 
     private void DrawRoadmap(BuildingLocation location)
     {
-        for (int i = 0; i < location.neighbours.Count; i++)
-            Handles.DrawLine(location.neighbours[i].transform.position, location.transform.position);
+
+        foreach (BuildingLocation neighbour in location.neighbours)
+        {
+            if (neighbour == null)
+            {
+                location.neighbours.Remove(neighbour);
+                Debug.LogWarning("something went wrong somewhere...");
+            }
+            Handles.DrawLine(neighbour.transform.position, location.transform.position);
+        }
     }
 
     private void DrawNeighbourModeSceneHandles(BuildingLocation location)

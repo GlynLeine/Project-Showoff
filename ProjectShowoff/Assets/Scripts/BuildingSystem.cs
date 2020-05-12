@@ -77,20 +77,20 @@ public class BuildingSystem : MonoBehaviour
         locations[location.locationType].Add(location);
     }
 
-    public void PlaceBuilding(BuildingPlacer buildingData)
+    public bool PlaceBuilding(BuildingPlacer buildingData)
     {
         Init();
 
         if (unvisited.Count == 0 && openSet.Count == 0 && unoccupied.Count == 0)
         {
             Debug.Log("No space");
-            return;
+            return false;
         }
 
         if (closedSet.Count == 0)
         {
             PlaceRandomBuilding(buildingData);
-            return;
+            return true;
         }
 
         Queue<BuildingLocation> toCheck = new Queue<BuildingLocation>();
@@ -151,10 +151,12 @@ public class BuildingSystem : MonoBehaviour
             if (end.parent != null)
                 HandlePath(end.parent);
             ConstructBuilding(end, buildingData);
+            return true;
         }
         else
         {
             Debug.Log("No more of this type left");
+            return false;
         }
     }
 
