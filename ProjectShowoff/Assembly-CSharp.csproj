@@ -62,11 +62,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Building.cs" />
     <Compile Include="Assets\Scripts\BuildingLocation.cs" />
     <Compile Include="Assets\Scripts\BuildingPlacer.cs" />
     <Compile Include="Assets\Scripts\BuildingSystem.cs" />
     <Compile Include="Assets\Scripts\Editors\BuildingLocationEditor.cs" />
     <Compile Include="Assets\Scripts\Editors\BuildingLocationTool.cs" />
+    <Compile Include="Assets\Scripts\Editors\BuildingLocationToolEditor.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\InputRedirect.cs" />
     <Compile Include="Assets\Scripts\Orbit.cs" />
