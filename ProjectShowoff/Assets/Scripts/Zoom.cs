@@ -10,7 +10,7 @@ public class Zoom : MonoBehaviour
     public float range;
 
     private bool ortho;
-    private Camera camera;
+    private new Camera camera;
 
     private void OnValidate()
     {
