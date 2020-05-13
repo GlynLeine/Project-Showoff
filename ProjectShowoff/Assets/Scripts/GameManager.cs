@@ -20,8 +20,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        debugText.text =  "environment: " + environment;
-        debugText.text +=  "\npollution: " + pollution;
-        debugText.text += "\nhappiness: " + happiness;
+        if (debugText != null)
+        {
+            debugText.text = "environment: " + environment;
+            debugText.text += "\npollution: " + pollution;
+            debugText.text += "\nhappiness: " + happiness;
+        }
     }
 }

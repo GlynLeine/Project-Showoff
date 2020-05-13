@@ -34,6 +34,54 @@ public class BuildingSystem : MonoBehaviour
             }
     }
 
+    private void Start()
+    {
+        //BuildingLocation[] locations = FindObjectsOfType<BuildingLocation>();
+        //for (int i = 0; i < locations.Length; i++)
+        //{
+        //    SphereCollider collider = locations[i].gameObject.AddComponent<SphereCollider>();
+        //    collider.radius = 0.01f;
+        //}
+    }
+
+    private void Update()
+    {
+
+        //Vector3 rayPos = Camera.main.transform.position;
+
+        //BuildingLocation[] locations = FindObjectsOfType<BuildingLocation>();
+        //foreach (var loc in locations)
+        //{
+        //    if (closedSet.Contains(loc) || unoccupied.Contains(loc))
+        //    {
+        //        Vector3 rayDir = (loc.transform.position - rayPos).normalized;
+        //        if (Physics.Raycast(rayPos, rayDir, out RaycastHit hit) && hit.collider == loc.GetComponent<SphereCollider>())
+        //            foreach (var neighbour in loc.neighbours)
+        //            {
+        //                rayDir = (neighbour.transform.position - rayPos).normalized;
+        //                if (Physics.Raycast(rayPos, rayDir, out hit) && hit.collider == neighbour.GetComponent<SphereCollider>())
+        //                    if (closedSet.Contains(neighbour) || unoccupied.Contains(neighbour))
+        //                        DrawLine(loc.transform.position, neighbour.transform.position, Color.white, 0.01f, 0.1f);
+        //            }
+        //    }
+        //}
+    }
+
+    void DrawLine(Vector3 start, Vector3 end, Color color, float width = 0.01f, float duration = 0.2f)
+    {
+        GameObject myLine = new GameObject();
+        myLine.transform.position = start;
+        myLine.AddComponent<LineRenderer>();
+        LineRenderer lr = myLine.GetComponent<LineRenderer>();
+        lr.material = new Material(Shader.Find("Custom/LineShader"));
+        lr.startColor = color;
+        lr.endColor = color;
+        lr.startWidth = width;
+        lr.endWidth = width;
+        lr.SetPosition(0, start);
+        lr.SetPosition(1, end);
+        GameObject.Destroy(myLine, duration);
+    }
 
     private void OnDrawGizmos()
     {
@@ -186,7 +234,9 @@ public class BuildingSystem : MonoBehaviour
 
     private void ConstructBuilding(BuildingLocation location, BuildingPlacer buildingData)
     {
-        Instantiate(buildingData.buildingPrefab, location.transform);
+        GameObject building = Instantiate(buildingData.buildingPrefab, location.transform);
+        building.transform.localRotation = Quaternion.identity;
+        building.transform.localPosition = Vector3.zero;
         closedSet.Add(location);
         foreach (BuildingLocation neighbour in location.neighbours)
             if (unvisited.Contains(neighbour))

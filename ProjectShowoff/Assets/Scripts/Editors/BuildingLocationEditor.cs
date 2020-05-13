@@ -45,6 +45,13 @@ public class BuildingLocationEditor : Editor
             Handles.color = new Color(r, g, b);
             Handles.DrawLine(neighbour.transform.position, location.transform.position);
         }
+
+        BuildingLocationTool tool = FindObjectOfType<BuildingLocationTool>();
+        if (tool != null)
+        {
+            Vector3 normal = (location.transform.position - tool.planet.position).normalized;
+            location.transform.up = normal;
+        }
     }
 }
 
