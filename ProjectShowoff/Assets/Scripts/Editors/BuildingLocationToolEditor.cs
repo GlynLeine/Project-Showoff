@@ -57,7 +57,6 @@ public class BuildingLocationToolEditor : Editor
             alwaysShow = !alwaysShow;
         }
 
-
         if (selected != null)
         {
             EditorGUILayout.Space();
@@ -254,7 +253,7 @@ public class BuildingLocationToolEditor : Editor
             Undo.RecordObject(location.transform, "position of building location");
             Vector3 normal = (newPos - tool.planet.position).normalized;
             location.transform.up = normal;
-            location.transform.position = normal * tool.surface;
+            location.transform.position = newPos;
 
             EditorUtility.SetDirty(location.transform);
             EditorSceneManager.MarkSceneDirty(tool.gameObject.scene);
