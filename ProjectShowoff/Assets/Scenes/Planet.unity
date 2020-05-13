@@ -203,7 +203,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &86733237
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1313,6 +1313,7 @@ GameObject:
   - component: {fileID: 576086917}
   - component: {fileID: 576086916}
   - component: {fileID: 576086915}
+  - component: {fileID: 576086918}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -1360,6 +1361,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &576086918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576086914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647b69604fcc087468043acfa32d96be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterPrefab: {fileID: 1197743855728374716, guid: f39a24b94fe58dc4ba2b4d4d9fb147a8,
+    type: 3}
+  planet: {fileID: 1928020327}
+  wanderRange: 0.1
+  walkSpeed: 0.1
+  travelChance: 0
 --- !u!114 &630961740 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7029965745253546507, guid: 9b690b9d9fba6854aada56818ea90d43,
