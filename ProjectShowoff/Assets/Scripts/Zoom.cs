@@ -9,6 +9,9 @@ public class Zoom : MonoBehaviour
     public float defaultRange;
     public float range;
 
+    private bool ortho;
+    private new Camera camera;
+
     private void OnValidate()
     {
         if (maxZoom < 0.1f)
@@ -19,15 +22,25 @@ public class Zoom : MonoBehaviour
     {
         defaultRange = (transform.position - target.position).magnitude;
         range = defaultRange;
+        camera = GetComponent<Camera>();
+        ortho = camera.orthographic;
     }
 
     // Update is called once per frame
     void Update()
     {
         range = defaultRange - InputRedirect.zoom;
-        if(range < maxZoom)
+        if (range < maxZoom)
             range = maxZoom;
-        Vector3 dir = (transform.position - target.position).normalized;
-        transform.position = target.position + dir * range;
+
+        if (ortho)
+        {
+            camera.orthographicSize = range;
+        }
+        else
+        {
+            Vector3 dir = (transform.position - target.position).normalized;
+            transform.position = target.position + dir * range;
+        }
     }
 }
