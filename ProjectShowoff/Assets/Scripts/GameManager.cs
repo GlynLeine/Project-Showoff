@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
             debugText.text = "environment: " + environment;
             debugText.text += "\npollution: " + pollution;
             debugText.text += "\nhappiness: " + happiness;
+            debugText.text += "\nfps: " + 1f/Time.deltaTime;
+            debugText.text += "\nframetime: " + Time.deltaTime;
         }
     }
 }
