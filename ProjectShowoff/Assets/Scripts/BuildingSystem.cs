@@ -28,7 +28,9 @@ public class BuildingSystem : MonoBehaviour
         if (exclude != null && possibilities.Contains(exclude))
             possibilities.Remove(exclude);
 
-        return possibilities[Random.Range(0, possibilities.Count)];
+        if (possibilities.Count > 0)
+            return possibilities[Random.Range(0, possibilities.Count)];
+        return null;
     }
 
     class AStarNode
@@ -70,7 +72,8 @@ public class BuildingSystem : MonoBehaviour
             node.Value.neighbours = new List<AStarNode>();
             foreach (var neighbour in node.Value.location.neighbours)
             {
-                node.Value.neighbours.Add(nodes[neighbour]);
+                if (nodes.ContainsKey(neighbour))
+                    node.Value.neighbours.Add(nodes[neighbour]);
             }
         }
 
@@ -109,6 +112,9 @@ public class BuildingSystem : MonoBehaviour
                     {
                         if (open[neighbour.gScore].Contains(neighbour))
                             open[neighbour.gScore].Remove(neighbour);
+
+                        if (open[neighbour.gScore].Count == 0)
+                            open.Remove(neighbour.gScore);
                     }
 
                     neighbour.parent = current;
