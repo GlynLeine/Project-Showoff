@@ -1378,7 +1378,9 @@ MonoBehaviour:
   planet: {fileID: 1928020327}
   wanderRange: 0.1
   walkSpeed: 0.1
-  travelChance: 0
+  minWanderTime: 1
+  maxWanderTime: 2
+  travelChance: 0.3
 --- !u!114 &630961740 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7029965745253546507, guid: 9b690b9d9fba6854aada56818ea90d43,
