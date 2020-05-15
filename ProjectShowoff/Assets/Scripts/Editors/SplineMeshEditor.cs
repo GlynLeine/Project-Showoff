@@ -22,6 +22,12 @@ public class SplineMeshEditor : Editor
         if (EditorGUI.EndChangeCheck())
             splineMesh.UpdateMesh();
     }
+
+    private void OnSceneGUI()
+    {
+        if(Event.current.type == EventType.Repaint)
+            splineMesh.UpdateMesh();
+    }
 }
 
 #endif

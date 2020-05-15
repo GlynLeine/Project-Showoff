@@ -1,5 +1,5 @@
 ﻿#if UNITY_EDITOR
-
+using UnityEditor.IMGUI.Controls;
 using UnityEditor;
 using UnityEngine;
 
@@ -10,10 +10,22 @@ public class SplineEditor : Editor
 
     float controlSize = 0.05f;
     int selectedSegment = -1;
+    bool hideMainTool = true;
+
+    ArcHandle rotationHandle = new ArcHandle();
+
 
     private void OnEnable()
     {
         spline = target as Spline;
+        if (hideMainTool)
+            Tools.hidden = true;
+    }
+
+    private void OnDisable()
+    {
+        if (hideMainTool)
+            Tools.hidden = false;
     }
 
     public override void OnInspectorGUI()
@@ -35,10 +47,16 @@ public class SplineEditor : Editor
             spline.AutoTangents = autoControls;
         }
 
+        bool newHide = GUILayout.Toggle(hideMainTool, "Hide object handle");
+        if (newHide != hideMainTool)
+        {
+            hideMainTool = newHide;
+            Tools.hidden = hideMainTool;
+        }
+
         if (EditorGUI.EndChangeCheck())
         {
             SceneView.RepaintAll();
-            spline.onSplineUpdate?.Invoke();
         }
     }
 
@@ -63,7 +81,7 @@ public class SplineEditor : Editor
         //flip the position:
         Vector2 screenMousePos = Event.current.mousePosition;
         screenMousePos.y = sv_correctSize.y - screenMousePos.y;
-        //screenMousePos *= 1.25f;
+        screenMousePos *= 1.25f;
 
         Ray ray = sv.camera.ScreenPointToRay(new Vector3(screenMousePos.x, screenMousePos.y, sv.camera.nearClipPlane));
         Plane plane = new Plane(spline.transform.forward, spline.transform.position);
@@ -109,9 +127,9 @@ public class SplineEditor : Editor
             }
         }
 
-        if (guiEvent.type == EventType.MouseDown)
+        if (guiEvent.type == EventType.MouseDown && guiEvent.shift)
         {
-            if (guiEvent.button == 0 && guiEvent.shift)
+            if (guiEvent.button == 0)
             {
                 if (selectedSegment >= 0 && selectedSegment < spline.SegmentCount)
                 {
@@ -126,10 +144,18 @@ public class SplineEditor : Editor
             }
             else if (guiEvent.button == 1)
             {
+                float mindist = float.MaxValue;
                 for (int i = 0; i < spline.PointCount; i += 3)
                 {
-                    float distance = Vector2.Distance(relativeMousepos, spline[i]);
-                    if (distance < controlSize * 0.5f)
+                    Vector3 anchor = spline.GetWorldPoint(i);
+                    ray = sv.camera.ScreenPointToRay(sv.camera.WorldToScreenPoint(anchor));
+                    plane.Raycast(ray, out dist);
+                    anchor = ray.GetPoint(dist);
+
+                    float distance = Vector2.Distance(mousePos, anchor);
+                    if (distance < mindist)
+                        mindist = distance;
+                    if (distance < controlSize)
                     {
                         Undo.RecordObject(spline, "remove segment");
                         spline.RemoveSegment(i);
@@ -139,7 +165,6 @@ public class SplineEditor : Editor
             }
         }
 
-        //Handles.SphereHandleCap(0, mousePos, Quaternion.identity, controlSize, guiEvent.type);
         HandleUtility.AddDefaultControl(0);
     }
 
@@ -159,19 +184,55 @@ public class SplineEditor : Editor
 
         for (int i = 0; i < spline.PointCount; i++)
         {
-            if (i % 3 == 0)
-                Handles.color = Color.red;
-            else if (spline.AutoTangents)
-                continue;
-            else
-                Handles.color = Color.green;
-
             Vector3 splinePointWorldPos = spline.GetWorldPoint(i);
-            Vector3 newWorldPos = Handles.FreeMoveHandle(splinePointWorldPos, Quaternion.identity, controlSize, Vector2.zero, Handles.SphereHandleCap);
-            if (splinePointWorldPos != newWorldPos)
+            if (Tools.current == Tool.Rotate)
             {
-                Undo.RecordObject(spline, "move spline point");
-                spline.MovePoint(i, spline.transform.InverseTransformPoint(newWorldPos));
+                if (i % 3 != 0)
+                    continue;
+
+                Handles.color = Color.white;
+                int index = i / 3;
+                Vector3 handleDirection = spline.transform.up;
+                Vector3 handleNormal = spline.GetWorldForward(index);
+                Matrix4x4 handleMatrix = Matrix4x4.TRS(
+                    splinePointWorldPos,
+                    Quaternion.LookRotation(handleDirection, handleNormal),
+                    Vector3.one
+                );
+
+                rotationHandle.angle = Vector3.SignedAngle(handleDirection, spline.GetWorldNormal(index), handleNormal) - 90;
+                rotationHandle.radius = controlSize;
+                using (new Handles.DrawingScope(handleMatrix))
+                {
+                    // draw the handle
+                    EditorGUI.BeginChangeCheck();
+                    rotationHandle.DrawHandle();
+                    if (EditorGUI.EndChangeCheck())
+                    {
+                        // record the target object before setting new values so changes can be undone/redone
+                        Undo.RecordObject(spline, "rotate point");
+
+                        // copy the handle's updated data back to the target object
+                        Vector3 newNormal = Quaternion.AngleAxis(rotationHandle.angle + 90, handleNormal) * handleDirection;
+                        spline.SetWorldNormal(index, newNormal);
+                    }
+                }
+            }
+            else
+            {
+                if (i % 3 == 0)
+                    Handles.color = Color.red;
+                else if (spline.AutoTangents)
+                    continue;
+                else
+                    Handles.color = Color.green;
+
+                Vector3 newWorldPos = Handles.FreeMoveHandle(splinePointWorldPos, Quaternion.identity, controlSize, Vector2.zero, Handles.SphereHandleCap);
+                if (splinePointWorldPos != newWorldPos)
+                {
+                    Undo.RecordObject(spline, "move spline point");
+                    spline.MovePoint(i, spline.transform.InverseTransformPoint(newWorldPos));
+                }
             }
 
         }

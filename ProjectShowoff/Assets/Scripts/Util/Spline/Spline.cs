@@ -14,6 +14,8 @@ public class Spline : MonoBehaviour
 {
     [SerializeField, HideInInspector]
     List<Vector3> points;
+    [SerializeField, HideInInspector]
+    List<Vector3> normals;
 
     [SerializeField, HideInInspector]
     bool automaticTangents;
@@ -28,15 +30,11 @@ public class Spline : MonoBehaviour
     {
         get
         {
-            if (vertexPath == null)
-                vertexPath = new VertexPath();
             vertexPath.UpdatePath(this);
             length = vertexPath.length;
             return vertexPath;
         }
     }
-
-    public System.Action onSplineUpdate;
 
     public bool AutoTangents
     {
@@ -54,8 +52,6 @@ public class Spline : MonoBehaviour
                 {
                     SetTangentsAuto();
                 }
-
-                onSplineUpdate?.Invoke();
             }
         }
     }
@@ -69,7 +65,11 @@ public class Spline : MonoBehaviour
             (Vector2.right + Vector2.down) * 0.5f,
             Vector2.right
         };
-        onSplineUpdate?.Invoke();
+        normals = new List<Vector3>
+        {
+            transform.up,
+            transform.up
+        };
     }
 
     public Vector3 this[int index]
@@ -101,9 +101,47 @@ public class Spline : MonoBehaviour
         return transform.TransformPoint(points[index]);
     }
 
+    public Vector3 GetWorldForward(int index)
+    {
+        return transform.TransformDirection(GetForward(index));
+    }
+
+    public Vector3 GetForward(int index)
+    {
+        Vector3 forward = Vector3.zero;
+        if (index - 3 >= 0)
+            forward += (points[index - 3] - points[index]).normalized;
+        if (index + 3 < points.Count)
+            forward -= (points[index + 3] - points[index]).normalized;
+
+        forward.Normalize();
+        return forward;
+    }
+
+    public Vector3 GetWorldNormal(int index)
+    {
+        return transform.TransformDirection(normals[index]);
+    }
+
+    public Vector3 GetNormal(int index)
+    {
+        return normals[index];
+    }
+
+    public void SetWorldNormal(int index, Vector3 normal)
+    {
+        normals[index] = transform.InverseTransformDirection(normal);
+    }
+
+    public void SetNormal(int index, Vector3 normal)
+    {
+        normals[index] = normal;
+    }
+
     public void SplitSegment(Vector3 anchor, int segmentIndex)
     {
         points.InsertRange(segmentIndex * 3 + 2, new Vector3[] { Vector3.zero, anchor, Vector3.zero });
+        normals.Insert(segmentIndex, transform.up);
         if (automaticTangents)
         {
             SetTangentsAuto(segmentIndex * 3 + 3);
@@ -111,8 +149,6 @@ public class Spline : MonoBehaviour
         }
         else
             SetTangentsAuto(segmentIndex * 3 + 3);
-
-        onSplineUpdate?.Invoke();
     }
 
     public void RemoveSegment(int anchorIndex)
@@ -127,7 +163,7 @@ public class Spline : MonoBehaviour
         else
             points.RemoveRange(anchorIndex - 1, 3);
 
-        onSplineUpdate?.Invoke();
+        normals.RemoveAt(anchorIndex/3);
     }
 
     public void AddSegment(Vector3 anchor)
@@ -135,11 +171,10 @@ public class Spline : MonoBehaviour
         points.Add(points[points.Count - 1] * 2 - points[points.Count - 2]);
         points.Add((points[points.Count - 1] + anchor) * 2f);
         points.Add(anchor);
+        normals.Add(transform.up);
 
         if (automaticTangents)
             ReportAutoTangentModification(points.Count - 1);
-
-        onSplineUpdate?.Invoke();
     }
 
     public Vector3[] GetPointsInSegment(int i)
@@ -188,19 +223,17 @@ public class Spline : MonoBehaviour
                 }
             }
         }
-
-        onSplineUpdate?.Invoke();
     }
 
     public SplineVertexData CalculateEvenlySpacedPoints(float spacing, float resolution = 1)
     {
         List<Vector3> vertices = new List<Vector3>();
-        List<Vector3> normals = new List<Vector3>();
+        List<Vector3> vertNormals = new List<Vector3>();
         List<Vector3> tangents = new List<Vector3>();
         List<float> distances = new List<float>();
 
         vertices.Add(points[0]);
-        normals.Add(transform.up);
+        vertNormals.Add(normals[0]);
         distances.Add(0);
         Vector3 previousPoint = points[0];
         float dstSinceLastEvenPoint = 0;
@@ -213,6 +246,8 @@ public class Spline : MonoBehaviour
             float estimatedCurveLength = Vector3.Distance(p[0], p[3]) + controlNetLength / 2f;
             int divisions = Mathf.CeilToInt(estimatedCurveLength * resolution * 10);
             float t = 0;
+            Vector3 currentNormal = normals[segmentIndex];
+            Vector3 nextNormal = normals[segmentIndex + 1];
             while (t <= 1)
             {
                 t += 1f / divisions;
@@ -226,7 +261,7 @@ public class Spline : MonoBehaviour
                     Vector3 newEvenlySpacedPoint = pointOnCurve + (previousPoint - pointOnCurve).normalized * overshootDst;
                     vertices.Add(newEvenlySpacedPoint);
 
-                    normals.Add(transform.up);
+                    vertNormals.Add(Vector3.Lerp(currentNormal, nextNormal, t).normalized);
 
                     length += dstSinceLastEvenPoint - overshootDst;
                     distances.Add(length);
@@ -240,7 +275,7 @@ public class Spline : MonoBehaviour
         }
 
         vertices.Add(points[points.Count - 1]);
-        normals.Add(transform.up);
+        vertNormals.Add(normals[normals.Count-1]);
 
         length += Vector3.Distance(vertices[vertices.Count - 2], vertices[vertices.Count - 1]);
         distances.Add(length);
@@ -256,13 +291,13 @@ public class Spline : MonoBehaviour
 
             forward.Normalize();
 
-            Vector3 tangent = Vector3.Cross(normals[i], forward);
+            Vector3 tangent = Vector3.Cross(vertNormals[i], forward);
             tangents.Add(-forward);
         }
 
         SplineVertexData vertexData = new SplineVertexData();
         vertexData.vertices = vertices.ToArray();
-        vertexData.normals = normals.ToArray();
+        vertexData.normals = vertNormals.ToArray();
         vertexData.tangents = tangents.ToArray();
         vertexData.length = length;
         vertexData.distances = distances.ToArray();

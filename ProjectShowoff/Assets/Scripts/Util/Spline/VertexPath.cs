@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class VertexPath
+public struct VertexPath
 {
     Vector3[] vertices;
     Vector3[] tangents;
     Vector3[] normals;
     float[] distances;
+
+    public bool valid {get; private set; }
 
     public float length { get; private set; }
 
@@ -22,6 +24,7 @@ public class VertexPath
 
     public void UpdatePath(Spline spline)
     {
+        valid = true;
         up = spline.transform.up;
 
         SplineVertexData vertexData = spline.CalculateEvenlySpacedPoints(1f / spline.resolution * 0.5f);
