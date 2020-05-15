@@ -62,23 +62,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Building.cs" />
-    <Compile Include="Assets\Scripts\BuildingLocation.cs" />
-    <Compile Include="Assets\Scripts\BuildingPlacer.cs" />
-    <Compile Include="Assets\Scripts\BuildingSystem.cs" />
-    <Compile Include="Assets\Scripts\Character.cs" />
-    <Compile Include="Assets\Scripts\CharacterSystem.cs" />
+    <Compile Include="Assets\Scripts\Buildings\Building.cs" />
+    <Compile Include="Assets\Scripts\Buildings\BuildingLocation.cs" />
+    <Compile Include="Assets\Scripts\Buildings\BuildingPlacer.cs" />
+    <Compile Include="Assets\Scripts\Buildings\BuildingSystem.cs" />
+    <Compile Include="Assets\Scripts\Characters\Character.cs" />
+    <Compile Include="Assets\Scripts\Characters\CharacterSystem.cs" />
+    <Compile Include="Assets\Scripts\Characters\Roads\Road.cs" />
     <Compile Include="Assets\Scripts\Editors\BuildingLocationEditor.cs" />
     <Compile Include="Assets\Scripts\Editors\BuildingLocationTool.cs" />
     <Compile Include="Assets\Scripts\Editors\BuildingLocationToolEditor.cs" />
-    <Compile Include="Assets\Scripts\Focus.cs" />
+    <Compile Include="Assets\Scripts\Editors\SplineEditor.cs" />
+    <Compile Include="Assets\Scripts\Editors\SplineMeshEditor.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\InputRedirect.cs" />
-    <Compile Include="Assets\Scripts\Orbit.cs" />
-    <Compile Include="Assets\Scripts\Planet.cs" />
-    <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
-    <Compile Include="Assets\Scripts\SimpleOrbit.cs" />
-    <Compile Include="Assets\Scripts\Zoom.cs" />
+    <Compile Include="Assets\Scripts\Util\Focus.cs" />
+    <Compile Include="Assets\Scripts\Util\InputRedirect.cs" />
+    <Compile Include="Assets\Scripts\Util\Orbit.cs" />
+    <Compile Include="Assets\Scripts\Util\Planet.cs" />
+    <Compile Include="Assets\Scripts\Util\SimpleOrbit.cs" />
+    <Compile Include="Assets\Scripts\Util\Spline\Bezier.cs" />
+    <Compile Include="Assets\Scripts\Util\Spline\Spline.cs" />
+    <Compile Include="Assets\Scripts\Util\Spline\SplineMesh.cs" />
+    <Compile Include="Assets\Scripts\Util\Spline\VertexPath.cs" />
+    <Compile Include="Assets\Scripts\Util\Zoom.cs" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\Workspace.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\Platform\{6d1069c6-a3ea-4007-8e94-79d85f8e41bf}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{0e76ada4-553b-4168-9e08-615952902e7a}.xml" />
