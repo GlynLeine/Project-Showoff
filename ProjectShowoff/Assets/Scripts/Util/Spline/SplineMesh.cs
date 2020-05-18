@@ -15,7 +15,7 @@ class SplineMesh : MonoBehaviour
     public bool flattenSurface;
     [Range(0.01f, 10f)]
     public float meshWidth = 1;
-   // [Range(0, .5f)]
+    [Range(0, .5f)]
     public float thickness = .15f;
 
     public void Reset()
@@ -31,107 +31,113 @@ class SplineMesh : MonoBehaviour
             spline = GetComponent<Spline>();
         }
 
-        spline.onSplineUpdate -= UpdateMesh;
-        spline.onSplineUpdate += UpdateMesh;
-
-        CreateRoadMesh(spline.VertexPath);
+        CreateMesh(spline.VertexPath);
+    }
+    class Triangle
+    {
+        public Vector3[] verts = new Vector3[3];
+        public Vector2[] uvs = new Vector2[3];
+        public Vector3[] normals = new Vector3[3];
     }
 
-    void CreateRoadMesh(VertexPath path)
+    void CreateMesh(VertexPath path)
     {
-        Vector3[] verts = new Vector3[path.VertexCount * 8];
-        Vector2[] uvs = new Vector2[verts.Length];
-        Vector3[] normals = new Vector3[verts.Length];
-
-        int numTris = 2 * (path.VertexCount - 1);
-        int[] roadTriangles = new int[numTris * 3];
-        int[] underRoadTriangles = new int[numTris * 3];
-        int[] sideOfRoadTriangles = new int[numTris * 2 * 3];
-
-        int vertIndex = 0;
-        int triIndex = 0;
-
-        // Vertices for the top of the road are layed out:
-        // 0  1
-        // 8  9
-        // and so on... So the triangle map 0,8,1 for example, defines a triangle from top left to bottom left to bottom right.
-        int[] triangleMap = { 0, 8, 1, 1, 8, 9 };
-        int[] sidesTriangleMap = { 4, 6, 14, 12, 4, 14, 5, 15, 7, 13, 15, 5 };
-
+        List<Triangle> triangles = new List<Triangle>();
         bool usePathNormals = !flattenSurface;
 
-        for (int i = 0; i < path.VertexCount; i++)
+        int[] triangleMap = { 0, 4, 1,/**/ 1, 4, 5,
+            /**/ 0, 2, 6,/**/ 0, 6, 4,
+            /**/ 2, 3, 6,/**/ 3, 7, 6,
+            /**/ 1, 7, 3,/**/ 1, 5, 7 };
+
+        for (int i = 0; i < path.VertexCount - 1; i++)
         {
-            Vector3 localUp = usePathNormals ? Vector3.Cross(path.GetTangent(i), path.GetNormal(i)) : path.up;
-            Vector3 localRight = usePathNormals ? path.GetNormal(i) : Vector3.Cross(localUp, path.GetTangent(i));
+            Vector3[] verts = new Vector3[8];
+            Vector2[] uvs = new Vector2[8];
+
+            Vector3 currentUp = usePathNormals ? Vector3.Cross(path.GetTangent(i), path.GetNormal(i)) : Vector3.up;
+            Vector3 currentRight = usePathNormals ? path.GetNormal(i) : Vector3.Cross(currentUp, path.GetTangent(i));
+
+            Vector3 nextUp = usePathNormals ? Vector3.Cross(path.GetTangent(i + 1), path.GetNormal(i + 1)) : Vector3.up;
+            Vector3 nextRight = usePathNormals ? path.GetNormal(i + 1) : Vector3.Cross(nextUp, path.GetTangent(i + 1));
 
             // Find position to left and right of current path vertex
-            Vector3 vertSideA = path[i] - localRight * Mathf.Abs(meshWidth);
-            Vector3 vertSideB = path[i] + localRight * Mathf.Abs(meshWidth);
+            Vector3 vertSideA = path[i] - currentRight * Mathf.Abs(meshWidth);
+            Vector3 vertSideB = path[i] + currentRight * Mathf.Abs(meshWidth);
 
-            // Add top of road vertices
-            verts[vertIndex + 0] = vertSideA;
-            verts[vertIndex + 1] = vertSideB;
-            // Add bottom of road vertices
-            verts[vertIndex + 2] = vertSideA - localUp * thickness;
-            verts[vertIndex + 3] = vertSideB - localUp * thickness;
+            Vector3 vertSideC = path[i + 1] - nextRight * Mathf.Abs(meshWidth);
+            Vector3 vertSideD = path[i + 1] + nextRight * Mathf.Abs(meshWidth);
 
-            // Duplicate vertices to get flat shading for sides of road
-            verts[vertIndex + 4] = verts[vertIndex + 0];
-            verts[vertIndex + 5] = verts[vertIndex + 1];
-            verts[vertIndex + 6] = verts[vertIndex + 2];
-            verts[vertIndex + 7] = verts[vertIndex + 3];
+            verts[0] = vertSideA;
+            verts[1] = vertSideB;
+            verts[2] = vertSideA - currentUp * thickness;
+            verts[3] = vertSideB - currentUp * thickness;
 
-            // Set uv on y axis to path time (0 at start of path, up to 1 at end of path)
-            uvs[vertIndex + 0] = new Vector2(0, path.GetTime(i));
-            uvs[vertIndex + 1] = new Vector2(1, path.GetTime(i));
+            uvs[0] = new Vector2(0, path.GetTime(i));
+            uvs[1] = new Vector2(1, path.GetTime(i));
+            uvs[2] = new Vector2(1, path.GetTime(i));
+            uvs[3] = new Vector2(0, path.GetTime(i));
 
-            // Top of road normals
-            normals[vertIndex + 0] = localUp;
-            normals[vertIndex + 1] = localUp;
-            // Bottom of road normals
-            normals[vertIndex + 2] = -localUp;
-            normals[vertIndex + 3] = -localUp;
-            // Sides of road normals
-            normals[vertIndex + 4] = -localRight;
-            normals[vertIndex + 5] = localRight;
-            normals[vertIndex + 6] = -localRight;
-            normals[vertIndex + 7] = localRight;
+            verts[4] = vertSideC;
+            verts[5] = vertSideD;
+            verts[6] = vertSideC - nextUp * thickness;
+            verts[7] = vertSideD - nextUp * thickness;
 
-            // Set triangle indices
-            if (i < path.VertexCount - 1)
+            uvs[4] = new Vector2(0, path.GetTime(i + 1));
+            uvs[5] = new Vector2(1, path.GetTime(i + 1));
+            uvs[6] = new Vector2(1, path.GetTime(i + 1));
+            uvs[7] = new Vector2(0, path.GetTime(i + 1));
+
+            for (int j = 0; j < triangleMap.Length; j += 3)
             {
-                for (int j = 0; j < triangleMap.Length; j++)
+                Triangle triangle = new Triangle();
+                for (int k = 0; k < 3; k++)
                 {
-                    roadTriangles[triIndex + j] = vertIndex + triangleMap[j];
-                    // reverse triangle map for under road so that triangles wind the other way and are visible from underneath
-                    underRoadTriangles[triIndex + j] = vertIndex + triangleMap[triangleMap.Length - 1 - j] + 2;
-                }
-                for (int j = 0; j < sidesTriangleMap.Length; j++)
-                {
-                    sideOfRoadTriangles[triIndex * 2 + j] = vertIndex + sidesTriangleMap[j];
+                    triangle.verts[k] = verts[triangleMap[j + k]];
+                    triangle.uvs[k] = uvs[triangleMap[j + k]];
                 }
 
+
+                Vector3 a = triangle.verts[0];
+                Vector3 b = triangle.verts[1];
+                Vector3 c = triangle.verts[2];
+
+                Vector3 tangent = (b - a).normalized;
+                Vector3 bitangent = (c - a).normalized;
+                Vector3 normal = Vector3.Cross(tangent, bitangent).normalized;
+
+                triangle.normals[0] = normal;
+                triangle.normals[1] = normal;
+                triangle.normals[2] = normal;
+
+                triangles.Add(triangle);
             }
-
-            vertIndex += 8;
-            triIndex += 6;
         }
 
-        if (mesh == null)
+        List<Vector3> vertices = new List<Vector3>();
+        List<Vector2> uv = new List<Vector2>();
+        List<Vector3> normals = new List<Vector3>();
+        List<int> indices = new List<int>();
+
+        for (int i = 0; i < triangles.Count; i++)
         {
-            mesh = new Mesh();
-            mesh.name = "Spline Mesh";
+            for (int j = 0; j < 3; j++)
+            {
+                vertices.Add(triangles[i].verts[j]);
+                uv.Add(triangles[i].uvs[j]);
+                normals.Add(triangles[i].normals[j]);
+                indices.Add(i * 3 + j);
+            }
         }
-        else
-            mesh.Clear();
-        mesh.vertices = verts;
-        mesh.uv = uvs;
-        mesh.normals = normals;
-        mesh.subMeshCount = 3;
-        mesh.SetTriangles(roadTriangles, 0);
-        mesh.SetTriangles(underRoadTriangles, 1);
-        mesh.SetTriangles(sideOfRoadTriangles, 2);
+
+        mesh = new Mesh();
+        mesh.name = "Spline Mesh";
+
+        mesh.vertices = vertices.ToArray();
+        mesh.uv = uv.ToArray();
+        mesh.normals = normals.ToArray();
+        mesh.SetTriangles(indices.ToArray(), 0);
+
         mesh.RecalculateBounds();
 
         GetComponent<MeshFilter>().sharedMesh = mesh;
