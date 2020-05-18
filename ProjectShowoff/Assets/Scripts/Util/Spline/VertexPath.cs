@@ -12,7 +12,7 @@ public struct VertexPath
     Vector3[] normals;
     float[] distances;
 
-    public bool valid {get; private set; }
+    public bool valid { get; private set; }
 
     public float length { get; private set; }
 

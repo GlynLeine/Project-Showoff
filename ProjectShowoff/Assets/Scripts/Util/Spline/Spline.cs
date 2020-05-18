@@ -20,10 +20,14 @@ public class Spline : MonoBehaviour
     [SerializeField, HideInInspector]
     bool automaticTangents;
 
+    public bool gaussianNormalInterpolation;
+    public bool sphericalNormalInterpolation = true;
+
     [Range(0.01f, 10f)]
     public float resolution = 1;
 
     VertexPath vertexPath;
+    [HideInInspector]
     public float length;
 
     public VertexPath VertexPath
@@ -54,6 +58,12 @@ public class Spline : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void OnValidate()
+    {
+        vertexPath.UpdatePath(this);
+        length = vertexPath.length;
     }
 
     public void Reset()
@@ -108,9 +118,16 @@ public class Spline : MonoBehaviour
 
     public Vector3 GetForward(int index)
     {
+        if (index == 0)
+            return (points[index] - points[1]).normalized;
+        else if (index == points.Count - 1)
+            return (points[points.Count - 2] - points[index]).normalized;
+
         Vector3 forward = Vector3.zero;
+
         if (index - 3 >= 0)
             forward += (points[index - 3] - points[index]).normalized;
+
         if (index + 3 < points.Count)
             forward -= (points[index + 3] - points[index]).normalized;
 
@@ -163,7 +180,7 @@ public class Spline : MonoBehaviour
         else
             points.RemoveRange(anchorIndex - 1, 3);
 
-        normals.RemoveAt(anchorIndex/3);
+        normals.RemoveAt(anchorIndex / 3);
     }
 
     public void AddSegment(Vector3 anchor)
@@ -225,6 +242,13 @@ public class Spline : MonoBehaviour
         }
     }
 
+    private float NormalDistribution(float t)
+    {
+        float x = t + 0.02f;
+        float exp = Mathf.Exp(-Mathf.Pow(t - 0.91f, 2) / (2f * Mathf.Pow(0.35f, 2f)));
+        return Mathf.Clamp01(2f * t - exp);
+    }
+
     public SplineVertexData CalculateEvenlySpacedPoints(float spacing, float resolution = 1)
     {
         List<Vector3> vertices = new List<Vector3>();
@@ -244,7 +268,7 @@ public class Spline : MonoBehaviour
             Vector3[] p = GetPointsInSegment(segmentIndex);
             float controlNetLength = Vector3.Distance(p[0], p[1]) + Vector3.Distance(p[1], p[2]) + Vector3.Distance(p[2], p[3]);
             float estimatedCurveLength = Vector3.Distance(p[0], p[3]) + controlNetLength / 2f;
-            int divisions = Mathf.CeilToInt(estimatedCurveLength * resolution * 10);
+            int divisions = Mathf.CeilToInt(estimatedCurveLength * resolution * 20 * (1f / resolution));
             float t = 0;
             Vector3 currentNormal = normals[segmentIndex];
             Vector3 nextNormal = normals[segmentIndex + 1];
@@ -261,7 +285,14 @@ public class Spline : MonoBehaviour
                     Vector3 newEvenlySpacedPoint = pointOnCurve + (previousPoint - pointOnCurve).normalized * overshootDst;
                     vertices.Add(newEvenlySpacedPoint);
 
-                    vertNormals.Add(Vector3.Lerp(currentNormal, nextNormal, t).normalized);
+                    float normalTime = t;
+                    if (gaussianNormalInterpolation)
+                        normalTime = NormalDistribution(t);
+
+                    if (sphericalNormalInterpolation)
+                        vertNormals.Add(Vector3.Slerp(currentNormal, nextNormal, normalTime).normalized);
+                    else
+                        vertNormals.Add(Vector3.Lerp(currentNormal, nextNormal, normalTime).normalized);
 
                     length += dstSinceLastEvenPoint - overshootDst;
                     distances.Add(length);
@@ -275,24 +306,34 @@ public class Spline : MonoBehaviour
         }
 
         vertices.Add(points[points.Count - 1]);
-        vertNormals.Add(normals[normals.Count-1]);
+        vertNormals.Add(normals[normals.Count - 1]);
 
         length += Vector3.Distance(vertices[vertices.Count - 2], vertices[vertices.Count - 1]);
         distances.Add(length);
 
         for (int i = 0; i < vertices.Count; i++)
         {
-            Vector3 forward = Vector3.zero;
+            Vector3 tangent = Vector3.zero;
 
-            if (i - 1 >= 0)
-                forward += (vertices[i - 1] - vertices[i]).normalized;
-            if (i + 1 < vertices.Count)
-                forward -= (vertices[i + 1] - vertices[i]).normalized;
+            if (i == 0)
+                tangent = GetForward(0);
+            else if (i == vertices.Count - 1)
+                tangent = GetForward(points.Count - 1);
+            else
+            {
+                if (i - 1 >= 0)
+                    tangent += (vertices[i - 1] - vertices[i]).normalized;
 
-            forward.Normalize();
+                if (i + 1 < vertices.Count)
+                    tangent -= (vertices[i + 1] - vertices[i]).normalized;
+            }
 
-            Vector3 tangent = Vector3.Cross(vertNormals[i], forward);
-            tangents.Add(-forward);
+            tangent = -tangent.normalized;
+
+            Vector3 up = Vector3.Cross(tangent, vertNormals[i]);
+            vertNormals[i] = Vector3.Cross(up, tangent);
+
+            tangents.Add(tangent);
         }
 
         SplineVertexData vertexData = new SplineVertexData();
