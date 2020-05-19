@@ -145,6 +145,36 @@ public class Spline : MonoBehaviour
         return normals[index];
     }
 
+    public Vector3 GetPointAtDistance(float d)
+    {
+        return VertexPath.GetPositionAtDistance(d);
+    }
+
+    public Vector3 GetWorldPointAtDistance(float d)
+    {
+        return transform.TransformPoint(VertexPath.GetPositionAtDistance(d));
+    }
+
+    public Vector3 GetPointAtTime(float t)
+    {
+        return VertexPath.GetPositionAtTime(t);
+    }
+
+    public Vector3 GetWorldPointAtTime(float t)
+    {
+        return transform.TransformPoint(VertexPath.GetPositionAtTime(t));
+    }
+
+    public Quaternion GetRotationAtDistance(float d)
+    {
+        return VertexPath.GetRotationAtDistance(d);
+    }
+
+    public Quaternion GetWorldRotationAtDistance(float d)
+    {
+        return transform.rotation * VertexPath.GetRotationAtDistance(d);
+    }
+
     public void SetWorldNormal(int index, Vector3 normal)
     {
         normals[index] = transform.InverseTransformDirection(normal);

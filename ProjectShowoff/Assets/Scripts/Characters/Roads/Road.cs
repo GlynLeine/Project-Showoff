@@ -11,7 +11,7 @@ public class Road : MonoBehaviour
     public BuildingLocation start;
     public BuildingLocation end;
 
-    public void OnValidate()
+    public void Validate()
     {
         if (spline == null)
             spline = GetComponent<Spline>();
@@ -19,5 +19,19 @@ public class Road : MonoBehaviour
             spline.MovePoint(0, transform.InverseTransformPoint(start.transform.position));
         if (end != null)
             spline.MovePoint(spline.PointCount - 1, transform.InverseTransformPoint(end.transform.position));
+
+        GetComponent<SplineMesh>().UpdateMesh();
+    }
+
+    private void Start()
+    {
+        gameObject.SetActive(false);
+        GameObject parent = GameObject.Find("/Planet/Roads");
+        if(parent == null)
+        {
+            parent = new GameObject("Roads");
+            parent.transform.parent = GameObject.Find("/Planet").transform;
+        }
+        transform.parent = parent.transform;
     }
 }

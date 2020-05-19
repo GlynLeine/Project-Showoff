@@ -22,6 +22,65 @@ public struct VertexPath
 
     public Vector3 up { get; private set; }
 
+    public Vector3 GetPositionAtDistance(float distance)
+    {
+        if (distance < 0)
+            return vertices[0];
+        if (distance > distances[distances.Length - 1])
+            return vertices[vertices.Length - 1];
+
+        for (int i = 0; i < vertices.Length - 1; i++)
+        {
+            if (distances[i] <= distance && distances[i + 1] >= distance)
+            {
+                float distanceBetweenPoints = distances[i + 1] - distances[i];
+                float distanceSinceLastPoint = distance - distances[i];
+                return Vector3.Lerp(vertices[i], vertices[i + 1], distanceSinceLastPoint / distanceBetweenPoints);
+            }
+        }
+
+        return Vector3.zero;
+    }
+
+    public Vector3 GetPositionAtTime(float time)
+    {
+        return GetPositionAtDistance(time * length);
+    }
+
+    public Quaternion GetRotationAtDistance(float distance)
+    {
+        Vector3 forward = Vector3.forward;
+        Vector3 right = Vector3.right;
+
+        if (distance < 0)
+        {
+            forward = tangents[0];
+            right = normals[0];
+        }
+        else if (distance > distances[distances.Length - 1])
+        {
+            forward = tangents[tangents.Length - 1];
+            right = normals[normals.Length - 1];
+        }
+        else
+        {
+            for (int i = 0; i < vertices.Length - 1; i++)
+            {
+                if (distances[i] <= distance && distances[i + 1] >= distance)
+                {
+                    float distanceBetweenPoints = distances[i + 1] - distances[i];
+                    float distanceSinceLastPoint = distance - distances[i];
+                    
+                    forward = Vector3.Slerp(tangents[i], tangents[i + 1], distanceSinceLastPoint / distanceBetweenPoints);
+                    right = Vector3.Slerp(normals[i], normals[i + 1], distanceSinceLastPoint / distanceBetweenPoints);
+                }
+            }
+        }
+
+        Vector3 up = Vector3.Cross(forward, right);
+        return Quaternion.LookRotation(forward, up);
+    }
+
     public void UpdatePath(Spline spline)
     {
         valid = true;

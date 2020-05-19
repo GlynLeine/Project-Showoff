@@ -71,7 +71,6 @@ public class Character : MonoBehaviour
         bool locationReached = false;
         while (!locationReached)
         {
-            //Debug.Log("Walking to travel start");
             Vector3 difference = location.transform.position - transform.position;
             float distance = difference.magnitude;
             Vector3 direction = difference.normalized;
@@ -91,24 +90,27 @@ public class Character : MonoBehaviour
         {
             BuildingLocation nextLocation = walkTarget.path.Dequeue();
             if (nextLocation == location)
-                yield return null;
+                continue;
+
+            Road road = location.roads[nextLocation];
+            float walkedDistance = 0;
+            float walkDirection = 1;
+            float destination = road.spline.length;
+
+            if(road.start != location)
+            {
+                walkedDistance = road.spline.length;
+                walkDirection = -1;
+                destination = 0;
+            }
 
             locationReached = false;
             while (!locationReached)
             {
-                //Debug.Log("Walking along road");
-                Vector3 difference = nextLocation.transform.position - transform.position;
-                float distance = difference.magnitude;
-                Vector3 direction = difference.normalized;
-
-                float walkDistance = walkSpeed * Time.deltaTime;
-                if (walkDistance > distance)
-                {
-                    walkDistance = distance;
-                    locationReached = true;
-                }
-
-                transform.position += direction * walkDistance;
+                walkedDistance += walkSpeed * Time.deltaTime * walkDirection;
+                locationReached = walkedDistance * walkDirection >= destination;
+                transform.position = road.spline.GetWorldPointAtDistance(walkedDistance);
+                transform.rotation = road.spline.GetWorldRotationAtDistance(walkedDistance);
                 yield return null;
             }
 
@@ -117,7 +119,6 @@ public class Character : MonoBehaviour
         }
 
         travelling = false;
-        Debug.Log("Arrived at target location");
     }
 
     private void Update()
@@ -126,8 +127,6 @@ public class Character : MonoBehaviour
         {
             if (walkTarget.targetLocation == location)
             {
-                //Debug.Log("Wandering to " + walkTarget.position);
-
                 Vector3 difference = walkTarget.position - transform.position;
                 float distance = difference.magnitude;
                 Vector3 direction = difference.normalized;
@@ -151,8 +150,6 @@ public class Character : MonoBehaviour
                     walkTarget = null;
                     return;
                 }
-
-                Debug.Log("Started Travelling");
                 StartCoroutine(TravelToNewLocation());
             }
         }
