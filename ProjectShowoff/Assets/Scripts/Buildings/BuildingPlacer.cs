@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+
 public class BuildingPlacer : MonoBehaviour
 {
     public LocationType locationType;
 
-    public GameObject buildingPrefab;
+    public BuildingType buildingType;
     public Button button;
 
     public float environmentEffect;

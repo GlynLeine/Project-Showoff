@@ -1,5 +1,6 @@
 ﻿#if UNITY_EDITOR
 
+using System.Linq;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -29,6 +30,25 @@ public class BuildingLocationToolEditor : Editor
                 BuildingLocation location = gameObject.AddComponent<BuildingLocation>();
                 location.locationType = (LocationType)System.Enum.Parse(typeof(LocationType), name);
                 location.gameObject.AddComponent<SphereCollider>();
+
+                System.Type type = location.GetType();
+
+                foreach (BuildingType buildingType in System.Enum.GetValues(typeof(BuildingType)).Cast<BuildingType>())
+                {
+                    string buildingTypeName = buildingType.ToString();
+                    var field = type.GetField(buildingTypeName);
+
+                    GameObject value = field.GetValue(location) as GameObject;
+                    if (value == null)
+                    {
+                        var guids = AssetDatabase.FindAssets(buildingTypeName, new string[] { "Assets/Prefabs" });
+
+                        field.SetValue(location, AssetDatabase.LoadAssetAtPath<GameObject>(AssetDatabase.GUIDToAssetPath(guids[0])));
+
+                        EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
+                        EditorUtility.SetDirty(location);
+                    }
+                }
 
                 if (Physics.Raycast(camera.transform.position, camera.transform.forward, out RaycastHit hit))
                     gameObject.transform.position = hit.point;
