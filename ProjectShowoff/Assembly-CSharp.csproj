@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\Editors\BuildingLocationEditor.cs" />
     <Compile Include="Assets\Scripts\Editors\BuildingLocationTool.cs" />
     <Compile Include="Assets\Scripts\Editors\BuildingLocationToolEditor.cs" />
+    <Compile Include="Assets\Scripts\Editors\RoadEditor.cs" />
     <Compile Include="Assets\Scripts\Editors\SplineEditor.cs" />
     <Compile Include="Assets\Scripts\Editors\SplineMeshEditor.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
