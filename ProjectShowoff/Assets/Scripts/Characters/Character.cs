@@ -91,24 +91,27 @@ public class Character : MonoBehaviour
         {
             BuildingLocation nextLocation = walkTarget.path.Dequeue();
             if (nextLocation == location)
-                yield return null;
+                continue;
+
+            Road road = location.roads[nextLocation];
+            float walkedDistance = 0;
+            float walkDirection = 1;
+            float destination = road.spline.length;
+
+            if(road.start != location)
+            {
+                walkedDistance = road.spline.length;
+                walkDirection = -1;
+                destination = 0;
+            }
 
             locationReached = false;
             while (!locationReached)
             {
-                //Debug.Log("Walking along road");
-                Vector3 difference = nextLocation.transform.position - transform.position;
-                float distance = difference.magnitude;
-                Vector3 direction = difference.normalized;
-
-                float walkDistance = walkSpeed * Time.deltaTime;
-                if (walkDistance > distance)
-                {
-                    walkDistance = distance;
-                    locationReached = true;
-                }
-
-                transform.position += direction * walkDistance;
+                walkedDistance += walkSpeed * Time.deltaTime * walkDirection;
+                locationReached = walkedDistance * walkDirection >= destination;
+                transform.position = road.spline.GetWorldPointAtDistance(walkedDistance);
+                transform.rotation = road.spline.GetWorldRotationAtDistance(walkedDistance);
                 yield return null;
             }
 

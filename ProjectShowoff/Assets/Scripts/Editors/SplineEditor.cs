@@ -12,6 +12,8 @@ public class SplineEditor : Editor
     int selectedSegment = -1;
     bool hideMainTool = true;
     bool showVertexPath = false;
+    bool disableOtherSelection = false;
+    bool alternateMousePos = false;
 
     ArcHandle rotationHandle = new ArcHandle();
 
@@ -63,6 +65,14 @@ public class SplineEditor : Editor
         if (newShowVertex != showVertexPath)
             showVertexPath = newShowVertex;
 
+        bool newDisableOtherSelection = GUILayout.Toggle(disableOtherSelection, "Lock selection on this object");
+        if (newDisableOtherSelection != disableOtherSelection)
+            disableOtherSelection = newDisableOtherSelection;
+
+        bool newAlternateMousePos = GUILayout.Toggle(alternateMousePos, "Unity mouse position glitch fix");
+        if (newAlternateMousePos != alternateMousePos)
+            alternateMousePos = newAlternateMousePos;
+
         if (EditorGUI.EndChangeCheck())
         {
             SceneView.RepaintAll();
@@ -91,10 +101,15 @@ public class SplineEditor : Editor
         //flip the position:
         Vector2 screenMousePos = Event.current.mousePosition;
         screenMousePos.y = sv_correctSize.y - screenMousePos.y;
-        screenMousePos *= 1.25f;
+        if (alternateMousePos)
+            screenMousePos *= 1.25f;
 
         Ray ray = sv.camera.ScreenPointToRay(new Vector3(screenMousePos.x, screenMousePos.y, sv.camera.nearClipPlane));
-        Plane plane = new Plane(spline.transform.forward, spline.transform.position);
+
+        Vector3 splineForward = (spline.GetWorldPoint(spline.PointCount - 1) - spline.GetWorldPoint(0)).normalized;
+        Vector3 splineRight = Vector3.Slerp(spline.GetWorldNormal(0), spline.GetWorldNormal(spline.SegmentCount), 0.5f).normalized;
+
+        Plane plane = new Plane(Vector3.Cross(splineForward, splineRight).normalized, spline.GetWorldPoint(0));
         plane.Raycast(ray, out float dist);
         Vector3 mousePos = ray.GetPoint(dist);
         Vector3 relativeMousepos = spline.transform.InverseTransformPoint(mousePos);
@@ -176,7 +191,8 @@ public class SplineEditor : Editor
             }
         }
 
-        HandleUtility.AddDefaultControl(0);
+        if (disableOtherSelection)
+            HandleUtility.AddDefaultControl(0);
     }
 
     public void Draw()

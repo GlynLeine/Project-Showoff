@@ -156,28 +156,27 @@ public class BuildingSystem : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
+    //private void Update()
+    //{
+    //    Vector3 rayPos = Camera.main.transform.position;
 
-        Vector3 rayPos = Camera.main.transform.position;
-
-        BuildingLocation[] locations = FindObjectsOfType<BuildingLocation>();
-        foreach (var loc in locations)
-        {
-            if (closedSet.Contains(loc) || unoccupied.Contains(loc))
-            {
-                Vector3 rayDir = (loc.transform.position - rayPos).normalized;
-                if (Physics.Raycast(rayPos, rayDir, out RaycastHit hit) && hit.collider == loc.GetComponent<SphereCollider>())
-                    foreach (var neighbour in loc.neighbours)
-                    {
-                        rayDir = (neighbour.transform.position - rayPos).normalized;
-                        if (Physics.Raycast(rayPos, rayDir, out hit) && hit.collider == neighbour.GetComponent<SphereCollider>())
-                            if (closedSet.Contains(neighbour) || unoccupied.Contains(neighbour))
-                                DrawLine(loc.transform.position, neighbour.transform.position, Color.white, 0.01f, 0.1f);
-                    }
-            }
-        }
-    }
+    //    BuildingLocation[] locations = FindObjectsOfType<BuildingLocation>();
+    //    foreach (var loc in locations)
+    //    {
+    //        if (closedSet.Contains(loc) || unoccupied.Contains(loc))
+    //        {
+    //            Vector3 rayDir = (loc.transform.position - rayPos).normalized;
+    //            if (Physics.Raycast(rayPos, rayDir, out RaycastHit hit) && hit.collider == loc.GetComponent<SphereCollider>())
+    //                foreach (var neighbour in loc.neighbours)
+    //                {
+    //                    rayDir = (neighbour.transform.position - rayPos).normalized;
+    //                    if (Physics.Raycast(rayPos, rayDir, out hit) && hit.collider == neighbour.GetComponent<SphereCollider>())
+    //                        if (closedSet.Contains(neighbour) || unoccupied.Contains(neighbour))
+    //                            DrawLine(loc.transform.position, neighbour.transform.position, Color.white, 0.01f, 0.1f);
+    //                }
+    //        }
+    //    }
+    //}
 
     void DrawLine(Vector3 start, Vector3 end, Color color, float width = 0.01f, float duration = 0.2f)
     {
@@ -340,8 +339,8 @@ public class BuildingSystem : MonoBehaviour
                 if (end.roads.Count <= i)
                     break;
                 if (unoccupied.Contains(end.neighbours[i]) || closedSet.Contains(end.neighbours[i]) || end.neighbours[i] == end.parent)
-                    if (end.roads[i] != null)
-                        end.roads[i].SetActive(true);
+                    if (end.roads[end.neighbours[i]] != null)
+                        end.roads[end.neighbours[i]].gameObject.SetActive(true);
             }
 
             if (end.parent != null)
@@ -376,8 +375,8 @@ public class BuildingSystem : MonoBehaviour
                 if (location.neighbours[i] != location.parent)
                     location.parent = null;
 
-                if (location.roads[i] != null)
-                    location.roads[i].SetActive(true);
+                if (location.roads[location.neighbours[i]] != null)
+                    location.roads[location.neighbours[i]].gameObject.SetActive(true);
             }
         }
 
