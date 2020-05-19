@@ -2,6 +2,7 @@
 
 using UnityEngine;
 using UnityEditor;
+using System.Linq;
 using UnityEditor.SceneManagement;
 
 [CustomEditor(typeof(BuildingLocation))]
@@ -12,21 +13,81 @@ public class BuildingLocationEditor : Editor
 
     public override void OnInspectorGUI()
     {
+        EditorGUI.BeginChangeCheck();
         DrawDefaultInspector();
+
+        if (EditorGUI.EndChangeCheck())
+        {
+            System.Type type = location.GetType();
+
+            foreach (BuildingType buildingType in System.Enum.GetValues(typeof(BuildingType)).Cast<BuildingType>())
+            {
+                string buildingTypeName = buildingType.ToString();
+                var field = type.GetField(buildingTypeName);
+
+                GameObject value = field.GetValue(location) as GameObject;
+                if (value == null)
+                {
+                    var guids = AssetDatabase.FindAssets(buildingTypeName, new string[] { "Assets/Prefabs" });
+
+                    field.SetValue(location, AssetDatabase.LoadAssetAtPath<GameObject>(AssetDatabase.GUIDToAssetPath(guids[0])));
+                }
+            }
+        }
     }
 
     private void OnEnable()
     {
-        //Tools.hidden = true;
-
         if (location == null)
             location = target as BuildingLocation;
+
+        if (location != null)
+        {
+            System.Type type = location.GetType();
+
+            foreach (BuildingType buildingType in System.Enum.GetValues(typeof(BuildingType)).Cast<BuildingType>())
+            {
+                string buildingTypeName = buildingType.ToString();
+                var field = type.GetField(buildingTypeName);
+
+                GameObject value = field.GetValue(location) as GameObject;
+                if (value == null)
+                {
+                    var guids = AssetDatabase.FindAssets(buildingTypeName, new string[] { "Assets/Prefabs" });
+
+                    field.SetValue(location, AssetDatabase.LoadAssetAtPath<GameObject>(AssetDatabase.GUIDToAssetPath(guids[0])));
+
+                    EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
+                    EditorUtility.SetDirty(location);
+                }
+            }
+        }
 
     }
 
     private void OnDisable()
     {
-        //Tools.hidden = false;
+        if (location == null)
+            location = target as BuildingLocation;
+
+        if (location != null)
+        {
+            System.Type type = location.GetType();
+
+            foreach (BuildingType buildingType in System.Enum.GetValues(typeof(BuildingType)).Cast<BuildingType>())
+            {
+                string buildingTypeName = buildingType.ToString();
+                var field = type.GetField(buildingTypeName);
+
+                GameObject value = field.GetValue(location) as GameObject;
+                if (value == null)
+                {
+                    var guids = AssetDatabase.FindAssets(buildingTypeName, new string[] { "Assets/Prefabs" });
+
+                    field.SetValue(location, AssetDatabase.LoadAssetAtPath<GameObject>(AssetDatabase.GUIDToAssetPath(guids[0])));
+                }
+            }
+        }
     }
 
     private void OnSceneGUI()

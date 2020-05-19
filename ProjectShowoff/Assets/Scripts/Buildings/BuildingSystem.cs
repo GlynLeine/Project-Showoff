@@ -8,6 +8,11 @@ public enum LocationType
     Rural, Coastal
 }
 
+public enum BuildingType
+{
+    Factory, TrainStation, CoalMine, OilRig, SolarFarm, Harbor, NatureReserve
+}
+
 public class BuildingSystem : MonoBehaviour
 {
     Dictionary<LocationType, List<BuildingLocation>> locations = new Dictionary<LocationType, List<BuildingLocation>>();
@@ -386,9 +391,20 @@ public class BuildingSystem : MonoBehaviour
 
     private void ConstructBuilding(BuildingLocation location, BuildingPlacer buildingData)
     {
-        GameObject building = Instantiate(buildingData.buildingPrefab, location.transform);
-        building.transform.localRotation = Quaternion.identity;
-        building.transform.localPosition = Vector3.zero;
+        GameObject source = location.GetType().GetField(buildingData.buildingType.ToString()).GetValue(location) as GameObject;
+        GameObject building;
+        if (source.scene.name == null || source.scene.rootCount == 0)
+        {
+            building = Instantiate(source, location.transform);
+            building.transform.localRotation = Quaternion.identity;
+            building.transform.localPosition = Vector3.zero;
+        }
+        else
+        {
+            building = source;
+            building.SetActive(true);
+        }
+
         closedSet.Add(location);
         foreach (BuildingLocation neighbour in location.neighbours)
             if (unvisited.Contains(neighbour))

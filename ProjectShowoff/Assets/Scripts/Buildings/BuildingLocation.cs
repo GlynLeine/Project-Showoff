@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -77,6 +76,14 @@ public class BuildingLocation : MonoBehaviour
     public BuildingLocation parent;
 
     public LocationType locationType;
+
+    public GameObject Factory;
+    public GameObject TrainStation;
+    public GameObject CoalMine;
+    public GameObject OilRig;
+    public GameObject SolarFarm;
+    public GameObject Harbor;
+    public GameObject NatureReserve;
 
     public List<BuildingLocation> neighbours = new List<BuildingLocation>();
     [SerializeField]
