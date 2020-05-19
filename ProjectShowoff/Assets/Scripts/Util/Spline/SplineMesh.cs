@@ -56,10 +56,14 @@ class SplineMesh : MonoBehaviour
             Vector2[] uvs = new Vector2[8];
 
             Vector3 currentUp = usePathNormals ? Vector3.Cross(path.GetTangent(i), path.GetNormal(i)) : Vector3.up;
+            currentUp.Normalize();
             Vector3 currentRight = usePathNormals ? path.GetNormal(i) : Vector3.Cross(currentUp, path.GetTangent(i));
+            currentRight.Normalize();
 
             Vector3 nextUp = usePathNormals ? Vector3.Cross(path.GetTangent(i + 1), path.GetNormal(i + 1)) : Vector3.up;
+            nextUp.Normalize();
             Vector3 nextRight = usePathNormals ? path.GetNormal(i + 1) : Vector3.Cross(nextUp, path.GetTangent(i + 1));
+            nextRight.Normalize();
 
             // Find position to left and right of current path vertex
             Vector3 vertSideA = path[i] - currentRight * Mathf.Abs(meshWidth);
