@@ -24,7 +24,7 @@ public class BuildingLocationToolEditor : Editor
         foreach (string name in System.Enum.GetNames(typeof(LocationType)))
             if (GUILayout.Button("Add new " + name + " location"))
             {
-                GameObject gameObject = new GameObject(name + "location");
+                GameObject gameObject = new GameObject(name + " location " + tool.transform.GetComponentsInChildren<BuildingLocation>().Length);
                 gameObject.transform.parent = tool.transform;
                 BuildingLocation location = gameObject.AddComponent<BuildingLocation>();
                 location.locationType = (LocationType)System.Enum.Parse(typeof(LocationType), name);
@@ -40,9 +40,15 @@ public class BuildingLocationToolEditor : Editor
             if (GUILayout.Button("Destroy selected location"))
             {
                 foreach (BuildingLocation neighbour in selected.neighbours)
+                {
                     neighbour.neighbours.Remove(selected);
+                    DestroyImmediate(neighbour.roads[selected].gameObject);
+                    neighbour.roads.Remove(selected);
+                }
 
                 DestroyImmediate(selected.gameObject);
+                selected = null;
+                neighbourMode = false;
                 SceneView.RepaintAll();
             }
 
@@ -88,7 +94,7 @@ public class BuildingLocationToolEditor : Editor
 
         if (tool.planet != null && tool != null)
         {
-            BuildingLocation[] locations = FindObjectsOfType<BuildingLocation>();
+            BuildingLocation[] locations = tool.transform.GetComponentsInChildren<BuildingLocation>();
             for (int i = 0; i < locations.Length; i++)
                 locations[i].gameObject.AddComponent<SphereCollider>();
 
@@ -97,8 +103,101 @@ public class BuildingLocationToolEditor : Editor
                 foreach (Transform child in locations[i].transform)
                     DestroyImmediate(child.gameObject);
             }
-
         }
+
+        Validate();
+    }
+
+    private void Validate()
+    {
+        BuildingLocation[] locations = tool.transform.GetComponentsInChildren<BuildingLocation>();
+        for (int i = 0; i < locations.Length; i++)
+        {
+            BuildingLocation location = locations[i];
+            for (int j = 0; j < location.neighbours.Count; j++)
+            {
+                BuildingLocation neighbour = location.neighbours[j];
+
+                if (neighbour == null)
+                {
+                    location.neighbours.Remove(neighbour);
+                    location.roads.Remove(neighbour);
+                    j--;
+                    continue;
+                }
+
+                if (!location.roads.ContainsKey(neighbour))
+                    location.roads.Add(neighbour, null);
+
+                if (location.roads[neighbour] == null)
+                {
+                    if (!neighbour.roads.ContainsKey(location))
+                        neighbour.roads.Add(location, null);
+
+                    if (neighbour.roads[location] == null)
+                    {
+                        AddRoad(location, neighbour);
+                    }
+                    else
+                    {
+                        location.roads[neighbour] = neighbour.roads[location];
+                        if (location.roads[neighbour].start == neighbour)
+                            location.roads[neighbour].end = location;
+                        else
+                            location.roads[neighbour].start = location;
+                    }
+                }
+            }
+        }
+    }
+
+    private void AddRoad(BuildingLocation location, BuildingLocation neighbour)
+    {
+        GameObject roadObject = new GameObject("road " + tool.transform.GetComponentsInChildren<Road>().Length);
+        roadObject.transform.parent = tool.transform;
+        Spline spline = roadObject.AddComponent<Spline>();
+        spline.sphericalNormalInterpolation = true;
+        spline.AutoTangents = true;
+        spline.resolution = 5;
+
+        SplineMesh splineMesh = roadObject.AddComponent<SplineMesh>();
+        splineMesh.meshWidth = 0.025f;
+        splineMesh.thickness = 0.01f;
+
+        MeshRenderer meshRenderer = roadObject.GetComponent<MeshRenderer>();
+        string guid = AssetDatabase.FindAssets("RoadMat t:material", null)[0];
+        meshRenderer.sharedMaterial = AssetDatabase.LoadAssetAtPath<Material>(AssetDatabase.GUIDToAssetPath(guid));
+
+        Road road = roadObject.AddComponent<Road>();
+        road.start = location;
+        road.end = neighbour;
+        road.Validate();
+        spline.AutoTangents = false;
+        spline.AutoTangents = true;
+
+        Vector3 middle = tool.planet.position + Vector3.Slerp(location.transform.position - tool.planet.position, neighbour.transform.position - tool.planet.position, 0.5f);
+
+        spline.SplitSegment(spline.transform.InverseTransformPoint(middle), 0);
+
+        Vector3 startUp = (location.transform.position - tool.planet.position).normalized;
+        Vector3 middleUp = (middle - tool.planet.position).normalized;
+        Vector3 endUp = (neighbour.transform.position - tool.planet.position).normalized;
+        Vector3 forward = (location.transform.position - neighbour.transform.position).normalized;
+
+        spline.SetWorldNormal(0, Vector3.Cross(forward, startUp));
+        spline.SetWorldNormal(1, Vector3.Cross(forward, middleUp));
+        spline.SetWorldNormal(2, Vector3.Cross(forward, endUp));
+
+        splineMesh.UpdateMesh();
+
+        if (!location.roads.ContainsKey(neighbour))
+            location.roads.Add(neighbour, null);
+
+        if (!neighbour.roads.ContainsKey(location))
+            neighbour.roads.Add(location, null);
+
+        location.roads[neighbour] = road;
+        neighbour.roads[location] = road;
     }
 
     private void OnDisable()
@@ -107,7 +206,7 @@ public class BuildingLocationToolEditor : Editor
 
         if (tool.planet != null && tool != null)
         {
-            BuildingLocation[] locations = FindObjectsOfType<BuildingLocation>();
+            BuildingLocation[] locations = tool.transform.GetComponentsInChildren<BuildingLocation>();
             for (int i = 0; i < locations.Length; i++)
             {
                 foreach (SphereCollider collider in locations[i].gameObject.GetComponents<SphereCollider>())
@@ -134,54 +233,17 @@ public class BuildingLocationToolEditor : Editor
 
         if (tool.planet != null && tool != null)
         {
-            BuildingLocation[] locations = FindObjectsOfType<BuildingLocation>();
+            BuildingLocation[] locations = tool.transform.GetComponentsInChildren<BuildingLocation>();
             for (int i = 0; i < locations.Length; i++)
             {
                 Vector3 rayPos = Camera.current.transform.position;
                 Vector3 rayDir = (locations[i].transform.position - rayPos).normalized;
 
-                SphereCollider collider = locations[i].GetComponent<SphereCollider>();
-                collider.radius = HandleUtility.GetHandleSize(locations[i].transform.position) * 0.1f;
+                HandleInput(locations[i]);
 
-                if (Event.current.type == EventType.MouseDown && Physics.Raycast(HandleUtility.GUIPointToWorldRay(Event.current.mousePosition), out RaycastHit hit))
-                    if (hit.collider == collider)
-                        if (neighbourMode)
-                        {
-                            if (selected != locations[i])
-                            {
-                                bool has = selected.neighbours.Contains(locations[i]);
-                                Undo.RecordObject(selected, has ? "remove neighbour" : "add neighbour");
-
-                                if (has)
-                                {
-                                    selected.neighbours.Remove(locations[i]);
-                                    if (locations[i].neighbours.Contains(selected))
-                                        locations[i].neighbours.Remove(selected);
-
-                                    Repaint();
-                                }
-                                else
-                                {
-                                    selected.neighbours.Add(locations[i]);
-                                    if (!locations[i].neighbours.Contains(selected))
-                                        locations[i].neighbours.Add(selected);
-
-                                    Repaint();
-                                }
-
-                                EditorUtility.SetDirty(selected);
-                                EditorSceneManager.MarkSceneDirty(tool.gameObject.scene);
-                            }
-                        }
-                        else
-                        {
-                            selected = locations[i];
-                            Repaint();
-                        }
-
-                if (Physics.Raycast(rayPos, rayDir, out hit))
+                if (Physics.Raycast(rayPos, rayDir, out RaycastHit hit))
                 {
-                    if (hit.collider != collider)
+                    if (hit.collider != locations[i].GetComponent<SphereCollider>())
                         continue;
                 }
                 else
@@ -198,6 +260,55 @@ public class BuildingLocationToolEditor : Editor
                 }
             }
         }
+    }
+
+    private void HandleInput(BuildingLocation location)
+    {
+        SphereCollider collider = location.GetComponent<SphereCollider>();
+        collider.radius = HandleUtility.GetHandleSize(location.transform.position) * 0.1f;
+
+        if (Event.current.type == EventType.MouseDown && Physics.Raycast(HandleUtility.GUIPointToWorldRay(Event.current.mousePosition), out RaycastHit hit))
+            if (hit.collider == collider)
+                if (neighbourMode)
+                {
+                    if (selected != location)
+                    {
+                        bool has = selected.neighbours.Contains(location);
+                        Undo.RecordObject(selected, has ? "remove neighbour" : "add neighbour");
+
+                        if (has)
+                        {
+                            selected.neighbours.Remove(location);
+                            selected.roads.Remove(location);
+
+                            if (location.neighbours.Contains(selected))
+                            {
+                                DestroyImmediate(location.roads[selected].gameObject);
+                                location.roads.Remove(selected);
+                                location.neighbours.Remove(selected);
+                            }
+                            Repaint();
+                        }
+                        else
+                        {
+                            selected.neighbours.Add(location);
+                            if (!location.neighbours.Contains(selected))
+                                location.neighbours.Add(selected);
+
+                            AddRoad(selected, location);
+
+                            Repaint();
+                        }
+
+                        EditorUtility.SetDirty(selected);
+                        EditorSceneManager.MarkSceneDirty(tool.gameObject.scene);
+                    }
+                }
+                else
+                {
+                    selected = location;
+                    Repaint();
+                }
     }
 
     private void DrawRoadmap(BuildingLocation location)
@@ -254,6 +365,9 @@ public class BuildingLocationToolEditor : Editor
             Vector3 normal = (newPos - tool.planet.position).normalized;
             location.transform.up = normal;
             location.transform.position = newPos;
+
+            for (int i = 0; i < location.roads.Count; i++)
+                location.roads[i].Validate();
 
             EditorUtility.SetDirty(location.transform);
             EditorSceneManager.MarkSceneDirty(tool.gameObject.scene);

@@ -4,14 +4,12 @@ using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(SplineMesh))]
+[CanEditMultipleObjects]
 public class SplineMeshEditor : Editor
 {
-    SplineMesh splineMesh;
-
     private void OnEnable()
     {
-        splineMesh = target as SplineMesh;
-        splineMesh.UpdateMesh();
+        (target as SplineMesh).UpdateMesh();
     }
 
     public override void OnInspectorGUI()
@@ -20,13 +18,13 @@ public class SplineMeshEditor : Editor
         base.OnInspectorGUI();
 
         if (EditorGUI.EndChangeCheck())
-            splineMesh.UpdateMesh();
+            (target as SplineMesh).UpdateMesh();
     }
 
     private void OnSceneGUI()
     {
         if(Event.current.type == EventType.Repaint)
-            splineMesh.UpdateMesh();
+            (target as SplineMesh).UpdateMesh();
     }
 }
 
