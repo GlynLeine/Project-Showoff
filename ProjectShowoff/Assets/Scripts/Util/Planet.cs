@@ -10,7 +10,7 @@ public class Planet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (InputRedirect.pressed)
+        if (InputRedirect.pressed && !InputRedirect.inputOverUI)
         {
             Vector3 baseNormal = Vector3.forward;
             Vector3 inputVelocity = new Vector3(InputRedirect.inputVelocity.x, InputRedirect.inputVelocity.y, 0) * rotationSpeed;
