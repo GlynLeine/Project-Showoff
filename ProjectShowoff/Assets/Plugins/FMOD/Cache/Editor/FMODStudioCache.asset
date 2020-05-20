@@ -32,7 +32,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMOD/Threa FMOD/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637250740793097483
+  lastModified: 637250733300000000
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -73,7 +73,7 @@ MonoBehaviour:
   lastModified: 637255626198431895
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &-2066795873699109299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,15 +124,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: -8842823544332026301}
-  - {fileID: 4911547479386107744}
+  - {fileID: 4227970794950544745}
   EditorEvents:
   - {fileID: 5878141097314226750}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 4911547479386107744}
+  - {fileID: 4227970794950544745}
   StringsBanks:
   - {fileID: -8842823544332026301}
-  stringsBankWriteTime: 637250740793097483
+  stringsBankWriteTime: 637250733300000000
   cacheVersion: 3
 --- !u!114 &25558263779405894
 MonoBehaviour:
@@ -228,7 +228,7 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
---- !u!114 &4911547479386107744
+--- !u!114 &4227970794950544745
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -242,7 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMOD/Threa FMOD/Build/Desktop/Master.bank
   SubDir: 
-  lastModified: 637250740793052473
+  lastModified: 637250733300000000
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -261,7 +261,7 @@ MonoBehaviour:
   Path: event:/Main Music
   guid: e17e80815970054ba34d8843b5886433
   Banks:
-  - {fileID: 4911547479386107744}
+  - {fileID: 4227970794950544745}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
