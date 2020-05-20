@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -152,12 +152,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
   locationType: 0
+  Factory: {fileID: 0}
+  TrainStation: {fileID: 0}
+  CoalMine: {fileID: 0}
+  OilRig: {fileID: 0}
+  SolarFarm: {fileID: 0}
+  Harbor: {fileID: 0}
+  NatureReserve: {fileID: 0}
   neighbours:
   - {fileID: 729367113}
   - {fileID: 1202519938}
   - {fileID: 1285274272}
   - {fileID: 1949867250}
-  roads: []
+  roads:
+    keys: []
+    values: []
 --- !u!4 &3496033
 Transform:
   m_ObjectHideFlags: 0
@@ -170,7 +179,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1413187994}
-  m_RootOrder: 16
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &86733236
 GameObject:
@@ -508,6 +517,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b690b9d9fba6854aada56818ea90d43, type: 3}
+--- !u!4 &116951270 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 116951269}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &174830386
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -647,6 +661,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b690b9d9fba6854aada56818ea90d43, type: 3}
+--- !u!4 &174830387 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 174830386}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &237697201
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,8 +719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locationType: 0
-  buildingPrefab: {fileID: 1461026915376175517, guid: 5e59fbb585d9d5f4497fff92692c4942,
-    type: 3}
+  buildingType: 0
   button: {fileID: 237697204}
   environmentEffect: 100
   pollutionEffect: 0
@@ -898,10 +916,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
   locationType: 1
+  Factory: {fileID: 0}
+  TrainStation: {fileID: 0}
+  CoalMine: {fileID: 0}
+  OilRig: {fileID: 0}
+  SolarFarm: {fileID: 0}
+  Harbor: {fileID: 0}
+  NatureReserve: {fileID: 0}
   neighbours:
   - {fileID: 1202519938}
   - {fileID: 729367113}
-  roads: []
+  roads:
+    keys: []
+    values: []
 --- !u!4 &288059957
 Transform:
   m_ObjectHideFlags: 0
@@ -914,14 +941,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1413187994}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &292753485 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3786257977463288689, guid: 9b690b9d9fba6854aada56818ea90d43,
-    type: 3}
-  m_PrefabInstance: {fileID: 466603086}
-  m_PrefabAsset: {fileID: 0}
 --- !u!43 &323560700
 Mesh:
   m_ObjectHideFlags: 0
@@ -1348,6 +1369,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b690b9d9fba6854aada56818ea90d43, type: 3}
+--- !u!4 &466603087 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 466603086}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &531526736 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7029965745253546507, guid: 9b690b9d9fba6854aada56818ea90d43,
@@ -1494,6 +1520,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b690b9d9fba6854aada56818ea90d43, type: 3}
+--- !u!4 &563974593 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 563974592}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &568970233
 GameObject:
   m_ObjectHideFlags: 0
@@ -1523,7 +1554,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1413187994}
-  m_RootOrder: 15
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &568970236
 MonoBehaviour:
@@ -1539,10 +1570,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
   locationType: 1
+  Factory: {fileID: 0}
+  TrainStation: {fileID: 0}
+  CoalMine: {fileID: 0}
+  OilRig: {fileID: 0}
+  SolarFarm: {fileID: 0}
+  Harbor: {fileID: 0}
+  NatureReserve: {fileID: 0}
   neighbours:
   - {fileID: 1489455113}
   - {fileID: 1721431776}
-  roads: []
+  roads:
+    keys: []
+    values: []
 --- !u!1 &576086914
 GameObject:
   m_ObjectHideFlags: 0
@@ -1860,6 +1900,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b690b9d9fba6854aada56818ea90d43, type: 3}
+--- !u!4 &642714539 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 642714538}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &652176655
 GameObject:
   m_ObjectHideFlags: 0
@@ -1913,8 +1958,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locationType: 0
-  buildingPrefab: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
-    type: 3}
+  buildingType: 0
   button: {fileID: 652176658}
   environmentEffect: 0
   pollutionEffect: 0
@@ -2055,12 +2099,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
   locationType: 1
+  Factory: {fileID: 0}
+  TrainStation: {fileID: 0}
+  CoalMine: {fileID: 0}
+  OilRig: {fileID: 0}
+  SolarFarm: {fileID: 0}
+  Harbor: {fileID: 0}
+  NatureReserve: {fileID: 0}
   neighbours:
   - {fileID: 1285274272}
   - {fileID: 3496031}
   - {fileID: 1202519938}
   - {fileID: 288059955}
-  roads: []
+  roads:
+    keys: []
+    values: []
 --- !u!4 &729367115
 Transform:
   m_ObjectHideFlags: 0
@@ -2073,7 +2126,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1413187994}
-  m_RootOrder: 14
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &742400388
 GameObject:
@@ -2527,7 +2580,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 329bfb8a2f5ffe84d9e2da3cf1d79736, type: 2}
+  - {fileID: 2100000, guid: d74ea6251c57eb847ba30d8000286066, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2564,8 +2617,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 917619451}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.07, y: 0.13, z: -0.028}
-  m_LocalScale: {x: 2.9100144, y: 2.9100144, z: 2.9100144}
+  m_LocalPosition: {x: 0.03, y: 0.13, z: -0.028}
+  m_LocalScale: {x: 2.933881, y: 2.933881, z: 2.933881}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 14
@@ -2699,6 +2752,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b690b9d9fba6854aada56818ea90d43, type: 3}
+--- !u!4 &919095545 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 919095544}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &980212954
 GameObject:
   m_ObjectHideFlags: 0
@@ -2944,8 +3002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locationType: 0
-  buildingPrefab: {fileID: 5035160602664345561, guid: 707e6ced6c598e44a82e3458ef8d6360,
-    type: 3}
+  buildingType: 0
   button: {fileID: 986981737}
   environmentEffect: 0
   pollutionEffect: 10
@@ -3072,7 +3129,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1413187994}
-  m_RootOrder: 9
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1035742967
 MonoBehaviour:
@@ -3088,17 +3145,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
   locationType: 1
+  Factory: {fileID: 0}
+  TrainStation: {fileID: 0}
+  CoalMine: {fileID: 0}
+  OilRig: {fileID: 0}
+  SolarFarm: {fileID: 0}
+  Harbor: {fileID: 0}
+  NatureReserve: {fileID: 0}
   neighbours:
   - {fileID: 1253651710}
   - {fileID: 1306700498}
   roads:
-  - {fileID: 0}
---- !u!4 &1047871136 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3786257977463288689, guid: 9b690b9d9fba6854aada56818ea90d43,
-    type: 3}
-  m_PrefabInstance: {fileID: 1421491111}
-  m_PrefabAsset: {fileID: 0}
+    keys: []
+    values: []
 --- !u!1 &1122471539
 GameObject:
   m_ObjectHideFlags: 0
@@ -3336,6 +3395,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b690b9d9fba6854aada56818ea90d43, type: 3}
+--- !u!4 &1124792799 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 1124792798}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1126448668
 GameObject:
   m_ObjectHideFlags: 0
@@ -3365,7 +3429,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1413187994}
-  m_RootOrder: 12
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1126448670
 MonoBehaviour:
@@ -3381,12 +3445,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
   locationType: 1
+  Factory: {fileID: 0}
+  TrainStation: {fileID: 0}
+  CoalMine: {fileID: 0}
+  OilRig: {fileID: 0}
+  SolarFarm: {fileID: 0}
+  Harbor: {fileID: 0}
+  NatureReserve: {fileID: 0}
   neighbours:
   - {fileID: 630961740}
   - {fileID: 1343954661}
   - {fileID: 1413840458}
   - {fileID: 1423312902}
-  roads: []
+  roads:
+    keys: []
+    values: []
 --- !u!1 &1202519937
 GameObject:
   m_ObjectHideFlags: 0
@@ -3418,12 +3491,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
   locationType: 0
+  Factory: {fileID: 0}
+  TrainStation: {fileID: 0}
+  CoalMine: {fileID: 0}
+  OilRig: {fileID: 0}
+  SolarFarm: {fileID: 0}
+  Harbor: {fileID: 0}
+  NatureReserve: {fileID: 0}
   neighbours:
   - {fileID: 729367113}
   - {fileID: 3496031}
   - {fileID: 288059955}
   - {fileID: 1949867250}
-  roads: []
+  roads:
+    keys: []
+    values: []
 --- !u!4 &1202519940
 Transform:
   m_ObjectHideFlags: 0
@@ -3436,7 +3518,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1413187994}
-  m_RootOrder: 19
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1214754138
 GameObject:
@@ -3637,13 +3719,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
   locationType: 0
+  Factory: {fileID: 0}
+  TrainStation: {fileID: 0}
+  CoalMine: {fileID: 0}
+  OilRig: {fileID: 0}
+  SolarFarm: {fileID: 0}
+  Harbor: {fileID: 0}
+  NatureReserve: {fileID: 0}
   neighbours:
   - {fileID: 725870844}
   - {fileID: 981210300}
   - {fileID: 1661071965}
   - {fileID: 1253651710}
   - {fileID: 1035742967}
-  roads: []
+  roads:
+    keys: []
+    values: []
 --- !u!4 &1306700500
 Transform:
   m_ObjectHideFlags: 0
@@ -3656,7 +3747,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1413187994}
-  m_RootOrder: 17
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1341723547
 GameObject:
@@ -3787,7 +3878,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1413187994}
-  m_RootOrder: 11
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1343954661
 MonoBehaviour:
@@ -3803,19 +3894,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
   locationType: 0
+  Factory: {fileID: 0}
+  TrainStation: {fileID: 0}
+  CoalMine: {fileID: 0}
+  OilRig: {fileID: 0}
+  SolarFarm: {fileID: 0}
+  Harbor: {fileID: 0}
+  NatureReserve: {fileID: 0}
   neighbours:
   - {fileID: 1819066525}
   - {fileID: 1126448670}
   - {fileID: 1423312902}
   - {fileID: 981210300}
   - {fileID: 1949867250}
-  roads: []
---- !u!4 &1344457032 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3786257977463288689, guid: 9b690b9d9fba6854aada56818ea90d43,
-    type: 3}
-  m_PrefabInstance: {fileID: 116951269}
-  m_PrefabAsset: {fileID: 0}
+  roads:
+    keys: []
+    values: []
 --- !u!1001 &1352852123
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3940,6 +4034,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b690b9d9fba6854aada56818ea90d43, type: 3}
+--- !u!4 &1352852124 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 1352852123}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1376494888
 GameObject:
   m_ObjectHideFlags: 0
@@ -4315,8 +4414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locationType: 1
-  buildingPrefab: {fileID: 4877105559853464855, guid: 691d34f4aa10bf14baaabbd1dee93751,
-    type: 3}
+  buildingType: 0
   button: {fileID: 1389056921}
   environmentEffect: 0
   pollutionEffect: 10
@@ -4467,8 +4565,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locationType: 0
-  buildingPrefab: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e,
-    type: 3}
+  buildingType: 0
   button: {fileID: 1392405675}
   environmentEffect: 0
   pollutionEffect: 0
@@ -4594,28 +4691,28 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1589446429}
-  - {fileID: 292753485}
-  - {fileID: 1344457032}
-  - {fileID: 1461793020}
-  - {fileID: 1515501486}
-  - {fileID: 2015739757}
   - {fileID: 1423312901}
-  - {fileID: 1047871136}
-  - {fileID: 2082123546}
   - {fileID: 1035742966}
-  - {fileID: 1785695677}
   - {fileID: 1343954660}
   - {fileID: 1126448669}
   - {fileID: 1661071963}
+  - {fileID: 116951270}
   - {fileID: 729367115}
+  - {fileID: 174830387}
   - {fileID: 568970234}
+  - {fileID: 466603087}
   - {fileID: 3496033}
+  - {fileID: 563974593}
   - {fileID: 1306700500}
+  - {fileID: 642714539}
   - {fileID: 1721431778}
+  - {fileID: 919095545}
   - {fileID: 1202519940}
+  - {fileID: 1124792799}
   - {fileID: 1489455111}
+  - {fileID: 1352852124}
   - {fileID: 288059957}
+  - {fileID: 1421491112}
   - {fileID: 1949867248}
   m_Father: {fileID: 0}
   m_RootOrder: 12
@@ -4786,6 +4883,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b690b9d9fba6854aada56818ea90d43, type: 3}
+--- !u!4 &1421491112 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 1421491111}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1423312900
 GameObject:
   m_ObjectHideFlags: 0
@@ -4815,7 +4917,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1413187994}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1423312902
 MonoBehaviour:
@@ -4831,6 +4933,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
   locationType: 0
+  Factory: {fileID: 0}
+  TrainStation: {fileID: 0}
+  CoalMine: {fileID: 0}
+  OilRig: {fileID: 0}
+  SolarFarm: {fileID: 0}
+  Harbor: {fileID: 0}
+  NatureReserve: {fileID: 0}
   neighbours:
   - {fileID: 981210300}
   - {fileID: 1253651710}
@@ -4839,17 +4948,8 @@ MonoBehaviour:
   - {fileID: 1343954661}
   - {fileID: 1126448670}
   roads:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
---- !u!4 &1461793020 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3786257977463288689, guid: 9b690b9d9fba6854aada56818ea90d43,
-    type: 3}
-  m_PrefabInstance: {fileID: 174830386}
-  m_PrefabAsset: {fileID: 0}
+    keys: []
+    values: []
 --- !u!1 &1489455110
 GameObject:
   m_ObjectHideFlags: 0
@@ -4879,7 +4979,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1413187994}
-  m_RootOrder: 20
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1489455113
 MonoBehaviour:
@@ -4895,12 +4995,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
   locationType: 0
+  Factory: {fileID: 0}
+  TrainStation: {fileID: 0}
+  CoalMine: {fileID: 0}
+  OilRig: {fileID: 0}
+  SolarFarm: {fileID: 0}
+  Harbor: {fileID: 0}
+  NatureReserve: {fileID: 0}
   neighbours:
   - {fileID: 568970236}
   - {fileID: 725870844}
   - {fileID: 1721431776}
   - {fileID: 1661071965}
-  roads: []
+  roads:
+    keys: []
+    values: []
 --- !u!1 &1511485859
 GameObject:
   m_ObjectHideFlags: 0
@@ -4979,12 +5088,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1511485859}
   m_CullTransparentMesh: 0
---- !u!4 &1515501486 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3786257977463288689, guid: 9b690b9d9fba6854aada56818ea90d43,
-    type: 3}
-  m_PrefabInstance: {fileID: 919095544}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1544065915
 GameObject:
   m_ObjectHideFlags: 0
@@ -5144,12 +5247,6 @@ Transform:
   m_Father: {fileID: 1635277012}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!4 &1589446429 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3786257977463288689, guid: 9b690b9d9fba6854aada56818ea90d43,
-    type: 3}
-  m_PrefabInstance: {fileID: 1124792798}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1629003450
 GameObject:
   m_ObjectHideFlags: 0
@@ -5441,8 +5538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locationType: 0
-  buildingPrefab: {fileID: 950372485321456134, guid: 523254cc2a8e770449dc0c4e12fbde3d,
-    type: 3}
+  buildingType: 0
   button: {fileID: 1659113006}
   environmentEffect: 0
   pollutionEffect: 0
@@ -5569,7 +5665,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1413187994}
-  m_RootOrder: 13
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1661071965
 MonoBehaviour:
@@ -5585,6 +5681,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
   locationType: 0
+  Factory: {fileID: 0}
+  TrainStation: {fileID: 0}
+  CoalMine: {fileID: 0}
+  OilRig: {fileID: 0}
+  SolarFarm: {fileID: 0}
+  Harbor: {fileID: 0}
+  NatureReserve: {fileID: 0}
   neighbours:
   - {fileID: 981210300}
   - {fileID: 1418664309}
@@ -5592,7 +5695,9 @@ MonoBehaviour:
   - {fileID: 1721431776}
   - {fileID: 725870844}
   - {fileID: 1489455113}
-  roads: []
+  roads:
+    keys: []
+    values: []
 --- !u!1 &1674085054
 GameObject:
   m_ObjectHideFlags: 0
@@ -5646,8 +5751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locationType: 1
-  buildingPrefab: {fileID: 7100183442372346360, guid: 3e88dba4103847941b7d0b402f29fdec,
-    type: 3}
+  buildingType: 0
   button: {fileID: 1674085057}
   environmentEffect: 0
   pollutionEffect: 0
@@ -5776,13 +5880,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
   locationType: 0
+  Factory: {fileID: 0}
+  TrainStation: {fileID: 0}
+  CoalMine: {fileID: 0}
+  OilRig: {fileID: 0}
+  SolarFarm: {fileID: 0}
+  Harbor: {fileID: 0}
+  NatureReserve: {fileID: 0}
   neighbours:
   - {fileID: 1418664309}
   - {fileID: 1661071965}
   - {fileID: 1285274272}
   - {fileID: 1489455113}
   - {fileID: 568970236}
-  roads: []
+  roads:
+    keys: []
+    values: []
 --- !u!4 &1721431778
 Transform:
   m_ObjectHideFlags: 0
@@ -5795,7 +5908,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1413187994}
-  m_RootOrder: 18
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1769300408
 GameObject:
@@ -5936,12 +6049,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1928020327}
   inverted: 1
---- !u!4 &1785695677 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3786257977463288689, guid: 9b690b9d9fba6854aada56818ea90d43,
-    type: 3}
-  m_PrefabInstance: {fileID: 563974592}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1786312703
 GameObject:
   m_ObjectHideFlags: 0
@@ -6333,12 +6440,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
   locationType: 0
+  Factory: {fileID: 0}
+  TrainStation: {fileID: 0}
+  CoalMine: {fileID: 0}
+  OilRig: {fileID: 0}
+  SolarFarm: {fileID: 0}
+  Harbor: {fileID: 0}
+  NatureReserve: {fileID: 0}
   neighbours:
   - {fileID: 1343954661}
   - {fileID: 3496031}
   - {fileID: 1202519938}
   - {fileID: 1819066525}
-  roads: []
+  roads:
+    keys: []
+    values: []
 --- !u!43 &1984344668
 Mesh:
   m_ObjectHideFlags: 0
@@ -6502,12 +6618,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!4 &2015739757 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3786257977463288689, guid: 9b690b9d9fba6854aada56818ea90d43,
-    type: 3}
-  m_PrefabInstance: {fileID: 642714538}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2027776511
 GameObject:
   m_ObjectHideFlags: 0
@@ -6551,12 +6661,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &2082123546 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3786257977463288689, guid: 9b690b9d9fba6854aada56818ea90d43,
-    type: 3}
-  m_PrefabInstance: {fileID: 1352852123}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2103264820
 GameObject:
   m_ObjectHideFlags: 0
