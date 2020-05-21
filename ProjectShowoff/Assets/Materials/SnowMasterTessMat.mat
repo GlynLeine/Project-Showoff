@@ -67,7 +67,7 @@ Material:
     - _Cutoff: 0
     - _DetailNormalMapScale: 1
     - _DispOffset: 0.5
-    - _Displacement: 0
+    - _Displacement: 20
     - _DstBlend: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
@@ -78,16 +78,17 @@ Material:
     - _Parallax: 0.005
     - _Phong: 0
     - _QueueOffset: 0
+    - _RecalculateNormals: -0.85
     - _ShadowLOD: 0
     - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
-    - _SnowThreshold: 1
+    - _SnowThreshold: 1.66
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
     - _Tess: 32
     - _TessMode: 0
-    - _TessellationUniform: 1
+    - _TessellationUniform: 2
     - _UVSec: 0
     - _ZWrite: 1
     - _maxDist: 25

@@ -7,8 +7,9 @@
 		
 		_WorldCenter("World Center", Vector) = (0.0, 0.0, 0.0, 0.0)
 		_SnowThreshold("Snow Threshold", Range(1.0, 5.0)) = 0.5
-		_Displacement("Displacement", Float) = 0.0
+		_Displacement("Displacement", Range(0, 20)) = 10.0
 		_TessellationUniform("Tessellation", Range(1,32)) = 4
+		_RecalculateNormals("Recalculate Normals", Float) = 1.0
 
 		[HideInInspector] _Cutoff("Alpha Cutoff", Range(0.0, 0.0)) = 0.0
 		[HideInInspector] _Metallic("Metallic", Range(0.0, 0.0)) = 0.0
@@ -39,6 +40,8 @@
 			Cull[_Cull]
 
 			HLSLPROGRAM
+
+			#pragma require tessellation tessHW
 
 			#pragma prefer_hlslcc gles
 			#pragma exclude_renderers d3d11_9x
@@ -93,6 +96,7 @@
 				float4 shadowCoord              : TEXCOORD6; // compute shadow coord per-vertex for the main light
 #endif
 				float4 positionCS               : SV_POSITION;
+				float snowy						: Output;
 			};
 
 			Varyings LitPassVertex(Attributes input)
@@ -128,6 +132,11 @@
 #endif
 				// We just use the homogeneous clip position from the vertex input
 				output.positionCS = vertexInput.positionCS;
+
+				float3 toThis = SafeNormalize(vertexInput.positionWS - _WorldCenter.xyz);
+
+				output.snowy = clamp(pow(clamp(dot(toThis, vertexNormalInput.normalWS), 0, 1), _SnowThreshold), 0.0, 1.0);
+
 				return output;
 			}
 
@@ -156,11 +165,7 @@
 				float3 positionWS = input.positionWSAndFogFactor.xyz;
 				half3 viewDirectionWS = SafeNormalize(GetCameraPositionWS() - positionWS);
 
-				float3 toThis = SafeNormalize(positionWS - _WorldCenter.xyz);
-
-				float snowy = clamp(pow(abs(dot(toThis, normalWS)), _SnowThreshold), 0.0, 1.0);
-
-				float3 inputColor = lerp(surfaceData.albedo, float3(1.0, 1.0, 1.0), snowy);
+				float3 inputColor = lerp(surfaceData.albedo, float3(1.0, 1.0, 1.0), input.snowy);
 
 				BRDFData brdfData;
 				InitializeBRDFData(inputColor, 0, 0, 0, surfaceData.alpha, brdfData);
