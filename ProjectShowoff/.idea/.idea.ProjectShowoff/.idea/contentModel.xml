@@ -57,6 +57,10 @@
         </e>
         <e p="Materials" t="Include">
           <e p="LineShader.shader" t="Include" />
+          <e p="SnowMasterTess.shader" t="Include" />
+          <e p="Tessellation" t="Include">
+            <e p="GlynTessellation.hlsl" t="Include" />
+          </e>
         </e>
         <e p="Plugins" t="Include">
           <e p="FMOD" t="Include">
@@ -152,6 +156,8 @@
           <e p="GameManager.cs" t="Include" />
           <e p="UI" t="Include">
             <e p="AnnouncerText.cs" t="Include" />
+            <e p="SnowController.cs" t="Include" />
+            <e p="VoiceCasterTestScript.cs" t="Include" />
             <e p="ZoomBarScript.cs" t="Include" />
           </e>
           <e p="Util" t="Include">

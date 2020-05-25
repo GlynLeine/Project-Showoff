@@ -12,14 +12,22 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Characters/Character.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/BankRefDrawer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EditorUtils.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EditorBankRef.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/addons/ResonanceAudio/Editor/FmodResonanceAudioRoomEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EditorParamRef.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/AnnouncerText.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Util/Spline/SplineMesh.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/ZoomBarScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/VoiceCasterTestScript.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/AnnouncerText.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/ZoomBarScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/AnnouncerText.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/VoiceCasterTestScript.cs" />
       </list>
     </option>
   </component>
@@ -61,6 +69,8 @@
       <updated>1589974398228</updated>
       <workItem from="1589974405416" duration="7733000" />
       <workItem from="1590069122131" duration="1494000" />
+      <workItem from="1590406597930" duration="2799000" />
+      <workItem from="1590409412327" duration="5196000" />
     </task>
     <servers />
   </component>
