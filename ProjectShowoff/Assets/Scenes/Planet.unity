@@ -1766,22 +1766,22 @@ PrefabInstance:
     - target: {fileID: 314100681690800100, guid: 3745be03dc19cb742be0d5ba1abcf11e,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 314100681690800100, guid: 3745be03dc19cb742be0d5ba1abcf11e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 314100681690800100, guid: 3745be03dc19cb742be0d5ba1abcf11e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.5911639
       objectReference: {fileID: 0}
     - target: {fileID: 314100681690800100, guid: 3745be03dc19cb742be0d5ba1abcf11e,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.8065515
       objectReference: {fileID: 0}
     - target: {fileID: 314100681690800100, guid: 3745be03dc19cb742be0d5ba1abcf11e,
         type: 3}
@@ -1801,7 +1801,7 @@ PrefabInstance:
     - target: {fileID: 314100681690800100, guid: 3745be03dc19cb742be0d5ba1abcf11e,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 72.479004
       objectReference: {fileID: 0}
     - target: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e,
         type: 3}
@@ -1811,8 +1811,13 @@ PrefabInstance:
     - target: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8486791703303006817, guid: 3745be03dc19cb742be0d5ba1abcf11e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5a66b6b12b1c6a1439c44e6fc257f187, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
 --- !u!1 &317366304 stripped
@@ -19317,7 +19322,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2276492343419638099}
-  m_Mesh: {fileID: -2117271847607536143, guid: ca6a93727993fe1418a708097479ff14, type: 3}
+  m_Mesh: {fileID: 6329158148709259305, guid: 8b1c45a35e04bf9438fa51dd36ca9816, type: 3}
 --- !u!23 &1993140462287284945
 MeshRenderer:
   m_ObjectHideFlags: 0
