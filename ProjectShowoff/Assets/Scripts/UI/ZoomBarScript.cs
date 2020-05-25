@@ -14,6 +14,7 @@ public class ZoomBarScript : MonoBehaviour
     public void SliderValueChange()
     {
         timer = 0;
+        CancelInvoke("TimerRepeat");
         InvokeRepeating("TimerRepeat", 2.5f, 0.1f);
     }
 
@@ -22,11 +23,11 @@ public class ZoomBarScript : MonoBehaviour
         timer += 0.1f;
         Color bgC = sliderBg.color;
         Color fillC = sliderFill.color;
-        bgC.a = 1 - 0.025f * timer;
-        fillC.a = 1 - 0.025f * timer;
+        bgC.a = 1 - 1f * timer;
+        fillC.a = 1 - 1f * timer;
         sliderBg.color = bgC;
         sliderFill.color = fillC;
-        if (timer > 40)
+        if (timer > 1)
         {
             CancelInvoke("TimerRepeat");
         }

@@ -11,14 +11,15 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Characters/Character.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/AnnouncerText.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/ZoomBarScript.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/ZoomBarScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/AnnouncerText.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/ZoomBarScript.cs" />
       </list>
     </option>
   </component>
@@ -59,6 +60,7 @@
       <option name="presentableId" value="Default" />
       <updated>1589974398228</updated>
       <workItem from="1589974405416" duration="7733000" />
+      <workItem from="1590069122131" duration="1494000" />
     </task>
     <servers />
   </component>
