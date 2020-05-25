@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Rick\AppData\Local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Rick\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_ProjectShowoff.-1405824946.00" t="ExcludeRecursive" />
+    <e p="S:\School\Show-off\Project-Showoff\ProjectShowoff" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="FMOD" t="Include">
+          <e p="Threa FMOD" t="Include">
+            <e p="Metadata" t="Include">
+              <e p="Asset" t="Include">
+                <e p="{c5e18e81-3898-4af6-834b-a15b3ca1f3bd}.xml" t="Include" />
+              </e>
+              <e p="AudioFile" t="Include">
+                <e p="{0e76ada4-553b-4168-9e08-615952902e7a}.xml" t="Include" />
+                <e p="{82d4ea22-a99e-4e6f-b37b-8137c05f5c77}.xml" t="Include" />
+              </e>
+              <e p="Bank" t="Include">
+                <e p="{b0b0c9c4-c671-491f-9768-6118d18454cb}.xml" t="Include" />
+              </e>
+              <e p="BankFolder" t="Include">
+                <e p="{d34cc052-ad4c-4c72-a51e-bd4ee8e55350}.xml" t="Include" />
+              </e>
+              <e p="EffectPresetFolder" t="Include">
+                <e p="{c058b6a5-dcfd-4c29-af56-4e92defc5f34}.xml" t="Include" />
+              </e>
+              <e p="EncodingSetting" t="Include">
+                <e p="{4cea5825-bbaa-4f8d-bb35-593480e82c38}.xml" t="Include" />
+              </e>
+              <e p="Event" t="Include">
+                <e p="{81807ee1-7059-4b05-a34d-8843b5886433}.xml" t="Include" />
+              </e>
+              <e p="EventFolder" t="Include">
+                <e p="{e621b7c8-e876-4246-aee0-9609e68bd048}.xml" t="Include" />
+              </e>
+              <e p="Master.xml" t="Include" />
+              <e p="Mixer.xml" t="Include" />
+              <e p="ParameterPresetFolder" t="Include">
+                <e p="{40dfd35e-8676-4056-9d75-7e96d82f4077}.xml" t="Include" />
+              </e>
+              <e p="Platform" t="Include">
+                <e p="{6d1069c6-a3ea-4007-8e94-79d85f8e41bf}.xml" t="Include" />
+              </e>
+              <e p="Return" t="Include">
+                <e p="{86ce9f7b-87b0-4fd6-8633-df1c319149f7}.xml" t="Include" />
+              </e>
+              <e p="SnapshotGroup" t="Include">
+                <e p="{efe20fc5-e761-4722-851e-6843fc3f46c3}.xml" t="Include" />
+              </e>
+              <e p="Tags.xml" t="Include" />
+              <e p="Workspace.xml" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Materials" t="Include">
+          <e p="LineShader.shader" t="Include" />
+        </e>
+        <e p="Plugins" t="Include">
+          <e p="FMOD" t="Include">
+            <e p="addons" t="Include">
+              <e p="ResonanceAudio" t="Include">
+                <e p="Editor" t="Include">
+                  <e p="FmodResonanceAudioRoomEditor.cs" t="Include" />
+                </e>
+                <e p="Scripts" t="Include">
+                  <e p="FmodResonanceAudio.cs" t="Include" />
+                  <e p="FmodResonanceAudioRoom.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="src" t="Include">
+              <e p="Editor" t="Include">
+                <e p="BankRefDrawer.cs" t="Include" />
+                <e p="CreateEventPopup.cs" t="Include" />
+                <e p="EditorBankRef.cs" t="Include" />
+                <e p="EditorEventRef.cs" t="Include" />
+                <e p="EditorParamRef.cs" t="Include" />
+                <e p="EditorUtils.cs" t="Include" />
+                <e p="EventBrowser.cs" t="Include" />
+                <e p="EventCache.cs" t="Include" />
+                <e p="EventManager.cs" t="Include" />
+                <e p="EventRefDrawer.cs" t="Include" />
+                <e p="FindAndReplace.cs" t="Include" />
+                <e p="LogViewer.cs" t="Include" />
+                <e p="ParamRefDrawer.cs" t="Include" />
+                <e p="SettingsEditor.cs" t="Include" />
+                <e p="StudioBankLoaderEditor.cs" t="Include" />
+                <e p="StudioEventEmitterEditor.cs" t="Include" />
+                <e p="StudioEventEmitterGizmoDrawer.cs" t="Include" />
+                <e p="StudioGlobalParameterTriggerEditor.cs" t="Include" />
+                <e p="StudioListenerEditor.cs" t="Include" />
+                <e p="StudioParameterTriggerEditor.cs" t="Include" />
+                <e p="Timeline" t="Include">
+                  <e p="FMODEventPlayableEditor.cs" t="Include" />
+                </e>
+              </e>
+              <e p="Runtime" t="Include">
+                <e p="BankRefAttribute.cs" t="Include" />
+                <e p="EventHandler.cs" t="Include" />
+                <e p="EventRefAttribute.cs" t="Include" />
+                <e p="FMODRuntimeManagerOnGUIHelper.cs" t="Include" />
+                <e p="ParamRef.cs" t="Include" />
+                <e p="ParamRefAttribute.cs" t="Include" />
+                <e p="RuntimeManager.cs" t="Include" />
+                <e p="RuntimeUtils.cs" t="Include" />
+                <e p="Settings.cs" t="Include" />
+                <e p="StudioBankLoader.cs" t="Include" />
+                <e p="StudioEventEmitter.cs" t="Include" />
+                <e p="StudioGlobalParameterTrigger.cs" t="Include" />
+                <e p="StudioListener.cs" t="Include" />
+                <e p="StudioParameterTrigger.cs" t="Include" />
+                <e p="Timeline" t="Include">
+                  <e p="FMODEventPlayable.cs" t="Include" />
+                  <e p="FMODEventTrack.cs" t="Include" />
+                </e>
+                <e p="wrapper" t="Include">
+                  <e p="fmod.cs" t="Include" />
+                  <e p="fmod_android.cs" t="Include" />
+                  <e p="fmod_dsp.cs" t="Include" />
+                  <e p="fmod_errors.cs" t="Include" />
+                  <e p="fmod_studio.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+          </e>
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="Buildings" t="Include">
+            <e p="Building.cs" t="Include" />
+            <e p="BuildingLocation.cs" t="Include" />
+            <e p="BuildingPlacer.cs" t="Include" />
+            <e p="BuildingSystem.cs" t="Include" />
+          </e>
+          <e p="Characters" t="Include">
+            <e p="Character.cs" t="Include" />
+            <e p="CharacterSystem.cs" t="Include" />
+            <e p="Roads" t="Include">
+              <e p="Road.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Editors" t="Include">
+            <e p="BuildingLocationEditor.cs" t="Include" />
+            <e p="BuildingLocationTool.cs" t="Include" />
+            <e p="BuildingLocationToolEditor.cs" t="Include" />
+            <e p="RoadEditor.cs" t="Include" />
+            <e p="SplineEditor.cs" t="Include" />
+            <e p="SplineMeshEditor.cs" t="Include" />
+          </e>
+          <e p="GameManager.cs" t="Include" />
+          <e p="UI" t="Include">
+            <e p="AnnouncerText.cs" t="Include" />
+            <e p="ZoomBarScript.cs" t="Include" />
+          </e>
+          <e p="Util" t="Include">
+            <e p="Focus.cs" t="Include" />
+            <e p="InputRedirect.cs" t="Include" />
+            <e p="Orbit.cs" t="Include" />
+            <e p="Planet.cs" t="Include" />
+            <e p="SimpleOrbit.cs" t="Include" />
+            <e p="Spline" t="Include">
+              <e p="Bezier.cs" t="Include" />
+              <e p="Spline.cs" t="Include" />
+              <e p="SplineMesh.cs" t="Include" />
+              <e p="VertexPath.cs" t="Include" />
+            </e>
+            <e p="Zoom.cs" t="Include" />
+          </e>
+        </e>
+        <e p="TextMesh Pro" t="Include">
+          <e p="Fonts" t="Include">
+            <e p="LiberationSans - OFL.txt" t="Include" />
+          </e>
+          <e p="Resources" t="Include">
+            <e p="LineBreaking Following Characters.txt" t="Include" />
+            <e p="LineBreaking Leading Characters.txt" t="Include" />
+            <e p="Shaders" t="Include">
+              <e p="TMP_Bitmap-Custom-Atlas.shader" t="Include" />
+              <e p="TMP_Bitmap-Mobile.shader" t="Include" />
+              <e p="TMP_Bitmap.shader" t="Include" />
+              <e p="TMP_SDF Overlay.shader" t="Include" />
+              <e p="TMP_SDF-Mobile Masking.shader" t="Include" />
+              <e p="TMP_SDF-Mobile Overlay.shader" t="Include" />
+              <e p="TMP_SDF-Mobile.shader" t="Include" />
+              <e p="TMP_SDF-Surface-Mobile.shader" t="Include" />
+              <e p="TMP_SDF-Surface.shader" t="Include" />
+              <e p="TMP_SDF.shader" t="Include" />
+              <e p="TMP_Sprite.shader" t="Include" />
+              <e p="TMPro.cginc" t="Include" />
+              <e p="TMPro_Properties.cginc" t="Include" />
+              <e p="TMPro_Surface.cginc" t="Include" />
+            </e>
+          </e>
+          <e p="Sprites" t="Include">
+            <e p="EmojiOne Attribution.txt" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="ProjectShowoff.sln" t="IncludeFlat" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
