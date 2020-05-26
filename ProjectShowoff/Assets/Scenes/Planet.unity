@@ -131,7 +131,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3496033}
   - component: {fileID: 3496031}
-  - component: {fileID: 3496032}
   m_Layer: 0
   m_Name: Rurallocation
   m_TagString: Untagged
@@ -180,19 +179,6 @@ MonoBehaviour:
     - {fileID: 2008069994}
     - {fileID: 1257461275}
     - {fileID: 1512409817}
---- !u!135 &3496032
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3496030}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.010356413
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &3496033
 Transform:
   m_ObjectHideFlags: 0
@@ -2351,7 +2337,6 @@ GameObject:
   m_Component:
   - component: {fileID: 288059957}
   - component: {fileID: 288059955}
-  - component: {fileID: 288059956}
   m_Layer: 0
   m_Name: Coastallocation
   m_TagString: Untagged
@@ -2394,19 +2379,6 @@ MonoBehaviour:
     values:
     - {fileID: 98725336}
     - {fileID: 2090052427}
---- !u!135 &288059956
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 288059954}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.007999917
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &288059957
 Transform:
   m_ObjectHideFlags: 0
@@ -4352,7 +4324,6 @@ GameObject:
   m_Component:
   - component: {fileID: 568970234}
   - component: {fileID: 568970236}
-  - component: {fileID: 568970235}
   m_Layer: 0
   m_Name: Coastallocation
   m_TagString: Untagged
@@ -4374,19 +4345,6 @@ Transform:
   m_Father: {fileID: 1413187994}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &568970235
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 568970233}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.01795097
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &568970236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5371,7 +5329,6 @@ GameObject:
   m_Component:
   - component: {fileID: 729367115}
   - component: {fileID: 729367113}
-  - component: {fileID: 729367114}
   m_Layer: 0
   m_Name: Coastallocation
   m_TagString: Untagged
@@ -5420,19 +5377,6 @@ MonoBehaviour:
     - {fileID: 2008069994}
     - {fileID: 1962048655}
     - {fileID: 98725336}
---- !u!135 &729367114
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 729367112}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.010632915
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &729367115
 Transform:
   m_ObjectHideFlags: 0
@@ -7366,7 +7310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b1505d33cb4fa3469414b4712c398df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxZoom: 1.3
+  maxZoom: 1.4
   target: {fileID: 1928020327}
   defaultRange: 0
   range: 0
@@ -8036,7 +7980,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1035742966}
   - component: {fileID: 1035742967}
-  - component: {fileID: 1035742968}
   m_Layer: 0
   m_Name: Coastallocation
   m_TagString: Untagged
@@ -8093,19 +8036,6 @@ MonoBehaviour:
     values:
     - {fileID: 1103853084}
     - {fileID: 855938655}
---- !u!135 &1035742968
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1035742965}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.029931588
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!43 &1052798789
 Mesh:
   m_ObjectHideFlags: 0
@@ -8969,7 +8899,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1126448669}
   - component: {fileID: 1126448670}
-  - component: {fileID: 1126448671}
   m_Layer: 0
   m_Name: Coastallocation
   m_TagString: Untagged
@@ -9032,19 +8961,6 @@ MonoBehaviour:
     - {fileID: 1208910372}
     - {fileID: 1230530159}
     - {fileID: 1592727731}
---- !u!135 &1126448671
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1126448668}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.019549428
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!43 &1195657102
 Mesh:
   m_ObjectHideFlags: 0
@@ -9361,7 +9277,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1202519940}
   - component: {fileID: 1202519938}
-  - component: {fileID: 1202519939}
   m_Layer: 0
   m_Name: Rurallocation
   m_TagString: Untagged
@@ -9410,19 +9325,6 @@ MonoBehaviour:
     - {fileID: 1257461275}
     - {fileID: 2090052427}
     - {fileID: 2043486049}
---- !u!135 &1202519939
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1202519937}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.008133252
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1202519940
 Transform:
   m_ObjectHideFlags: 0
@@ -10315,8 +10217,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cloudPrefab: {fileID: 1506121968837340895, guid: 3ed2cce3423664841ab17a1babe3098b,
     type: 3}
-  numberOfClouds: 2000
-  cloudHeight: 1.5
+  altCloudPrefab: {fileID: 1506121968837340895, guid: 88987e41777b4e6429145acd4073e6ca,
+    type: 3}
+  resolution: 1000
+  cloudHeight: 1.3
 --- !u!1 &1237391434
 GameObject:
   m_ObjectHideFlags: 0
@@ -10699,7 +10603,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1306700500}
   - component: {fileID: 1306700498}
-  - component: {fileID: 1306700499}
   m_Layer: 0
   m_Name: Rurallocation
   m_TagString: Untagged
@@ -10751,19 +10654,6 @@ MonoBehaviour:
     - {fileID: 855938655}
     - {fileID: 827238132}
     - {fileID: 739235312}
---- !u!135 &1306700499
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306700497}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.02686283
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1306700500
 Transform:
   m_ObjectHideFlags: 0
@@ -11051,7 +10941,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1343954660}
   - component: {fileID: 1343954661}
-  - component: {fileID: 1343954662}
   m_Layer: 0
   m_Name: Rurallocation
   m_TagString: Untagged
@@ -11117,19 +11006,6 @@ MonoBehaviour:
     - {fileID: 692643998}
     - {fileID: 1592727731}
     - {fileID: 341378644}
---- !u!135 &1343954662
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1343954659}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.017186478
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!43 &1370158607
 Mesh:
   m_ObjectHideFlags: 0
@@ -12041,7 +11917,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1423312901}
   - component: {fileID: 1423312902}
-  - component: {fileID: 1423312903}
   m_Layer: 0
   m_Name: Rurallocation
   m_TagString: Untagged
@@ -12110,19 +11985,6 @@ MonoBehaviour:
     - {fileID: 1969754425}
     - {fileID: 692643998}
     - {fileID: 776181247}
---- !u!135 &1423312903
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1423312900}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.02312175
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!43 &1445233244
 Mesh:
   m_ObjectHideFlags: 0
@@ -12622,7 +12484,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1489455111}
   - component: {fileID: 1489455113}
-  - component: {fileID: 1489455112}
   m_Layer: 0
   m_Name: Rurallocation
   m_TagString: Untagged
@@ -12644,19 +12505,6 @@ Transform:
   m_Father: {fileID: 1413187994}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1489455112
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1489455110}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.021078847
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1489455113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14681,7 +14529,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1661071963}
   - component: {fileID: 1661071965}
-  - component: {fileID: 1661071964}
   m_Layer: 0
   m_Name: Rurallocation
   m_TagString: Untagged
@@ -14703,19 +14550,6 @@ Transform:
   m_Father: {fileID: 1413187994}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1661071964
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1661071962}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.022959156
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1661071965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15413,7 +15247,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1721431778}
   - component: {fileID: 1721431776}
-  - component: {fileID: 1721431777}
   m_Layer: 0
   m_Name: Rurallocation
   m_TagString: Untagged
@@ -15465,19 +15298,6 @@ MonoBehaviour:
     - {fileID: 924887026}
     - {fileID: 1492433762}
     - {fileID: 434362421}
---- !u!135 &1721431777
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1721431775}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.018910732
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1721431778
 Transform:
   m_ObjectHideFlags: 0
@@ -15488,8 +15308,7 @@ Transform:
   m_LocalRotation: {x: -0.06515471, y: -0, z: 0.055430118, w: 0.9963345}
   m_LocalPosition: {x: -0.114, y: 1.017, z: -0.134}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1938720399}
+  m_Children: []
   m_Father: {fileID: 1413187994}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17261,86 +17080,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &1938720398
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1938720399}
-  - component: {fileID: 1938720401}
-  - component: {fileID: 1938720400}
-  m_Layer: 0
-  m_Name: Model (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1938720399
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1938720398}
-  m_LocalRotation: {x: -0.000000014901163, y: 0.000000011175872, z: -0.034512676,
-    w: 0.99940425}
-  m_LocalPosition: {x: 0, y: 0.0422, z: 0}
-  m_LocalScale: {x: 0.50000006, y: 0.50000006, z: 0.5}
-  m_Children: []
-  m_Father: {fileID: 1721431778}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -3.956}
---- !u!23 &1938720400
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1938720398}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 5a66b6b12b1c6a1439c44e6fc257f187, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1938720401
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1938720398}
-  m_Mesh: {fileID: -2117271847607536143, guid: ca6a93727993fe1418a708097479ff14, type: 3}
 --- !u!1 &1939346689
 GameObject:
   m_ObjectHideFlags: 0
@@ -17494,7 +17233,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1949867248}
   - component: {fileID: 1949867250}
-  - component: {fileID: 1949867249}
   m_Layer: 0
   m_Name: Rurallocation
   m_TagString: Untagged
@@ -17516,19 +17254,6 @@ Transform:
   m_Father: {fileID: 1413187994}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1949867249
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1949867247}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.012280477
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1949867250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20119,7 +19844,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3786257977355844500}
   - component: {fileID: 7029965745236275950}
-  - component: {fileID: 8696266422409824917}
   m_Layer: 0
   m_Name: BuildingLocation (2)
   m_TagString: Untagged
@@ -20127,19 +19851,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!135 &8696266422409824917
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8696266422409824916}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.022947771
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8696266422603886915
 GameObject:
   m_ObjectHideFlags: 0
@@ -20150,7 +19861,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3786257977298354243}
   - component: {fileID: 7029965745428351289}
-  - component: {fileID: 8696266422603886916}
   m_Layer: 0
   m_Name: BuildingLocation (3)
   m_TagString: Untagged
@@ -20158,19 +19868,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!135 &8696266422603886916
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8696266422603886915}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.018918237
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8696266422861581887
 GameObject:
   m_ObjectHideFlags: 0
@@ -20181,7 +19878,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3786257977577570111}
   - component: {fileID: 7029965745149687365}
-  - component: {fileID: 8696266422861581888}
   m_Layer: 0
   m_Name: BuildingLocation (1)
   m_TagString: Untagged
@@ -20189,19 +19885,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!135 &8696266422861581888
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8696266422861581887}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.024868611
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8696266422937094619
 GameObject:
   m_ObjectHideFlags: 0
@@ -20212,7 +19895,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3786257976830933211}
   - component: {fileID: 7029965745762038177}
-  - component: {fileID: 8696266422937094620}
   m_Layer: 0
   m_Name: BuildingLocation (7)
   m_TagString: Untagged
@@ -20220,19 +19902,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!135 &8696266422937094620
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8696266422937094619}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.014523904
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8696266422956856241
 GameObject:
   m_ObjectHideFlags: 0
@@ -20243,7 +19912,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3786257976934638257}
   - component: {fileID: 7029965745783958475}
-  - component: {fileID: 8696266422956856242}
   m_Layer: 0
   m_Name: BuildingLocation (11)
   m_TagString: Untagged
@@ -20251,19 +19919,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!135 &8696266422956856242
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8696266422956856241}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.028100623
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8696266423214131849
 GameObject:
   m_ObjectHideFlags: 0
@@ -20274,7 +19929,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3786257977090538377}
   - component: {fileID: 7029965745501516531}
-  - component: {fileID: 8696266423214131850}
   m_Layer: 0
   m_Name: BuildingLocation (4)
   m_TagString: Untagged
@@ -20282,19 +19936,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!135 &8696266423214131850
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8696266423214131849}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.013137023
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8696266423520426927
 GameObject:
   m_ObjectHideFlags: 0
@@ -20305,7 +19946,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3786257976373463727}
   - component: {fileID: 7029965744197239765}
-  - component: {fileID: 8696266423520426928}
   m_Layer: 0
   m_Name: BuildingLocation
   m_TagString: Untagged
@@ -20313,19 +19953,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!135 &8696266423520426928
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8696266423520426927}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.027188206
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8696266423714429398
 GameObject:
   m_ObjectHideFlags: 0
@@ -20336,7 +19963,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3786257976579983574}
   - component: {fileID: 7029965743856435628}
-  - component: {fileID: 8696266423714429399}
   m_Layer: 0
   m_Name: BuildingLocation (9)
   m_TagString: Untagged
@@ -20344,19 +19970,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!135 &8696266423714429399
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8696266423714429398}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.025987685
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8696266423783088362
 GameObject:
   m_ObjectHideFlags: 0
@@ -20367,7 +19980,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3786257976647668202}
   - component: {fileID: 7029965743921993872}
-  - component: {fileID: 8696266423783088363}
   m_Layer: 0
   m_Name: BuildingLocation (10)
   m_TagString: Untagged
@@ -20375,16 +19987,3 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!135 &8696266423783088363
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8696266423783088362}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.02400682
-  m_Center: {x: 0, y: 0, z: 0}

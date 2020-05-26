@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1506121968837340880}
   - component: {fileID: 1506121968837340881}
   m_Layer: 0
-  m_Name: Cloud
+  m_Name: Cloud 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,7 +39,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1506121968837340895}
-  m_Mesh: {fileID: -5274878850489548694, guid: 62db5323b2fe3414b86d1e9120647000, type: 3}
+  m_Mesh: {fileID: 2615067232605357275, guid: 4b844b32da7ea1640b4dfb0e6b1d9d72, type: 3}
 --- !u!23 &1506121968837340881
 MeshRenderer:
   m_ObjectHideFlags: 0
