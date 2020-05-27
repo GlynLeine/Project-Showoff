@@ -13,7 +13,7 @@ class SplineMesh : MonoBehaviour
     public Mesh mesh = null;
 
     public bool flattenSurface;
-    [Range(0.01f, 10f)]
+    [Range(0.0f, 10f)]
     public float meshWidth = 1;
     [Range(0, .5f)]
     public float thickness = .15f;
