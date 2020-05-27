@@ -14,6 +14,7 @@ public class PlanetReset : MonoBehaviour
     
     private float timer = 0;
     private bool resetPressed = false;
+    private bool resetTriggered = false;
     
     public void SceneResetButton()
     {
@@ -24,9 +25,17 @@ public class PlanetReset : MonoBehaviour
     public void StopResetButton()
     {
         resetPressed = false;
+        resetTriggered = false;
         timer = 0;
         resetPanel.SetActive(false);
     }
+
+    public void ResetOnNoInteract()
+    {
+        resetTriggered = true;
+        resetPanel.SetActive(true);
+    }
+    
     void Update()
     {
         if (resetPressed)
@@ -34,6 +43,15 @@ public class PlanetReset : MonoBehaviour
             timer += Time.deltaTime;
             secondsLeft.text = Mathf.CeilToInt(secondsTillDestruction-timer).ToString();
             if (timer > secondsTillDestruction)
+            {
+                SceneManager.LoadScene(loadSceneName);
+            }
+        }
+        else if (resetTriggered)
+        {
+            timer += Time.deltaTime;
+            secondsLeft.text = Mathf.CeilToInt(10-timer).ToString();
+            if (timer > 10)
             {
                 SceneManager.LoadScene(loadSceneName);
             }

@@ -38,8 +38,9 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/SnowController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/YearTimer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Util/Zoom.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/PlanetReset.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingPlacer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/PlanetReset.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Util/InputRedirect.cs" />
       </list>
     </option>
   </component>
@@ -86,6 +87,7 @@
       <workItem from="1590565225484" duration="1175000" />
       <workItem from="1590583485394" duration="113000" />
       <workItem from="1590583618240" duration="14000" />
+      <workItem from="1590586198692" duration="940000" />
     </task>
     <servers />
   </component>
