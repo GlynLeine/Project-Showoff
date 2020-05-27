@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 400457789731103284}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.349, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalPosition: {x: 0, y: 0.0188, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3393511414651069234}
   m_RootOrder: 0
@@ -39,7 +39,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 400457789731103284}
-  m_Mesh: {fileID: -5511996699474248536, guid: 4fd2dbd40290a3743bf171d35e6080c6, type: 3}
+  m_Mesh: {fileID: 8215190006553508106, guid: 4fd2dbd40290a3743bf171d35e6080c6, type: 3}
 --- !u!23 &654011651936278239
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 3393511414651069234}
   - component: {fileID: 2224468085174190524}
   m_Layer: 0
-  m_Name: Coal mine
+  m_Name: CoalMine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,7 +105,7 @@ Transform:
   m_GameObject: {fileID: 5035160602664345561}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8988247285144823465}
   m_Father: {fileID: 0}
