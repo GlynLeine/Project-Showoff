@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Ozone
-  m_Shader: {fileID: -6465566751694194690, guid: 8a4d33d2f0960e9478c1780d73acaab0,
+  m_Shader: {fileID: -6465566751694194690, guid: 90bada8955eeec444b49ddb4751c0188,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -21,10 +21,14 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
-    - Vector1_276EBFC4: 0.1
-    - Vector1_2992B1D2: -0.01
+    - Vector1_276EBFC4: 0.0535
+    - Vector1_2992B1D2: 0.602
+    - Vector1_3BBD923B: 0.5
+    - Vector1_7AD2D054: 0.4
     - Vector1_B5DE08A8: 1.72
+    - Vector1_EFABEAD9: 0.045
     - Vector1_F31BF83A: 0.1
+    - _Dissolve: 0
     m_Colors:
-    - Color_15E3D6D0: {r: 65.34031, g: 64.65612, b: 0, a: 0}
-    - Color_BB236BCB: {r: 3.9999995, g: 2.0314133, b: 0, a: 0}
+    - Color_15E3D6D0: {r: 66.077385, g: 33.557625, b: 0, a: 0}
+    - Color_BB236BCB: {r: 1.2607075, g: 1.690003, b: 1.9797776, a: 0}
