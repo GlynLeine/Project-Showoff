@@ -13,10 +13,13 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/BankRefDrawer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EditorUtils.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/PlanetReset.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EditorBankRef.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Util/InputRedirect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/AnnouncerText.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/ZoomBarScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/VoiceCasterTestScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Util/Zoom.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/YearTimer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Characters/Character.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/RuntimeManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -33,6 +36,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/VoiceCasterTestScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/SnowController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/YearTimer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Util/Zoom.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/PlanetReset.cs" />
       </list>
     </option>
   </component>
@@ -76,7 +81,7 @@
       <workItem from="1590069122131" duration="1494000" />
       <workItem from="1590406597930" duration="2799000" />
       <workItem from="1590409412327" duration="5922000" />
-      <workItem from="1590565225484" duration="751000" />
+      <workItem from="1590565225484" duration="1175000" />
     </task>
     <servers />
   </component>

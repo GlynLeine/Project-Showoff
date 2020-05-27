@@ -72,6 +72,7 @@
      <Compile Include="Assets\Scripts\Effects\CloudEffect.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\UI\AnnouncerText.cs" />
+     <Compile Include="Assets\Scripts\UI\PlanetReset.cs" />
      <Compile Include="Assets\Scripts\UI\SnowController.cs" />
      <Compile Include="Assets\Scripts\UI\VoiceCasterTestScript.cs" />
      <Compile Include="Assets\Scripts\UI\YearTimer.cs" />

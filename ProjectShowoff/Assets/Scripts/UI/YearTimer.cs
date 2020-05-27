@@ -14,7 +14,7 @@ public class YearTimer : MonoBehaviour
 
     void Update()
     {
-        timer += 1 * Time.deltaTime;
+        timer += Time.deltaTime;
         if (timer <= 60)
         {
             spring1GrayscaleImage.fillAmount = 1 - timer / 60;
