@@ -16,6 +16,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/PlanetReset.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EditorBankRef.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Util/InputRedirect.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingLocation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/AnnouncerText.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/ZoomBarScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingPlacer.cs" root0="FORCE_HIGHLIGHTING" />
@@ -88,6 +89,8 @@
       <workItem from="1590583485394" duration="113000" />
       <workItem from="1590583618240" duration="14000" />
       <workItem from="1590586198692" duration="940000" />
+      <workItem from="1590587174440" duration="85000" />
+      <workItem from="1590587348904" duration="878000" />
     </task>
     <servers />
   </component>
