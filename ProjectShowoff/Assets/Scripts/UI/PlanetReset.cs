@@ -9,6 +9,8 @@ public class PlanetReset : MonoBehaviour
     [SerializeField] private string loadSceneName = "Planet";
     [SerializeField] private TMP_Text secondsLeft = null;
     [SerializeField] private GameObject resetPanel = null;
+
+    public int secondsTillDestruction = 5;
     
     private float timer = 0;
     private bool resetPressed = false;
@@ -30,8 +32,8 @@ public class PlanetReset : MonoBehaviour
         if (resetPressed)
         {
             timer += Time.deltaTime;
-            secondsLeft.text = Mathf.CeilToInt(5-timer).ToString();
-            if (timer > 5)
+            secondsLeft.text = Mathf.CeilToInt(secondsTillDestruction-timer).ToString();
+            if (timer > secondsTillDestruction)
             {
                 SceneManager.LoadScene(loadSceneName);
             }

@@ -13,11 +13,12 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/BankRefDrawer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EditorUtils.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/PlanetReset.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/PlanetReset.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EditorBankRef.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Util/InputRedirect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/AnnouncerText.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/ZoomBarScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingPlacer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/VoiceCasterTestScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Util/Zoom.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/YearTimer.cs" root0="FORCE_HIGHLIGHTING" />
@@ -38,6 +39,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/YearTimer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Util/Zoom.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/PlanetReset.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingPlacer.cs" />
       </list>
     </option>
   </component>
@@ -82,6 +84,8 @@
       <workItem from="1590406597930" duration="2799000" />
       <workItem from="1590409412327" duration="5922000" />
       <workItem from="1590565225484" duration="1175000" />
+      <workItem from="1590583485394" duration="113000" />
+      <workItem from="1590583618240" duration="14000" />
     </task>
     <servers />
   </component>

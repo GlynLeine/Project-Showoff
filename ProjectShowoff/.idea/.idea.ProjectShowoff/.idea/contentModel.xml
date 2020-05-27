@@ -162,10 +162,6 @@
           <e p="GameManager.cs" t="Include" />
           <e p="UI" t="Include">
             <e p="AnnouncerText.cs" t="Include" />
-            <e p="PlanetReset.cs" t="Include" />
-            <e p="SnowController.cs" t="Include" />
-            <e p="VoiceCasterTestScript.cs" t="Include" />
-            <e p="YearTimer.cs" t="Include" />
             <e p="ZoomBarScript.cs" t="Include" />
           </e>
           <e p="Util" t="Include">
