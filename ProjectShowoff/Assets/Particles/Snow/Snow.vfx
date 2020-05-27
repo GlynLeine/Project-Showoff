@@ -51,8 +51,6 @@ MonoBehaviour:
   - {fileID: 8926484042661614822}
   - {fileID: 8926484042661614824}
   - {fileID: 8926484042661614847}
-  - {fileID: 8926484042661614852}
-  - {fileID: 8926484042661614853}
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
@@ -1380,15 +1378,9 @@ VisualEffectResource:
         data: 00000000
     m_Events:
     - name: OnPlay
-      playSystems: 
-      stopSystems: 
-    - name: OnStop
-      playSystems: 
-      stopSystems: 
-    - name: SnowOn
       playSystems: 00000000
       stopSystems: 
-    - name: SnowOff
+    - name: OnStop
       playSystems: 
       stopSystems: 00000000
     m_RuntimeVersion: 10
@@ -1531,12 +1523,8 @@ MonoBehaviour:
   m_Label: 
   m_Data: {fileID: 0}
   m_InputFlowSlot:
-  - link:
-    - context: {fileID: 8926484042661614852}
-      slotIndex: 0
-  - link:
-    - context: {fileID: 8926484042661614853}
-      slotIndex: 0
+  - link: []
+  - link: []
   m_OutputFlowSlot:
   - link:
     - context: {fileID: 8926484042661614558}
@@ -6471,59 +6459,3 @@ MonoBehaviour:
     attributes: []
   m_Direction: 1
   m_LinkedSlots: []
---- !u!114 &8926484042661614852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2461f61b3c026d54db1951a4e17ab20e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Parent: {fileID: 114350483966674976}
-  m_Children: []
-  m_UIPosition: {x: 592, y: -691}
-  m_UICollapsed: 0
-  m_UISuperCollapsed: 0
-  m_InputSlots: []
-  m_OutputSlots: []
-  m_Label: 
-  m_Data: {fileID: 0}
-  m_InputFlowSlot:
-  - link: []
-  m_OutputFlowSlot:
-  - link:
-    - context: {fileID: 8926484042661614555}
-      slotIndex: 0
-  eventName: SnowOn
---- !u!114 &8926484042661614853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2461f61b3c026d54db1951a4e17ab20e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Parent: {fileID: 114350483966674976}
-  m_Children: []
-  m_UIPosition: {x: 1289, y: -699}
-  m_UICollapsed: 0
-  m_UISuperCollapsed: 0
-  m_InputSlots: []
-  m_OutputSlots: []
-  m_Label: 
-  m_Data: {fileID: 0}
-  m_InputFlowSlot:
-  - link: []
-  m_OutputFlowSlot:
-  - link:
-    - context: {fileID: 8926484042661614555}
-      slotIndex: 1
-  eventName: SnowOff
