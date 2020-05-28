@@ -8,6 +8,7 @@ public class InputRedirect : MonoBehaviour
 {
     public EventSystem eventSystem;
     public GraphicRaycaster raycaster;
+    public PlanetReset planetResetScript;
 
     static private Vector2 previousInputPos;
     static private float previousTouchZoom;
@@ -19,6 +20,8 @@ public class InputRedirect : MonoBehaviour
     static public float zoom;
 
     static public bool inputOverUI;
+
+    private float timer = 0;
 
     private void Update()
     {
@@ -34,7 +37,8 @@ public class InputRedirect : MonoBehaviour
         raycaster.Raycast(pointerEventData, results);
 
         inputOverUI = results.Count > 0;
-
+        timer += Time.deltaTime;
+        
         if (Input.touchCount == 1)
         {
             Touch touch = Input.GetTouch(0);
@@ -45,6 +49,7 @@ public class InputRedirect : MonoBehaviour
 
             pressed = true;
             touchZoomReset = true;
+            timer = 0;
         }
         else if (Input.touchCount >= 2)
         {
@@ -53,6 +58,7 @@ public class InputRedirect : MonoBehaviour
             touch0 = Input.GetTouch(0).position;
             touch1 = Input.GetTouch(1).position;
             distance = Vector2.Distance(touch0, touch1);
+            timer = 0;
 
             if (touchZoomReset)
             {
@@ -73,6 +79,17 @@ public class InputRedirect : MonoBehaviour
             inputVelocity = inputPos - previousInputPos;
             pressed = Input.GetMouseButton(0);
             zoom += Input.GetAxis("Mouse ScrollWheel");
+        }
+
+        if (inputPos != previousInputPos)
+        {
+            timer = 0;
+        }
+
+        if (timer > 20)
+        {
+            planetResetScript.ResetOnNoInteract();
+            timer = 0;
         }
     }
 }
