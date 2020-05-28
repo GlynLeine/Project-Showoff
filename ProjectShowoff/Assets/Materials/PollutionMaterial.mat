@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DesatShader
+  m_Name: PollutionMaterial
   m_Shader: {fileID: -6465566751694194690, guid: cc3a2eb00215b364ca609e29dde4421a,
     type: 3}
   m_ShaderKeywords: 
@@ -23,15 +23,18 @@ Material:
     m_Floats:
     - Vector1_2B7BF640: 1
     - Vector1_2F9E74A: 0.405
-    - Vector1_36B32071: 6.25
+    - Vector1_36B32071: 1.9
     - Vector1_403F1BBD: 1
     - Vector1_45EB010F: 0.03
     - Vector1_5F7F97AF: 4
     - Vector1_6843035E: 1
+    - Vector1_696E5A6F: 0.1
     - Vector1_78D6FAF5: 0.3
-    - Vector1_7DE8B4DB: 4.48
+    - Vector1_7DE8B4DB: 1.2
     - Vector1_96C4D7A4: 1
-    - Vector1_EE31E8D5: 2
+    - Vector1_EB11D386: 1.9
+    - Vector1_EE31E8D5: 0.79
+    - _Growth: 1
     m_Colors:
     - Color_493CEB21: {r: 0.5, g: 0.5, b: 0.5, a: 0}
-    - Color_D7D97403: {r: 0.3773585, g: 0.18947835, b: 0, a: 1}
+    - Color_D7D97403: {r: 0.5754717, g: 0.4881994, b: 0.3990299, a: 1}

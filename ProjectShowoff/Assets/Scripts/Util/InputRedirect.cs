@@ -88,7 +88,7 @@ public class InputRedirect : MonoBehaviour
 
         if (timer > 20)
         {
-            planetResetScript.ResetOnNoInteract();
+            //planetResetScript.ResetOnNoInteract();
             timer = 0;
         }
     }

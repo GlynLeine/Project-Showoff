@@ -45,7 +45,7 @@ Varyings TessellationVertexProgram(Varyings input, OutputPatch<Varyings, 3> patc
     float snowy = clamp(pow(clamp(dot(toThis, input.normalWS), 0, 1), _SnowThreshold), 0.0, 1.0);
     
     float3 normalWS = SafeNormalize(input.normalWS);
-    float displacement = _Displacement * snowy * 0.001 * smoothstep(0.5, 0.75, _SeasonTime % 1.0) * (1.0 - smoothstep(0.75, 1.0, _SeasonTime % 1.0));
+    float displacement = _Displacement * snowy * 0.001 * smoothstep(2.0 / 3.0, 1.0, _SeasonTime);
     float edgeDistance = min(min(barycentricCoordinates.x, barycentricCoordinates.y), barycentricCoordinates.z);
     if (edgeDistance > 0.0)
         positionWS += normalWS * displacement;
@@ -88,7 +88,7 @@ Varyings TessellationVertexProgram(Varyings input, OutputPatch<Varyings, 3> patc
 
     toThis = SafeNormalize(vertexInput.positionWS - _WorldCenter.xyz);
 
-    output.snowy = clamp(pow(clamp(dot(toThis, vertexNormalInput.normalWS), 0, 1), _SnowThreshold), 0.0, 1.0) * smoothstep(0.5, 0.75, _SeasonTime % 1.0) * (1.0 - smoothstep(0.75, 1.0, _SeasonTime % 1.0));
+    output.snowy = clamp(pow(clamp(dot(toThis, vertexNormalInput.normalWS), 0, 1), _SnowThreshold), 0.0, 1.0) * smoothstep(2.0 / 3.0, 1.0, _SeasonTime);
 
     return output;
 }
@@ -102,7 +102,7 @@ TessellationFactors patchConstantFunction(InputPatch<Varyings, 3> patch)
 
     float3 toThis = SafeNormalize(positionWS - _WorldCenter.xyz);
 
-    float snowy = clamp(pow(clamp(dot(toThis, Average(normalWS)), 0, 1), _SnowThreshold), 0.0, _SeasonTime % 1.0 > 0.5 ? 1.0 : 0.0);
+    float snowy = clamp(pow(clamp(dot(toThis, Average(normalWS)), 0, 1), _SnowThreshold), 0.0, _SeasonTime > (2.0 / 3.0) ? 1.0 : 0.0);
     
     float tessellationFactor = max(_TessellationUniform * snowy, 1.0);
     

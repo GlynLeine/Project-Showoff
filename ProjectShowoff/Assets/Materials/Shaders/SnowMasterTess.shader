@@ -150,7 +150,7 @@
 
 				float3 toThis = SafeNormalize(vertexInput.positionWS - _WorldCenter.xyz);
 
-				output.snowy = clamp(pow(clamp(dot(toThis, vertexNormalInput.normalWS), 0, 1), _SnowThreshold), 0.0, 1.0) * smoothstep(0.5, 0.75, _SeasonTime % 1.0) * (1.0 - smoothstep(0.75, 1.0, _SeasonTime % 1.0));
+				output.snowy = clamp(pow(clamp(dot(toThis, vertexNormalInput.normalWS), 0, 1), _SnowThreshold), 0.0, 1.0) * smoothstep(2.0 / 3.0, 1.0, _SeasonTime);
 
 				return output;
 			}
@@ -177,11 +177,9 @@
 				float3 fall = tex2D(_Fall, input.uv).rgb;
 				float3 winter = tex2D(_Winter, input.uv).rgb;
 
-				float3 ss = lerp(spring, summer, smoothstep(0, 0.25, _SeasonTime % 1.0));
-				float3 fw = lerp(fall, winter, smoothstep(0.5, 0.75, _SeasonTime % 1.0));
-				float3 fws = lerp(fw, spring, smoothstep(0.75, 1, _SeasonTime % 1.0));
-
-				float3 albedo = lerp(ss, fws, smoothstep(0.25, 0.5, _SeasonTime % 1.0));
+				float3 ss = lerp(spring, summer, smoothstep(0.0, 1.0/3.0, _SeasonTime));
+				float3 fw = lerp(fall, winter, smoothstep(2.0/3.0, 1.0, _SeasonTime));
+				float3 albedo = lerp(ss, fw, smoothstep(1.0/3.0, 2.0/3.0, _SeasonTime));
 
 				float3 positionWS = input.positionWSAndFogFactor.xyz;
 				half3 viewDirectionWS = SafeNormalize(GetCameraPositionWS() - positionWS);
