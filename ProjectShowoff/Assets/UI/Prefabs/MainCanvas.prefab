@@ -93,7 +93,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8872052276245405130
 RectTransform:
   m_ObjectHideFlags: 0
@@ -110,7 +110,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -244, y: 131}
+  m_AnchoredPosition: {x: -535, y: 340}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8872052276245405128
@@ -297,7 +297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locationType: 0
-  buildingType: 0
+  buildingType: 6
   button: {fileID: 8872052276362745035}
   environmentEffect: 100
   pollutionEffect: 0
@@ -763,7 +763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locationType: 0
-  buildingType: 0
+  buildingType: 1
   button: {fileID: 8872052276772569453}
   environmentEffect: 0
   pollutionEffect: 0
@@ -1414,7 +1414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 207c758d224e82441aff25752e0e1798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadSceneName: UIPlanet
+  loadSceneName: Planet
   secondsLeft: {fileID: 8872052277784297281}
   resetPanel: {fileID: 8872052277421051653}
   secondsTillDestruction: 5
@@ -1792,7 +1792,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locationType: 0
-  buildingType: 0
+  buildingType: 2
   button: {fileID: 8872052277241891094}
   environmentEffect: 0
   pollutionEffect: 10
@@ -3184,7 +3184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locationType: 1
-  buildingType: 0
+  buildingType: 3
   button: {fileID: 8872052277644214246}
   environmentEffect: 0
   pollutionEffect: 10
@@ -3749,7 +3749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locationType: 1
-  buildingType: 0
+  buildingType: 5
   button: {fileID: 8872052277895917246}
   environmentEffect: 0
   pollutionEffect: 0
@@ -3899,7 +3899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locationType: 0
-  buildingType: 0
+  buildingType: 4
   button: {fileID: 8872052277909840465}
   environmentEffect: 0
   pollutionEffect: 0

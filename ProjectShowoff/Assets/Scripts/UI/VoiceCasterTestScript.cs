@@ -18,7 +18,7 @@ public class VoiceCasterTestScript : MonoBehaviour
         timer += 1 * Time.deltaTime;
         if (timer > 5)
         {
-            atScript.TextChanger("changing it to a really long paragraph real quick that has like looooooads of words but look it still comes back right on time!");
+            atScript.TextChanger("World News!");
             timer = 0;
         }
     }
