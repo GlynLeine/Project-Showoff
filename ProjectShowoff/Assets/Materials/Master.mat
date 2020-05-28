@@ -8,7 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Master
-  m_Shader: {fileID: 4800000, guid: 8bbd937937ed0eb4096e664f947dcdb2, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: de362665e85b4d14fad27f94b7b7d678,
+    type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -99,7 +100,7 @@ Material:
     - _RecalculateNormals: 1
     - _ReceiveShadows: 1
     - _SampleGI: 0
-    - _SeasonTime: 0.23752731
+    - _SeasonTime: 0
     - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SnowThreshold: 1
