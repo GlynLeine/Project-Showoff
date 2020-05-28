@@ -2,18 +2,22 @@
 {
     Properties
     {
-		[MainColor] _BaseColor("Color", Color) = (0.5,0.5,0.5,1)
-		[MainTexture] _BaseMap("Albedo", 2D) = "white" {}
+		_Spring("Spring", 2D) = "white" {}
+		_Summer("Summer", 2D) = "white" {}
+		_Fall("Fall", 2D) = "white" {}
+		_Winter("Winter", 2D) = "white" {}
 		
+		_SeasonTime("Time", Range(0.0, 1.0)) = 0.0
+
+		_Smoothness("Smoothness", Range(0.0, 1.0)) = 0.0
+
+
 		_WorldCenter("World Center", Vector) = (0.0, 0.0, 0.0, 0.0)
-		_SnowThreshold("Snow Threshold", Range(1.0, 5.0)) = 0.5
+		_SnowThreshold("Snow Threshold", Range(0.0, 10.0)) = 0.5
 		_Displacement("Displacement", Range(0, 20)) = 10.0
-		_TessellationUniform("Tessellation", Range(1,32)) = 4
+		_TessellationUniform("Tessellation", Range(1,2)) = 4
 		_RecalculateNormals("Recalculate Normals", Float) = 1.0
 
-		[HideInInspector] _Cutoff("Alpha Cutoff", Range(0.0, 0.0)) = 0.0
-		[HideInInspector] _Metallic("Metallic", Range(0.0, 0.0)) = 0.0
-		[HideInInspector] _Smoothness("Smoothness", Range(0.0, 0.0)) = 0.0
 		[HideInInspector] _SrcBlend("__src", Float) = 1.0
 		[HideInInspector] _DstBlend("__dst", Float) = 0.0
 		[HideInInspector] _ZWrite("__zw", Float) = 1.0
@@ -70,19 +74,34 @@
 
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
-			#include "Packages/com.unity.render-pipelines.universal/Shaders/LitInput.hlsl"
+
+			CBUFFER_START(UnityPerMaterial)
+			sampler _Spring;
+			sampler	_Summer;
+			sampler _Fall;
+			sampler _Winter;
+
+			float _SeasonTime;
+			float _Smoothness;
 
 			float4 _WorldCenter;
 			float _SnowThreshold;
+			float _Displacement;
+			float _TessellationUniform;
+			float _RecalculateNormals;
+
+			float _SrcBlend;
+			float _DstBlend;
+			float _ZWrite;
+			float _Cull;
+			CBUFFER_END
 
 			struct Attributes
 			{
 				float4 positionOS   : POSITION;
 				float3 normalOS     : NORMAL;
-				float4 tangentOS    : TANGENT;
 				float2 uv           : TEXCOORD0;
 				float2 uvLM         : TEXCOORD1;
-				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
 			struct Varyings
@@ -92,11 +111,11 @@
 				float4 positionWSAndFogFactor   : TEXCOORD2; // xyz: positionWS, w: vertex fog factor
 				half3  normalWS                 : TEXCOORD3;
 
-#ifdef _MAIN_LIGHT_SHADOWS
-				float4 shadowCoord              : TEXCOORD6; // compute shadow coord per-vertex for the main light
+#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
+				float4 shadowCoord : TEXCOORD7;
 #endif
 				float4 positionCS               : SV_POSITION;
-				float snowy						: Output;
+				float snowy						: TEXCOORD8;
 			};
 
 			Varyings LitPassVertex(Attributes input)
@@ -110,32 +129,28 @@
 
 				// Similar to VertexPositionInputs, VertexNormalInputs will contain normal, tangent and bitangent
 				// in world space. If not used it will be stripped.
-				VertexNormalInputs vertexNormalInput = GetVertexNormalInputs(input.normalOS, input.tangentOS);
+				VertexNormalInputs vertexNormalInput = GetVertexNormalInputs(input.normalOS);
 
 				// Computes fog factor per-vertex.
 				float fogFactor = ComputeFogFactor(vertexInput.positionCS.z);
 
 				// TRANSFORM_TEX is the same as the old shader library.
-				output.uv = TRANSFORM_TEX(input.uv, _BaseMap);
+				output.uv = input.uv;
 				output.uvLM = input.uvLM.xy * unity_LightmapST.xy + unity_LightmapST.zw;
 
 				output.positionWSAndFogFactor = float4(vertexInput.positionWS, fogFactor);
 				output.normalWS = vertexNormalInput.normalWS;
 
-#ifdef _MAIN_LIGHT_SHADOWS
-				// shadow coord for the main light is computed in vertex.
-				// If cascades are enabled, LWRP will resolve shadows in screen space
-				// and this coord will be the uv coord of the screen space shadow texture.
-				// Otherwise LWRP will resolve shadows in light space (no depth pre-pass and shadow collect pass)
-				// In this case shadowCoord will be the position in light space.
+#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
 				output.shadowCoord = GetShadowCoord(vertexInput);
 #endif
+
 				// We just use the homogeneous clip position from the vertex input
 				output.positionCS = vertexInput.positionCS;
 
 				float3 toThis = SafeNormalize(vertexInput.positionWS - _WorldCenter.xyz);
 
-				output.snowy = clamp(pow(clamp(dot(toThis, vertexNormalInput.normalWS), 0, 1), _SnowThreshold), 0.0, 1.0);
+				output.snowy = clamp(pow(clamp(dot(toThis, vertexNormalInput.normalWS), 0, 1), _SnowThreshold), 0.0, 1.0) * smoothstep(0.5, 0.75, _SeasonTime % 1.0) * (1.0 - smoothstep(0.75, 1.0, _SeasonTime % 1.0));
 
 				return output;
 			}
@@ -144,11 +159,7 @@
 
 			half4 LitPassFragment(Varyings input) : SV_Target
 			{
-				// Surface data contains albedo, metallic, specular, smoothness, occlusion, emission and alpha
-				// InitializeStandarLitSurfaceData initializes based on the rules for standard shader.
-				// You can write your own function to initialize the surface data of your shader.
-				SurfaceData surfaceData;
-				InitializeStandardLitSurfaceData(input.uv, surfaceData);
+				
 
 				half3 normalWS = input.normalWS;
 				normalWS = normalize(normalWS);
@@ -161,27 +172,34 @@
 				// are also defined in case you want to sample some terms per-vertex.
 				half3 bakedGI = SampleSH(normalWS);
 #endif
+				float3 spring = tex2D(_Spring, input.uv).rgb;
+				float3 summer = tex2D(_Summer, input.uv).rgb;
+				float3 fall = tex2D(_Fall, input.uv).rgb;
+				float3 winter = tex2D(_Winter, input.uv).rgb;
+
+				float3 ss = lerp(spring, summer, smoothstep(0, 0.25, _SeasonTime % 1.0));
+				float3 fw = lerp(fall, winter, smoothstep(0.5, 0.75, _SeasonTime % 1.0));
+				float3 fws = lerp(fw, spring, smoothstep(0.75, 1, _SeasonTime % 1.0));
+
+				float3 albedo = lerp(ss, fws, smoothstep(0.25, 0.5, _SeasonTime % 1.0));
 
 				float3 positionWS = input.positionWSAndFogFactor.xyz;
 				half3 viewDirectionWS = SafeNormalize(GetCameraPositionWS() - positionWS);
 
-				float3 inputColor = lerp(surfaceData.albedo, float3(1.0, 1.0, 1.0), input.snowy);
+				float3 inputColor = lerp(albedo, float3(1.0, 1.0, 1.0), input.snowy);
 
 				BRDFData brdfData;
-				InitializeBRDFData(inputColor, 0, 0, 0, surfaceData.alpha, brdfData);
+				InitializeBRDFData(inputColor, 0, 0, _Smoothness, 1.0, brdfData);
 
-#ifdef _MAIN_LIGHT_SHADOWS
-				// Main light is the brightest directional light.
-				// It is shaded outside the light loop and it has a specific set of variables and shading path
-				// so we can be as fast as possible in the case when there's only a single directional light
-				// You can pass optionally a shadowCoord (computed per-vertex). If so, shadowAttenuation will be
-				// computed.
+#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
 				Light mainLight = GetMainLight(input.shadowCoord);
+#elif defined(MAIN_LIGHT_CALCULATE_SHADOWS)
+				Light mainLight = GetMainLight(TransformWorldToShadowCoord(positionWS));
 #else
 				Light mainLight = GetMainLight();
 #endif
 
-				half3 color = GlobalIllumination(brdfData, bakedGI, surfaceData.occlusion, normalWS, viewDirectionWS);
+				half3 color = GlobalIllumination(brdfData, bakedGI, 1.0, normalWS, viewDirectionWS);
 
 				color += LightingPhysicallyBased(brdfData, mainLight, normalWS, viewDirectionWS);
 
@@ -202,13 +220,10 @@
 					color += LightingPhysicallyBased(brdfData, light, normalWS, viewDirectionWS);
 				}
 #endif
-				// Emission
-				color += surfaceData.emission;
-
 				float fogFactor = input.positionWSAndFogFactor.w;
 
 				color = MixFog(color, fogFactor);
-				return half4(color, surfaceData.alpha);
+				return half4(color, 1.0);
 			}
 			ENDHLSL
 		}

@@ -11,10 +11,6 @@
 #define UNITY_outputcontrolpoints    outputcontrolpoints
 #endif
 
-float _TessellationUniform;
-float _Displacement;
-float _RecalculateNormals;
-
 struct TessellationControlPoint
 {
     float4 vertex : INTERNALTESSPOS;
@@ -30,8 +26,17 @@ struct TessellationFactors
     float inside : SV_InsideTessFactor;
 };
 
+//struct Attributes
+//{
+//    float4 positionOS : POSITION;
+//    float3 normalOS : NORMAL;
+//    float2 uv : TEXCOORD0;
+//    float2 uvLM : TEXCOORD1;
+//				UNITY_VERTEX_INPUT_INSTANCE_ID
+//};
+
 Varyings TessellationVertexProgram(Varyings input, OutputPatch<Varyings, 3> patch, float3 barycentricCoordinates)
-{    
+{
     float3 positionWS = input.positionWSAndFogFactor.xyz;
     half3 viewDirectionWS = SafeNormalize(GetCameraPositionWS() - positionWS);
 
@@ -39,20 +44,11 @@ Varyings TessellationVertexProgram(Varyings input, OutputPatch<Varyings, 3> patc
 
     float snowy = clamp(pow(clamp(dot(toThis, input.normalWS), 0, 1), _SnowThreshold), 0.0, 1.0);
     
-    Varyings output;
-
-    output.snowy = snowy;
-    output.uv = input.uv;
-    output.uvLM = input.uvLM;
-        
-#ifdef _MAIN_LIGHT_SHADOWS
-    output.shadowCoord = input.shadowCoord;
-#endif
-
     float3 normalWS = SafeNormalize(input.normalWS);
-    float displacement = _Displacement * snowy * 0.001;
+    float displacement = _Displacement * snowy * 0.001 * smoothstep(0.5, 0.75, _SeasonTime % 1.0) * (1.0 - smoothstep(0.75, 1.0, _SeasonTime % 1.0));
     float edgeDistance = min(min(barycentricCoordinates.x, barycentricCoordinates.y), barycentricCoordinates.z);
-    positionWS += normalWS * displacement * edgeDistance;
+    if (edgeDistance > 0.0)
+        positionWS += normalWS * displacement;
     
     if (_RecalculateNormals >= 0.5)
     {
@@ -68,38 +64,54 @@ Varyings TessellationVertexProgram(Varyings input, OutputPatch<Varyings, 3> patc
         b += normalWS * displacement * (min(min(bccb.x, bccb.y), bccb.z) + 0.1);
         c += normalWS * displacement * (min(min(bccc.x, bccc.y), bccc.z) + 0.1);
     
-        output.normalWS = normalize(cross(b - a, c - a));
-    }
-    else
-    {
-        output.normalWS = normalWS;
+        normalWS = normalize(cross(b - a, c - a));
     }
     
-    output.positionWSAndFogFactor = float4(positionWS, input.positionWSAndFogFactor.w);
-    output.positionCS = mul(UNITY_MATRIX_VP, float4(positionWS, 1.0));
-    
+    Varyings output;
+
+    VertexPositionInputs vertexInput = GetVertexPositionInputs(TransformWorldToObject(positionWS));
+
+    VertexNormalInputs vertexNormalInput = GetVertexNormalInputs(TransformWorldToObjectNormal(normalWS));
+
+    float fogFactor = ComputeFogFactor(vertexInput.positionCS.z);
+
+    output.uv = input.uv;
+    output.uvLM = input.uvLM;
+
+    output.positionWSAndFogFactor = float4(vertexInput.positionWS, fogFactor);
+    output.normalWS = vertexNormalInput.normalWS;
+
+#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
+	output.shadowCoord = GetShadowCoord(vertexInput);
+#endif
+    output.positionCS = vertexInput.positionCS;
+
+    toThis = SafeNormalize(vertexInput.positionWS - _WorldCenter.xyz);
+
+    output.snowy = clamp(pow(clamp(dot(toThis, vertexNormalInput.normalWS), 0, 1), _SnowThreshold), 0.0, 1.0) * smoothstep(0.5, 0.75, _SeasonTime % 1.0) * (1.0 - smoothstep(0.75, 1.0, _SeasonTime % 1.0));
+
     return output;
 }
 
 TessellationFactors patchConstantFunction(InputPatch<Varyings, 3> patch)
 {
-    #define Average(field) ((patch[0].field + patch[1].field + patch[2].field)/3.0)
+#define Average(field) ((patch[0].field + patch[1].field + patch[2].field)/3.0)
     
     float3 positionWS = Average(positionWSAndFogFactor).xyz;
     half3 viewDirectionWS = SafeNormalize(GetCameraPositionWS() - positionWS);
 
     float3 toThis = SafeNormalize(positionWS - _WorldCenter.xyz);
 
-    float snowy = clamp(pow(clamp(dot(toThis, Average(normalWS)), 0, 1), _SnowThreshold), 0.0, 1.0);
+    float snowy = clamp(pow(clamp(dot(toThis, Average(normalWS)), 0, 1), _SnowThreshold), 0.0, _SeasonTime % 1.0 > 0.5 ? 1.0 : 0.0);
     
     float tessellationFactor = max(_TessellationUniform * snowy, 1.0);
     
     TessellationFactors f;
     f.edge[0] = tessellationFactor;
-	f.edge[1] = tessellationFactor;
+    f.edge[1] = tessellationFactor;
     f.edge[2] = tessellationFactor;
     f.inside = tessellationFactor;
-	return f;
+    return f;
 }
 
 [UNITY_domain("tri")]
@@ -116,15 +128,15 @@ Varyings hull(InputPatch<Varyings, 3> patch, uint id : SV_OutputControlPointID)
 Varyings domain(TessellationFactors factors, OutputPatch<Varyings, 3> patch, float3 barycentricCoordinates : SV_DomainLocation)
 {
     Varyings data;
-    #define Interpolate(field) patch[0].field*barycentricCoordinates.x + patch[1].field*barycentricCoordinates.y + patch[2].field*barycentricCoordinates.z
+#define Interpolate(field) patch[0].field*barycentricCoordinates.x + patch[1].field*barycentricCoordinates.y + patch[2].field*barycentricCoordinates.z
 
     data.positionCS = Interpolate(positionCS); // POSITION;
     data.normalWS = Interpolate(normalWS); // NORMAL;
     data.positionWSAndFogFactor = Interpolate(positionWSAndFogFactor); // TANGENT;
-    data.uv = Interpolate(uv);                // TEXCOORD0;
+    data.uv = Interpolate(uv); // TEXCOORD0;
     data.uvLM = Interpolate(uvLM); // TEXCOORD1;
     
-#ifdef _MAIN_LIGHT_SHADOWS
+#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
     data.shadowCoord = Interpolate(shadowCoord);
 #endif
     

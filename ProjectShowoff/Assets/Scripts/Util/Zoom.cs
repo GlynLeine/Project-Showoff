@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Zoom : MonoBehaviour
 {
@@ -8,7 +9,8 @@ public class Zoom : MonoBehaviour
     public Transform target;
     public float defaultRange;
     public float range;
-
+    public Slider zoomSlider;
+    
     private bool ortho;
     private new Camera camera;
 
@@ -26,10 +28,14 @@ public class Zoom : MonoBehaviour
         ortho = camera.orthographic;
     }
 
+    public void OnZoomSliderChange()
+    {
+        range = zoomSlider.value;
+    }
     // Update is called once per frame
     void Update()
     {
-        range = defaultRange - InputRedirect.zoom;
+        //range = defaultRange - InputRedirect.zoom;
         if (range < maxZoom)
             range = maxZoom;
 

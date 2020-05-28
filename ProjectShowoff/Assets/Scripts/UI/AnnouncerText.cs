@@ -1,30 +1,46 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class AnnouncerText : MonoBehaviour
 {
     public int announcerTextSpeed = 1;
-    [SerializeField] private GameObject announcerText = null;
+    [SerializeField] private GameObject announcerTextBox = null;
     private Vector3 announcerPosition;
     private RectTransform announcerRectTransform;
     private float announcerTextWidth;
+    private TMP_Text announcerTextText;
+    private bool textChangeRequest = false;
+    private string textChange = null;
 
     private void Start()
     {
-        announcerRectTransform = announcerText.GetComponent<RectTransform>();
+        announcerRectTransform = announcerTextBox.GetComponent<RectTransform>();
+        announcerTextText = announcerTextBox.GetComponent<TMP_Text>();
     }
 
     void Update()
     {
-        announcerText.transform.Translate(-announcerTextSpeed*Time.deltaTime,0,0);
-        announcerPosition = announcerText.transform.position;
+        announcerTextBox.transform.Translate(-announcerTextSpeed*Time.deltaTime,0,0);
+        announcerPosition = announcerTextBox.transform.localPosition;
         announcerTextWidth = announcerRectTransform.sizeDelta.x;
-        if (announcerPosition.x < -announcerTextWidth/2 + 200)
+        if (announcerPosition.x <= (-announcerTextWidth + -100))
         {
-            announcerPosition.x = (announcerTextWidth/2) - 60;
+            if (textChangeRequest)
+            {
+                announcerTextText.text = textChange;
+                textChangeRequest = false;
+            }
+            announcerPosition.x = 120;
         }
-        announcerText.transform.position = announcerPosition;
+        announcerTextBox.transform.localPosition = announcerPosition;
+    }
+
+    public void TextChanger(string newText)
+    {
+        textChangeRequest = true;
+        textChange = newText;
     }
 }
