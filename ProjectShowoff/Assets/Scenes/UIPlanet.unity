@@ -4581,7 +4581,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d5f1a941e07f244b947d995a3f74012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugText: {fileID: 0}
+  debugText: {fileID: 86733238}
+  masterMaterial: {fileID: 2100000, guid: 8e3d59db0fd9a5e4f8b97d1741d09735, type: 2}
+  ozoneMaterial: {fileID: 2100000, guid: d74ea6251c57eb847ba30d8000286066, type: 2}
 --- !u!114 &576086916
 MonoBehaviour:
   m_ObjectHideFlags: 0
