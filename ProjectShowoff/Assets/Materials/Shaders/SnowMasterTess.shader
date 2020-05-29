@@ -49,7 +49,7 @@
 
 			#pragma prefer_hlslcc gles
 			#pragma exclude_renderers d3d11_9x
-			#pragma target 4.5
+			#pragma target 2.0
 
 			#pragma vertex LitPassVertex
 			#pragma fragment LitPassFragment
