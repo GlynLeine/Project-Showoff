@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
 
 public class GameManager : MonoBehaviour
 {
@@ -74,6 +75,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        masterMat.SetFloat("_TessellationUniform", 1f);
+
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 1000;
         environment = 50f;
