@@ -121,6 +121,7 @@ public class GameManager : MonoBehaviour
             debugText.text += "\nfps: " + 1f / Time.deltaTime;
             debugText.text += "\nframetime: " + Time.deltaTime;
             debugText.text += "\ngraphics device: " + SystemInfo.graphicsDeviceType.ToString();
+            debugText.text += "\nshader: " + masterMat.shader.name;
             //debugText.text += "\ntime: " + time;
             //debugText.text += "\nspring: " + spring;
             //debugText.text += "\nsummer: " + summer;
