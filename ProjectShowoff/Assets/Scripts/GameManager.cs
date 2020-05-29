@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     public Material masterMaterial;
     static Material masterMat;
 
+    public Shader tesselationShader;
+    public Shader webGLShader;
+
     public Material ozoneMaterial;
     static Material ozoneMat;
 
@@ -75,7 +78,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        masterMat.SetFloat("_TessellationUniform", 1f);
+        if (SystemInfo.graphicsDeviceType == GraphicsDeviceType.OpenGLES3)
+            masterMat.shader = webGLShader;
+        else
+            masterMat.shader = tesselationShader;
 
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 1000;

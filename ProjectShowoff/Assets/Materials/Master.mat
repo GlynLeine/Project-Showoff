@@ -87,7 +87,7 @@ Material:
     - _BumpScale: 1
     - _Cull: 2
     - _Cutoff: 0.5
-    - _Displacement: 5
+    - _Displacement: 10
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
@@ -106,7 +106,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _TessellationUniform: 1
+    - _TessellationUniform: 1.1
     - _WorkflowMode: 1
     - _ZWrite: 1
     - time: 0
