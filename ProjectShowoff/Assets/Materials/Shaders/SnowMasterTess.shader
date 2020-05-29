@@ -53,8 +53,8 @@
 
 			#pragma vertex LitPassVertex
 			#pragma fragment LitPassFragment
-			#pragma hull hull
-			#pragma domain domain
+			//#pragma hull hull
+			//#pragma domain domain
 
 			#pragma shader_feature _ALPHATEST_ON
 			#pragma shader_feature _ALPHAPREMULTIPLY_ON
