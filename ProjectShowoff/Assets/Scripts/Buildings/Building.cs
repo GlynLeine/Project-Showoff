@@ -6,7 +6,7 @@ public class Building : MonoBehaviour
 {
     public float environmentEffect;
     public float pollutionEffect;
-    public float happinessEffect;
+    public float industryEffect;
     public float effectPeriod;
 
     private float timeBuffer = 0;
@@ -14,13 +14,16 @@ public class Building : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeBuffer += Time.deltaTime;
-        if (timeBuffer >= effectPeriod)
+        //timeBuffer += Time.deltaTime;
+        //if (timeBuffer >= effectPeriod)
+        //{
+        //    timeBuffer -= effectPeriod;
+        //    GameManager.AddState(environmentEffect, pollutionEffect, industryEffect);
+        //}
+        if (effectPeriod > 0f)
         {
-            timeBuffer -= effectPeriod;
-            GameManager.AddState(environmentEffect, pollutionEffect, happinessEffect);
+            float scale = Time.deltaTime / effectPeriod;
+            GameManager.AddState(environmentEffect * scale, pollutionEffect * scale, industryEffect * scale);
         }
-        //float scale = Time.deltaTime / effectPeriod;
-        //GameManager.AddState(environmentEffect * scale, pollutionEffect * scale, happinessEffect * scale);
     }
 }

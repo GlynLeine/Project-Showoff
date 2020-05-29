@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   environmentEffect: 0
-  pollutionEffect: 5
+  pollutionEffect: 3
   happinessEffect: 0
   effectPeriod: 5
 --- !u!1 &8935089598512165790

@@ -34,9 +34,9 @@ RectTransform:
   m_Father: {fileID: 8872052276531535666}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 500, y: -256.875}
   m_SizeDelta: {x: 1000, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8872052276211237475
@@ -60,13 +60,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.16470589, g: 0.6039216, b: 0.7176471, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f0bb55fa1c9801f498474dbe635eb5fc, type: 3}
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -142,10 +142,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 4
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -299,10 +299,10 @@ MonoBehaviour:
   locationType: 0
   buildingType: 6
   button: {fileID: 8872052276362745035}
-  environmentEffect: 100
+  environmentEffect: 25
   pollutionEffect: 0
-  happinessEffect: 0
-  cooldown: 0
+  industryEffect: 0
+  cooldown: 1
   cooldownEffect: 0
 --- !u!1 &8872052276453182126
 GameObject:
@@ -767,8 +767,8 @@ MonoBehaviour:
   button: {fileID: 8872052276772569453}
   environmentEffect: 0
   pollutionEffect: 0
-  happinessEffect: 0
-  cooldown: 0
+  industryEffect: 0
+  cooldown: 1
   cooldownEffect: 0
 --- !u!1 &8872052276810132837
 GameObject:
@@ -893,7 +893,7 @@ GameObject:
   - component: {fileID: 8872052277008806073}
   - component: {fileID: 8872052277008806074}
   m_Layer: 5
-  m_Name: Spring1
+  m_Name: Spring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1098,7 +1098,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8872052277124362403
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1721,8 +1721,8 @@ MonoBehaviour:
   buildingType: 2
   button: {fileID: 8872052277241891094}
   environmentEffect: 0
-  pollutionEffect: 10
-  happinessEffect: 0
+  pollutionEffect: 4
+  industryEffect: 0
   cooldown: 1
   cooldownEffect: -0.05
 --- !u!1 &8872052277256918478
@@ -1878,11 +1878,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 255ba243fa7e843469e60be3e9ad01ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spring1GrayscaleImage: {fileID: 8872052276810132835}
+  springGrayscaleImage: {fileID: 8872052276810132835}
   summerGrayscaleImage: {fileID: 8872052278163661586}
   fallGrayscaleImage: {fileID: 8872052278199728848}
   winterGrayscaleImage: {fileID: 8872052277918405793}
-  spring2GrayscaleImage: {fileID: 0}
 --- !u!1 &8872052277295596727
 GameObject:
   m_ObjectHideFlags: 0
@@ -2353,7 +2352,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8872052277421051652
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2888,8 +2887,8 @@ MonoBehaviour:
   button: {fileID: 8872052277642821844}
   environmentEffect: 0
   pollutionEffect: 0
-  happinessEffect: 0
-  cooldown: 0
+  industryEffect: 0
+  cooldown: 1
   cooldownEffect: 0
 --- !u!1 &8872052277644214249
 GameObject:
@@ -3037,8 +3036,8 @@ MonoBehaviour:
   buildingType: 3
   button: {fileID: 8872052277644214246}
   environmentEffect: 0
-  pollutionEffect: 10
-  happinessEffect: 0
+  pollutionEffect: 4
+  industryEffect: 0
   cooldown: 1
   cooldownEffect: -0.05
 --- !u!1 &8872052277739761911
@@ -3075,9 +3074,9 @@ RectTransform:
   m_Father: {fileID: 8872052276531535666}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 500, y: -561.875}
   m_SizeDelta: {x: 1000, y: 62.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8872052277739761907
@@ -3101,13 +3100,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.16470589, g: 0.6039216, b: 0.7176471, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f0bb55fa1c9801f498474dbe635eb5fc, type: 3}
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3603,7 +3602,7 @@ MonoBehaviour:
   button: {fileID: 8872052277895917246}
   environmentEffect: 0
   pollutionEffect: 0
-  happinessEffect: 0
+  industryEffect: 0
   cooldown: 1
   cooldownEffect: -0.05
 --- !u!1 &8872052277909840468
@@ -3753,7 +3752,7 @@ MonoBehaviour:
   button: {fileID: 8872052277909840465}
   environmentEffect: 0
   pollutionEffect: 0
-  happinessEffect: 0
+  industryEffect: 0
   cooldown: 1
   cooldownEffect: -0.05
 --- !u!1 &8872052277918405795
