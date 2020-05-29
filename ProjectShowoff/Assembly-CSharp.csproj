@@ -117,12 +117,12 @@
     <None Include="Assets\FMOD\Threa FMOD\Metadata\EffectPresetFolder\{c058b6a5-dcfd-4c29-af56-4e92defc5f34}.xml" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\ParameterPresetFolder\{40dfd35e-8676-4056-9d75-7e96d82f4077}.xml" />
-    <None Include="Assets\Materials\Shaders\SnowMasterNoTess.shader" />
+    <None Include="Assets\Materials\Shaders\MasterWebGL.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\EventFolder\{e621b7c8-e876-4246-aee0-9609e68bd048}.xml" />
     <None Include="Assets\Materials\LineShader.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
-    <None Include="Assets\Materials\Shaders\SnowMasterTess.shader" />
+    <None Include="Assets\Materials\Shaders\Master.shader" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\Tags.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\Event\{81807ee1-7059-4b05-a34d-8843b5886433}.xml" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2917,7 +2917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d5f1a941e07f244b947d995a3f74012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugText: {fileID: 589534326}
+  debugText: {fileID: 0}
   masterMaterial: {fileID: 2100000, guid: 8e3d59db0fd9a5e4f8b97d1741d09735, type: 2}
   tesselationShader: {fileID: 4800000, guid: 8bbd937937ed0eb4096e664f947dcdb2, type: 3}
   webGLShader: {fileID: 4800000, guid: 590a6c94fdff3f049892dbc96888fe22, type: 3}
@@ -3134,18 +3134,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!114 &589534326 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8872052276245405129, guid: 9a1544356b636fe478f34b9a6bb8508d,
-    type: 3}
-  m_PrefabInstance: {fileID: 913900900}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &619738532
 GameObject:
   m_ObjectHideFlags: 0
@@ -5217,10 +5205,15 @@ PrefabInstance:
       propertyPath: m_FontData.m_MinSize
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8872052276245405129, guid: 9a1544356b636fe478f34b9a6bb8508d,
+        type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8872052276245405131, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8872052276362745037, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
@@ -5330,11 +5323,6 @@ PrefabInstance:
     - target: {fileID: 8872052277227303861, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8872052277241891095, guid: 9a1544356b636fe478f34b9a6bb8508d,
-        type: 3}
-      propertyPath: cooldown
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8872052277241891096, guid: 9a1544356b636fe478f34b9a6bb8508d,

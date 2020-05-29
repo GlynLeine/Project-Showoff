@@ -1,4 +1,4 @@
-﻿Shader "Universal Render Pipeline/Custom/SnowMasterNoTess"
+﻿Shader "Universal Render Pipeline/Custom/MasterWebGL"
 {
 	Properties
 	{
@@ -33,7 +33,7 @@
 
 			pass
 			{
-				Name "SnowMasterNoTess"
+				Name "MasterWebGL"
 				Tags{"LightMode" = "UniversalForward"}
 
 				Blend[_SrcBlend][_DstBlend]

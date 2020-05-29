@@ -10,7 +10,7 @@ public class YearTimer : MonoBehaviour
     [SerializeField] private Image fallGrayscaleImage = null;
     [SerializeField] private Image winterGrayscaleImage = null;
 
-    float timeScale = 10f;
+    float timeScale = 1f;
 
     void Update()
     {

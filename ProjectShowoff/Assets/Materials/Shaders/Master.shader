@@ -1,4 +1,4 @@
-﻿Shader "Universal Render Pipeline/Custom/SnowMasterTess"
+﻿Shader "Universal Render Pipeline/Custom/Master"
 {
 	Properties
 	{
@@ -36,7 +36,7 @@
 
 			pass
 			{
-				Name "SnowMasterTess"
+				Name "Master"
 				Tags{"LightMode" = "UniversalForward"}
 
 				Blend[_SrcBlend][_DstBlend]
