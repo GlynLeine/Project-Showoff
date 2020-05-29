@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
             //float winter = smoothstep(2f / 3f, 1f, season);
 
             //debugText.text = "environment: " + environment;
-            debugText.text += "\npollution: " + pollution;
+            debugText.text = "\npollution: " + pollution;
             //debugText.text += "\nindustry: " + industry;
             debugText.text += "\nfps: " + 1f / Time.deltaTime;
             debugText.text += "\nframetime: " + Time.deltaTime;
