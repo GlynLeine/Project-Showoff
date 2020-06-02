@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class GameManager : MonoBehaviour
     public Text debugText;
     public Material masterMaterial;
     static Material masterMat;
+
+    public Shader tesselationShader;
+    public Shader webGLShader;
 
     public Material ozoneMaterial;
     static Material ozoneMat;
@@ -74,7 +78,13 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        if (SystemInfo.graphicsDeviceType == GraphicsDeviceType.OpenGLES3)
+            masterMat.shader = webGLShader;
+        else
+            masterMat.shader = tesselationShader;
+
         QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 1000;
         environment = 50f;
         pollution = 0f;
         industry = 0f;
@@ -100,24 +110,25 @@ public class GameManager : MonoBehaviour
 
         if (debugText != null)
         {
-            float spring = smoothstep(1f / 3f, 0f, season);
-            float summer = smoothstep(0f, 1f / 3f, season) * smoothstep(2f / 3f, 1f / 3f, season);
-            float fall = smoothstep(1f / 3f, 2f / 3f, season) * smoothstep(1f, 2f / 3f, season);
-            float winter = smoothstep(2f / 3f, 1f, season);
+            //float spring = smoothstep(1f / 3f, 0f, season);
+            //float summer = smoothstep(0f, 1f / 3f, season) * smoothstep(2f / 3f, 1f / 3f, season);
+            //float fall = smoothstep(1f / 3f, 2f / 3f, season) * smoothstep(1f, 2f / 3f, season);
+            //float winter = smoothstep(2f / 3f, 1f, season);
 
-
-            debugText.text = "environment: " + environment;
-            debugText.text += "\npollution: " + pollution;
-            debugText.text += "\nindustry: " + industry;
+            //debugText.text = "environment: " + environment;
+            debugText.text = "\npollution: " + pollution;
+            //debugText.text += "\nindustry: " + industry;
             debugText.text += "\nfps: " + 1f / Time.deltaTime;
             debugText.text += "\nframetime: " + Time.deltaTime;
-            debugText.text += "\ntime: " + time;
-            debugText.text += "\nspring: " + spring;
-            debugText.text += "\nsummer: " + summer;
-            debugText.text += "\nfall: " + fall;
-            debugText.text += "\nwinter: " + winter;
-            debugText.text += "\nseason: " + (spring + summer > fall + winter ? (spring > summer ? "spring" : "summer") : (fall > winter ? "fall" : "winter")) + " " + season;
-            debugText.text += "\nozone: " + ozone;
+            debugText.text += "\ngraphics device: " + SystemInfo.graphicsDeviceType.ToString();
+            debugText.text += "\nshader: " + masterMat.shader.name;
+            //debugText.text += "\ntime: " + time;
+            //debugText.text += "\nspring: " + spring;
+            //debugText.text += "\nsummer: " + summer;
+            //debugText.text += "\nfall: " + fall;
+            //debugText.text += "\nwinter: " + winter;
+            //debugText.text += "\nseason: " + (spring + summer > fall + winter ? (spring > summer ? "spring" : "summer") : (fall > winter ? "fall" : "winter")) + " " + season;
+            //debugText.text += "\nozone: " + ozone;
         }
     }
 }

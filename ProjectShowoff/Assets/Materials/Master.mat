@@ -87,7 +87,7 @@ Material:
     - _BumpScale: 1
     - _Cull: 2
     - _Cutoff: 0.5
-    - _Displacement: 3
+    - _Displacement: 10
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
