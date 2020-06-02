@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Buildings\BuildingSystem.cs" />
     <Compile Include="Assets\Scripts\Characters\Character.cs" />
     <Compile Include="Assets\Scripts\Characters\CharacterSystem.cs" />
+    <Compile Include="Assets\Scripts\Characters\Poke.cs" />
     <Compile Include="Assets\Scripts\Characters\Roads\Road.cs" />
     <Compile Include="Assets\Scripts\Editors\BuildingLocationEditor.cs" />
     <Compile Include="Assets\Scripts\Editors\BuildingLocationTool.cs" />
