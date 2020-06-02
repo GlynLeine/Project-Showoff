@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pokable : MonoBehaviour
 {
     public bool pokePlay = false;
+    
 
     public void poke()
     {

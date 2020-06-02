@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 314100681690800100}
   - component: {fileID: 3863281099570527594}
+  - component: {fileID: 2900836529654250522}
   m_Layer: 0
   m_Name: Factory
   m_TagString: Untagged
@@ -46,8 +47,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   environmentEffect: 0
   pollutionEffect: 3
-  happinessEffect: 0
+  industryEffect: 0
   effectPeriod: 5
+--- !u!114 &2900836529654250522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7972426480979829519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Buildings/Factory
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &8935089598512165790
 GameObject:
   m_ObjectHideFlags: 0
