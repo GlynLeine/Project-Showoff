@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 8bbd937937ed0eb4096e664f947dcdb2
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _Spring: {fileID: 2800000, guid: b9e98828dfe911c469f6cd1fab2b0b34, type: 3}
+  - _Summer: {fileID: 2800000, guid: b0897d9df735f9e46b64ad45c1e9fbd3, type: 3}
+  - _Fall: {fileID: 2800000, guid: 5373ed73c32bfd043a973d2ac40c1c69, type: 3}
+  - _Winter: {fileID: 2800000, guid: 3b2dde1495e94f243875a8b09a9d7312, type: 3}
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
