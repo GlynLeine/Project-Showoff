@@ -17,6 +17,7 @@ public class InputRedirect : MonoBehaviour
     static public Vector2 inputPos;
     static public Vector2 inputVelocity;
     static public bool pressed;
+    static public bool tapped;
     static public float zoom;
 
     static public bool inputOverUI;
@@ -46,6 +47,11 @@ public class InputRedirect : MonoBehaviour
             inputPos = touch.position;
             previousInputPos = inputPos;
             inputVelocity = touch.deltaPosition;
+
+            if(!pressed)
+                tapped = true;
+            else
+                tapped = false;
 
             pressed = true;
             touchZoomReset = true;
@@ -77,6 +83,8 @@ public class InputRedirect : MonoBehaviour
             previousInputPos = inputPos;
             inputPos = Input.mousePosition;
             inputVelocity = inputPos - previousInputPos;
+
+            tapped = Input.GetMouseButtonDown(0);
             pressed = Input.GetMouseButton(0);
             zoom += Input.GetAxis("Mouse ScrollWheel");
         }

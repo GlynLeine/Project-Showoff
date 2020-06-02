@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6792501805687544776}
   - component: {fileID: 2995906352444878603}
+  - component: {fileID: 1863104550019605759}
+  - component: {fileID: 6843770833839611226}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -51,6 +53,32 @@ MonoBehaviour:
   planet: {fileID: 0}
   minWanderTime: 0
   maxWanderTime: 0
+--- !u!65 &1863104550019605759
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197743855728374716}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.03543712, y: 0.08719547, z: 0.032005742}
+  m_Center: {x: -0.0045486265, y: 0.036906756, z: -0.0021493845}
+--- !u!114 &6843770833839611226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197743855728374716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 809a8c5859e94f74299d812854959318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pokePlay: 0
 --- !u!1 &8982326587122271639
 GameObject:
   m_ObjectHideFlags: 0
