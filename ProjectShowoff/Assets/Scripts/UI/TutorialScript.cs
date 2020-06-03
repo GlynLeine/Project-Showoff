@@ -16,7 +16,7 @@ public class TutorialScript : MonoBehaviour
 
     private float animationSpeed = 1; //reset at end of every animation, makes animations move faster as they go on
     private bool tutorialPlayed; //set to true once all animations have played
-    //tutorial step bools
+    //tutorial step bools so we can check where the player is
     private bool tutorialRotationStep;
     private bool tutorialZoomStep;
     private bool tutorialBuildStep;
