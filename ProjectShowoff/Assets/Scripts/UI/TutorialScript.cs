@@ -209,7 +209,7 @@ public class TutorialScript : MonoBehaviour
     }
     IEnumerator HandAnimation()
     {
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(10);
         if(!tutorialRotationStep){
             tutorialArrow.SetActive(true);
             tutorialHand.SetActive(true);
