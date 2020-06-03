@@ -47,8 +47,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/PlanetReset.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Util/InputRedirect.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Characters/Pokable.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/TutorialScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/EndScreenCounter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/TutorialScript.cs" />
       </list>
     </option>
   </component>
@@ -100,7 +100,7 @@
       <workItem from="1590587348904" duration="1117000" />
       <workItem from="1590669307012" duration="32000" />
       <workItem from="1591086139575" duration="16341000" />
-      <workItem from="1591168484262" duration="12670000" />
+      <workItem from="1591168484262" duration="13669000" />
     </task>
     <servers />
   </component>
