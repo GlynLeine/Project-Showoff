@@ -75,6 +75,7 @@
      <Compile Include="Assets\Scripts\Effects\PollutionSpheres.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\UI\AnnouncerText.cs" />
+     <Compile Include="Assets\Scripts\UI\EndScreenCounter.cs" />
      <Compile Include="Assets\Scripts\UI\PlanetReset.cs" />
      <Compile Include="Assets\Scripts\UI\SnowController.cs" />
      <Compile Include="Assets\Scripts\UI\TutorialScript.cs" />

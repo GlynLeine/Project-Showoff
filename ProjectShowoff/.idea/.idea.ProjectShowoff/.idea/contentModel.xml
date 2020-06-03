@@ -166,6 +166,7 @@
           <e p="GameManager.cs" t="Include" />
           <e p="UI" t="Include">
             <e p="AnnouncerText.cs" t="Include" />
+            <e p="EndScreenCounter.cs" t="Include" />
             <e p="PlanetReset.cs" t="Include" />
             <e p="SnowController.cs" t="Include" />
             <e p="TutorialScript.cs" t="Include" />
