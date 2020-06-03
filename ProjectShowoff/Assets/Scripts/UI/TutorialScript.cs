@@ -34,8 +34,6 @@ public class TutorialScript : MonoBehaviour
             tutorialDelaySeconds = 0;
             tutorialBuildStep = true;
             tutorialZoomStep = true;
-            tutorialArrow.SetActive(false);
-            tutorialHand.SetActive(false);
             tutorialRotationStep = true;
             StartCoroutine(BuildingAnimationStart());
             StartCoroutine(TimerAnimationStart());
@@ -211,7 +209,7 @@ public class TutorialScript : MonoBehaviour
     }
     IEnumerator HandAnimation()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(15);
         if(!tutorialRotationStep){
             tutorialArrow.SetActive(true);
             tutorialHand.SetActive(true);
