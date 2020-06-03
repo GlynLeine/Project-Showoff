@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -1171,6 +1172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -2864,6 +2866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -3875,6 +3878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -5200,6 +5204,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2946203210707287117, guid: 9a1544356b636fe478f34b9a6bb8508d,
+        type: 3}
+      propertyPath: tutorialSkip
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8872052276245405129, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
       propertyPath: m_FontData.m_MinSize
@@ -6857,6 +6866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -7712,6 +7722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -8077,6 +8088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -9015,6 +9027,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -9430,6 +9443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -10104,6 +10118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -10671,6 +10686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -12415,6 +12431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -12968,6 +12985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -15293,6 +15311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -17939,6 +17958,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -17980,6 +18000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18015,6 +18036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 317366304}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18059,6 +18081,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18097,6 +18120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18145,6 +18169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18188,6 +18213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18229,6 +18255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18270,6 +18297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
