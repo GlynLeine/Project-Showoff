@@ -9,7 +9,7 @@ public class Pokable : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(pokePlay);
+        //Debug.Log(pokePlay);
     }
     IEnumerator reset()
     {
