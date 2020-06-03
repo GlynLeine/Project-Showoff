@@ -17,15 +17,32 @@ public class TutorialScript : MonoBehaviour
     private float animationSpeed = 1; //reset at end of every animation, makes animations move faster as they go on
     private bool tutorialPlayed; //set to true once all animations have played
     //tutorial step bools
-    public bool tutorialRotationStep;
-    public bool tutorialZoomStep;
-    public bool tutorialBuildStep;
-    public bool gameHasStarted;
+    private bool tutorialRotationStep;
+    private bool tutorialZoomStep;
+    private bool tutorialBuildStep;
+    private bool gameHasStarted;
+    private float tutorialDelaySeconds = 2.5f;
+    public bool tutorialSkip;
 
     void Start()
     {
         StartCoroutine(NewsCasterAnimationStart());
-        StartCoroutine(HandAnimation());  
+        StartCoroutine(HandAnimation());
+        if (tutorialSkip)
+        {
+            //basically sets the delay of the animations to 0 nd just throws em all in at the start
+            tutorialDelaySeconds = 0;
+            tutorialBuildStep = true;
+            tutorialZoomStep = true;
+            tutorialArrow.SetActive(false);
+            tutorialHand.SetActive(false);
+            tutorialRotationStep = true;
+            StartCoroutine(BuildingAnimationStart());
+            StartCoroutine(TimerAnimationStart());
+            StartCoroutine(ResetAnimationStart());
+            StartCoroutine(DestroyAnimationStart());
+            StartCoroutine(SliderAnimationStart());
+        }
     }
     void Update()
     {
@@ -63,7 +80,7 @@ public class TutorialScript : MonoBehaviour
 
     IEnumerator SliderAnimationStart()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(tutorialDelaySeconds);
         while (zoomSlider.transform.position.x > 1790)
         {
             Vector3 sliderAnimationPosition;
@@ -86,7 +103,7 @@ public class TutorialScript : MonoBehaviour
     }
     IEnumerator BuildingAnimationStart()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(tutorialDelaySeconds);
         while (buildings.transform.position.y < 125)
         {
             Vector3 buildingAnimationPosition;
@@ -108,7 +125,7 @@ public class TutorialScript : MonoBehaviour
     }
     IEnumerator DestroyAnimationStart()
     {
-        yield return new WaitForSeconds(20);
+        yield return new WaitForSeconds(tutorialDelaySeconds*8);
         while (destroy.transform.position.x < 135)
         {
             Vector3 destroyAnimationPosition;
@@ -131,7 +148,7 @@ public class TutorialScript : MonoBehaviour
     }
     IEnumerator TimerAnimationStart()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(tutorialDelaySeconds);
         while (timeImages.transform.position.y > 990)
         {
             Vector3 timeAnimationPosition;
@@ -153,7 +170,7 @@ public class TutorialScript : MonoBehaviour
     }
     IEnumerator ResetAnimationStart()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(tutorialDelaySeconds);
         while(reset.transform.position.x > 1830)
         {
             Vector3 resetAnimationPosition;
