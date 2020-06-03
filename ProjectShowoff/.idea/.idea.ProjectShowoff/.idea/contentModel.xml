@@ -144,6 +144,8 @@
           <e p="Characters" t="Include">
             <e p="Character.cs" t="Include" />
             <e p="CharacterSystem.cs" t="Include" />
+            <e p="Pokable.cs" t="Include" />
+            <e p="Poke.cs" t="Include" />
             <e p="Roads" t="Include">
               <e p="Road.cs" t="Include" />
             </e>
