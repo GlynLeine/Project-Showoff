@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    class WalkTarget
+    public class WalkTarget
     {
         public WalkTarget(Vector3 position, BuildingLocation location)
         {
@@ -28,7 +28,7 @@ public class Character : MonoBehaviour
     public float maxWanderTime;
 
     BuildingSystem buildingSystem;
-    WalkTarget walkTarget;
+    public WalkTarget walkTarget;
     bool travelling;
 
     void Start()
@@ -167,7 +167,7 @@ public class Character : MonoBehaviour
 
                 if (walkTarget.path == null || walkTarget.path.Count == 0)
                 {
-                    walkTarget = null;
+                    AbortPath();
                     return;
                 }
                 StartCoroutine(TravelToNewLocation());
