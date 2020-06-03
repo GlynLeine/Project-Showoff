@@ -32,7 +32,7 @@ public class BuildingSystem : MonoBehaviour
 
     private void Update()
     {
-        if (InputRedirect.pressed)
+        if (InputRedirect.tapped)
         {
             Ray ray = Camera.main.ScreenPointToRay(InputRedirect.inputPos);
             if (Physics.Raycast(ray, out RaycastHit hit))
@@ -125,22 +125,19 @@ public class BuildingSystem : MonoBehaviour
                     if (furterNeighbour != location && closedSet.Contains(furterNeighbour))
                     {
                         closedfurterNeighbours++;
-                        break;
                     }
 
-                if (closedfurterNeighbours > 0 && closedfurterNeighbours % 2 != 0)
+                if ((closedfurterNeighbours <= 0 || closedfurterNeighbours % 2 != 0) && unoccupied.Contains(neighbour))
                 {
-                    if (unoccupied.Contains(neighbour))
-                    {
-                        unoccupied.Remove(neighbour);
-                    }
+                    unoccupied.Remove(neighbour);
+                    unvisited.Add(neighbour);
                 }
-                else if (openSet.Contains(neighbour))
+
+                if (openSet.Contains(neighbour) && closedfurterNeighbours <= 0)
                 {
                     openSet.Remove(neighbour);
+                    unvisited.Add(neighbour);
                 }
-
-                unvisited.Add(neighbour);
             }
         }
 
@@ -166,8 +163,7 @@ public class BuildingSystem : MonoBehaviour
         else
             building.gameObject.SetActive(false);
 
-        characterSystem.DespawnCharacter();
-        characterSystem.AbortAllPaths();
+        characterSystem.DespawnCharacter(location);
     }
 
     public bool IsValidTravelLocation(BuildingLocation location)
@@ -235,8 +231,8 @@ public class BuildingSystem : MonoBehaviour
         if (!nodes.ContainsKey(start))
         {
             Debug.Log("dafuq?? " + start);
+            return null;
         }
-        else return null;
 
         AStarNode startNode = nodes[start];
         startNode.gScore = 0;

@@ -47,9 +47,47 @@ public class CharacterSystem : MonoBehaviour
             character.AbortPath();
     }
 
-    public void DespawnCharacter()
+    public void DespawnCharacter(BuildingLocation focus)
     {
-        Destroy(characters[characters.Count - 1].gameObject);
-        characters.RemoveAt(characters.Count - 1);
+        bool despawnedOne = false;
+        for (int i = 0; i < characters.Count; i++)
+        {
+            Character character = characters[i];
+            if (character.location == focus || (character.walkTarget != null && character.walkTarget.targetLocation == focus))
+            {
+                if (!despawnedOne)
+                {
+                    characters.Remove(character);
+                    Destroy(character.gameObject);
+                    i--;
+                    despawnedOne = true;
+                }
+                else
+                {
+                    character.AbortPath();
+                }
+            }
+            else if (character.walkTarget != null && character.walkTarget.path != null)
+            {
+                BuildingLocation[] path = new BuildingLocation[character.walkTarget.path.Count];
+                character.walkTarget.path.CopyTo(path, 0);
+
+                for (int j = 0; j < path.Length; j++)
+                {
+                    if (path[j] == focus)
+                    {
+                        character.AbortPath();
+                        break;
+                    }
+                }
+
+            }
+        }
+
+        if (!despawnedOne)
+        {
+            Destroy(characters[characters.Count - 1].gameObject);
+            characters.RemoveAt(characters.Count - 1);
+        }
     }
 }
