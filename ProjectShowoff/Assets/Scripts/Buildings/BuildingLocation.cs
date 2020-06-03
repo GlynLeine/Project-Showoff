@@ -74,6 +74,8 @@ public class BuildingLocation : MonoBehaviour
 
     [HideInInspector]
     public BuildingLocation parent;
+    [HideInInspector]
+    public Transform ocean;
 
     public LocationType locationType;
 
@@ -98,5 +100,17 @@ public class BuildingLocation : MonoBehaviour
         }
 
         transform.Rotate(Vector3.up, Random.Range(0f, 360f), Space.Self);
+    }
+
+    private void Update()
+    {
+        if (Vector3.Distance(transform.position, ocean.position) < ocean.localScale.x * 0.92f)
+        {
+            system.DestroyLocation(this);
+        }
+        else
+        {
+            system.RecoverLocation(this);
+        }
     }
 }

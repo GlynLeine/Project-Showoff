@@ -4,12 +4,22 @@ using UnityEngine;
 
 public class Building : MonoBehaviour
 {
+    [HideInInspector]
+    public BuildingType buildingType;
+
     public float environmentEffect;
     public float pollutionEffect;
     public float industryEffect;
     public float effectPeriod;
 
     private float timeBuffer = 0;
+
+    private void Start()
+    {
+        Collider collider = GetComponentInChildren<Collider>();
+        if (collider == null)
+            transform.GetChild(0).gameObject.AddComponent<SphereCollider>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -27,3 +37,5 @@ public class Building : MonoBehaviour
         }
     }
 }
+
+

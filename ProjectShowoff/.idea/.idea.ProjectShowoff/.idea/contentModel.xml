@@ -58,7 +58,8 @@
         <e p="Materials" t="Include">
           <e p="LineShader.shader" t="Include" />
           <e p="Shaders" t="Include">
-            <e p="SnowMasterTess.shader" t="Include" />
+            <e p="Master.shader" t="Include" />
+            <e p="MasterWebGL.shader" t="Include" />
             <e p="Tessellation" t="Include">
               <e p="GlynTessellation.hlsl" t="Include" />
             </e>
@@ -143,6 +144,8 @@
           <e p="Characters" t="Include">
             <e p="Character.cs" t="Include" />
             <e p="CharacterSystem.cs" t="Include" />
+            <e p="Pokable.cs" t="Include" />
+            <e p="Poke.cs" t="Include" />
             <e p="Roads" t="Include">
               <e p="Road.cs" t="Include" />
             </e>
@@ -158,12 +161,14 @@
           </e>
           <e p="Effects" t="Include">
             <e p="CloudEffect.cs" t="Include" />
+            <e p="PollutionSpheres.cs" t="Include" />
           </e>
           <e p="GameManager.cs" t="Include" />
           <e p="UI" t="Include">
             <e p="AnnouncerText.cs" t="Include" />
             <e p="PlanetReset.cs" t="Include" />
             <e p="SnowController.cs" t="Include" />
+            <e p="TutorialScript.cs" t="Include" />
             <e p="VoiceCasterTestScript.cs" t="Include" />
             <e p="YearTimer.cs" t="Include" />
             <e p="ZoomBarScript.cs" t="Include" />
