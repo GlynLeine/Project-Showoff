@@ -12,6 +12,8 @@ public class Character : MonoBehaviour
             targetLocation = location;
         }
 
+        public WalkTarget() { }
+
         public Vector3 position;
         public BuildingLocation targetLocation;
         public Queue<BuildingLocation> path = null;
@@ -33,6 +35,24 @@ public class Character : MonoBehaviour
     {
         buildingSystem = FindObjectOfType<BuildingSystem>();
         StartCoroutine(Wander());
+    }
+
+    public void AbortPath()
+    {
+        if (walkTarget == null)
+            walkTarget = new WalkTarget();
+
+        if (buildingSystem.IsValidTravelLocation(location))
+        {
+            walkTarget.targetLocation = location;
+        }
+        else
+        {
+            walkTarget.targetLocation = buildingSystem.GetValidTravelLocation();
+            location = walkTarget.targetLocation;
+        }
+        walkTarget.position = transform.position;
+        walkTarget.path = new Queue<BuildingLocation>();
     }
 
     IEnumerator Wander()
@@ -97,7 +117,7 @@ public class Character : MonoBehaviour
             float walkDirection = 1;
             float destination = road.spline.length;
 
-            if(road.start != location)
+            if (road.start != location)
             {
                 walkedDistance = road.spline.length;
                 walkDirection = -1;

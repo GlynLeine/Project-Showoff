@@ -12,10 +12,12 @@ public class CharacterSystem : MonoBehaviour
     public float maxWanderTime;
     public float travelChance;
 
+    private List<Character> characters = new List<Character>();
+
     public void SpawnCharacter(BuildingLocation location)
     {
         Transform parent = planet.Find("Characters");
-        if(parent == null)
+        if (parent == null)
         {
             parent = new GameObject("Characters").transform;
             parent.parent = planet;
@@ -36,5 +38,18 @@ public class CharacterSystem : MonoBehaviour
         character.planet = planet;
         character.minWanderTime = minWanderTime;
         character.maxWanderTime = maxWanderTime;
+        characters.Add(character);
+    }
+
+    public void AbortAllPaths()
+    {
+        foreach (Character character in characters)
+            character.AbortPath();
+    }
+
+    public void DespawnCharacter()
+    {
+        Destroy(characters[characters.Count - 1].gameObject);
+        characters.RemoveAt(characters.Count - 1);
     }
 }
