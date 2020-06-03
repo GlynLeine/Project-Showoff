@@ -17,6 +17,8 @@ public class BuildingSystem : MonoBehaviour
 {
     Dictionary<LocationType, List<BuildingLocation>> locations = new Dictionary<LocationType, List<BuildingLocation>>();
 
+    List<BuildingLocation> destroyed = new List<BuildingLocation>();
+
     List<BuildingLocation> unvisited = new List<BuildingLocation>();
     List<BuildingLocation> closedSet = new List<BuildingLocation>();
     List<BuildingLocation> openSet = new List<BuildingLocation>();
@@ -56,6 +58,18 @@ public class BuildingSystem : MonoBehaviour
         Init();
 
         int count = 0;
+        Gizmos.color = Color.black;
+        foreach (BuildingLocation location in destroyed)
+        {
+            count = destroyed.FindAll(delegate (BuildingLocation loc)
+            {
+                return loc == location;
+            }).Count;
+            if (count > 1)
+                Debug.Log("destroyed " + count);
+            Gizmos.DrawSphere(location.transform.position, 0.125f);
+        }
+
         Gizmos.color = Color.red;
         foreach (BuildingLocation location in closedSet)
         {
@@ -105,9 +119,58 @@ public class BuildingSystem : MonoBehaviour
         }
     }
 
+    public void RecoverLocation(BuildingLocation location)
+    {
+        if (destroyed.Contains(location))
+        {
+            destroyed.Remove(location);
+
+            int closedNeighbours = 0;
+            foreach (BuildingLocation neighbour in location.neighbours)
+                if (closedSet.Contains(neighbour))
+                    closedNeighbours++;
+
+            if (closedNeighbours > 0)
+            {
+                if (closedNeighbours % 2 == 0)
+                    unoccupied.Add(location);
+                else
+                    openSet.Add(location);
+            }
+            else
+                unvisited.Add(location);
+        }
+    }
+
+    public void DestroyLocation(BuildingLocation location)
+    {
+        if (destroyed.Contains(location))
+            return;
+
+        DestroyBuilding(location);
+
+        if (openSet.Contains(location))
+            openSet.Remove(location);
+
+        if (unoccupied.Contains(location))
+            unoccupied.Remove(location);
+
+        if (unvisited.Contains(location))
+            unvisited.Remove(location);
+
+        //if(closedSet.Contains(location))
+        //    closedSet.Remove(location);
+
+        destroyed.Add(location);
+    }
+
     public void DestroyBuilding(BuildingLocation location)
     {
         if (!closedSet.Contains(location))
+            return;
+
+        Building building = location.GetComponentInChildren<Building>();
+        if (building == null)
             return;
 
         closedSet.Remove(location);
@@ -154,8 +217,6 @@ public class BuildingSystem : MonoBehaviour
         for (int i = 0; i < location.roads.Count; i++)
             location.roads[i].gameObject.SetActive(false);
 
-
-        Building building = location.GetComponentInChildren<Building>();
         GameObject source = location.GetType().GetField(building.buildingType.ToString()).GetValue(location) as GameObject;
 
         if (source.scene.name == null || source.scene.rootCount == 0)
@@ -324,6 +385,8 @@ public class BuildingSystem : MonoBehaviour
             parent.localRotation = Quaternion.identity;
         }
 
+        location.ocean = planet.Find("Ocean");
+
         location.transform.parent = parent;
         location.transform.up = (location.transform.position - planet.position).normalized;
         locations[location.locationType].Add(location);
@@ -465,7 +528,9 @@ public class BuildingSystem : MonoBehaviour
             buildingObj.transform.parent = location.transform;
         }
 
-        buildingObj.GetComponent<Building>().buildingType = buildingData.buildingType;
+        Building building = buildingObj.GetComponent<Building>();
+        building.buildingType = buildingData.buildingType;
+
         if (!closedSet.Contains(location))
             closedSet.Add(location);
         foreach (BuildingLocation neighbour in location.neighbours)

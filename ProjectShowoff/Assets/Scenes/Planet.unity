@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -1171,6 +1172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -2864,6 +2866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -2918,7 +2921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d5f1a941e07f244b947d995a3f74012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugText: {fileID: 0}
+  debugText: {fileID: 851645462}
   masterMaterial: {fileID: 2100000, guid: 8e3d59db0fd9a5e4f8b97d1741d09735, type: 2}
   tesselationShader: {fileID: 4800000, guid: 8bbd937937ed0eb4096e664f947dcdb2, type: 3}
   webGLShader: {fileID: 4800000, guid: 590a6c94fdff3f049892dbc96888fe22, type: 3}
@@ -3888,6 +3891,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -4899,6 +4903,18 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &851645462 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8872052276245405129, guid: 9a1544356b636fe478f34b9a6bb8508d,
+    type: 3}
+  m_PrefabInstance: {fileID: 913900900}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &855938654
 GameObject:
   m_ObjectHideFlags: 0
@@ -5226,7 +5242,7 @@ PrefabInstance:
     - target: {fileID: 8872052276245405131, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8872052276362745037, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
@@ -6870,6 +6886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -7725,6 +7742,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -8090,6 +8108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -9028,6 +9047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -9443,6 +9463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -10117,6 +10138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -10684,6 +10706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -12428,6 +12451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -12981,6 +13005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -15306,6 +15331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -17527,7 +17553,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2103264821
 Transform:
@@ -17952,6 +17978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -17993,6 +18020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18028,6 +18056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 317366304}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18072,6 +18101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18110,6 +18140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18158,6 +18189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18201,6 +18233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18242,6 +18275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18283,6 +18317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
