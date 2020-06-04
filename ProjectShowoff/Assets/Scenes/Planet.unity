@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -256,6 +257,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.24650203
 --- !u!114 &66773709
@@ -562,6 +564,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.39324334
 --- !u!114 &91579323
@@ -705,6 +708,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.3654151
 --- !u!114 &98725338
@@ -894,6 +898,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.46547717
 --- !u!114 &172116570
@@ -1167,6 +1172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -1351,6 +1357,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.38985115
 --- !u!114 &334575102
@@ -1494,6 +1501,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.4104076
 --- !u!114 &341378646
@@ -1975,6 +1983,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.39820772
 --- !u!114 &434362423
@@ -2118,6 +2127,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.3552481
 --- !u!114 &436086522
@@ -2261,6 +2271,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.50585586
 --- !u!114 &461940191
@@ -2730,6 +2741,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.5054731
 --- !u!114 &524511290
@@ -2854,6 +2866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -2888,6 +2901,7 @@ GameObject:
   - component: {fileID: 576086916}
   - component: {fileID: 576086915}
   - component: {fileID: 576086918}
+  - component: {fileID: 576086919}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -2907,9 +2921,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d5f1a941e07f244b947d995a3f74012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugText: {fileID: 589534326}
+  debugText: {fileID: 851645462}
   masterMaterial: {fileID: 2100000, guid: 8e3d59db0fd9a5e4f8b97d1741d09735, type: 2}
+  tesselationShader: {fileID: 4800000, guid: 8bbd937937ed0eb4096e664f947dcdb2, type: 3}
+  webGLShader: {fileID: 4800000, guid: 590a6c94fdff3f049892dbc96888fe22, type: 3}
   ozoneMaterial: {fileID: 2100000, guid: d74ea6251c57eb847ba30d8000286066, type: 2}
+  cloudMaterial: {fileID: 2100000, guid: a50f08d243fd5ff45bd06e8b789d947c, type: 2}
+  ocean: {fileID: 2103264820}
 --- !u!114 &576086916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2957,6 +2975,18 @@ MonoBehaviour:
   minWanderTime: 1
   maxWanderTime: 2
   travelChance: 0.3
+--- !u!114 &576086919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576086914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6867cee439ad5bf4682e859ac84b84ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &589316657
 Mesh:
   m_ObjectHideFlags: 0
@@ -3120,18 +3150,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!114 &589534326 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8872052276245405129, guid: 9a1544356b636fe478f34b9a6bb8508d,
-    type: 3}
-  m_PrefabInstance: {fileID: 913900900}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &619738532
 GameObject:
   m_ObjectHideFlags: 0
@@ -3195,6 +3213,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.42183483
 --- !u!114 &619738535
@@ -3598,6 +3617,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.4462087
 --- !u!114 &692644000
@@ -3871,6 +3891,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -4139,6 +4160,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.65269834
 --- !u!114 &739235314
@@ -4445,6 +4467,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.59361255
 --- !u!114 &776181249
@@ -4636,6 +4659,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.3212645
 --- !u!114 &827238134
@@ -4879,6 +4903,18 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &851645462 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8872052276245405129, guid: 9a1544356b636fe478f34b9a6bb8508d,
+    type: 3}
+  m_PrefabInstance: {fileID: 913900900}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &855938654
 GameObject:
   m_ObjectHideFlags: 0
@@ -4942,6 +4978,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.41089082
 --- !u!114 &855938657
@@ -5192,10 +5229,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8872052276245405129, guid: 9a1544356b636fe478f34b9a6bb8508d,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8872052276245405129, guid: 9a1544356b636fe478f34b9a6bb8508d,
+        type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8872052276245405131, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8872052276362745037, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
@@ -5267,11 +5314,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8872052276810132835, guid: 9a1544356b636fe478f34b9a6bb8508d,
-        type: 3}
-      propertyPath: m_FillAmount
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8872052277008806075, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -5290,11 +5332,6 @@ PrefabInstance:
     - target: {fileID: 8872052277008806075, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8872052277124362404, guid: 9a1544356b636fe478f34b9a6bb8508d,
-        type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8872052277227303861, guid: 9a1544356b636fe478f34b9a6bb8508d,
@@ -5362,26 +5399,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8872052277298592506, guid: 9a1544356b636fe478f34b9a6bb8508d,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8872052277298592506, guid: 9a1544356b636fe478f34b9a6bb8508d,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8872052277298592506, guid: 9a1544356b636fe478f34b9a6bb8508d,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8872052277298592506, guid: 9a1544356b636fe478f34b9a6bb8508d,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8872052277353791947, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[2].m_Target
@@ -5425,7 +5442,7 @@ PrefabInstance:
     - target: {fileID: 8872052277425209312, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 8872052277425209312, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
@@ -5642,6 +5659,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.31513944
 --- !u!114 &924887028
@@ -5785,6 +5803,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.39113328
 --- !u!114 &931542500
@@ -5928,6 +5947,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.63148534
 --- !u!114 &932798644
@@ -6416,7 +6436,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 980212954}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -4}
+  m_LocalPosition: {x: 0, y: 0, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 107534205}
@@ -6578,6 +6598,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.63479036
 --- !u!114 &984832528
@@ -6865,6 +6886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -7288,6 +7310,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.38002402
 --- !u!114 &1092901538
@@ -7431,6 +7454,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.53439444
 --- !u!114 &1103853086
@@ -7718,6 +7742,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -7972,6 +7997,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.34252453
 --- !u!114 &1196715389
@@ -8082,6 +8108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -8187,6 +8214,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.3677542
 --- !u!114 &1208258308
@@ -8330,6 +8358,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.56042135
 --- !u!114 &1208910374
@@ -8473,6 +8502,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.34050238
 --- !u!114 &1230530161
@@ -8564,7 +8594,7 @@ GameObject:
   - component: {fileID: 1234615118}
   - component: {fileID: 1234615119}
   m_Layer: 10
-  m_Name: Clouds
+  m_Name: Effects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8582,7 +8612,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1234615119
 MonoBehaviour:
@@ -8731,6 +8761,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.27858073
 --- !u!114 &1257461277
@@ -9016,6 +9047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -9431,6 +9463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -10105,6 +10138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -10672,6 +10706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -10763,6 +10798,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.38432539
 --- !u!114 &1492433764
@@ -10906,6 +10942,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.437471
 --- !u!114 &1497441792
@@ -11212,6 +11249,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.3967967
 --- !u!114 &1512409819
@@ -11514,6 +11552,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.51716274
 --- !u!114 &1592727733
@@ -11820,6 +11859,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.51499826
 --- !u!114 &1610137024
@@ -12286,6 +12326,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.4844778
 --- !u!114 &1653130640
@@ -12410,6 +12451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -12963,6 +13005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -13234,6 +13277,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.45555326
 --- !u!114 &1734499967
@@ -13866,6 +13910,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.30406985
 --- !u!114 &1765320322
@@ -14085,99 +14130,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1928020327}
   inverted: 1
---- !u!1 &1779365047
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1779365051}
-  - component: {fileID: 1779365050}
-  - component: {fileID: 1779365049}
-  - component: {fileID: 1779365048}
-  m_Layer: 0
-  m_Name: Sphere (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!135 &1779365048
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1779365047}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1779365049
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1779365047}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
-  m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 6e27a4009bda6f443b01b34364aed7c4, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1779365050
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1779365047}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1779365051
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1779365047}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.638, y: 0.58, z: 0.43}
-  m_LocalScale: {x: 0.21528, y: 0.21528, z: 0.21528}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1786312703
 GameObject:
   m_ObjectHideFlags: 0
@@ -14563,6 +14515,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.50214154
 --- !u!114 &1828637220
@@ -14706,6 +14659,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.63235414
 --- !u!114 &1897702826
@@ -14849,6 +14803,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.2596829
 --- !u!114 &1908822810
@@ -15251,6 +15206,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.7527569
 --- !u!114 &1939346692
@@ -15375,6 +15331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -15466,6 +15423,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.6074572
 --- !u!114 &1957522336
@@ -15772,6 +15730,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.53762317
 --- !u!114 &1962048657
@@ -15915,6 +15874,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.31076157
 --- !u!114 &1969754427
@@ -16384,6 +16344,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.31575575
 --- !u!114 &1987457807
@@ -16690,6 +16651,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.45381242
 --- !u!114 &2004811709
@@ -16833,6 +16795,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.43375373
 --- !u!114 &2008069996
@@ -17185,6 +17148,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.48602855
 --- !u!114 &2043486051
@@ -17491,6 +17455,7 @@ MonoBehaviour:
   automaticTangents: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
   resolution: 5
   length: 0.33008385
 --- !u!114 &2090052429
@@ -17588,7 +17553,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2103264821
 Transform:
@@ -18013,6 +17978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18054,6 +18020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18089,6 +18056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 317366304}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18133,6 +18101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18171,6 +18140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18219,6 +18189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18262,6 +18233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18303,6 +18275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18344,6 +18317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  ocean: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18399,7 +18373,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &8696266422409824916
 GameObject:

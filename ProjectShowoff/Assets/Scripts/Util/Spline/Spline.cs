@@ -22,6 +22,14 @@ public class Spline : MonoBehaviour
 
     public bool gaussianNormalInterpolation;
     public bool sphericalNormalInterpolation = true;
+    public bool recalculateOnRunTime = false;
+
+    private bool runtime = false;
+
+    private void Awake()
+    {
+        runtime = true;
+    }
 
     [Range(0.01f, 10f)]
     public float resolution = 1;
@@ -34,7 +42,8 @@ public class Spline : MonoBehaviour
     {
         get
         {
-            vertexPath.UpdatePath(this);
+            if (!runtime || recalculateOnRunTime)
+                vertexPath.UpdatePath(this);
             length = vertexPath.length;
             return vertexPath;
         }

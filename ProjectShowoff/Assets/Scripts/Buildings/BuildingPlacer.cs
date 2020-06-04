@@ -14,7 +14,7 @@ public class BuildingPlacer : MonoBehaviour
 
     public float environmentEffect;
     public float pollutionEffect;
-    public float happinessEffect;
+    public float industryEffect;
 
     public float cooldown;
     public float cooldownEffect;

@@ -124,6 +124,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   environmentEffect: 0
-  pollutionEffect: 10
-  happinessEffect: 0
+  pollutionEffect: 5
+  industryEffect: 0
   effectPeriod: 5
