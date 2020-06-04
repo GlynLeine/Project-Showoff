@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
     static public void SetOzoneState(float ozoneState)
     {
         ozone = ozoneState;
-        ozoneMat.SetFloat("_Dissolve", ozoneState * 0.7f);
+        ozoneMat.SetFloat("_Dissolve", lerp(0.28f, 0.7f, ozoneState));
     }
 
     static public void SetCloudState(float cloudState)
@@ -106,6 +106,11 @@ public class GameManager : MonoBehaviour
             masterMat.shader = webGLShader;
         else
             masterMat.shader = tesselationShader;
+
+        SetCloudState(0.25f);
+        SetOzoneState(0f);
+        SetSeasonTime(0f);
+
 
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 1000;
@@ -165,7 +170,8 @@ public class GameManager : MonoBehaviour
             float uniformScale = 1f + waterLevel * 0.07f;
             ocean.transform.localScale = new Vector3(uniformScale, uniformScale, uniformScale);
 
-            SetOzoneState(smoothstep(100f, 2000f, pollution));
+            float linearScale = smoothstep(0, 2000f, pollution);
+            SetOzoneState(1f - Mathf.Pow(1f-linearScale, 2f));
 
             SetCloudState(smoothstep(-1000f, 3000f, pollution));
         }
@@ -201,6 +207,7 @@ public class GameManager : MonoBehaviour
             debugText.text += "\nbuildingsFlooded: " + buildingsFlooded;
             debugText.text += "\nmaxBuildings: " + maxBuildings;
             debugText.text += "\ncreaturesPoked: " + creaturesPoked;
+            debugText.text += "\nozone: " + ozone;
         }
     }
 }
