@@ -89,6 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3393511414651069234}
   - component: {fileID: 2224468085174190524}
+  - component: {fileID: 907515681154493278}
   m_Layer: 0
   m_Name: CoalMine
   m_TagString: Untagged
@@ -124,6 +125,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingType: 0
+<<<<<<< HEAD
+  environmentEffect: 0
+  pollutionEffect: 5
+  industryEffect: 0
+  effectPeriod: 5
+--- !u!114 &907515681154493278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5035160602664345561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Buildings/Coal Mine
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 1.8000001
+=======
   natureEffect: 0
   pollutionEffect: 4
   industryEffect: 0
@@ -131,3 +161,4 @@ MonoBehaviour:
   natureRemovalEffect: 0
   pollutionRemovalEffect: 0
   industryRemovalEffect: 0
+>>>>>>> 221140fb1db231c4e15cab061b6218e1d01db6b3

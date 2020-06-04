@@ -170,7 +170,6 @@
             <e p="PlanetReset.cs" t="Include" />
             <e p="SnowController.cs" t="Include" />
             <e p="TutorialScript.cs" t="Include" />
-            <e p="UIController.cs" t="Include" />
             <e p="VoiceCasterTestScript.cs" t="Include" />
             <e p="YearTimer.cs" t="Include" />
             <e p="ZoomBarScript.cs" t="Include" />

@@ -33,6 +33,7 @@ public class EndScreenCounter : MonoBehaviour
         foreach (Transform child in theirFill.transform) {
             Destroy(child.gameObject);
         }
+        //reflection
         if (counterType == typeChoice.C02)
         {
             yourValue = 2200;
@@ -45,7 +46,7 @@ public class EndScreenCounter : MonoBehaviour
         }
         else if (counterType == typeChoice.Ozone)
         {
-            yourValue = 7000;
+            yourValue = GameManager.ozone;
             averageValue = 4500;
         }
         else if (counterType == typeChoice.Plants)
