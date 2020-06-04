@@ -15,13 +15,11 @@ public class TutorialScript : MonoBehaviour
     public GameObject tutorialHand;
 
     private float animationSpeed = 1; //reset at end of every animation, makes animations move faster as they go on
-    private bool tutorialPlayed; //set to true once all animations have played
     //tutorial step bools so we can check where the player is
     private bool tutorialRotationStep;
     private bool tutorialZoomStep;
     private bool tutorialBuildStep;
     private bool gameHasStarted;
-    private bool tutorialTimerStep = false;
     private float tutorialDelaySeconds = 2.5f;
     public bool tutorialSkip;
 
@@ -29,6 +27,7 @@ public class TutorialScript : MonoBehaviour
     {
         StartCoroutine(NewsCasterAnimationStart());
         StartCoroutine(HandAnimation());
+        GameManager.paused = true;
         if (tutorialSkip)
         {
             //basically sets the delay of the animations to 0 nd just throws em all in at the start
@@ -36,7 +35,6 @@ public class TutorialScript : MonoBehaviour
             tutorialBuildStep = true;
             tutorialZoomStep = true;
             tutorialRotationStep = true;
-            tutorialTimerStep = true;
             StartCoroutine(BuildingAnimationStart());
             StartCoroutine(TimerAnimationStart());
             StartCoroutine(ResetAnimationStart());
@@ -55,11 +53,6 @@ public class TutorialScript : MonoBehaviour
                 tutorialRotationStep = true;
                 StartCoroutine(SliderAnimationStart());
             }
-        }
-
-        if (!tutorialTimerStep)
-        {
-            GameManager.time = 0f;
         }
     }
 
@@ -142,7 +135,6 @@ public class TutorialScript : MonoBehaviour
                 animationSpeed = 1;
                 destroyAnimationPosition.x = 135;
                 destroy.transform.position = destroyAnimationPosition;
-                tutorialPlayed = true;
             }
             else
             {
@@ -163,7 +155,7 @@ public class TutorialScript : MonoBehaviour
             if (timeAnimationPosition.y <= 990)
             {
                 animationSpeed = 1;
-                tutorialTimerStep = true;
+                GameManager.paused = false;
                 timeAnimationPosition.y = 990;
                 timeImages.transform.position = timeAnimationPosition;
             }
