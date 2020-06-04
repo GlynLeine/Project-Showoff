@@ -6,9 +6,29 @@ using UnityEngine.Rendering;
 
 public class GameManager : MonoBehaviour
 {
-    public static float environment;
+    public static float nature;
     public static float pollution;
     public static float industry;
+
+    public static int buildingsPlaced;
+    public static int buildingsDestroyed;
+    public static float waterLevel;
+    public static int continentsDiscovered;
+    public static bool airPlanes;
+    public static bool spaceShips;
+    public static bool satellites;
+    public static float maxPollution;
+    public static float minPollution;
+    public static float deltaPollution;
+    public static int natureBuildings;
+    public static int ruralBuildings;
+    public static int coastalBuildings;
+    public static int buildingsFlooded;
+    public static int maxBuildings;
+    public static int creaturesPoked;
+
+    public static float coolDown;
+
     public Text debugText;
     public Material masterMaterial;
     static Material masterMat;
@@ -28,9 +48,12 @@ public class GameManager : MonoBehaviour
     public static float time;
     public static bool paused;
 
+    public bool skipCooldown;
+
     public GameObject ocean;
 
     private float t;
+    private float prevPollut = 0;
 
     static public void SetSeasonTime(float seasonTime)
     {
@@ -41,18 +64,18 @@ public class GameManager : MonoBehaviour
     static public void SetOzoneState(float ozoneState)
     {
         ozone = ozoneState;
-        ozoneMat.SetFloat("_Dissolve", ozoneState);
+        ozoneMat.SetFloat("_Dissolve", ozoneState * 0.7f);
     }
 
     static public void SetCloudState(float cloudState)
     {
         cloudiness = cloudState;
-        cloudMat.SetFloat("_Cloudiness", cloudState);
+        cloudMat.SetFloat("_Cloudiness", cloudState * 0.6f);
     }
 
-    static public void AddState(float environmentEffect, float pollutionEffect, float industryEffect)
+    static public void AddState(float natureEffect, float pollutionEffect, float industryEffect)
     {
-        environment += environmentEffect;
+        nature += natureEffect;
         pollution += pollutionEffect;
         industry += industryEffect;
     }
@@ -86,9 +109,34 @@ public class GameManager : MonoBehaviour
 
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 1000;
-        environment = 50f;
+        nature = 50f;
         pollution = 0f;
         industry = 0f;
+
+        buildingsPlaced = 0;
+        buildingsDestroyed = 0;
+        waterLevel = 0f;
+        continentsDiscovered = 0;
+        airPlanes = false;
+        spaceShips = false;
+        satellites = false;
+        maxPollution = 0f;
+        minPollution = 0f;
+        deltaPollution = 0f;
+        natureBuildings = 0;
+        ruralBuildings = 0;
+        coastalBuildings = 0;
+        buildingsFlooded = 0;
+        maxBuildings = 0;
+        creaturesPoked = 0;
+        if (skipCooldown)
+            coolDown = 0f;
+        else
+            coolDown = 6f;
+
+        t = 0;
+        prevPollut = 0;
+
         season = 0f;
         ozone = 0f;
         time = 0f;
@@ -102,14 +150,24 @@ public class GameManager : MonoBehaviour
             t += Time.deltaTime;
             time = t;
 
-            pollution -= (environment / 50f) * (Time.deltaTime / 5f);
+            if (pollution > maxPollution)
+                maxPollution = pollution;
 
-            float uniformScale = 1f + smoothstep(200f, 3800f, pollution) * 0.07f;
+            pollution = Mathf.Clamp(pollution - (nature / 50f) * (Time.deltaTime / 5f) * 4f, 0, float.MaxValue);
+
+            if (pollution < minPollution)
+                minPollution = pollution;
+
+            deltaPollution = pollution - prevPollut;
+            prevPollut = pollution;
+
+            waterLevel = smoothstep(200f, 3800f, pollution);
+            float uniformScale = 1f + waterLevel * 0.07f;
             ocean.transform.localScale = new Vector3(uniformScale, uniformScale, uniformScale);
 
-            SetOzoneState(smoothstep(100f, 2000f, pollution) * 0.7f);
+            SetOzoneState(smoothstep(100f, 2000f, pollution));
 
-            SetCloudState(smoothstep(-1000f, 3000f, pollution) * 0.6f);
+            SetCloudState(smoothstep(-1000f, 3000f, pollution));
         }
 
         if (debugText != null)
@@ -119,20 +177,30 @@ public class GameManager : MonoBehaviour
             //float fall = smoothstep(1f / 3f, 2f / 3f, season) * smoothstep(1f, 2f / 3f, season);
             //float winter = smoothstep(2f / 3f, 1f, season);
 
-            //debugText.text = "environment: " + environment;
-            debugText.text = "\npollution: " + pollution;
-            //debugText.text += "\nindustry: " + industry;
+            debugText.text = "nature: " + nature;
+            debugText.text += "\npollution: " + pollution;
+            debugText.text += "\nindustry: " + industry;
             debugText.text += "\nfps: " + 1f / Time.deltaTime;
             debugText.text += "\nframetime: " + Time.deltaTime;
             debugText.text += "\ngraphics device: " + SystemInfo.graphicsDeviceType.ToString();
             debugText.text += "\nshader: " + masterMat.shader.name;
-            //debugText.text += "\ntime: " + time;
-            //debugText.text += "\nspring: " + spring;
-            //debugText.text += "\nsummer: " + summer;
-            //debugText.text += "\nfall: " + fall;
-            //debugText.text += "\nwinter: " + winter;
-            //debugText.text += "\nseason: " + (spring + summer > fall + winter ? (spring > summer ? "spring" : "summer") : (fall > winter ? "fall" : "winter")) + " " + season;
-            //debugText.text += "\nozone: " + ozone;
+            debugText.text += "\ntime: " + time;
+            debugText.text += "\nbuildingsPlaced: " + buildingsPlaced;
+            debugText.text += "\nbuildingsDestroyed: " + buildingsDestroyed;
+            debugText.text += "\nwaterLevel: " + waterLevel;
+            debugText.text += "\ncontinentsDiscovered " + continentsDiscovered;
+            debugText.text += "\nairPlanes: " + airPlanes;
+            debugText.text += "\nspaceShips: " + spaceShips;
+            debugText.text += "\nsatellites: " + satellites;
+            debugText.text += "\nmaxPollution: " + maxPollution;
+            debugText.text += "\nminPollution: " + minPollution;
+            debugText.text += "\ndeltaPollution: " + deltaPollution;
+            debugText.text += "\nnatureBuildings: " + natureBuildings;
+            debugText.text += "\nruralBuildings: " + ruralBuildings;
+            debugText.text += "\ncoastalBuildings: " + coastalBuildings;
+            debugText.text += "\nbuildingsFlooded: " + buildingsFlooded;
+            debugText.text += "\nmaxBuildings: " + maxBuildings;
+            debugText.text += "\ncreaturesPoked: " + creaturesPoked;
         }
     }
 }
