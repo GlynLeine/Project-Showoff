@@ -32,9 +32,16 @@ public class BuildingSystem : MonoBehaviour
     public delegate void OnBuildingPlaced(BuildingLocation location, BuildingPlacer buildingData);
     public static OnBuildingPlaced onBuildingPlaced;
 
+    bool destroy = false;
+
+    public void ToggleDestroyMode()
+    {
+        destroy = !destroy;
+    }
+
     private void Update()
     {
-        if (InputRedirect.tapped)
+        if (destroy && InputRedirect.tapped)
         {
             Ray ray = Camera.main.ScreenPointToRay(InputRedirect.inputPos);
             if (Physics.Raycast(ray, out RaycastHit hit))
