@@ -711,10 +711,9 @@ MonoBehaviour:
   locationType: 0
   buildingType: 6
   button: {fileID: 8872052276362745035}
-  environmentEffect: 25
+  natureEffect: 25
   pollutionEffect: 0
   industryEffect: 0
-  cooldown: 1
   cooldownEffect: 0
 --- !u!1 &8872052276453182126
 GameObject:
@@ -1188,10 +1187,9 @@ MonoBehaviour:
   locationType: 0
   buildingType: 1
   button: {fileID: 8872052276772569453}
-  environmentEffect: 0
+  natureEffect: 0
   pollutionEffect: 0
-  industryEffect: 0
-  cooldown: 1
+  industryEffect: 1
   cooldownEffect: 0
 --- !u!1 &8872052276810132837
 GameObject:
@@ -2154,10 +2152,9 @@ MonoBehaviour:
   locationType: 0
   buildingType: 2
   button: {fileID: 8872052277241891094}
-  environmentEffect: 0
+  natureEffect: 0
   pollutionEffect: 4
-  industryEffect: 0
-  cooldown: 1
+  industryEffect: 1
   cooldownEffect: -0.05
 --- !u!1 &8872052277256918478
 GameObject:
@@ -3328,10 +3325,9 @@ MonoBehaviour:
   locationType: 0
   buildingType: 0
   button: {fileID: 8872052277642821844}
-  environmentEffect: 0
+  natureEffect: 0
   pollutionEffect: 0
-  industryEffect: 0
-  cooldown: 1
+  industryEffect: 1
   cooldownEffect: 0
 --- !u!1 &8872052277644214249
 GameObject:
@@ -3489,10 +3485,9 @@ MonoBehaviour:
   locationType: 1
   buildingType: 3
   button: {fileID: 8872052277644214246}
-  environmentEffect: 0
+  natureEffect: 0
   pollutionEffect: 4
-  industryEffect: 0
-  cooldown: 1
+  industryEffect: 1
   cooldownEffect: -0.05
 --- !u!1 &8872052277739761911
 GameObject:
@@ -4065,10 +4060,9 @@ MonoBehaviour:
   locationType: 1
   buildingType: 5
   button: {fileID: 8872052277895917246}
-  environmentEffect: 0
+  natureEffect: 0
   pollutionEffect: 0
-  industryEffect: 0
-  cooldown: 1
+  industryEffect: 1
   cooldownEffect: -0.05
 --- !u!1 &8872052277909840468
 GameObject:
@@ -4226,10 +4220,9 @@ MonoBehaviour:
   locationType: 0
   buildingType: 4
   button: {fileID: 8872052277909840465}
-  environmentEffect: 0
+  natureEffect: 0
   pollutionEffect: 0
-  industryEffect: 0
-  cooldown: 1
+  industryEffect: 1
   cooldownEffect: -0.05
 --- !u!1 &8872052277918405795
 GameObject:

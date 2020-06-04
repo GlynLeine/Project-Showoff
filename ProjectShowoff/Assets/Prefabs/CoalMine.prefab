@@ -123,7 +123,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cba9861708699c49b30441e82031535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  environmentEffect: 0
-  pollutionEffect: 5
+  buildingType: 0
+  natureEffect: 0
+  pollutionEffect: 4
   industryEffect: 0
   effectPeriod: 5
+  natureRemovalEffect: 0
+  pollutionRemovalEffect: 0
+  industryRemovalEffect: 0
