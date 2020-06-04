@@ -125,11 +125,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingType: 0
-<<<<<<< HEAD
-  environmentEffect: 0
-  pollutionEffect: 5
+  natureEffect: 0
+  pollutionEffect: 4
   industryEffect: 0
   effectPeriod: 5
+  natureRemovalEffect: 0
+  pollutionRemovalEffect: 0
+  industryRemovalEffect: 0
 --- !u!114 &907515681154493278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,12 +155,3 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 0
   OverrideMaxDistance: 1.8000001
-=======
-  natureEffect: 0
-  pollutionEffect: 4
-  industryEffect: 0
-  effectPeriod: 5
-  natureRemovalEffect: 0
-  pollutionRemovalEffect: 0
-  industryRemovalEffect: 0
->>>>>>> 221140fb1db231c4e15cab061b6218e1d01db6b3
