@@ -68,6 +68,8 @@
     <Compile Include="Assets\Scripts\Buildings\BuildingSystem.cs" />
     <Compile Include="Assets\Scripts\Characters\Character.cs" />
     <Compile Include="Assets\Scripts\Characters\CharacterSystem.cs" />
+    <Compile Include="Assets\Scripts\Characters\Pokable.cs" />
+    <Compile Include="Assets\Scripts\Characters\Poke.cs" />
     <Compile Include="Assets\Scripts\Characters\Roads\Road.cs" />
     <Compile Include="Assets\Scripts\Editors\BuildingLocationEditor.cs" />
     <Compile Include="Assets\Scripts\Editors\BuildingLocationTool.cs" />
@@ -80,8 +82,10 @@
     <Compile Include="Assets\Scripts\Effects\PollutionSpheres.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\UI\AnnouncerText.cs" />
+    <Compile Include="Assets\Scripts\UI\EndScreenCounter.cs" />
     <Compile Include="Assets\Scripts\UI\PlanetReset.cs" />
     <Compile Include="Assets\Scripts\UI\SnowController.cs" />
+    <Compile Include="Assets\Scripts\UI\TutorialScript.cs" />
     <Compile Include="Assets\Scripts\UI\VoiceCasterTestScript.cs" />
     <Compile Include="Assets\Scripts\UI\YearTimer.cs" />
     <Compile Include="Assets\Scripts\UI\ZoomBarScript.cs" />
