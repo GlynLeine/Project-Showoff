@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4965188002266555029
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4965188002266555030}
+  - component: {fileID: 4965188002266555031}
+  m_Layer: 0
+  m_Name: Coast 11
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4965188002266555030
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4965188002266555029}
+  m_LocalRotation: {x: -0.1941931, y: 0.06081924, z: -0.8486399, w: 0.4882627}
+  m_LocalPosition: {x: 0.04103768, y: -0.61607915, z: -0.63391477}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -4.9570003, y: 22.983002, z: -121.18101}
+--- !u!114 &4965188002266555031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4965188002266555029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc250a4012bc53d42b8fecd2d8fa1073, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 0}
+  ocean: {fileID: 0}
+  locationType: 1
+  Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
+  TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
+    type: 3}
+  CoalMine: {fileID: 5035160602664345561, guid: 707e6ced6c598e44a82e3458ef8d6360,
+    type: 3}
+  OilRig: {fileID: 4877105559853464855, guid: 691d34f4aa10bf14baaabbd1dee93751, type: 3}
+  SolarFarm: {fileID: 950372485321456134, guid: 523254cc2a8e770449dc0c4e12fbde3d,
+    type: 3}
+  Harbor: {fileID: 7100183442372346360, guid: 3e88dba4103847941b7d0b402f29fdec, type: 3}
+  NatureReserve: {fileID: 1461026915376175517, guid: 5e59fbb585d9d5f4497fff92692c4942,
+    type: 3}
+  neighbours: []
+  roads:
+    keys: []
+    values: []
