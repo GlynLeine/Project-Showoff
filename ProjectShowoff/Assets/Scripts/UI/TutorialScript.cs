@@ -15,7 +15,6 @@ public class TutorialScript : MonoBehaviour
     public GameObject tutorialHand;
 
     private float animationSpeed = 1; //reset at end of every animation, makes animations move faster as they go on
-    private bool tutorialPlayed; //set to true once all animations have played
     //tutorial step bools so we can check where the player is
     private bool tutorialRotationStep;
     private bool tutorialZoomStep;
@@ -28,6 +27,7 @@ public class TutorialScript : MonoBehaviour
     {
         StartCoroutine(NewsCasterAnimationStart());
         StartCoroutine(HandAnimation());
+        GameManager.paused = true;
         if (tutorialSkip)
         {
             //basically sets the delay of the animations to 0 nd just throws em all in at the start
@@ -135,7 +135,6 @@ public class TutorialScript : MonoBehaviour
                 animationSpeed = 1;
                 destroyAnimationPosition.x = 135;
                 destroy.transform.position = destroyAnimationPosition;
-                tutorialPlayed = true;
             }
             else
             {
@@ -156,6 +155,7 @@ public class TutorialScript : MonoBehaviour
             if (timeAnimationPosition.y <= 990)
             {
                 animationSpeed = 1;
+                GameManager.paused = false;
                 timeAnimationPosition.y = 990;
                 timeImages.transform.position = timeAnimationPosition;
             }
