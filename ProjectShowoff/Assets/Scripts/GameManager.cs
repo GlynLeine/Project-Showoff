@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public static float ozone;
     public static float cloudiness;
     public static float time;
+    public static bool paused;
 
     public GameObject ocean;
 
@@ -96,17 +97,20 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        t += Time.deltaTime;
-        time = t;
+        if (!paused)
+        {
+            t += Time.deltaTime;
+            time = t;
 
-        pollution -= (environment / 50f) * (Time.deltaTime / 5f);
+            pollution -= (environment / 50f) * (Time.deltaTime / 5f);
 
-        float uniformScale = 1f + smoothstep(200f, 3800f, pollution) * 0.07f;
-        ocean.transform.localScale = new Vector3(uniformScale, uniformScale, uniformScale);
+            float uniformScale = 1f + smoothstep(200f, 3800f, pollution) * 0.07f;
+            ocean.transform.localScale = new Vector3(uniformScale, uniformScale, uniformScale);
 
-        SetOzoneState(smoothstep(100f, 2000f, pollution) * 0.7f);
+            SetOzoneState(smoothstep(100f, 2000f, pollution) * 0.7f);
 
-        SetCloudState(smoothstep(-1000f, 3000f, pollution) * 0.6f);
+            SetCloudState(smoothstep(-1000f, 3000f, pollution) * 0.6f);
+        }
 
         if (debugText != null)
         {
