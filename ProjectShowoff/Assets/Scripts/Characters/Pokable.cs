@@ -19,6 +19,7 @@ public class Pokable : MonoBehaviour
     }
     public void poke()
     {
+        GameManager.creaturesPoked++;
         //fmod code needed
         pokePlay = true;
         StartCoroutine(reset());

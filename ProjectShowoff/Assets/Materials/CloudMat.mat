@@ -63,7 +63,11 @@ Material:
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
+<<<<<<< HEAD
     - _Cloudiness: 0.14917557
+=======
+    - _Cloudiness: 0.30669373
+>>>>>>> 221140fb1db231c4e15cab061b6218e1d01db6b3
     - _Cull: 2
     - _Cutoff: 0.5
     - _DstBlend: 0

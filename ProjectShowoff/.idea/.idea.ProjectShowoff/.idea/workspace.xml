@@ -41,14 +41,14 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/AnnouncerText.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/VoiceCasterTestScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/SnowController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/YearTimer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Util/Zoom.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingPlacer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/PlanetReset.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Util/InputRedirect.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Characters/Pokable.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/EndScreenCounter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/YearTimer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/TutorialScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/EndScreenCounter.cs" />
       </list>
     </option>
   </component>
@@ -101,6 +101,10 @@
       <workItem from="1590669307012" duration="32000" />
       <workItem from="1591086139575" duration="16341000" />
       <workItem from="1591168484262" duration="13669000" />
+      <workItem from="1591258510146" duration="455000" />
+      <workItem from="1591258979237" duration="961000" />
+      <workItem from="1591260122711" duration="657000" />
+      <workItem from="1591262023665" duration="5669000" />
     </task>
     <servers />
   </component>

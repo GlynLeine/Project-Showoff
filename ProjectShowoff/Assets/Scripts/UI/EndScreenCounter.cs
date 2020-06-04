@@ -5,68 +5,93 @@ using UnityEngine;
 
 public class EndScreenCounter : MonoBehaviour
 {
-    //c02 objects
-    public GameObject filledC02Prefab;
-    public GameObject halfC02Prefab;
-    public GameObject yourC02;
-    public GameObject theirC02;
-    //
-    public GameObject filledWaterPrefab;
-    public GameObject halfWaterPrefab;
-    public GameObject yourWater;
-    public GameObject theirWater;
+    // objects
+    public GameObject filledPrefab;
+    public GameObject halfPrefab;
+    public GameObject yourFill;
+    public GameObject theirFill;
 
-    private float waterLevel = 3000;
-    private float averageWaterLevel = 3200;
-    private float pollution = 1800;
-    private float averagePollution = 999;
-
+    public enum typeChoice
+    {
+        C02,
+        WaterLevel,
+        Ozone,
+        Plants,
+        BuildingsDestroyed,
+        BuildingsPlaced
+    };
+    public int maxAmount;
+    private int tickAmount;
+    private float yourValue = 2000;
+    private float averageValue = 2000;
+    public typeChoice counterType;
     private void OnEnable()
     {
-        for (int i = 0; i < pollution; i+=500)
-        {
-            if (pollution - i >= 500)
-            {
-                Instantiate(filledC02Prefab, yourC02.transform);
-            }
-            else if (pollution - i >= 250)
-            {
-                Instantiate(halfC02Prefab, yourC02.transform);
-            }
-            
+        foreach (Transform child in yourFill.transform) {
+            Destroy(child.gameObject);
         }
-        for (int i = 0; i < averagePollution; i+=500)
+        foreach (Transform child in theirFill.transform) {
+            Destroy(child.gameObject);
+        }
+        //reflection
+        if (counterType == typeChoice.C02)
         {
-            if (averagePollution - i >= 500)
+            yourValue = 2200;
+            averageValue = 1500;
+        }
+        else if (counterType == typeChoice.WaterLevel)
+        {
+            yourValue = 3100;
+            averageValue = 900;
+        }
+        else if (counterType == typeChoice.Ozone)
+        {
+            yourValue = GameManager.ozone;
+            averageValue = 4500;
+        }
+        else if (counterType == typeChoice.Plants)
+        {
+            yourValue = 150;
+            averageValue = 225;
+        }
+        else if (counterType == typeChoice.BuildingsDestroyed)
+        {
+            yourValue = 5;
+            averageValue = 7;
+        }
+        else if (counterType == typeChoice.BuildingsPlaced)
+        {
+            yourValue = 50;
+            averageValue = 53;
+        }
+        
+        tickAmount = maxAmount / 5;
+        for (int i = 0; i < yourValue; i+=tickAmount)
+        {
+            if (i < maxAmount)
             {
-                Instantiate(filledC02Prefab, theirC02.transform);
-            }
-            else if (averagePollution - i >= 250)
-            {
-                Instantiate(halfC02Prefab, theirC02.transform);
+                if (yourValue - i >= tickAmount)
+                {
+                    Instantiate(filledPrefab, yourFill.transform);
+                }
+                else if (yourValue - i >= tickAmount/2)
+                {
+                    Instantiate(halfPrefab, yourFill.transform);
+                }
             }
         }
-        for (int i = 0; i < waterLevel; i+=800)
+        for (int i = 0; i < averageValue; i+=tickAmount)
         {
-            if (waterLevel - i >= 800)
+            if (i <= maxAmount)
             {
-                Instantiate(filledWaterPrefab, yourWater.transform);
-            }
-            else if (waterLevel - i >= 400)
-            {
-                Instantiate(halfWaterPrefab, yourWater.transform);
-            }
-            
-        }
-        for (int i = 0; i < averageWaterLevel; i+=800)
-        {
-            if (averageWaterLevel - i >= 800)
-            {
-                Instantiate(filledWaterPrefab, theirWater.transform);
-            }
-            else if (averageWaterLevel - i >= 400)
-            {
-                Instantiate(halfWaterPrefab, theirWater.transform);
+                if (averageValue - i >= tickAmount)
+                {
+                    Instantiate(filledPrefab, theirFill.transform);
+                }
+                else if (averageValue - i >= tickAmount/2)
+                {
+                    Instantiate(halfPrefab, theirFill.transform);
+                }   
             }
         }
     }

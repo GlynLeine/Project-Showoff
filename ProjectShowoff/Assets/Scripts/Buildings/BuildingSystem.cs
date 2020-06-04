@@ -32,11 +32,12 @@ public class BuildingSystem : MonoBehaviour
     public delegate void OnBuildingPlaced(BuildingLocation location, BuildingPlacer buildingData);
     public static OnBuildingPlaced onBuildingPlaced;
 
+    public UnityEngine.UI.Toggle DestructionToggle;
     bool destroy = false;
 
     public void ToggleDestroyMode()
     {
-        destroy = !destroy;
+        destroy = DestructionToggle.isOn;
     }
 
     private void Update()
@@ -54,6 +55,8 @@ public class BuildingSystem : MonoBehaviour
                         if (location != null)
                         {
                             DestroyBuilding(location);
+                            DestructionToggle.isOn = false;
+                            destroy = false;
                         }
                     }
             }
@@ -154,7 +157,8 @@ public class BuildingSystem : MonoBehaviour
         if (destroyed.Contains(location))
             return;
 
-        DestroyBuilding(location);
+        if (DestroyBuilding(location))
+            GameManager.buildingsFlooded++;
 
         if (openSet.Contains(location))
             openSet.Remove(location);
@@ -171,14 +175,16 @@ public class BuildingSystem : MonoBehaviour
         destroyed.Add(location);
     }
 
-    public void DestroyBuilding(BuildingLocation location)
+    public bool DestroyBuilding(BuildingLocation location)
     {
         if (!closedSet.Contains(location))
-            return;
+            return false;
+
+        GameManager.buildingsDestroyed++;
 
         Building building = location.GetComponentInChildren<Building>();
         if (building == null)
-            return;
+            return false;
 
         closedSet.Remove(location);
 
@@ -232,6 +238,10 @@ public class BuildingSystem : MonoBehaviour
             building.gameObject.SetActive(false);
 
         characterSystem.DespawnCharacter(location);
+
+        GameManager.AddState(-building.natureRemovalEffect, -building.pollutionRemovalEffect, -building.industryRemovalEffect);
+
+        return true;
     }
 
     public bool IsValidTravelLocation(BuildingLocation location)
@@ -413,6 +423,9 @@ public class BuildingSystem : MonoBehaviour
 
             if (closedSet.Count == 0)
             {
+                if(GameManager.buildingsPlaced == 0)
+                    GameManager.continentsDiscovered++;
+
                 PlaceRandomBuilding(buildingData);
                 return true;
             }
@@ -477,6 +490,12 @@ public class BuildingSystem : MonoBehaviour
         }
         else
         {
+            if (PlaceRandomBuilding(buildingData))
+            {
+                GameManager.continentsDiscovered++;
+                return true;
+            }
+
             Debug.Log("No more of this type left");
             return false;
         }
@@ -538,6 +557,10 @@ public class BuildingSystem : MonoBehaviour
         Building building = buildingObj.GetComponent<Building>();
         building.buildingType = buildingData.buildingType;
 
+        building.natureRemovalEffect = buildingData.natureEffect;
+        building.pollutionRemovalEffect = buildingData.pollutionEffect;
+        building.industryRemovalEffect = buildingData.industryEffect;
+
         if (!closedSet.Contains(location))
             closedSet.Add(location);
         foreach (BuildingLocation neighbour in location.neighbours)
@@ -548,27 +571,50 @@ public class BuildingSystem : MonoBehaviour
                 unvisited.Remove(neighbour);
             }
 
-        GameManager.AddState(buildingData.environmentEffect, buildingData.pollutionEffect, buildingData.industryEffect);
+        GameManager.AddState(buildingData.natureEffect, buildingData.pollutionEffect, buildingData.industryEffect);
         characterSystem.SpawnCharacter(location);
+
+        if (buildingData.natureEffect > 0)
+            GameManager.natureBuildings++;
+
+        if (location.locationType == LocationType.Rural)
+            GameManager.ruralBuildings++;
+        else
+            GameManager.coastalBuildings++;
+
+        GameManager.buildingsPlaced++;
+
+        int buildingCount = GameManager.buildingsPlaced - GameManager.buildingsDestroyed;
+        if (buildingCount > GameManager.maxBuildings)
+            GameManager.maxBuildings = buildingCount;
 
         onBuildingPlaced?.Invoke(location, buildingData);
     }
 
-    private void PlaceRandomBuilding(BuildingPlacer buildingData)
+    private bool PlaceRandomBuilding(BuildingPlacer buildingData)
     {
         List<BuildingLocation> locationsOfType = locations[buildingData.locationType];
+        for (int i = 0; i < locationsOfType.Count; i++)
+            if (closedSet.Contains(locationsOfType[i]))
+            {
+                locationsOfType.RemoveAt(i);
+                i--;
+            }
+
         if (locationsOfType.Count > 0)
         {
             BuildingLocation location = locationsOfType[Random.Range(0, locationsOfType.Count)];
 
+
+
             Debug.Log("Got random location");
 
             ConstructBuilding(location, buildingData);
+            return true;
         }
-        else
-        {
-            Debug.Log("no space");
-        }
+
+        Debug.Log("no space");
+        return false;
     }
 
 }
