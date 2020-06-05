@@ -46,9 +46,12 @@ public class GameManager : MonoBehaviour
     public static float ozone;
     public static float cloudiness;
     public static float time;
+    public static float deltaTime;
     public static bool paused;
 
     public bool skipCooldown;
+    [Range(1f, 10f)]
+    public float timeScale = 1f;
 
     public GameObject ocean;
 
@@ -150,15 +153,17 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        deltaTime = 0;
         if (!paused)
         {
-            t += Time.deltaTime;
+            deltaTime = Time.deltaTime * timeScale;
+            t += deltaTime;
             time = t;
 
             if (pollution > maxPollution)
                 maxPollution = pollution;
 
-            pollution = Mathf.Clamp(pollution - (nature / 50f) * (Time.deltaTime / 5f) * 4f, 0, float.MaxValue);
+            pollution = Mathf.Clamp(pollution - (nature / 50f) * (deltaTime / 5f) * 4f, 0, float.MaxValue);
 
             if (pollution < minPollution)
                 minPollution = pollution;
