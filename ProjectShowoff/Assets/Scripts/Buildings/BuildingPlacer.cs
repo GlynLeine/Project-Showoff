@@ -45,7 +45,7 @@ public class BuildingPlacer : MonoBehaviour
         yield return null;
         while (locked)
         {
-            timeBuffer += Time.deltaTime;
+            timeBuffer += GameManager.deltaTime;
             if (timeBuffer >= GameManager.coolDown)
             {
                 timeBuffer -= GameManager.coolDown;
