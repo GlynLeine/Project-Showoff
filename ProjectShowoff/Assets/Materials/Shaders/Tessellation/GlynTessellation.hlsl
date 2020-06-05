@@ -38,7 +38,6 @@ struct TessellationFactors
 Varyings TessellationVertexProgram(Varyings input, OutputPatch<Varyings, 3> patch, float3 barycentricCoordinates)
 {
     float3 positionWS = input.positionWSAndFogFactor.xyz;
-    half3 viewDirectionWS = SafeNormalize(GetCameraPositionWS() - positionWS);
 
     float3 toThis = SafeNormalize(positionWS - _WorldCenter.xyz);
 
@@ -98,7 +97,6 @@ TessellationFactors patchConstantFunction(InputPatch<Varyings, 3> patch)
 #define Average(field) ((patch[0].field + patch[1].field + patch[2].field)/3.0)
     
     float3 positionWS = Average(positionWSAndFogFactor).xyz;
-    half3 viewDirectionWS = SafeNormalize(GetCameraPositionWS() - positionWS);
 
     float3 toThis = SafeNormalize(positionWS - _WorldCenter.xyz);
 
