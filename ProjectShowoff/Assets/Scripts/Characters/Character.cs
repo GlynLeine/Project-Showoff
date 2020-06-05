@@ -19,6 +19,8 @@ public class Character : MonoBehaviour
         public Queue<BuildingLocation> path = null;
     }
 
+    private Vector3 prevpos;
+    public float velocity;
     public BuildingLocation location;
     public float wanderRange;
     public float walkSpeed;
@@ -33,6 +35,7 @@ public class Character : MonoBehaviour
 
     void Start()
     {
+        prevpos = transform.position;
         buildingSystem = FindObjectOfType<BuildingSystem>();
         StartCoroutine(Wander());
     }
@@ -95,7 +98,7 @@ public class Character : MonoBehaviour
             float distance = difference.magnitude;
             Vector3 direction = difference.normalized;
 
-            float walkDistance = walkSpeed * Time.deltaTime;
+            float walkDistance = walkSpeed * GameManager.deltaTime;
             if (walkDistance > distance)
             {
                 walkDistance = distance;
@@ -127,7 +130,7 @@ public class Character : MonoBehaviour
             locationReached = false;
             while (!locationReached)
             {
-                walkedDistance += walkSpeed * Time.deltaTime * walkDirection;
+                walkedDistance += walkSpeed * GameManager.deltaTime * walkDirection;
                 locationReached = walkedDistance * walkDirection >= destination;
                 transform.position = road.spline.GetWorldPointAtDistance(walkedDistance);
                 transform.rotation = road.spline.GetWorldRotationAtDistance(walkedDistance);
@@ -143,6 +146,9 @@ public class Character : MonoBehaviour
 
     private void Update()
     {
+        velocity = (transform.position - prevpos).magnitude;
+        prevpos = transform.position;
+
         if (walkTarget != null && !travelling)
         {
             if (walkTarget.targetLocation == location)
@@ -151,7 +157,7 @@ public class Character : MonoBehaviour
                 float distance = difference.magnitude;
                 Vector3 direction = difference.normalized;
 
-                float walkDistance = walkSpeed * Time.deltaTime;
+                float walkDistance = walkSpeed * GameManager.deltaTime;
                 if (walkDistance > distance)
                 {
                     walkDistance = distance;
