@@ -1,8 +1,0 @@
-  6/3/2020 10:18:59 AM: Starting composition “golden glass games animated logo”.
-
-  Output To: D:\School\Semester 4\Cinematics\golden glass games animated logo_1.avi    6/3/2020 10:18:59 AM: Finished composition “golden glass games animated logo”.
-
-
-  Total Time Elapsed: 0 Seconds
-Log closed on 6/3/2020 at 10:18:59 AM
-

@@ -40,7 +40,7 @@ public class PlanetReset : MonoBehaviour
     {
         if (resetPressed)
         {
-            timer += Time.deltaTime;
+            timer += GameManager.deltaTime;
             secondsLeft.text = Mathf.CeilToInt(secondsTillDestruction-timer).ToString();
             if (timer > secondsTillDestruction)
             {
@@ -49,7 +49,7 @@ public class PlanetReset : MonoBehaviour
         }
         else if (resetTriggered)
         {
-            timer += Time.deltaTime;
+            timer += GameManager.deltaTime;
             secondsLeft.text = Mathf.CeilToInt(10-timer).ToString();
             if (timer > 10)
             {
