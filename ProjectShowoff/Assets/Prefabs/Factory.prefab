@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 314100681690800100}
   - component: {fileID: 3863281099570527594}
   - component: {fileID: 2900836529654250522}
+  - component: {fileID: 7658223952220517505}
+  - component: {fileID: 557860360012437856}
   m_Layer: 0
   m_Name: Factory
   m_TagString: Untagged
@@ -45,10 +47,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cba9861708699c49b30441e82031535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  environmentEffect: 0
+  buildingType: 0
+  natureEffect: 0
   pollutionEffect: 3
   industryEffect: 0
   effectPeriod: 5
+  natureRemovalEffect: 0
+  pollutionRemovalEffect: 0
+  industryRemovalEffect: 0
 --- !u!114 &2900836529654250522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,6 +78,52 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!114 &7658223952220517505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7972426480979829519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Player/Building
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 8.549999
+--- !u!114 &557860360012437856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7972426480979829519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Player/Destroy
+  PlayEvent: 2
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 1.8000001
 --- !u!1 &8935089598512165790
 GameObject:
   m_ObjectHideFlags: 0
