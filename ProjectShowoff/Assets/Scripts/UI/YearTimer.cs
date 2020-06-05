@@ -9,6 +9,9 @@ public class YearTimer : MonoBehaviour
     [SerializeField] private Image summerGrayscaleImage = null;
     [SerializeField] private Image fallGrayscaleImage = null;
     [SerializeField] private Image winterGrayscaleImage = null;
+    public GameObject endScreenCanvas;
+    public GameObject mainCanvas;
+    private bool endScreenActivated;
 
     float timeScale = 1f;
 
@@ -30,6 +33,13 @@ public class YearTimer : MonoBehaviour
         else if (GameManager.time <= 300f / timeScale)
         {
             winterGrayscaleImage.fillAmount = 1f - (GameManager.time - (225f / timeScale)) / (75f / timeScale);
+        }
+        else if (!endScreenActivated)
+        {
+            endScreenCanvas.SetActive(true);
+            endScreenActivated = true;
+            GameManager.paused = true;
+            mainCanvas.SetActive(false);
         }
     }
 }
