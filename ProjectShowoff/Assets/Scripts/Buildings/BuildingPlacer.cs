@@ -12,31 +12,21 @@ public class BuildingPlacer : MonoBehaviour
     public BuildingType buildingType;
     public Button button;
 
-    public float environmentEffect;
+    public float natureEffect;
     public float pollutionEffect;
     public float industryEffect;
 
-    public float cooldown;
     public float cooldownEffect;
 
     private float timeBuffer;
 
-    private bool locked
-    {
-        get
-        {
-            return !button.interactable;
-        }
-        set
-        {
-            button.interactable = !value;
-        }
-    }
+    private static bool locked;
 
     private BuildingSystem system;
 
     private void Start()
     {
+        locked = false;
         system = FindObjectOfType<BuildingSystem>();
     }
 
@@ -44,21 +34,29 @@ public class BuildingPlacer : MonoBehaviour
     {
         if (system.PlaceBuilding(this))
         {
-            cooldown += cooldownEffect;
+            GameManager.coolDown += cooldownEffect;
             locked = true;
+            StartCoroutine(Unlock());
+        }
+    }
+
+    IEnumerator Unlock()
+    {
+        yield return null;
+        while (locked)
+        {
+            timeBuffer += GameManager.deltaTime;
+            if (timeBuffer >= GameManager.coolDown)
+            {
+                timeBuffer -= GameManager.coolDown;
+                locked = false;
+            }
+            yield return null;
         }
     }
 
     private void Update()
     {
-        if (locked)
-        {
-            timeBuffer += Time.deltaTime;
-            if (timeBuffer >= cooldown)
-            {
-                timeBuffer -= cooldown;
-                locked = false;
-            }
-        }
+        button.interactable = !locked;
     }
 }

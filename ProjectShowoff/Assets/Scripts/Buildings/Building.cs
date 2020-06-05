@@ -7,10 +7,14 @@ public class Building : MonoBehaviour
     [HideInInspector]
     public BuildingType buildingType;
 
-    public float environmentEffect;
+    public float natureEffect;
     public float pollutionEffect;
     public float industryEffect;
     public float effectPeriod;
+
+    [HideInInspector] public float natureRemovalEffect;
+    [HideInInspector] public float pollutionRemovalEffect;
+    [HideInInspector] public float industryRemovalEffect;
 
     private float timeBuffer = 0;
 
@@ -32,8 +36,8 @@ public class Building : MonoBehaviour
         //}
         if (effectPeriod > 0f)
         {
-            float scale = Time.deltaTime / effectPeriod;
-            GameManager.AddState(environmentEffect * scale, pollutionEffect * scale, industryEffect * scale);
+            float scale = GameManager.deltaTime / effectPeriod;
+            GameManager.AddState(natureEffect * scale, pollutionEffect * scale, industryEffect * scale);
         }
     }
 }
