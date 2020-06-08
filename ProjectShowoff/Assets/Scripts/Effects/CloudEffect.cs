@@ -6,6 +6,7 @@ public class CloudEffect : MonoBehaviour
 {
     public GameObject cloudPrefab;
     public GameObject altCloudPrefab;
+    public Material cloudMaterial;
 
     public int resolution = 100;
     public float cloudHeight = 1.5f;
@@ -31,7 +32,11 @@ public class CloudEffect : MonoBehaviour
             bool alt = Random.Range(0f, 1f) > 0.5f;
             GameObject cloud = Instantiate(alt ? altCloudPrefab : cloudPrefab, transform.position + offset, Quaternion.identity, transform);
             cloud.transform.up = offset.normalized;
-            //cloud.isStatic = true;
         }
+    }
+
+    private void Update()
+    {
+        cloudMaterial.SetFloat("_ScaledTime", GameManager.time);
     }
 }

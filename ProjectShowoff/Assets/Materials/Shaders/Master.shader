@@ -11,6 +11,8 @@
 
 		_Smoothness("Smoothness", Range(0.0, 1.0)) = 0.0
 
+		_Pollution("Pollution", Range(0.0, 1.0)) = 0.0
+		_NoiseScale("Snow Noise Scale", Range(0.0, 10.0)) = 1.0
 
 		_WorldCenter("World Center", Vector) = (0.0, 0.0, 0.0, 0.0)
 		_SnowThreshold("Snow Threshold", Range(0.0, 10.0)) = 0.5
@@ -84,6 +86,8 @@
 
 				float _SeasonTime;
 				float _Smoothness;
+				float _Pollution;
+				float _NoiseScale;
 
 				float4 _WorldCenter;
 				float _SnowThreshold;
@@ -119,8 +123,8 @@
 					float snowy : TEXCOORD8;
 				};
 
+#include "SimplexNoise.hlsl"
 #include "tessellation/GlynTessellation.hlsl"
-
 
 				Varyings LitPassVertex(Attributes input)
 				{
@@ -152,87 +156,88 @@
 					// We just use the homogeneous clip position from the vertex input
 					output.positionCS = vertexInput.positionCS;
 
-					float3 toThis = SafeNormalize(vertexInput.positionWS - _WorldCenter.xyz);
+					/*float3 toThis = SafeNormalize(vertexInput.positionWS - _WorldCenter.xyz);
 
-					output.snowy = clamp(pow(clamp(dot(toThis, vertexNormalInput.normalWS), 0, 1), _SnowThreshold), 0.0, 1.0) * smoothstep(2.0 / 3.0, 1.0, _SeasonTime);
+					float snowy = clamp(pow(clamp(dot(toThis, vertexNormalInput.normalWS), 0, 1), _SnowThreshold), 0.0, 1.0) * smoothstep(2.0 / 3.0, 1.0, _SeasonTime);
+
+					float snowFactor = clamp(snoise(float2(dot(toThis, float3(0.0, 1.0, 0.0)), dot(toThis, float3(1.0, 0.0, 0.0)))*_NoiseScale), 0.0, 1.0);
+					snowFactor = clamp(snowFactor + lerp(1.0, -1.0, _Pollution), 0.0, 1.0);
+
+					output.snowy = lerp(0.0, snowy, snowFactor);*/
 
 					return output;
 				}
 
-				//#if defined(TESSELLATION)
-				//#endif
-							half4 LitPassFragment(Varyings input) : SV_Target
-							{
-
-
-								half3 normalWS = input.normalWS;
-								normalWS = normalize(normalWS);
+				half4 LitPassFragment(Varyings input) : SV_Target
+				{
+					half3 normalWS = input.normalWS;
+					normalWS = normalize(normalWS);
 
 				#ifdef LIGHTMAP_ON
-								// Normal is required in case Directional lightmaps are baked
-								half3 bakedGI = SampleLightmap(input.uvLM, normalWS);
+					// Normal is required in case Directional lightmaps are baked
+					half3 bakedGI = SampleLightmap(input.uvLM, normalWS);
 				#else
-								// Samples SH fully per-pixel. SampleSHVertex and SampleSHPixel functions
-								// are also defined in case you want to sample some terms per-vertex.
-								half3 bakedGI = SampleSH(normalWS);
+					// Samples SH fully per-pixel. SampleSHVertex and SampleSHPixel functions
+					// are also defined in case you want to sample some terms per-vertex.
+					half3 bakedGI = SampleSH(normalWS);
 				#endif
-								float3 spring = tex2D(_Spring, input.uv).rgb;
-								float3 summer = tex2D(_Summer, input.uv).rgb;
-								float3 fall = tex2D(_Fall, input.uv).rgb;
-								float3 winter = tex2D(_Winter, input.uv).rgb;
+					float3 spring = tex2D(_Spring, input.uv).rgb;
+					float3 summer = tex2D(_Summer, input.uv).rgb;
+					float3 fall = tex2D(_Fall, input.uv).rgb;
+					float3 winter = tex2D(_Winter, input.uv).rgb;
 
-								float3 ss = lerp(spring, summer, smoothstep(0.0, 1.0 / 3.0, _SeasonTime));
-								float3 fw = lerp(fall, winter, smoothstep(2.0 / 3.0, 1.0, _SeasonTime));
-								float3 albedo = lerp(ss, fw, smoothstep(1.0 / 3.0, 2.0 / 3.0, _SeasonTime));
+					float3 ss = lerp(spring, summer, smoothstep(0.0, 1.0 / 3.0, _SeasonTime));
+					float3 fw = lerp(fall, winter, smoothstep(2.0 / 3.0, 1.0, _SeasonTime));
+					float3 albedo = lerp(ss, fw, smoothstep(1.0 / 3.0, 2.0 / 3.0, _SeasonTime));
 
-								float3 positionWS = input.positionWSAndFogFactor.xyz;
-								half3 viewDirectionWS = SafeNormalize(GetCameraPositionWS() - positionWS);
+					float3 positionWS = input.positionWSAndFogFactor.xyz;
+					half3 viewDirectionWS = SafeNormalize(GetCameraPositionWS() - positionWS);
 
-								float3 inputColor = lerp(albedo, float3(1.0, 1.0, 1.0), input.snowy);
+					float3 inputColor = lerp(albedo, float3(1.0, 1.0, 1.0), input.snowy);
 
-								BRDFData brdfData;
-								InitializeBRDFData(inputColor, 0, 0, _Smoothness, 1.0, brdfData);
+					BRDFData brdfData;
+					InitializeBRDFData(inputColor, 0, 0, _Smoothness, 1.0, brdfData);
 
 				#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
-								Light mainLight = GetMainLight(input.shadowCoord);
+					Light mainLight = GetMainLight(input.shadowCoord);
 				#elif defined(MAIN_LIGHT_CALCULATE_SHADOWS)
-								Light mainLight = GetMainLight(TransformWorldToShadowCoord(positionWS));
+					Light mainLight = GetMainLight(TransformWorldToShadowCoord(positionWS));
 				#else
-								Light mainLight = GetMainLight();
+					Light mainLight = GetMainLight();
 				#endif
 
-								half3 color = GlobalIllumination(brdfData, bakedGI, 1.0, normalWS, viewDirectionWS);
+					half3 color = GlobalIllumination(brdfData, bakedGI, 1.0, normalWS, viewDirectionWS);
 
-								color += LightingPhysicallyBased(brdfData, mainLight, normalWS, viewDirectionWS);
+					color += LightingPhysicallyBased(brdfData, mainLight, normalWS, viewDirectionWS);
 
-								// Additional lights loop
-				#ifdef _ADDITIONAL_LIGHTS
+					// Additional lights loop
+	#ifdef _ADDITIONAL_LIGHTS
 
-								// Returns the amount of lights affecting the object being renderer.
-								// These lights are culled per-object in the forward renderer
-								int additionalLightsCount = GetAdditionalLightsCount();
-								for (int i = 0; i < additionalLightsCount; ++i)
-								{
-									// Similar to GetMainLight, but it takes a for-loop index. This figures out the
-									// per-object light index and samples the light buffer accordingly to initialized the
-									// Light struct. If _ADDITIONAL_LIGHT_SHADOWS is defined it will also compute shadows.
-									Light light = GetAdditionalLight(i, positionWS);
+					// Returns the amount of lights affecting the object being renderer.
+					// These lights are culled per-object in the forward renderer
+					int additionalLightsCount = GetAdditionalLightsCount();
+					for (int i = 0; i < additionalLightsCount; ++i)
+					{
+						// Similar to GetMainLight, but it takes a for-loop index. This figures out the
+						// per-object light index and samples the light buffer accordingly to initialized the
+						// Light struct. If _ADDITIONAL_LIGHT_SHADOWS is defined it will also compute shadows.
+						Light light = GetAdditionalLight(i, positionWS);
 
-									// Same functions used to shade the main light.
-									color += LightingPhysicallyBased(brdfData, light, normalWS, viewDirectionWS);
-								}
-				#endif
-								float fogFactor = input.positionWSAndFogFactor.w;
+						// Same functions used to shade the main light.
+						color += LightingPhysicallyBased(brdfData, light, normalWS, viewDirectionWS);
+					}
+	#endif
+					float fogFactor = input.positionWSAndFogFactor.w;
 
-								color = MixFog(color, fogFactor);
-								return half4(color, 1.0);
-							}
-							ENDHLSL
-						}
+					color = MixFog(color, fogFactor);
+					return half4(color, 1.0);
+				}
+				ENDHLSL
+			}
 
-						UsePass "Universal Render Pipeline/Lit/ShadowCaster"
-						UsePass "Universal Render Pipeline/Lit/DepthOnly"
-						UsePass "Universal Render Pipeline/Lit/Meta"
+			UsePass "Universal Render Pipeline/Lit/ShadowCaster"
+			UsePass "Universal Render Pipeline/Lit/DepthOnly"
+			UsePass "Universal Render Pipeline/Lit/Meta"
 
 		}
 }

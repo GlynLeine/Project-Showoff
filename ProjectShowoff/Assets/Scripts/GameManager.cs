@@ -44,11 +44,16 @@ public class GameManager : MonoBehaviour
 
     public static float season;
     public static float ozone;
+    public static float iceCaps;
+    public static float climate;
     public static float cloudiness;
     public static float time;
+    public static float deltaTime;
     public static bool paused;
 
     public bool skipCooldown;
+    [Range(1f, 10f)]
+    public float timeScale = 1f;
 
     public GameObject ocean;
 
@@ -64,13 +69,19 @@ public class GameManager : MonoBehaviour
     static public void SetOzoneState(float ozoneState)
     {
         ozone = ozoneState;
-        ozoneMat.SetFloat("_Dissolve", ozoneState * 0.7f);
+        ozoneMat.SetFloat("_Dissolve", lerp(0.28f, 0.7f, ozoneState));
     }
 
     static public void SetCloudState(float cloudState)
     {
         cloudiness = cloudState;
         cloudMat.SetFloat("_Cloudiness", cloudState * 0.6f);
+    }
+
+    static public void SetClimateState(float climateState)
+    {
+        climate = climateState;
+        masterMat.SetFloat("_Pollution", climateState);
     }
 
     static public void AddState(float natureEffect, float pollutionEffect, float industryEffect)
@@ -107,6 +118,11 @@ public class GameManager : MonoBehaviour
         else
             masterMat.shader = tesselationShader;
 
+        SetCloudState(0.25f);
+        SetOzoneState(0f);
+        SetSeasonTime(0f);
+
+
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 1000;
         nature = 50f;
@@ -137,23 +153,24 @@ public class GameManager : MonoBehaviour
         t = 0;
         prevPollut = 0;
 
-        season = 0f;
-        ozone = 0f;
+        iceCaps = 1f;
         time = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        deltaTime = 0;
         if (!paused)
         {
-            t += Time.deltaTime;
+            deltaTime = Time.deltaTime * timeScale;
+            t += deltaTime;
             time = t;
 
             if (pollution > maxPollution)
                 maxPollution = pollution;
 
-            pollution = Mathf.Clamp(pollution - (nature / 50f) * (Time.deltaTime / 5f) * 4f, 0, float.MaxValue);
+            pollution = Mathf.Clamp(pollution - (nature / 50f) * (deltaTime / 5f) * 4f, 0, float.MaxValue);
 
             if (pollution < minPollution)
                 minPollution = pollution;
@@ -165,7 +182,12 @@ public class GameManager : MonoBehaviour
             float uniformScale = 1f + waterLevel * 0.07f;
             ocean.transform.localScale = new Vector3(uniformScale, uniformScale, uniformScale);
 
-            SetOzoneState(smoothstep(100f, 2000f, pollution));
+            iceCaps = smoothstep(3800f, 200f, pollution);
+
+            SetClimateState(smoothstep(100f, 3000f, pollution));
+
+            float linearScale = smoothstep(0, 2000f, pollution);
+            SetOzoneState(1f - Mathf.Pow(1f-linearScale, 2f));
 
             SetCloudState(smoothstep(-1000f, 3000f, pollution));
         }
@@ -201,6 +223,8 @@ public class GameManager : MonoBehaviour
             debugText.text += "\nbuildingsFlooded: " + buildingsFlooded;
             debugText.text += "\nmaxBuildings: " + maxBuildings;
             debugText.text += "\ncreaturesPoked: " + creaturesPoked;
+            debugText.text += "\nozone: " + ozone;
+            debugText.text += "\nclimate: " + climate;
         }
     }
 }

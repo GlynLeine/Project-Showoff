@@ -20,8 +20,8 @@ public class EndScreenCounter : MonoBehaviour
         BuildingsDestroyed,
         BuildingsPlaced
     };
-    public int maxAmount;
-    private int tickAmount;
+    public float maxAmount;
+    private float tickAmount;
     private float yourValue = 2000;
     private float averageValue = 2000;
     public typeChoice counterType;
@@ -33,39 +33,39 @@ public class EndScreenCounter : MonoBehaviour
         foreach (Transform child in theirFill.transform) {
             Destroy(child.gameObject);
         }
+        //reflection
         if (counterType == typeChoice.C02)
         {
-            yourValue = 2200;
-            averageValue = 1500;
+            yourValue = (float)GameManager.pollution;
+            averageValue = 1500f;
         }
         else if (counterType == typeChoice.WaterLevel)
         {
-            yourValue = 3100;
-            averageValue = 900;
+            yourValue = (float)GameManager.waterLevel;
+            averageValue = 0.5f;
         }
         else if (counterType == typeChoice.Ozone)
         {
-            yourValue = 7000;
-            averageValue = 4500;
+            yourValue = (float)GameManager.ozone;
+            averageValue = 0.5f;
         }
         else if (counterType == typeChoice.Plants)
         {
-            yourValue = 150;
-            averageValue = 225;
+            yourValue = (float)GameManager.nature;
+            averageValue = 225f;
         }
         else if (counterType == typeChoice.BuildingsDestroyed)
         {
-            yourValue = 5;
-            averageValue = 7;
+            yourValue = (float)GameManager.buildingsDestroyed;
+            averageValue = 7f;
         }
         else if (counterType == typeChoice.BuildingsPlaced)
         {
-            yourValue = 50;
-            averageValue = 53;
+            yourValue = (float)GameManager.buildingsPlaced;
+            averageValue = 53f;
         }
-        
         tickAmount = maxAmount / 5;
-        for (int i = 0; i < yourValue; i+=tickAmount)
+        for (float i = 0; i < yourValue; i+=tickAmount)
         {
             if (i < maxAmount)
             {
@@ -79,9 +79,9 @@ public class EndScreenCounter : MonoBehaviour
                 }
             }
         }
-        for (int i = 0; i < averageValue; i+=tickAmount)
+        for (float i = 0; i < averageValue; i+=tickAmount)
         {
-            if (i <= maxAmount)
+            if (i < maxAmount)
             {
                 if (averageValue - i >= tickAmount)
                 {

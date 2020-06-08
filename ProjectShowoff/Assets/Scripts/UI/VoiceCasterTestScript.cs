@@ -15,7 +15,7 @@ public class VoiceCasterTestScript : MonoBehaviour
 
     private void Update()
     {
-        timer += 1 * Time.deltaTime;
+        timer += 1 * GameManager.deltaTime;
         if (timer > 5)
         {
             atScript.TextChanger("World News!");

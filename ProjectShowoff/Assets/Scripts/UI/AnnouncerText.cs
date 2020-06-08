@@ -23,7 +23,7 @@ public class AnnouncerText : MonoBehaviour
 
     void Update()
     {
-        announcerTextBox.transform.Translate(-announcerTextSpeed*Time.deltaTime,0,0);
+        announcerTextBox.transform.Translate(-announcerTextSpeed*GameManager.deltaTime,0,0);
         announcerPosition = announcerTextBox.transform.localPosition;
         announcerTextWidth = announcerRectTransform.sizeDelta.x;
         if (announcerPosition.x <= (-announcerTextWidth + -100))

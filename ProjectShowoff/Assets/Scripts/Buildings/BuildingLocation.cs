@@ -99,7 +99,7 @@ public class BuildingLocation : MonoBehaviour
             system.ReportLocation(this);
         }
 
-        transform.Rotate(Vector3.up, Random.Range(0f, 360f), Space.Self);
+        //transform.Rotate(Vector3.up, Random.Range(0f, 360f), Space.Self);
     }
 
     private void Update()

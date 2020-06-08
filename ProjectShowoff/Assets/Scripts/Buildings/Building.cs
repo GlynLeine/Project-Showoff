@@ -36,7 +36,7 @@ public class Building : MonoBehaviour
         //}
         if (effectPeriod > 0f)
         {
-            float scale = Time.deltaTime / effectPeriod;
+            float scale = GameManager.deltaTime / effectPeriod;
             GameManager.AddState(natureEffect * scale, pollutionEffect * scale, industryEffect * scale);
         }
     }

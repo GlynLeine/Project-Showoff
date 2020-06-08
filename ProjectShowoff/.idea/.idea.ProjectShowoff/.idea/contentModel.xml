@@ -14,10 +14,6 @@
               <e p="Asset" t="Include">
                 <e p="{c5e18e81-3898-4af6-834b-a15b3ca1f3bd}.xml" t="Include" />
               </e>
-              <e p="AudioFile" t="Include">
-                <e p="{0e76ada4-553b-4168-9e08-615952902e7a}.xml" t="Include" />
-                <e p="{82d4ea22-a99e-4e6f-b37b-8137c05f5c77}.xml" t="Include" />
-              </e>
               <e p="Bank" t="Include">
                 <e p="{b0b0c9c4-c671-491f-9768-6118d18454cb}.xml" t="Include" />
               </e>
@@ -169,6 +165,8 @@
             <e p="EndScreenCounter.cs" t="Include" />
             <e p="PlanetReset.cs" t="Include" />
             <e p="SnowController.cs" t="Include" />
+            <e p="TimeLinePart.cs" t="Include" />
+            <e p="TimeLineSaver.cs" t="Include" />
             <e p="TutorialScript.cs" t="Include" />
             <e p="UIController.cs" t="Include" />
             <e p="VoiceCasterTestScript.cs" t="Include" />
