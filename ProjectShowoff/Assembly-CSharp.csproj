@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\Editors\SplineEditor.cs" />
     <Compile Include="Assets\Scripts\Editors\SplineMeshEditor.cs" />
     <Compile Include="Assets\Scripts\Effects\CloudEffect.cs" />
+    <Compile Include="Assets\Scripts\Effects\IceCaps.cs" />
     <Compile Include="Assets\Scripts\Effects\PollutionSpheres.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\UI\AnnouncerText.cs" />
@@ -129,6 +130,7 @@
     <None Include="Assets\FMOD\Threa FMOD\Metadata\Tags.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\Event\{81807ee1-7059-4b05-a34d-8843b5886433}.xml" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\Materials\Shaders\SimplexNoise.hlsl" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\SnapshotGroup\{efe20fc5-e761-4722-851e-6843fc3f46c3}.xml" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
