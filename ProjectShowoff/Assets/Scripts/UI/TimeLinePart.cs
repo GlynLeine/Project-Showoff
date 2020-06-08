@@ -95,7 +95,7 @@ public class TimeLinePart : MonoBehaviour
         buildingCounter = timeLineBuildings / maxBuildings * 5;
         foreach (Transform child in buildings.transform)
         {
-            if (buildingCounter < 0.5)
+            if (buildingCounter < 0)
             {
                 Destroy(child.gameObject);
             }
@@ -103,9 +103,9 @@ public class TimeLinePart : MonoBehaviour
         }
 
         natureCounter = timeLineNature / maxNature * 8;
-        foreach (Transform child in buildings.transform)
+        foreach (Transform child in nature.transform)
         {
-            if (maxNature < 0.5)
+            if (maxNature < 0)
             {
                 Destroy(child.gameObject);
             }
