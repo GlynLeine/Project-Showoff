@@ -17,6 +17,8 @@ public class BuildingSystem : MonoBehaviour
 {
     Dictionary<LocationType, List<BuildingLocation>> locations = new Dictionary<LocationType, List<BuildingLocation>>();
 
+    List<BuildingLocation> destroyed = new List<BuildingLocation>();
+
     List<BuildingLocation> unvisited = new List<BuildingLocation>();
     List<BuildingLocation> closedSet = new List<BuildingLocation>();
     List<BuildingLocation> openSet = new List<BuildingLocation>();
@@ -29,6 +31,222 @@ public class BuildingSystem : MonoBehaviour
 
     public delegate void OnBuildingPlaced(BuildingLocation location, BuildingPlacer buildingData);
     public static OnBuildingPlaced onBuildingPlaced;
+
+    public UnityEngine.UI.Toggle DestructionToggle;
+    bool destroy = false;
+
+    public void ToggleDestroyMode()
+    {
+        destroy = DestructionToggle.isOn;
+    }
+
+    private void Update()
+    {
+        if (destroy && InputRedirect.tapped)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(InputRedirect.inputPos);
+            if (Physics.Raycast(ray, out RaycastHit hit))
+            {
+                if (hit.collider.transform.parent != null)
+                    if (hit.collider.transform.parent.parent != null)
+                    {
+                        BuildingLocation location = hit.collider.transform.parent.parent.gameObject.GetComponent<BuildingLocation>();
+                        if (location != null)
+                        {
+                            DestroyBuilding(location);
+                            DestructionToggle.isOn = false;
+                            destroy = false;
+                        }
+                    }
+            }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Init();
+
+        int count = 0;
+        Gizmos.color = Color.black;
+        foreach (BuildingLocation location in destroyed)
+        {
+            count = destroyed.FindAll(delegate (BuildingLocation loc)
+            {
+                return loc == location;
+            }).Count;
+            if (count > 1)
+                Debug.Log("destroyed " + count);
+            Gizmos.DrawSphere(location.transform.position, 0.125f);
+        }
+
+        Gizmos.color = Color.red;
+        foreach (BuildingLocation location in closedSet)
+        {
+            count = closedSet.FindAll(delegate (BuildingLocation loc)
+            {
+                return loc == location;
+            }).Count;
+            if (count > 1)
+                Debug.Log("closedSet " + count);
+            Gizmos.DrawSphere(location.transform.position, 0.1f);
+        }
+
+        Gizmos.color = Color.green;
+        foreach (BuildingLocation location in openSet)
+        {
+            count = openSet.FindAll(delegate (BuildingLocation loc)
+            {
+                return loc == location;
+            }).Count;
+            if (count > 1)
+                Debug.Log("openSet " + count);
+            Gizmos.DrawSphere(location.transform.position, 0.075f);
+        }
+
+        Gizmos.color = Color.blue;
+        foreach (BuildingLocation location in unoccupied)
+        {
+            count = unoccupied.FindAll(delegate (BuildingLocation loc)
+            {
+                return loc == location;
+            }).Count;
+            if (count > 1)
+                Debug.Log("unoccupied " + count);
+            Gizmos.DrawSphere(location.transform.position, 0.05f);
+        }
+
+        Gizmos.color = Color.white;
+        foreach (BuildingLocation location in unvisited)
+        {
+            count = unvisited.FindAll(delegate (BuildingLocation loc)
+            {
+                return loc == location;
+            }).Count;
+            if (count > 1)
+                Debug.Log("unvisited " + count);
+            Gizmos.DrawSphere(location.transform.position, 0.025f);
+        }
+    }
+
+    public void RecoverLocation(BuildingLocation location)
+    {
+        if (destroyed.Contains(location))
+        {
+            destroyed.Remove(location);
+
+            int closedNeighbours = 0;
+            foreach (BuildingLocation neighbour in location.neighbours)
+                if (closedSet.Contains(neighbour))
+                    closedNeighbours++;
+
+            if (closedNeighbours > 0)
+            {
+                if (closedNeighbours >= 2)
+                    unoccupied.Add(location);
+                else
+                    openSet.Add(location);
+            }
+            else
+                unvisited.Add(location);
+        }
+    }
+
+    public void DestroyLocation(BuildingLocation location)
+    {
+        if (destroyed.Contains(location))
+            return;
+
+        if (DestroyBuilding(location))
+            GameManager.buildingsFlooded++;
+
+        if (openSet.Contains(location))
+            openSet.Remove(location);
+
+        if (unoccupied.Contains(location))
+            unoccupied.Remove(location);
+
+        if (unvisited.Contains(location))
+            unvisited.Remove(location);
+
+        destroyed.Add(location);
+    }
+
+    public bool DestroyBuilding(BuildingLocation location)
+    {
+        if (!closedSet.Contains(location))
+            return false;
+
+        GameManager.buildingsDestroyed++;
+
+        Building building = location.GetComponentInChildren<Building>();
+        if (building == null)
+            return false;
+
+        closedSet.Remove(location);
+
+        int closedNeighbours = 0;
+        foreach (BuildingLocation neighbour in location.neighbours)
+        {
+            if (closedSet.Contains(neighbour))
+                closedNeighbours++;
+            else if (!unvisited.Contains(neighbour)) // check destroyed
+            {
+                int closedfurterNeighbours = 0;
+
+                foreach (BuildingLocation furterNeighbour in neighbour.neighbours)
+                    if (furterNeighbour != location && closedSet.Contains(furterNeighbour))
+                    {
+                        closedfurterNeighbours++;
+                    }
+
+                if (closedfurterNeighbours <= 1 && unoccupied.Contains(neighbour))
+                {
+                    unoccupied.Remove(neighbour);
+                    unvisited.Add(neighbour);
+                }
+
+                if (openSet.Contains(neighbour) && closedfurterNeighbours <= 0)
+                {
+                    openSet.Remove(neighbour);
+                    unvisited.Add(neighbour);
+                }
+            }
+        }
+
+        if (closedNeighbours > 0)
+        {
+            if (closedNeighbours >= 2)
+            {
+                if (!unoccupied.Contains(location))
+                    unoccupied.Add(location);
+            }
+            else if (!openSet.Contains(location))
+                openSet.Add(location);
+        }
+        else if (!unvisited.Contains(location))
+            unvisited.Add(location);
+
+        for (int i = 0; i < location.roads.Count; i++)
+            location.roads[i].gameObject.SetActive(false);
+
+        GameObject source = location.GetType().GetField(building.buildingType.ToString()).GetValue(location) as GameObject;
+
+        if (source.scene.name == null || source.scene.rootCount == 0)
+            Destroy(building.gameObject);
+        else
+            building.gameObject.SetActive(false);
+
+        characterSystem.DespawnCharacter(location);
+
+        GameManager.AddState(-building.natureRemovalEffect, -building.pollutionRemovalEffect, -building.industryRemovalEffect);
+
+        return true;
+    }
+
+    public bool IsValidTravelLocation(BuildingLocation location)
+    {
+        return closedSet.Contains(location);
+    }
 
     public BuildingLocation GetValidTravelLocation(BuildingLocation exclude = null)
     {
@@ -73,7 +291,9 @@ public class BuildingSystem : MonoBehaviour
             nodes.Add(loc, new AStarNode(loc));
 
         foreach (var loc in unoccupied)
+        {
             nodes.Add(loc, new AStarNode(loc));
+        }
 
         foreach (var node in nodes)
         {
@@ -83,6 +303,12 @@ public class BuildingSystem : MonoBehaviour
                 if (nodes.ContainsKey(neighbour))
                     node.Value.neighbours.Add(nodes[neighbour]);
             }
+        }
+
+        if (!nodes.ContainsKey(start))
+        {
+            Debug.Log("dafuq?? " + start);
+            return null;
         }
 
         AStarNode startNode = nodes[start];
@@ -146,6 +372,7 @@ public class BuildingSystem : MonoBehaviour
         initialised = true;
 
         characterSystem = GetComponent<CharacterSystem>();
+        unvisited = new List<BuildingLocation>();
 
         foreach (var locType in locations)
             foreach (BuildingLocation location in locType.Value)
@@ -174,6 +401,8 @@ public class BuildingSystem : MonoBehaviour
             parent.localRotation = Quaternion.identity;
         }
 
+        location.ocean = planet.Find("Ocean");
+
         location.transform.parent = parent;
         location.transform.up = (location.transform.position - planet.position).normalized;
         locations[location.locationType].Add(location);
@@ -183,16 +412,21 @@ public class BuildingSystem : MonoBehaviour
     {
         Init();
 
-        if (unvisited.Count == 0 && openSet.Count == 0 && unoccupied.Count == 0)
+        if (unoccupied.Count == 0 && openSet.Count == 0)
         {
-            Debug.Log("No space");
-            return false;
-        }
+            if (unvisited.Count == 0)
+            {
+                Debug.Log("No space");
+                return false;
+            }
 
-        if (closedSet.Count == 0)
-        {
-            PlaceRandomBuilding(buildingData);
-            return true;
+            if (GameManager.buildingsPlaced == 0)
+                GameManager.continentsDiscovered++;
+
+            if(closedSet.Count > 0)
+                GameManager.continentsDiscovered++;
+
+            return PlaceRandomBuilding(buildingData);
         }
 
         Queue<BuildingLocation> toCheck = new Queue<BuildingLocation>();
@@ -238,13 +472,6 @@ public class BuildingSystem : MonoBehaviour
 
         if (end != null)
         {
-            if (unoccupied.Contains(end))
-                unoccupied.Remove(end);
-            else if (openSet.Contains(end))
-                openSet.Remove(end);
-            else if (unvisited.Contains(end))
-                unvisited.Remove(end);
-
             for (int i = 0; i < end.neighbours.Count; i++)
             {
                 if (end.roads.Count <= i)
@@ -261,6 +488,12 @@ public class BuildingSystem : MonoBehaviour
         }
         else
         {
+            if (PlaceRandomBuilding(buildingData))
+            {
+                GameManager.continentsDiscovered++;
+                return true;
+            }
+
             Debug.Log("No more of this type left");
             return false;
         }
@@ -297,49 +530,87 @@ public class BuildingSystem : MonoBehaviour
 
     private void ConstructBuilding(BuildingLocation location, BuildingPlacer buildingData)
     {
+        if (unoccupied.Contains(location))
+            unoccupied.Remove(location);
+        if (openSet.Contains(location))
+            openSet.Remove(location);
+        if (unvisited.Contains(location))
+            unvisited.Remove(location);
+
         GameObject source = location.GetType().GetField(buildingData.buildingType.ToString()).GetValue(location) as GameObject;
-        GameObject building;
+        GameObject buildingObj;
         if (source.scene.name == null || source.scene.rootCount == 0)
         {
-            building = Instantiate(source, location.transform);
-            building.transform.localRotation = Quaternion.identity;
-            building.transform.localPosition = Vector3.zero;
+            buildingObj = Instantiate(source, location.transform);
+            buildingObj.transform.localRotation = Quaternion.identity;
+            buildingObj.transform.localPosition = Vector3.zero;
         }
         else
         {
-            building = source;
-            building.SetActive(true);
+            buildingObj = source;
+            buildingObj.SetActive(true);
+            buildingObj.transform.parent = location.transform;
         }
 
-        closedSet.Add(location);
+        Building building = buildingObj.GetComponent<Building>();
+        building.buildingType = buildingData.buildingType;
+
+        building.natureRemovalEffect = buildingData.natureEffect;
+        building.pollutionRemovalEffect = buildingData.pollutionEffect;
+        building.industryRemovalEffect = buildingData.industryEffect;
+
+        if (!closedSet.Contains(location))
+            closedSet.Add(location);
         foreach (BuildingLocation neighbour in location.neighbours)
             if (unvisited.Contains(neighbour))
             {
-                openSet.Add(neighbour);
+                if (!openSet.Contains(neighbour))
+                    openSet.Add(neighbour);
                 unvisited.Remove(neighbour);
             }
 
-        GameManager.AddState(buildingData.environmentEffect, buildingData.pollutionEffect, buildingData.industryEffect);
+        GameManager.AddState(buildingData.natureEffect, buildingData.pollutionEffect, buildingData.industryEffect);
         characterSystem.SpawnCharacter(location);
 
-        onBuildingPlaced?.Invoke(location, buildingData);
+        if (buildingData.natureEffect > 0)
+            GameManager.natureBuildings++;
 
-        Debug.Log("placed a building on a " + buildingData.locationType.ToString() + " location.");
+        if (location.locationType == LocationType.Rural)
+            GameManager.ruralBuildings++;
+        else
+            GameManager.coastalBuildings++;
+
+        GameManager.buildingsPlaced++;
+
+        int buildingCount = GameManager.buildingsPlaced - GameManager.buildingsDestroyed;
+        if (buildingCount > GameManager.maxBuildings)
+            GameManager.maxBuildings = buildingCount;
+
+        onBuildingPlaced?.Invoke(location, buildingData);
     }
 
-    private void PlaceRandomBuilding(BuildingPlacer buildingData)
+    private bool PlaceRandomBuilding(BuildingPlacer buildingData)
     {
         List<BuildingLocation> locationsOfType = locations[buildingData.locationType];
+        for (int i = 0; i < locationsOfType.Count; i++)
+            if (closedSet.Contains(locationsOfType[i]))
+            {
+                locationsOfType.RemoveAt(i);
+                i--;
+            }
+
         if (locationsOfType.Count > 0)
         {
             BuildingLocation location = locationsOfType[Random.Range(0, locationsOfType.Count)];
-            unvisited.Remove(location);
+
+            Debug.Log("Got random location");
+
             ConstructBuilding(location, buildingData);
+            return true;
         }
-        else
-        {
-            Debug.Log("no space");
-        }
+
+        Debug.Log("no space");
+        return false;
     }
 
 }

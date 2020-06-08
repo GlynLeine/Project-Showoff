@@ -14,10 +14,6 @@
               <e p="Asset" t="Include">
                 <e p="{c5e18e81-3898-4af6-834b-a15b3ca1f3bd}.xml" t="Include" />
               </e>
-              <e p="AudioFile" t="Include">
-                <e p="{0e76ada4-553b-4168-9e08-615952902e7a}.xml" t="Include" />
-                <e p="{82d4ea22-a99e-4e6f-b37b-8137c05f5c77}.xml" t="Include" />
-              </e>
               <e p="Bank" t="Include">
                 <e p="{b0b0c9c4-c671-491f-9768-6118d18454cb}.xml" t="Include" />
               </e>
@@ -58,7 +54,8 @@
         <e p="Materials" t="Include">
           <e p="LineShader.shader" t="Include" />
           <e p="Shaders" t="Include">
-            <e p="SnowMasterTess.shader" t="Include" />
+            <e p="Master.shader" t="Include" />
+            <e p="MasterWebGL.shader" t="Include" />
             <e p="Tessellation" t="Include">
               <e p="GlynTessellation.hlsl" t="Include" />
             </e>
@@ -143,6 +140,8 @@
           <e p="Characters" t="Include">
             <e p="Character.cs" t="Include" />
             <e p="CharacterSystem.cs" t="Include" />
+            <e p="Pokable.cs" t="Include" />
+            <e p="Poke.cs" t="Include" />
             <e p="Roads" t="Include">
               <e p="Road.cs" t="Include" />
             </e>
@@ -158,12 +157,16 @@
           </e>
           <e p="Effects" t="Include">
             <e p="CloudEffect.cs" t="Include" />
+            <e p="PollutionSpheres.cs" t="Include" />
           </e>
           <e p="GameManager.cs" t="Include" />
           <e p="UI" t="Include">
             <e p="AnnouncerText.cs" t="Include" />
+            <e p="EndScreenCounter.cs" t="Include" />
             <e p="PlanetReset.cs" t="Include" />
             <e p="SnowController.cs" t="Include" />
+            <e p="TutorialScript.cs" t="Include" />
+            <e p="UIController.cs" t="Include" />
             <e p="VoiceCasterTestScript.cs" t="Include" />
             <e p="YearTimer.cs" t="Include" />
             <e p="ZoomBarScript.cs" t="Include" />

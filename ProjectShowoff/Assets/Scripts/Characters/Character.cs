@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    class WalkTarget
+    public class WalkTarget
     {
         public WalkTarget(Vector3 position, BuildingLocation location)
         {
@@ -12,11 +12,15 @@ public class Character : MonoBehaviour
             targetLocation = location;
         }
 
+        public WalkTarget() { }
+
         public Vector3 position;
         public BuildingLocation targetLocation;
         public Queue<BuildingLocation> path = null;
     }
 
+    private Vector3 prevpos;
+    public float velocity;
     public BuildingLocation location;
     public float wanderRange;
     public float walkSpeed;
@@ -26,13 +30,32 @@ public class Character : MonoBehaviour
     public float maxWanderTime;
 
     BuildingSystem buildingSystem;
-    WalkTarget walkTarget;
+    public WalkTarget walkTarget;
     bool travelling;
 
     void Start()
     {
+        prevpos = transform.position;
         buildingSystem = FindObjectOfType<BuildingSystem>();
         StartCoroutine(Wander());
+    }
+
+    public void AbortPath()
+    {
+        if (walkTarget == null)
+            walkTarget = new WalkTarget();
+
+        if (buildingSystem.IsValidTravelLocation(location))
+        {
+            walkTarget.targetLocation = location;
+        }
+        else
+        {
+            walkTarget.targetLocation = buildingSystem.GetValidTravelLocation();
+            location = walkTarget.targetLocation;
+        }
+        walkTarget.position = transform.position;
+        walkTarget.path = new Queue<BuildingLocation>();
     }
 
     IEnumerator Wander()
@@ -75,7 +98,7 @@ public class Character : MonoBehaviour
             float distance = difference.magnitude;
             Vector3 direction = difference.normalized;
 
-            float walkDistance = walkSpeed * Time.deltaTime;
+            float walkDistance = walkSpeed * GameManager.deltaTime;
             if (walkDistance > distance)
             {
                 walkDistance = distance;
@@ -97,7 +120,7 @@ public class Character : MonoBehaviour
             float walkDirection = 1;
             float destination = road.spline.length;
 
-            if(road.start != location)
+            if (road.start != location)
             {
                 walkedDistance = road.spline.length;
                 walkDirection = -1;
@@ -107,7 +130,7 @@ public class Character : MonoBehaviour
             locationReached = false;
             while (!locationReached)
             {
-                walkedDistance += walkSpeed * Time.deltaTime * walkDirection;
+                walkedDistance += walkSpeed * GameManager.deltaTime * walkDirection;
                 locationReached = walkedDistance * walkDirection >= destination;
                 transform.position = road.spline.GetWorldPointAtDistance(walkedDistance);
                 transform.rotation = road.spline.GetWorldRotationAtDistance(walkedDistance);
@@ -123,6 +146,9 @@ public class Character : MonoBehaviour
 
     private void Update()
     {
+        velocity = (transform.position - prevpos).magnitude;
+        prevpos = transform.position;
+
         if (walkTarget != null && !travelling)
         {
             if (walkTarget.targetLocation == location)
@@ -131,7 +157,7 @@ public class Character : MonoBehaviour
                 float distance = difference.magnitude;
                 Vector3 direction = difference.normalized;
 
-                float walkDistance = walkSpeed * Time.deltaTime;
+                float walkDistance = walkSpeed * GameManager.deltaTime;
                 if (walkDistance > distance)
                 {
                     walkDistance = distance;
@@ -147,7 +173,7 @@ public class Character : MonoBehaviour
 
                 if (walkTarget.path == null || walkTarget.path.Count == 0)
                 {
-                    walkTarget = null;
+                    AbortPath();
                     return;
                 }
                 StartCoroutine(TravelToNewLocation());

@@ -12,10 +12,12 @@ public class CharacterSystem : MonoBehaviour
     public float maxWanderTime;
     public float travelChance;
 
+    private List<Character> characters = new List<Character>();
+
     public void SpawnCharacter(BuildingLocation location)
     {
         Transform parent = planet.Find("Characters");
-        if(parent == null)
+        if (parent == null)
         {
             parent = new GameObject("Characters").transform;
             parent.parent = planet;
@@ -36,5 +38,56 @@ public class CharacterSystem : MonoBehaviour
         character.planet = planet;
         character.minWanderTime = minWanderTime;
         character.maxWanderTime = maxWanderTime;
+        characters.Add(character);
+    }
+
+    public void AbortAllPaths()
+    {
+        foreach (Character character in characters)
+            character.AbortPath();
+    }
+
+    public void DespawnCharacter(BuildingLocation focus)
+    {
+        bool despawnedOne = false;
+        for (int i = 0; i < characters.Count; i++)
+        {
+            Character character = characters[i];
+            if (character.location == focus || (character.walkTarget != null && character.walkTarget.targetLocation == focus))
+            {
+                if (!despawnedOne)
+                {
+                    characters.Remove(character);
+                    Destroy(character.gameObject);
+                    i--;
+                    despawnedOne = true;
+                }
+                else
+                {
+                    character.AbortPath();
+                }
+            }
+            else if (character.walkTarget != null && character.walkTarget.path != null)
+            {
+                BuildingLocation[] path = new BuildingLocation[character.walkTarget.path.Count];
+                character.walkTarget.path.CopyTo(path, 0);
+
+                for (int j = 0; j < path.Length; j++)
+                {
+                    if (path[j] == focus)
+                    {
+                        character.AbortPath();
+                        break;
+                    }
+                }
+
+            }
+        }
+
+        if (!despawnedOne)
+        {
+            Destroy(characters[characters.Count - 1].gameObject);
+            characters.RemoveAt(characters.Count - 1);
+        }
     }
 }

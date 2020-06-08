@@ -20,10 +20,14 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/AnnouncerText.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/ZoomBarScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingPlacer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/TutorialScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/VoiceCasterTestScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Util/Zoom.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/EndScreenCounter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/YearTimer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Characters/Character.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Characters/Pokable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/RuntimeManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/addons/ResonanceAudio/Editor/FmodResonanceAudioRoomEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EditorParamRef.cs" root0="FORCE_HIGHLIGHTING" />
@@ -37,11 +41,15 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/AnnouncerText.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/VoiceCasterTestScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/SnowController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/YearTimer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Util/Zoom.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingPlacer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/PlanetReset.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Util/InputRedirect.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Characters/Pokable.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/TutorialScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/YearTimer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/EndScreenCounter.cs" />
       </list>
     </option>
   </component>
@@ -92,6 +100,13 @@
       <workItem from="1590587174440" duration="85000" />
       <workItem from="1590587348904" duration="1117000" />
       <workItem from="1590669307012" duration="32000" />
+      <workItem from="1591086139575" duration="16341000" />
+      <workItem from="1591168484262" duration="13669000" />
+      <workItem from="1591258510146" duration="455000" />
+      <workItem from="1591258979237" duration="961000" />
+      <workItem from="1591260122711" duration="657000" />
+      <workItem from="1591262023665" duration="5669000" />
+      <workItem from="1591342755960" duration="4828000" />
     </task>
     <servers />
   </component>
@@ -108,5 +123,10 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="533" y="201" key="SettingsEditor/0.0.2048.1112/-1920.348.1536.824@0.0.2048.1112" timestamp="1589974423077" />
+    <state x="539" y="183" width="840" height="856" key="search.everywhere.popup" timestamp="1591190058548">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="539" y="183" width="840" height="856" key="search.everywhere.popup/-2560.-162.2048.1120/0.0.1920.1040@0.0.1920.1040" timestamp="1591190058548" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1591090874186" />
   </component>
 </project>

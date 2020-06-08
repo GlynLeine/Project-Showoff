@@ -9,7 +9,7 @@ public class Pokable : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(pokePlay);
+        //Debug.Log(pokePlay);
     }
     IEnumerator reset()
     {
@@ -19,6 +19,7 @@ public class Pokable : MonoBehaviour
     }
     public void poke()
     {
+        GameManager.creaturesPoked++;
         //fmod code needed
         pokePlay = true;
         StartCoroutine(reset());
