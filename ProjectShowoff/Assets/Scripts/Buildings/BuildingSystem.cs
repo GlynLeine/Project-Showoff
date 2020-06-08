@@ -47,7 +47,6 @@ public class BuildingSystem : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(InputRedirect.inputPos);
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                Debug.Log(hit.collider.gameObject);
                 if (hit.collider.transform.parent != null)
                     if (hit.collider.transform.parent.parent != null)
                     {
@@ -142,7 +141,7 @@ public class BuildingSystem : MonoBehaviour
 
             if (closedNeighbours > 0)
             {
-                if (closedNeighbours % 2 == 0)
+                if (closedNeighbours >= 2)
                     unoccupied.Add(location);
                 else
                     openSet.Add(location);
@@ -169,9 +168,6 @@ public class BuildingSystem : MonoBehaviour
         if (unvisited.Contains(location))
             unvisited.Remove(location);
 
-        //if(closedSet.Contains(location))
-        //    closedSet.Remove(location);
-
         destroyed.Add(location);
     }
 
@@ -193,7 +189,7 @@ public class BuildingSystem : MonoBehaviour
         {
             if (closedSet.Contains(neighbour))
                 closedNeighbours++;
-            else if (!unvisited.Contains(neighbour))
+            else if (!unvisited.Contains(neighbour)) // check destroyed
             {
                 int closedfurterNeighbours = 0;
 
@@ -203,7 +199,7 @@ public class BuildingSystem : MonoBehaviour
                         closedfurterNeighbours++;
                     }
 
-                if ((closedfurterNeighbours <= 0 || closedfurterNeighbours % 2 != 0) && unoccupied.Contains(neighbour))
+                if (closedfurterNeighbours <= 1 && unoccupied.Contains(neighbour))
                 {
                     unoccupied.Remove(neighbour);
                     unvisited.Add(neighbour);
@@ -219,8 +215,11 @@ public class BuildingSystem : MonoBehaviour
 
         if (closedNeighbours > 0)
         {
-            if (closedNeighbours % 2 == 0 && !unoccupied.Contains(location))
-                unoccupied.Add(location);
+            if (closedNeighbours >= 2)
+            {
+                if (!unoccupied.Contains(location))
+                    unoccupied.Add(location);
+            }
             else if (!openSet.Contains(location))
                 openSet.Add(location);
         }
@@ -421,14 +420,13 @@ public class BuildingSystem : MonoBehaviour
                 return false;
             }
 
-            if (closedSet.Count == 0)
-            {
-                if(GameManager.buildingsPlaced == 0)
-                    GameManager.continentsDiscovered++;
+            if (GameManager.buildingsPlaced == 0)
+                GameManager.continentsDiscovered++;
 
-                PlaceRandomBuilding(buildingData);
-                return true;
-            }
+            if(closedSet.Count > 0)
+                GameManager.continentsDiscovered++;
+
+            return PlaceRandomBuilding(buildingData);
         }
 
         Queue<BuildingLocation> toCheck = new Queue<BuildingLocation>();
@@ -604,8 +602,6 @@ public class BuildingSystem : MonoBehaviour
         if (locationsOfType.Count > 0)
         {
             BuildingLocation location = locationsOfType[Random.Range(0, locationsOfType.Count)];
-
-
 
             Debug.Log("Got random location");
 
