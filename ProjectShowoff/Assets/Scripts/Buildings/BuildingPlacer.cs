@@ -18,7 +18,7 @@ public class BuildingPlacer : MonoBehaviour
 
     public float cooldownEffect;
 
-    private float timeBuffer;
+    private static float timeBuffer;
 
     private static bool locked;
 
@@ -53,6 +53,7 @@ public class BuildingPlacer : MonoBehaviour
             }
             yield return null;
         }
+
     }
 
     private void Update()
