@@ -18,6 +18,12 @@ class SplineMesh : MonoBehaviour
     [Range(0, .5f)]
     public float thickness = .15f;
 
+    private void Start()
+    {
+        spline = null;
+        UpdateMesh();
+    }
+
     public void Reset()
     {
         spline = null;
