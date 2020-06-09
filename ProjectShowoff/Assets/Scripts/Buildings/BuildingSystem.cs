@@ -40,6 +40,12 @@ public class BuildingSystem : MonoBehaviour
         destroy = DestructionToggle.isOn;
     }
 
+    private void Awake()
+    {
+        foreach (Building building in FindObjectsOfType<Building>())
+            building.gameObject.SetActive(false);
+    }
+
     private void Update()
     {
         if (destroy && InputRedirect.tapped)
@@ -423,7 +429,7 @@ public class BuildingSystem : MonoBehaviour
             if (GameManager.buildingsPlaced == 0)
                 GameManager.continentsDiscovered++;
 
-            if(closedSet.Count > 0)
+            if (closedSet.Count > 0)
                 GameManager.continentsDiscovered++;
 
             return PlaceRandomBuilding(buildingData);

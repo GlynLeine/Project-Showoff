@@ -43,13 +43,14 @@ Varyings TessellationVertexProgram(Varyings input, OutputPatch<Varyings, 3> patc
 
     float3 normalWS = SafeNormalize(input.normalWS);
     
-    float snowFactor = clamp(snoise(float2(dot(normalWS, float3(0.0, 1.0, 0.0)), dot(normalWS, float3(1.0, 0.0, 0.0))) * _NoiseScale), 0.0, 1.0);
+    float snowFactor = clamp(snoise(float2(dot(toThis, float3(0.0, 1.0, 0.0)), dot(toThis, float3(1.0, 0.0, 0.0))) * _NoiseScale), 0.0, 1.0);
     snowFactor = clamp(snowFactor + lerp(1.0, -1.0, _Pollution), 0.0, 1.0);
     
-    float snowy = clamp(pow(clamp(dot(toThis, input.normalWS), 0, 1), _SnowThreshold), 0.0, 1.0);
+    float snowy = clamp(pow(clamp(dot(toThis, normalWS), 0, 1), _SnowThreshold), 0.0, 1.0) * smoothstep(2.0 / 3.0, 1.0, _SeasonTime);
+
     snowy = lerp(0.0, snowy, snowFactor);
     
-    float displacement = _Displacement * snowy * 0.001 * smoothstep(2.0 / 3.0, 1.0, _SeasonTime);
+    float displacement = _Displacement * snowy * snowy * 0.001;
     float edgeDistance = min(min(barycentricCoordinates.x, barycentricCoordinates.y), barycentricCoordinates.z);
     if (edgeDistance > 0.0)
         positionWS += normalWS * displacement;
@@ -75,25 +76,28 @@ Varyings TessellationVertexProgram(Varyings input, OutputPatch<Varyings, 3> patc
 
     VertexPositionInputs vertexInput = GetVertexPositionInputs(TransformWorldToObject(positionWS));
 
-    VertexNormalInputs vertexNormalInput = GetVertexNormalInputs(TransformWorldToObjectNormal(normalWS));
-
     float fogFactor = ComputeFogFactor(vertexInput.positionCS.z);
 
     output.uv = input.uv;
     output.uvLM = input.uvLM;
 
     output.positionWSAndFogFactor = float4(vertexInput.positionWS, fogFactor);
-    output.normalWS = vertexNormalInput.normalWS;
+    output.normalWS = normalWS;
 
 #if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
 	output.shadowCoord = GetShadowCoord(vertexInput);
 #endif
     output.positionCS = vertexInput.positionCS;
 
-    toThis = SafeNormalize(vertexInput.positionWS - _WorldCenter.xyz);
+#define Average(field) ((patch[0].field + patch[1].field + patch[2].field)/3.0)
+    
+    float3 toTri = SafeNormalize(Average(positionWSAndFogFactor).xyz - _WorldCenter.xyz);
 
-    snowy = clamp(pow(clamp(dot(toThis, vertexNormalInput.normalWS), 0, 1), _SnowThreshold), 0.0, 1.0) * smoothstep(2.0 / 3.0, 1.0, _SeasonTime);
+    snowy = clamp(pow(clamp(dot(toTri, normalWS), 0, 1), _SnowThreshold), 0.0, 1.0) * smoothstep(2.0 / 3.0, 1.0, _SeasonTime);
 
+    snowFactor = clamp(snoise(float2(dot(normalWS, float3(0.0, 1.0, 0.0)), dot(normalWS, float3(1.0, 0.0, 0.0))) * _NoiseScale), 0.0, 1.0);
+    snowFactor = clamp(snowFactor + lerp(1.0, -1.0, _Pollution), 0.0, 1.0);
+    
     output.snowy = lerp(0.0, snowy, snowFactor);
     
     return output;
@@ -104,12 +108,20 @@ TessellationFactors patchConstantFunction(InputPatch<Varyings, 3> patch)
 #define Average(field) ((patch[0].field + patch[1].field + patch[2].field)/3.0)
     
     float3 positionWS = Average(positionWSAndFogFactor).xyz;
+    float3 normalWS = Average(normalWS);
 
     float3 toThis = SafeNormalize(positionWS - _WorldCenter.xyz);
 
-    float snowy = clamp(pow(clamp(dot(toThis, Average(normalWS)), 0, 1), _SnowThreshold), 0.0, _SeasonTime > (2.0 / 3.0) ? 1.0 : 0.0);
+    float snowFactor = clamp(snoise(float2(dot(toThis, float3(0.0, 1.0, 0.0)), dot(toThis, float3(1.0, 0.0, 0.0))) * _NoiseScale), 0.0, 1.0);
+    snowFactor = clamp(snowFactor + lerp(1.0, -1.0, _Pollution), 0.0, 1.0);
     
-    float tessellationFactor = max(_TessellationUniform * snowy, 1.0);
+    float snowy = clamp(pow(clamp(dot(toThis, normalWS), 0, 1), _SnowThreshold), 0.0, 1.0) * smoothstep(2.0 / 3.0, 1.0, _SeasonTime);
+
+    snowy = lerp(0.0, snowy, snowFactor);
+    
+   // float snowy = clamp(pow(clamp(dot(toThis, Average(normalWS)), 0, 1), _SnowThreshold), 0.0, _SeasonTime > (2.0 / 3.0) ? 1.0 : 0.0);
+    
+    float tessellationFactor = 1.0 + max(_TessellationUniform * snowy * snowy, 1.0) * 0.001;
     
     TessellationFactors f;
     f.edge[0] = tessellationFactor;
