@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Animation\Button animations\Button_animation_script.cs" />
      <Compile Include="Assets\Scripts\Buildings\Building.cs" />
      <Compile Include="Assets\Scripts\Buildings\BuildingLocation.cs" />
      <Compile Include="Assets\Scripts\Buildings\BuildingPlacer.cs" />
