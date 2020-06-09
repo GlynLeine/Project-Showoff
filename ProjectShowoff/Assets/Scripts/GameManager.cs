@@ -99,6 +99,11 @@ public class GameManager : MonoBehaviour
             ozoneMat = ozoneMaterial;
         if (cloudMat == null)
             cloudMat = cloudMaterial;
+
+        if (SystemInfo.graphicsDeviceType == GraphicsDeviceType.OpenGLES3)
+            masterMat.shader = webGLShader;
+        else
+            masterMat.shader = tesselationShader;
     }
 
     public static float smoothstep(float min, float max, float interp)
@@ -113,11 +118,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        if (SystemInfo.graphicsDeviceType == GraphicsDeviceType.OpenGLES3)
-            masterMat.shader = webGLShader;
-        else
-            masterMat.shader = tesselationShader;
-
         SetCloudState(0.25f);
         SetOzoneState(0f);
         SetSeasonTime(0f);

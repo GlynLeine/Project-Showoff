@@ -86,6 +86,8 @@
     <Compile Include="Assets\Scripts\UI\EndScreenCounter.cs" />
     <Compile Include="Assets\Scripts\UI\PlanetReset.cs" />
     <Compile Include="Assets\Scripts\UI\SnowController.cs" />
+    <Compile Include="Assets\Scripts\UI\TimeLinePart.cs" />
+    <Compile Include="Assets\Scripts\UI\TimeLineSaver.cs" />
     <Compile Include="Assets\Scripts\UI\TutorialScript.cs" />
     <Compile Include="Assets\Scripts\UI\UIController.cs" />
     <Compile Include="Assets\Scripts\UI\VoiceCasterTestScript.cs" />
