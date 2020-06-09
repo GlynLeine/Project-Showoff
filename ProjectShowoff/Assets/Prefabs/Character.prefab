@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1197743855728374716}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 1340616857238223980}
   m_Father: {fileID: 0}
@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b0922823e0fd7b4191138839e0c2b67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  velocity: 0
   location: {fileID: 0}
   wanderRange: 0
   walkSpeed: 0
@@ -87,6 +88,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6792501805687544776}
     m_Modifications:
+    - target: {fileID: -6057140222963153312, guid: b76d5f6ce9c1b384ea2da713fac78ff9,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 63e7a02069f1c8c40aa4c738f8e94120, type: 2}
     - target: {fileID: -4216859302048453862, guid: b76d5f6ce9c1b384ea2da713fac78ff9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -141,6 +147,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: b76d5f6ce9c1b384ea2da713fac78ff9,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: b76d5f6ce9c1b384ea2da713fac78ff9,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: b76d5f6ce9c1b384ea2da713fac78ff9,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: b76d5f6ce9c1b384ea2da713fac78ff9,
         type: 3}
