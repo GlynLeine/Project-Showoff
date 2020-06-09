@@ -32,10 +32,11 @@ public class Character : MonoBehaviour
     BuildingSystem buildingSystem;
     public WalkTarget walkTarget;
     bool travelling;
-
+    private Animator animator;
     void Start()
     {
         prevpos = transform.position;
+        animator = GetComponentInChildren<Animator>();
         buildingSystem = FindObjectOfType<BuildingSystem>();
         StartCoroutine(Wander());
     }
@@ -148,6 +149,8 @@ public class Character : MonoBehaviour
     {
         velocity = (transform.position - prevpos).magnitude;
         prevpos = transform.position;
+        animator.SetFloat("velocity", velocity);
+        animator.SetBool("pokePlay", GetComponent<Pokable>().pokePlay);
 
         if (walkTarget != null && !travelling)
         {
