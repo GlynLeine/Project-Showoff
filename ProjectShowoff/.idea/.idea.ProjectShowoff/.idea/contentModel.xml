@@ -56,6 +56,7 @@
           <e p="Shaders" t="Include">
             <e p="Master.shader" t="Include" />
             <e p="MasterWebGL.shader" t="Include" />
+            <e p="SimplexNoise.hlsl" t="Include" />
             <e p="Tessellation" t="Include">
               <e p="GlynTessellation.hlsl" t="Include" />
             </e>
@@ -157,6 +158,7 @@
           </e>
           <e p="Effects" t="Include">
             <e p="CloudEffect.cs" t="Include" />
+            <e p="IceCaps.cs" t="Include" />
             <e p="PollutionSpheres.cs" t="Include" />
           </e>
           <e p="GameManager.cs" t="Include" />

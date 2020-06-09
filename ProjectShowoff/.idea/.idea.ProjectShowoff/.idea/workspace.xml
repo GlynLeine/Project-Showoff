@@ -59,6 +59,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/EndScreenCounter.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/EndScreenTimeline.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/TimeLineSaver.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/TimeLinePart.cs" />
       </list>
     </option>
@@ -119,6 +120,8 @@
       <workItem from="1591342755960" duration="4828000" />
       <workItem from="1591358694648" duration="6218000" />
       <workItem from="1591615487277" duration="7939000" />
+      <workItem from="1591650958846" duration="248000" />
+      <workItem from="1591686026744" duration="6136000" />
     </task>
     <servers />
   </component>

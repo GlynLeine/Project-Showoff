@@ -28,7 +28,8 @@ public class TimeLinePart : MonoBehaviour
     private Color color;
     //gameobjects
     public Image graySky;
-    public Image waterLevel;
+    public GameObject waterLevel;
+    public GameObject sideWater;
     public GameObject iceCap;
     public GameObject buildings;
     public GameObject nature;
@@ -79,37 +80,55 @@ public class TimeLinePart : MonoBehaviour
             maxBuildings = 48;
             maxNature = 600;
         }
-
-        Debug.Log(timeLinePollution);
-        Debug.Log(timeLineWaterLevel);
-        Debug.Log(timeLineBuildings);
-        Debug.Log(timeLineNature);
+        buildingCounter = timeLineBuildings / maxBuildings * 5;
+        natureCounter = timeLineNature / maxNature * 8;
         color = graySky.color;
         color.a = timeLinePollution / maxPollution;
         graySky.color = color;
-        waterLevel.fillAmount = timeLineWaterLevel / maxWaterLevel;
+        if (timeLineWaterLevel <= 0.5f)
+        {
+            Vector3 transformSave = waterLevel.transform.localPosition;
+            transformSave.y += 200 * timeLineWaterLevel;
+            waterLevel.transform.localPosition = transformSave;
+            if (sideWater != null)
+            {
+                transformSave = sideWater.transform.localPosition;
+                transformSave.y += 200 * timeLineWaterLevel;
+                sideWater.transform.localPosition = transformSave;
+            }
+        }else
+        {
+            Vector3 transformSave = waterLevel.transform.localPosition;
+            transformSave.y += 100;
+            waterLevel.transform.localPosition = transformSave;
+            if (sideWater != null)
+            {
+                transformSave = sideWater.transform.localPosition;
+                transformSave.y += 100;
+                sideWater.transform.localPosition = transformSave;
+            }
+        }
         if (timeLineWaterLevel >= 0.2f)
         {
             iceCap.SetActive(false);
         }
-        buildingCounter = timeLineBuildings / maxBuildings * 5;
+        buildingCounter -= timeLineWaterLevel * 10;
+        natureCounter -= timeLineWaterLevel * 16;
         foreach (Transform child in buildings.transform)
         {
             if (buildingCounter < 0)
             {
                 Destroy(child.gameObject);
             }
-            buildingCounter =- 1;
+            buildingCounter -= 1;
         }
-
-        natureCounter = timeLineNature / maxNature * 8;
         foreach (Transform child in nature.transform)
         {
-            if (maxNature < 0)
+            if (natureCounter < 0)
             {
                 Destroy(child.gameObject);
             }
-            buildingCounter =- 1;
+            natureCounter -= 1;
         } 
 
     }
