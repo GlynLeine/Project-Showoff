@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\Editors\RoadEditor.cs" />
     <Compile Include="Assets\Scripts\Editors\SplineEditor.cs" />
     <Compile Include="Assets\Scripts\Editors\SplineMeshEditor.cs" />
+    <Compile Include="Assets\Scripts\Effects\BuildingCloudEffect.cs" />
     <Compile Include="Assets\Scripts\Effects\CloudEffect.cs" />
     <Compile Include="Assets\Scripts\Effects\IceCaps.cs" />
     <Compile Include="Assets\Scripts\Effects\PollutionSpheres.cs" />
