@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Button_animation_script : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private Animator m_Animator;
+    private bool animationPlaying;
     void Start()
     {
-        
+        m_Animator = GetComponent<Animator>();
     }
 
     
     public void button_touch()
     {
-        GetComponent<Animator>().Play("");
+        animationPlaying = true;
     }
 }
