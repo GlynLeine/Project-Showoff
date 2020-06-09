@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Animation\Button animations\Button_animation_script.cs" />
     <Compile Include="Assets\Scripts\Buildings\Building.cs" />
     <Compile Include="Assets\Scripts\Buildings\BuildingLocation.cs" />
     <Compile Include="Assets\Scripts\Buildings\BuildingPlacer.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\UI\AnnouncerText.cs" />
     <Compile Include="Assets\Scripts\UI\EndScreenCounter.cs" />
+    <Compile Include="Assets\Scripts\UI\EndScreenPlanetMove.cs" />
     <Compile Include="Assets\Scripts\UI\PlanetReset.cs" />
     <Compile Include="Assets\Scripts\UI\SnowController.cs" />
     <Compile Include="Assets\Scripts\UI\TimeLinePart.cs" />
