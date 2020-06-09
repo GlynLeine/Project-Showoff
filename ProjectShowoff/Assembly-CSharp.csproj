@@ -122,6 +122,7 @@
     <None Include="Assets\Materials\Shaders\Tessellation\GlynTessellation.hlsl" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\EventFolder\{da62df50-2340-4e52-af2d-e8e0ee880222}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{906c59d8-e6e2-460d-afd3-a965f1176501}.xml" />
+    <None Include="Assets\FMOD\Threa FMOD\Metadata\Event\{3532e00e-5dae-43f8-ad0d-1904d3baef15}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\Platform\{6d1069c6-a3ea-4007-8e94-79d85f8e41bf}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{000581dd-2852-453d-a7fd-f7699fdcc9d3}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{44dc9537-bbb7-4e0e-bad0-368a5751c710}.xml" />
@@ -170,6 +171,7 @@
     <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{1dfc9b88-5e7b-4260-8646-b4c85c6f49f7}.xml" />
     <None Include="Assets\Materials\Shaders\Master.shader" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\Tags.xml" />
+    <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{1fb15393-5edb-4ca7-87d1-62ea74789c1d}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{aade4b0d-3bf3-48f6-a3ca-7d7b91d9aace}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{d3ed3c0a-3601-4368-8628-a39d043ed638}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\Event\{1030b093-83cd-46ca-a3ae-decf7b1df16c}.xml" />
