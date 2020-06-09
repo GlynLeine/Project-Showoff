@@ -5,7 +5,7 @@ using UnityEngine;
 public class Pokable : MonoBehaviour
 {
     public bool pokePlay = false;
-    public int animCoolDown = 2;
+    public float animCoolDown = 2;
 
     private void Update()
     {
@@ -13,9 +13,8 @@ public class Pokable : MonoBehaviour
     }
     IEnumerator reset()
     {
-        yield return new WaitForSeconds(animCoolDown);
+        yield return new WaitForSeconds(animCoolDown + Time.deltaTime);
         pokePlay = false;
-
     }
     public void poke()
     {
