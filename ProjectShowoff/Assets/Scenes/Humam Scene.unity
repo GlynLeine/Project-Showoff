@@ -5440,7 +5440,7 @@ PrefabInstance:
     - target: {fileID: 8872052277425209312, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8872052277425209312, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
@@ -6362,12 +6362,10 @@ GameObject:
   m_Component:
   - component: {fileID: 980212957}
   - component: {fileID: 980212956}
-  - component: {fileID: 980212955}
   - component: {fileID: 980212958}
   - component: {fileID: 980212959}
   - component: {fileID: 980212960}
   - component: {fileID: 980212961}
-  - component: {fileID: 980212962}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6375,14 +6373,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &980212955
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 980212954}
-  m_Enabled: 0
 --- !u!20 &980212956
 Camera:
   m_ObjectHideFlags: 0
@@ -6510,29 +6500,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ListenerNumber: -1
---- !u!114 &980212962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 980212954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  Event: event:/Main Music
-  PlayEvent: 1
-  StopEvent: 2
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 0
-  OverrideMaxDistance: 0
 --- !u!1 &984832525
 GameObject:
   m_ObjectHideFlags: 0
@@ -14286,7 +14253,7 @@ Transform:
   m_LocalScale: {x: 1.0000002, y: 1.0000001, z: 1.0000001}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 18.4, y: 0, z: 90}
 --- !u!43 &1792272988
 Mesh:
