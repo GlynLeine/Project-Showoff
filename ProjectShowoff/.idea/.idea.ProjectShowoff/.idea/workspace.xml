@@ -38,6 +38,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/EndScreenCounter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/TimeLineSaver.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Materials/LineShader.shader" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/ButtonFill.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/addons/ResonanceAudio/Editor/FmodResonanceAudioRoomEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Util/Spline/SplineMesh.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Materials/Shaders/MasterWebGL.shader" root0="FORCE_HIGHLIGHTING" />
@@ -63,6 +64,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/TimeLinePart.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/EndScreenPlanetMove.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/ButtonFill.cs" />
       </list>
     </option>
   </component>
@@ -123,7 +125,7 @@
       <workItem from="1591358694648" duration="6218000" />
       <workItem from="1591615487277" duration="7939000" />
       <workItem from="1591650958846" duration="248000" />
-      <workItem from="1591686026744" duration="7258000" />
+      <workItem from="1591686026744" duration="9756000" />
     </task>
     <servers />
   </component>
