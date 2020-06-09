@@ -30,7 +30,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
-  - {fileID: 4490889930025020615}
+  - {fileID: 1914378294492662303}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -50,6 +50,7 @@ MonoBehaviour:
   location: {fileID: 0}
   wanderRange: 0
   walkSpeed: 0
+  actualWalkSpeed: 0
   travelChance: 0
   planet: {fileID: 0}
   minWanderTime: 0
@@ -80,33 +81,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pokePlay: 0
-  animCoolDown: 2
---- !u!95 &3755638206568116071
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2006632001696264814}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 63e7a02069f1c8c40aa4c738f8e94120, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!1001 &8874462184455571421
+  animCoolDown: 4
+--- !u!1001 &6911767741354320133
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 6792501805687544776}
     m_Modifications:
+    - target: {fileID: -6057140222963153312, guid: d30407f762bafd646a713985a181d5d2,
+        type: 3}
+      propertyPath: m_CullingMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: d30407f762bafd646a713985a181d5d2,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 63e7a02069f1c8c40aa4c738f8e94120, type: 2}
     - target: {fileID: -4216859302048453862, guid: d30407f762bafd646a713985a181d5d2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -165,19 +157,18 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: d30407f762bafd646a713985a181d5d2,
         type: 3}
       propertyPath: m_Name
-      value: anim
+      value: anim (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1616767612817913737, guid: d30407f762bafd646a713985a181d5d2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 76caca9284219ee49af86b1f8a96c1d8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d30407f762bafd646a713985a181d5d2, type: 3}
---- !u!4 &4490889930025020615 stripped
+--- !u!4 &1914378294492662303 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: d30407f762bafd646a713985a181d5d2,
     type: 3}
-  m_PrefabInstance: {fileID: 8874462184455571421}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2006632001696264814 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6985242979335534003, guid: d30407f762bafd646a713985a181d5d2,
-    type: 3}
-  m_PrefabInstance: {fileID: 8874462184455571421}
+  m_PrefabInstance: {fileID: 6911767741354320133}
   m_PrefabAsset: {fileID: 0}

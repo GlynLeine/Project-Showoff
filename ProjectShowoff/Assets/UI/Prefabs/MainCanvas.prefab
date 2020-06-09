@@ -1132,6 +1132,8 @@ GameObject:
   - component: {fileID: 8872052276362745034}
   - component: {fileID: 8872052276362745035}
   - component: {fileID: 8872052276362745036}
+  - component: {fileID: 4014684271107976078}
+  - component: {fileID: 9039077146645611166}
   m_Layer: 5
   m_Name: Nature reserve
   m_TagString: Untagged
@@ -1261,6 +1263,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 9039077146645611166}
+        m_MethodName: button_touch
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8872052276362745036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1280,6 +1293,37 @@ MonoBehaviour:
   pollutionEffect: 0
   industryEffect: 0
   cooldownEffect: 0
+--- !u!95 &4014684271107976078
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872052276362745038}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d53d3e085400686439d4445fa316a305, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &9039077146645611166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872052276362745038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94fec833fdd9bde49b087a59627bb346, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8872052276453182126
 GameObject:
   m_ObjectHideFlags: 0
@@ -1609,6 +1653,8 @@ GameObject:
   - component: {fileID: 8872052276772569452}
   - component: {fileID: 8872052276772569453}
   - component: {fileID: 8872052276772569454}
+  - component: {fileID: 7338502225471708415}
+  - component: {fileID: 538938839970897234}
   m_Layer: 5
   m_Name: Train station
   m_TagString: Untagged
@@ -1738,6 +1784,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 538938839970897234}
+        m_MethodName: button_touch
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8872052276772569454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1757,6 +1814,37 @@ MonoBehaviour:
   pollutionEffect: 0
   industryEffect: 1
   cooldownEffect: 0
+--- !u!95 &7338502225471708415
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872052276772569456}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a31c8201bbc27bb4588b3b58df26c699, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &538938839970897234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872052276772569456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94fec833fdd9bde49b087a59627bb346, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8872052276810132837
 GameObject:
   m_ObjectHideFlags: 0
@@ -2586,6 +2674,8 @@ GameObject:
   - component: {fileID: 8872052277241891093}
   - component: {fileID: 8872052277241891094}
   - component: {fileID: 8872052277241891095}
+  - component: {fileID: 352390789779439050}
+  - component: {fileID: 6125047934237583473}
   m_Layer: 5
   m_Name: Coal mine
   m_TagString: Untagged
@@ -2715,6 +2805,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6125047934237583473}
+        m_MethodName: button_touch
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8872052277241891095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2734,6 +2835,37 @@ MonoBehaviour:
   pollutionEffect: 4
   industryEffect: 1
   cooldownEffect: -0.05
+--- !u!95 &352390789779439050
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872052277241891097}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: eb5473d2f62582344939bd2f265a0655, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6125047934237583473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872052277241891097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94fec833fdd9bde49b087a59627bb346, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8872052277256918478
 GameObject:
   m_ObjectHideFlags: 0
@@ -3776,6 +3908,8 @@ GameObject:
   - component: {fileID: 8872052277642821843}
   - component: {fileID: 8872052277642821844}
   - component: {fileID: 8872052277642821845}
+  - component: {fileID: 1977140028650601067}
+  - component: {fileID: 2939018981580030789}
   m_Layer: 5
   m_Name: Factory
   m_TagString: Untagged
@@ -3905,6 +4039,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2939018981580030789}
+        m_MethodName: button_touch
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8872052277642821845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3924,6 +4069,37 @@ MonoBehaviour:
   pollutionEffect: 0
   industryEffect: 1
   cooldownEffect: 0
+--- !u!95 &1977140028650601067
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872052277642821847}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 77c3811d86b407b4b840fa0b08dc7b09, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2939018981580030789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872052277642821847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94fec833fdd9bde49b087a59627bb346, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8872052277644214249
 GameObject:
   m_ObjectHideFlags: 0
@@ -3937,6 +4113,8 @@ GameObject:
   - component: {fileID: 8872052277644214245}
   - component: {fileID: 8872052277644214246}
   - component: {fileID: 8872052277644214247}
+  - component: {fileID: 6255749329719683135}
+  - component: {fileID: 470737869754489169}
   m_Layer: 5
   m_Name: Oil rig
   m_TagString: Untagged
@@ -4066,6 +4244,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 470737869754489169}
+        m_MethodName: button_touch
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8872052277644214247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4085,6 +4274,37 @@ MonoBehaviour:
   pollutionEffect: 4
   industryEffect: 1
   cooldownEffect: -0.05
+--- !u!95 &6255749329719683135
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872052277644214249}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a215fadd45bcc3a4790ea47c004d1546, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &470737869754489169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872052277644214249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94fec833fdd9bde49b087a59627bb346, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8872052277739761911
 GameObject:
   m_ObjectHideFlags: 0
@@ -4513,6 +4733,8 @@ GameObject:
   - component: {fileID: 8872052277895917245}
   - component: {fileID: 8872052277895917246}
   - component: {fileID: 8872052277895917247}
+  - component: {fileID: 1844035671952391576}
+  - component: {fileID: 9158412900762032336}
   m_Layer: 5
   m_Name: Harbor
   m_TagString: Untagged
@@ -4642,6 +4864,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 9158412900762032336}
+        m_MethodName: button_touch
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8872052277895917247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4661,6 +4894,37 @@ MonoBehaviour:
   pollutionEffect: 0
   industryEffect: 1
   cooldownEffect: -0.05
+--- !u!95 &1844035671952391576
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872052277895917249}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b14df645adc516c4bb163ba8bb757fa9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &9158412900762032336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872052277895917249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94fec833fdd9bde49b087a59627bb346, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8872052277909840468
 GameObject:
   m_ObjectHideFlags: 0
@@ -4674,6 +4938,8 @@ GameObject:
   - component: {fileID: 8872052277909840464}
   - component: {fileID: 8872052277909840465}
   - component: {fileID: 8872052277909840466}
+  - component: {fileID: 8790270191131704417}
+  - component: {fileID: 8235950987674732319}
   m_Layer: 5
   m_Name: Solar farm
   m_TagString: Untagged
@@ -4803,6 +5069,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8235950987674732319}
+        m_MethodName: button_touch
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8872052277909840466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4822,6 +5099,37 @@ MonoBehaviour:
   pollutionEffect: 0
   industryEffect: 1
   cooldownEffect: -0.05
+--- !u!95 &8790270191131704417
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872052277909840468}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 567930e93d425d7418a540679b4d8569, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8235950987674732319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872052277909840468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94fec833fdd9bde49b087a59627bb346, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8872052277918405795
 GameObject:
   m_ObjectHideFlags: 0
