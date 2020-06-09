@@ -29,7 +29,7 @@ public class BuildingSystem : MonoBehaviour
     bool initialised = false;
     CharacterSystem characterSystem;
 
-    public delegate void OnBuildingPlaced(BuildingLocation location, BuildingPlacer buildingData);
+    public delegate void OnBuildingPlaced(BuildingLocation location, BuildingPlacer buildingData, Building building);
     public static OnBuildingPlaced onBuildingPlaced;
 
     public UnityEngine.UI.Toggle DestructionToggle;
@@ -38,6 +38,12 @@ public class BuildingSystem : MonoBehaviour
     public void ToggleDestroyMode()
     {
         destroy = DestructionToggle.isOn;
+    }
+
+    private void Awake()
+    {
+        foreach (Building building in FindObjectsOfType<Building>())
+            building.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -423,7 +429,7 @@ public class BuildingSystem : MonoBehaviour
             if (GameManager.buildingsPlaced == 0)
                 GameManager.continentsDiscovered++;
 
-            if(closedSet.Count > 0)
+            if (closedSet.Count > 0)
                 GameManager.continentsDiscovered++;
 
             return PlaceRandomBuilding(buildingData);
@@ -586,7 +592,7 @@ public class BuildingSystem : MonoBehaviour
         if (buildingCount > GameManager.maxBuildings)
             GameManager.maxBuildings = buildingCount;
 
-        onBuildingPlaced?.Invoke(location, buildingData);
+        onBuildingPlaced?.Invoke(location, buildingData, building);
     }
 
     private bool PlaceRandomBuilding(BuildingPlacer buildingData)

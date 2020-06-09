@@ -24,6 +24,7 @@ public class Character : MonoBehaviour
     public BuildingLocation location;
     public float wanderRange;
     public float walkSpeed;
+    public float actualWalkSpeed;
     public float travelChance;
     public Transform planet;
     public float minWanderTime;
@@ -32,10 +33,14 @@ public class Character : MonoBehaviour
     BuildingSystem buildingSystem;
     public WalkTarget walkTarget;
     bool travelling;
+    private Animator animator;
+    private Pokable pokable;
 
     void Start()
     {
         prevpos = transform.position;
+        animator = GetComponentInChildren<Animator>();
+        pokable = GetComponent<Pokable>();
         buildingSystem = FindObjectOfType<BuildingSystem>();
         StartCoroutine(Wander());
     }
@@ -98,7 +103,7 @@ public class Character : MonoBehaviour
             float distance = difference.magnitude;
             Vector3 direction = difference.normalized;
 
-            float walkDistance = walkSpeed * GameManager.deltaTime;
+            float walkDistance = actualWalkSpeed * GameManager.deltaTime;
             if (walkDistance > distance)
             {
                 walkDistance = distance;
@@ -130,10 +135,17 @@ public class Character : MonoBehaviour
             locationReached = false;
             while (!locationReached)
             {
-                walkedDistance += walkSpeed * GameManager.deltaTime * walkDirection;
+                walkedDistance += actualWalkSpeed * GameManager.deltaTime * walkDirection;
                 locationReached = walkedDistance * walkDirection >= destination;
+
+                prevpos = transform.position;
                 transform.position = road.spline.GetWorldPointAtDistance(walkedDistance);
-                transform.rotation = road.spline.GetWorldRotationAtDistance(walkedDistance);
+
+                Vector3 vel = transform.position - prevpos;
+                velocity = vel.magnitude;
+                if (velocity > 0)
+                    transform.rotation = Quaternion.LookRotation(vel / velocity, road.spline.GetWorldRotationAtDistance(walkedDistance) * Vector3.up);
+
                 yield return null;
             }
 
@@ -146,8 +158,25 @@ public class Character : MonoBehaviour
 
     private void Update()
     {
-        velocity = (transform.position - prevpos).magnitude;
+        if (pokable.pokePlay)
+        {
+            actualWalkSpeed = 0f;
+            prevpos = transform.position;
+        }
+        else
+            actualWalkSpeed = walkSpeed;
+
+        Vector3 vel = transform.position - prevpos;
+        velocity = vel.magnitude;
+        if (velocity > 0)
+            transform.rotation = Quaternion.LookRotation(vel / velocity, location.transform.up);
+        //else
+        //    transform.rotation = location.transform.rotation;
+
         prevpos = transform.position;
+
+        animator.SetFloat("velocity", velocity);
+        animator.SetBool("pokePlay", pokable.pokePlay);
 
         if (walkTarget != null && !travelling)
         {
@@ -157,7 +186,7 @@ public class Character : MonoBehaviour
                 float distance = difference.magnitude;
                 Vector3 direction = difference.normalized;
 
-                float walkDistance = walkSpeed * GameManager.deltaTime;
+                float walkDistance = actualWalkSpeed * GameManager.deltaTime;
                 if (walkDistance > distance)
                 {
                     walkDistance = distance;

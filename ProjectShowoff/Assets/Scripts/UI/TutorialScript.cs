@@ -69,6 +69,7 @@ public class TutorialScript : MonoBehaviour
     {
         if (!tutorialBuildStep)
         {
+            GameManager.paused = false;
             tutorialBuildStep = true;
             StartCoroutine(TimerAnimationStart());
             StartCoroutine(ResetAnimationStart());
@@ -155,7 +156,6 @@ public class TutorialScript : MonoBehaviour
             if (timeAnimationPosition.y <= 990)
             {
                 animationSpeed = 1;
-                GameManager.paused = false;
                 timeAnimationPosition.y = 990;
                 timeImages.transform.position = timeAnimationPosition;
             }

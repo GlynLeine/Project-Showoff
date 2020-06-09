@@ -11,6 +11,8 @@
 
 		_Smoothness("Smoothness", Range(0.0, 1.0)) = 0.0
 
+		_Pollution("Pollution", Range(0.0, 1.0)) = 0.0
+		_NoiseScale("Snow Noise Scale", Range(0.0, 10.0)) = 1.0
 
 		_WorldCenter("World Center", Vector) = (0.0, 0.0, 0.0, 0.0)
 		_SnowThreshold("Snow Threshold", Range(0.0, 10.0)) = 0.5
@@ -84,6 +86,8 @@
 
 				float _SeasonTime;
 				float _Smoothness;
+				float _Pollution;
+				float _NoiseScale;
 
 				float4 _WorldCenter;
 				float _SnowThreshold;
@@ -119,8 +123,8 @@
 					float snowy : TEXCOORD8;
 				};
 
+#include "SimplexNoise.hlsl"
 #include "tessellation/GlynTessellation.hlsl"
-
 
 				Varyings LitPassVertex(Attributes input)
 				{
@@ -152,19 +156,20 @@
 					// We just use the homogeneous clip position from the vertex input
 					output.positionCS = vertexInput.positionCS;
 
-					float3 toThis = SafeNormalize(vertexInput.positionWS - _WorldCenter.xyz);
+					/*float3 toThis = SafeNormalize(vertexInput.positionWS - _WorldCenter.xyz);
 
-					output.snowy = clamp(pow(clamp(dot(toThis, vertexNormalInput.normalWS), 0, 1), _SnowThreshold), 0.0, 1.0) * smoothstep(2.0 / 3.0, 1.0, _SeasonTime);
+					float snowy = clamp(pow(clamp(dot(toThis, vertexNormalInput.normalWS), 0, 1), _SnowThreshold), 0.0, 1.0) * smoothstep(2.0 / 3.0, 1.0, _SeasonTime);
+
+					float snowFactor = clamp(snoise(float2(dot(toThis, float3(0.0, 1.0, 0.0)), dot(toThis, float3(1.0, 0.0, 0.0)))*_NoiseScale), 0.0, 1.0);
+					snowFactor = clamp(snowFactor + lerp(1.0, -1.0, _Pollution), 0.0, 1.0);
+
+					output.snowy = lerp(0.0, snowy, snowFactor);*/
 
 					return output;
 				}
 
-				//#if defined(TESSELLATION)
-				//#endif
 				half4 LitPassFragment(Varyings input) : SV_Target
 				{
-
-
 					half3 normalWS = input.normalWS;
 					normalWS = normalize(normalWS);
 

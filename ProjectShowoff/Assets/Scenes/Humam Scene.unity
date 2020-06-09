@@ -8595,7 +8595,7 @@ MonoBehaviour:
     type: 3}
   altCloudPrefab: {fileID: 1506121968837340895, guid: 88987e41777b4e6429145acd4073e6ca,
     type: 3}
-  cloudMaterial: {fileID: 0}
+  cloudMaterial: {fileID: 2100000, guid: a50f08d243fd5ff45bd06e8b789d947c, type: 2}
   resolution: 1000
   cloudHeight: 1.3
 --- !u!1 &1237391434
