@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Button_animation_script : MonoBehaviour
 {
-    private Animator m_Animator;
-    private bool animationPlaying;
+    private Animator animator;
     void Start()
     {
-        m_Animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     
     public void button_touch()
     {
-        animationPlaying = true;
+        animator?.SetTrigger("play");
+        Debug.Log("play");
     }
 }

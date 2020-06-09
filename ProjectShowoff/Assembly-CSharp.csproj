@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\Effects\PollutionSpheres.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\UI\AnnouncerText.cs" />
+    <Compile Include="Assets\Scripts\UI\ButtonFill.cs" />
     <Compile Include="Assets\Scripts\UI\EndScreenCounter.cs" />
     <Compile Include="Assets\Scripts\UI\EndScreenPlanetMove.cs" />
     <Compile Include="Assets\Scripts\UI\PlanetReset.cs" />

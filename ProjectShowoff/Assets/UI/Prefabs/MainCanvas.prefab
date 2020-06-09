@@ -446,7 +446,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -45, y: 120}
+  m_AnchoredPosition: {x: -44.999756, y: 120}
   m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6027270118426816836
@@ -1133,6 +1133,7 @@ GameObject:
   - component: {fileID: 8872052276362745035}
   - component: {fileID: 8872052276362745036}
   - component: {fileID: 9039077146645611166}
+  - component: {fileID: 1995987992210405225}
   m_Layer: 5
   m_Name: Nature reserve
   m_TagString: Untagged
@@ -1273,6 +1274,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 9039077146645611166}
+        m_MethodName: button_touch
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8872052276362745036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1304,6 +1316,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94fec833fdd9bde49b087a59627bb346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!111 &1995987992210405225
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872052276362745038}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 63fc2341b9cb08e48a7f6b8625322c80, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &8872052276453182126
 GameObject:
   m_ObjectHideFlags: 0
@@ -1517,7 +1544,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -100}
+  m_AnchoredPosition: {x: 0, y: -100.00012}
   m_SizeDelta: {x: 1920, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8872052276598536426
@@ -1634,6 +1661,7 @@ GameObject:
   - component: {fileID: 8872052276772569453}
   - component: {fileID: 8872052276772569454}
   - component: {fileID: 538938839970897234}
+  - component: {fileID: 6212773125174204915}
   m_Layer: 5
   m_Name: Train station
   m_TagString: Untagged
@@ -1741,7 +1769,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8872052276362745036}
+      - m_Target: {fileID: 8872052276772569454}
         m_MethodName: Place
         m_Mode: 1
         m_Arguments:
@@ -1765,6 +1793,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 4458793341134526775}
         m_MethodName: buttonAnimationCall
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 538938839970897234}
+        m_MethodName: button_touch
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1805,6 +1844,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94fec833fdd9bde49b087a59627bb346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!111 &6212773125174204915
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872052276772569456}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: f4e99bfa5b3334e4ab7b9a573c425ff4, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &8872052276810132837
 GameObject:
   m_ObjectHideFlags: 0
@@ -2150,7 +2204,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -45, y: 120}
+  m_AnchoredPosition: {x: -44.999756, y: 120}
   m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8872052277124362400
@@ -2280,7 +2334,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 50, y: -95}
+  m_AnchoredPosition: {x: 49.999756, y: -95}
   m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8872052277157053842
@@ -2635,6 +2689,7 @@ GameObject:
   - component: {fileID: 8872052277241891094}
   - component: {fileID: 8872052277241891095}
   - component: {fileID: 6125047934237583473}
+  - component: {fileID: 3867317504277791913}
   m_Layer: 5
   m_Name: Coal mine
   m_TagString: Untagged
@@ -2742,7 +2797,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8872052276362745036}
+      - m_Target: {fileID: 8872052277241891095}
         m_MethodName: Place
         m_Mode: 1
         m_Arguments:
@@ -2766,6 +2821,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 4458793341134526775}
         m_MethodName: buttonAnimationCall
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6125047934237583473}
+        m_MethodName: button_touch
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2806,6 +2872,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94fec833fdd9bde49b087a59627bb346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!111 &3867317504277791913
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872052277241891097}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: f1fe5dff8bceae34c86abecf37631c37, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &8872052277256918478
 GameObject:
   m_ObjectHideFlags: 0
@@ -2920,7 +3001,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 50}
+  m_AnchoredPosition: {x: 0, y: 50.000122}
   m_SizeDelta: {x: 1920, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8872052277272169927
@@ -2964,8 +3045,7 @@ MonoBehaviour:
   summerGrayscaleImage: {fileID: 8872052278163661586}
   fallGrayscaleImage: {fileID: 8872052278199728848}
   winterGrayscaleImage: {fileID: 8872052277918405793}
-  endScreenCanvas: {fileID: 5059465098578452987, guid: 3e1cf7e8a45fed34a8e95c607008c185,
-    type: 3}
+  endScreenCanvas: {fileID: 0}
   mainCanvas: {fileID: 8872052277425209316}
 --- !u!114 &2492309369576556696
 MonoBehaviour:
@@ -3089,7 +3169,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 50, y: 280}
+  m_AnchoredPosition: {x: 49.999756, y: 280}
   m_SizeDelta: {x: 20, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8872052277353791947
@@ -3849,6 +3929,7 @@ GameObject:
   - component: {fileID: 8872052277642821844}
   - component: {fileID: 8872052277642821845}
   - component: {fileID: 2939018981580030789}
+  - component: {fileID: 6705440783115329635}
   m_Layer: 5
   m_Name: Factory
   m_TagString: Untagged
@@ -3956,7 +4037,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8872052276362745036}
+      - m_Target: {fileID: 8872052277642821845}
         m_MethodName: Place
         m_Mode: 1
         m_Arguments:
@@ -3980,6 +4061,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 4458793341134526775}
         m_MethodName: buttonAnimationCall
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2939018981580030789}
+        m_MethodName: button_touch
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4020,6 +4112,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94fec833fdd9bde49b087a59627bb346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!111 &6705440783115329635
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872052277642821847}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: b96e90c452f1c3e4d94de39515be2944, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &8872052277644214249
 GameObject:
   m_ObjectHideFlags: 0
@@ -4034,6 +4141,7 @@ GameObject:
   - component: {fileID: 8872052277644214246}
   - component: {fileID: 8872052277644214247}
   - component: {fileID: 470737869754489169}
+  - component: {fileID: 3147618996375246795}
   m_Layer: 5
   m_Name: Oil rig
   m_TagString: Untagged
@@ -4141,7 +4249,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8872052276362745036}
+      - m_Target: {fileID: 8872052277644214247}
         m_MethodName: Place
         m_Mode: 1
         m_Arguments:
@@ -4165,6 +4273,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 4458793341134526775}
         m_MethodName: buttonAnimationCall
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 470737869754489169}
+        m_MethodName: button_touch
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4205,6 +4324,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94fec833fdd9bde49b087a59627bb346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!111 &3147618996375246795
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872052277644214249}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 64b3b55e5187f3743a6e6a3eef9bdfd2, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &8872052277739761911
 GameObject:
   m_ObjectHideFlags: 0
@@ -4634,6 +4768,7 @@ GameObject:
   - component: {fileID: 8872052277895917246}
   - component: {fileID: 8872052277895917247}
   - component: {fileID: 9158412900762032336}
+  - component: {fileID: 7803778154779938095}
   m_Layer: 5
   m_Name: Harbor
   m_TagString: Untagged
@@ -4741,7 +4876,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8872052276362745036}
+      - m_Target: {fileID: 8872052277895917247}
         m_MethodName: Place
         m_Mode: 1
         m_Arguments:
@@ -4765,6 +4900,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 4458793341134526775}
         m_MethodName: buttonAnimationCall
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 9158412900762032336}
+        m_MethodName: button_touch
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4805,6 +4951,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94fec833fdd9bde49b087a59627bb346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!111 &7803778154779938095
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872052277895917249}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 6211adff53d43014d9d2c33baba43b26, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &8872052277909840468
 GameObject:
   m_ObjectHideFlags: 0
@@ -4819,6 +4980,7 @@ GameObject:
   - component: {fileID: 8872052277909840465}
   - component: {fileID: 8872052277909840466}
   - component: {fileID: 8235950987674732319}
+  - component: {fileID: 663408663813914281}
   m_Layer: 5
   m_Name: Solar farm
   m_TagString: Untagged
@@ -4926,7 +5088,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8872052276362745036}
+      - m_Target: {fileID: 8872052277909840466}
         m_MethodName: Place
         m_Mode: 1
         m_Arguments:
@@ -4950,6 +5112,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 4458793341134526775}
         m_MethodName: buttonAnimationCall
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8235950987674732319}
+        m_MethodName: button_touch
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4990,6 +5163,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94fec833fdd9bde49b087a59627bb346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!111 &663408663813914281
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872052277909840468}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 905756918c5ef9043a381119151d4d4b, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &8872052277918405795
 GameObject:
   m_ObjectHideFlags: 0
