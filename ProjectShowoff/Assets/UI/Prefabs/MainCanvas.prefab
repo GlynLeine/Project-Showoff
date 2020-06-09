@@ -546,7 +546,7 @@ MonoBehaviour:
     m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -554,7 +554,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 
 --- !u!1 &8872052276362745038
 GameObject:
   m_ObjectHideFlags: 0
@@ -1519,7 +1519,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8872052277124362403
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1618,7 +1618,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8872052277124362401}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: ToggleDestroyMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8872052277157053846
 GameObject:
   m_ObjectHideFlags: 0
@@ -2485,7 +2496,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 8872052276453182125}
   m_HandleRect: {fileID: 8872052277295596726}
   m_Direction: 3
-  m_MinValue: 1.4
+  m_MinValue: 1.31
   m_MaxValue: 6
   m_WholeNumbers: 0
   m_Value: 6
