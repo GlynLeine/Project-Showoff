@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
 
     public static float season;
     public static float ozone;
+    public static float iceCaps;
+    public static float climate;
     public static float cloudiness;
     public static float time;
     public static float deltaTime;
@@ -76,6 +78,12 @@ public class GameManager : MonoBehaviour
         cloudMat.SetFloat("_Cloudiness", cloudState * 0.6f);
     }
 
+    static public void SetClimateState(float climateState)
+    {
+        climate = climateState;
+        masterMat.SetFloat("_Pollution", climateState);
+    }
+
     static public void AddState(float natureEffect, float pollutionEffect, float industryEffect)
     {
         nature += natureEffect;
@@ -91,6 +99,11 @@ public class GameManager : MonoBehaviour
             ozoneMat = ozoneMaterial;
         if (cloudMat == null)
             cloudMat = cloudMaterial;
+
+        if (SystemInfo.graphicsDeviceType == GraphicsDeviceType.OpenGLES3)
+            masterMat.shader = webGLShader;
+        else
+            masterMat.shader = tesselationShader;
     }
 
     public static float smoothstep(float min, float max, float interp)
@@ -105,11 +118,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        if (SystemInfo.graphicsDeviceType == GraphicsDeviceType.OpenGLES3)
-            masterMat.shader = webGLShader;
-        else
-            masterMat.shader = tesselationShader;
-
         SetCloudState(0.25f);
         SetOzoneState(0f);
         SetSeasonTime(0f);
@@ -145,8 +153,7 @@ public class GameManager : MonoBehaviour
         t = 0;
         prevPollut = 0;
 
-        season = 0f;
-        ozone = 0f;
+        iceCaps = 1f;
         time = 0f;
     }
 
@@ -174,6 +181,10 @@ public class GameManager : MonoBehaviour
             waterLevel = smoothstep(200f, 3800f, pollution);
             float uniformScale = 1f + waterLevel * 0.07f;
             ocean.transform.localScale = new Vector3(uniformScale, uniformScale, uniformScale);
+
+            iceCaps = smoothstep(3800f, 200f, pollution);
+
+            SetClimateState(smoothstep(100f, 3000f, pollution));
 
             float linearScale = smoothstep(0, 2000f, pollution);
             SetOzoneState(1f - Mathf.Pow(1f-linearScale, 2f));
@@ -213,6 +224,7 @@ public class GameManager : MonoBehaviour
             debugText.text += "\nmaxBuildings: " + maxBuildings;
             debugText.text += "\ncreaturesPoked: " + creaturesPoked;
             debugText.text += "\nozone: " + ozone;
+            debugText.text += "\nclimate: " + climate;
         }
     }
 }
