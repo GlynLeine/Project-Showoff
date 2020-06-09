@@ -12,6 +12,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/PlanetReset.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/EndScreenPlanetMove.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingLocation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/AnnouncerText.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Buildings/Building.cs" root0="FORCE_HIGHLIGHTING" />
@@ -61,6 +62,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/TimeLineSaver.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/TimeLinePart.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/EndScreenPlanetMove.cs" />
       </list>
     </option>
   </component>
@@ -121,7 +123,7 @@
       <workItem from="1591358694648" duration="6218000" />
       <workItem from="1591615487277" duration="7939000" />
       <workItem from="1591650958846" duration="248000" />
-      <workItem from="1591686026744" duration="6136000" />
+      <workItem from="1591686026744" duration="7258000" />
     </task>
     <servers />
   </component>

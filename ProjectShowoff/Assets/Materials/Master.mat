@@ -96,7 +96,7 @@ Material:
     - _Metallic: 0
     - _NoiseScale: 1.3
     - _OcclusionStrength: 1
-    - _Pollution: 0.5583859
+    - _Pollution: 0.50974095
     - _QueueOffset: 0
     - _RecalculateNormals: 1
     - _ReceiveShadows: 1
