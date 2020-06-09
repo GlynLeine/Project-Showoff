@@ -1,13 +1,13 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1102 &-6204315306180510046
+--- !u!1102 &-4593509294261103123
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Button_Animation
+  m_Name: NatureReserve_building_button_animation 1
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -20,7 +20,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: f4e99bfa5b3334e4ab7b9a573c425ff4, type: 2}
+  m_Motion: {fileID: 7400000, guid: 63fc2341b9cb08e48a7f6b8625322c80, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -36,8 +36,8 @@ AnimatorStateMachine:
   m_Name: Base Layer
   m_ChildStates:
   - serializedVersion: 1
-    m_State: {fileID: -6204315306180510046}
-    m_Position: {x: 106.30975, y: 245.75525, z: 0}
+    m_State: {fileID: -4593509294261103123}
+    m_Position: {x: 108.12616, y: 267.77243, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -47,7 +47,7 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: -6204315306180510046}
+  m_DefaultState: {fileID: -4593509294261103123}
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
