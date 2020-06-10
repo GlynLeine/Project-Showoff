@@ -14,21 +14,22 @@ public class EndScreenCounterWater : MonoBehaviour
     {
         yourValue = (float)GameManager.waterLevel;
         averageValue = 0.5f;
-        rectTransform = yourFill.GetComponent<RectTransform>();
-        Vector3 transform = rectTransform.anchoredPosition;
-        transform.y += 50 * yourValue;
-        if (transform.y > 0)
+        rectTransform = (RectTransform)yourFill.transform;
+        Vector3 waterTransform = rectTransform.anchoredPosition;
+        waterTransform.y += 50 * yourValue;
+        if (waterTransform.y > 0)
         {
-            transform.y = 50;
+            waterTransform.y = 0;
         }
-        rectTransform.anchoredPosition = transform;
-        rectTransform = theirFill.GetComponent<RectTransform>();
-        transform = rectTransform.anchoredPosition;
-        transform.y += 50 * averageValue;
-        if (transform.y > 0)
+        rectTransform.anchoredPosition = waterTransform;
+        
+        rectTransform = (RectTransform)theirFill.transform;
+        waterTransform = rectTransform.anchoredPosition;
+        waterTransform.y += 50 * averageValue;
+        if (waterTransform.y > 0)
         {
-            transform.y = 50;
+            waterTransform.y = 0;
         }
-        rectTransform.anchoredPosition = transform;
+        rectTransform.anchoredPosition = waterTransform;
     }
 }

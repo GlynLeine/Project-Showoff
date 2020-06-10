@@ -83,8 +83,7 @@ public class TutorialScript : MonoBehaviour
         yield return new WaitForSeconds(tutorialDelaySeconds);
         while (zoomSlider.transform.localPosition.x > 810)
         {
-            Vector3 sliderAnimationPosition;
-            sliderAnimationPosition = zoomSlider.transform.localPosition;
+            Vector3 sliderAnimationPosition = zoomSlider.transform.localPosition;
             animationSpeed += 0.1f;
             sliderAnimationPosition.x -= 3.6f * animationSpeed;
             if (sliderAnimationPosition.x <= 810)
