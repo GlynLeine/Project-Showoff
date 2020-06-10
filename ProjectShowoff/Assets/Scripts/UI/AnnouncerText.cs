@@ -17,25 +17,26 @@ public class AnnouncerText : MonoBehaviour
 
     private void Start()
     {
-        announcerRectTransform = announcerTextBox.GetComponent<RectTransform>();
+        announcerRectTransform = (RectTransform)announcerTextBox.transform;
         announcerTextText = announcerTextBox.GetComponent<TMP_Text>();
+        announcerTextWidth = announcerRectTransform.sizeDelta.x;
     }
 
     void Update()
     {
-        announcerTextBox.transform.Translate(-announcerTextSpeed*GameManager.deltaTime,0,0);
+        announcerTextBox.transform.Translate(-announcerTextSpeed * GameManager.deltaTime, 0, 0);
         announcerPosition = announcerTextBox.transform.localPosition;
-        announcerTextWidth = announcerRectTransform.sizeDelta.x;
         if (announcerPosition.x <= (-announcerTextWidth + -100))
         {
             if (textChangeRequest)
             {
                 announcerTextText.text = textChange;
+                announcerTextWidth = announcerRectTransform.sizeDelta.x;
                 textChangeRequest = false;
             }
             announcerPosition.x = 120;
+            announcerTextBox.transform.localPosition = announcerPosition;
         }
-        announcerTextBox.transform.localPosition = announcerPosition;
     }
 
     public void TextChanger(string newText)

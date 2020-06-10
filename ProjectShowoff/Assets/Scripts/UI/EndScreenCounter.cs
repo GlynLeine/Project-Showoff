@@ -14,7 +14,6 @@ public class EndScreenCounter : MonoBehaviour
     public enum typeChoice
     {
         C02,
-        WaterLevel,
         Ozone,
         Plants,
         BuildingsDestroyed,
@@ -38,11 +37,6 @@ public class EndScreenCounter : MonoBehaviour
         {
             yourValue = (float)GameManager.pollution;
             averageValue = 1500f;
-        }
-        else if (counterType == typeChoice.WaterLevel)
-        {
-            yourValue = (float)GameManager.waterLevel;
-            averageValue = 0.5f;
         }
         else if (counterType == typeChoice.Ozone)
         {

@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 534376615110135002}
   - component: {fileID: 8316457304460347921}
   - component: {fileID: 8486791703303006817}
+  - component: {fileID: 8111256643807861691}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -395,3 +396,16 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8945162718487174655}
   m_PrefabAsset: {fileID: 0}
+--- !u!135 &8111256643807861691
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8935089598512165790}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.09503737
+  m_Center: {x: 0, y: 0, z: -0.00052532554}
