@@ -19,13 +19,13 @@ public class ButtonFill : MonoBehaviour
     {
         if (!isAnimPlaying)
         {
-            StartCoroutine(fillAmountAnimation());   
+            StartCoroutine(fillAmountAnimation());  
+            isAnimPlaying = true;
         }
     }
 
     IEnumerator fillAmountAnimation()
     {
-        isAnimPlaying = true;
         animationCountDown = 1 / GameManager.coolDown;
         factoryCDOverlay.fillAmount = 1;
         trainCDOverlay.fillAmount = 1;
