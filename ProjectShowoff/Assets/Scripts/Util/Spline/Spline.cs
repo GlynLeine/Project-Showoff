@@ -29,6 +29,8 @@ public class Spline : MonoBehaviour
     private void Awake()
     {
         runtime = true;
+        vertexPath.UpdatePath(this);
+        length = vertexPath.length;
     }
 
     [Range(0.01f, 10f)]

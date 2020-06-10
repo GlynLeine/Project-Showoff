@@ -12,10 +12,9 @@ public class PollutionSpheres : MonoBehaviour
         BuildingSystem.onBuildingPlaced += OnBuildingPlaced;
     }
 
-    void OnBuildingPlaced(BuildingLocation location, BuildingPlacer buildingData)
+    void OnBuildingPlaced(BuildingLocation location, BuildingPlacer buildingData, Building building)
     {
-        if (buildingData.buildingType == BuildingType.Factory ||
-            buildingData.buildingType == BuildingType.CoalMine)
+        if (buildingData.buildingType == BuildingType.Factory || buildingData.buildingType == BuildingType.CoalMine)
             Instantiate(pollutionSpherePrefab, location.transform);
     }
 

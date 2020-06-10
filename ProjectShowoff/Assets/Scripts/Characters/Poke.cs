@@ -6,7 +6,7 @@ public class Poke : MonoBehaviour
 {
     void Update()
     {
-        
+
         if (InputRedirect.tapped)
         {
             Ray ray = Camera.main.ScreenPointToRay(InputRedirect.inputPos);
@@ -16,13 +16,8 @@ public class Poke : MonoBehaviour
                 if (pokable != null)
                 {
                     pokable.poke();
-                    
                 }
-             
             }
-            
         }
-
-        
     }
 }

@@ -8,6 +8,11 @@
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="Animation" t="Include">
+          <e p="Button animations" t="Include">
+            <e p="Button_animation_script.cs" t="Include" />
+          </e>
+        </e>
         <e p="FMOD" t="Include">
           <e p="Threa FMOD" t="Include">
             <e p="Metadata" t="Include">
@@ -56,6 +61,7 @@
           <e p="Shaders" t="Include">
             <e p="Master.shader" t="Include" />
             <e p="MasterWebGL.shader" t="Include" />
+            <e p="SimplexNoise.hlsl" t="Include" />
             <e p="Tessellation" t="Include">
               <e p="GlynTessellation.hlsl" t="Include" />
             </e>
@@ -157,14 +163,19 @@
           </e>
           <e p="Effects" t="Include">
             <e p="CloudEffect.cs" t="Include" />
+            <e p="IceCaps.cs" t="Include" />
             <e p="PollutionSpheres.cs" t="Include" />
           </e>
           <e p="GameManager.cs" t="Include" />
           <e p="UI" t="Include">
             <e p="AnnouncerText.cs" t="Include" />
+            <e p="ButtonFill.cs" t="Include" />
             <e p="EndScreenCounter.cs" t="Include" />
+            <e p="EndScreenPlanetMove.cs" t="Include" />
             <e p="PlanetReset.cs" t="Include" />
             <e p="SnowController.cs" t="Include" />
+            <e p="TimeLinePart.cs" t="Include" />
+            <e p="TimeLineSaver.cs" t="Include" />
             <e p="TutorialScript.cs" t="Include" />
             <e p="UIController.cs" t="Include" />
             <e p="VoiceCasterTestScript.cs" t="Include" />
