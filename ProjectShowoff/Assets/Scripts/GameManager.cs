@@ -148,7 +148,7 @@ public class GameManager : MonoBehaviour
         if (skipCooldown)
             coolDown = 0f;
         else
-            coolDown = 6f;
+            coolDown = 3f;
 
         t = 0;
         prevPollut = 0;

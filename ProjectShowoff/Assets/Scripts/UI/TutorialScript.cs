@@ -35,6 +35,7 @@ public class TutorialScript : MonoBehaviour
             tutorialBuildStep = true;
             tutorialZoomStep = true;
             tutorialRotationStep = true;
+            GameManager.paused = false;
             StartCoroutine(BuildingAnimationStart());
             StartCoroutine(TimerAnimationStart());
             StartCoroutine(ResetAnimationStart());

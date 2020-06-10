@@ -58,7 +58,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Util/InputRedirect.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Characters/Pokable.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/YearTimer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/EndScreenCounter.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/EndScreenTimeline.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/TimeLineSaver.cs" />
@@ -67,6 +66,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/EndScreenPlanetMove.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/ButtonFill.cs" />
         <option value="$PROJECT_DIR$/Assets/Animation/Button animations/Button_animation_script.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/TutorialScript.cs" />
       </list>
     </option>
@@ -129,7 +129,7 @@
       <workItem from="1591615487277" duration="7939000" />
       <workItem from="1591650958846" duration="248000" />
       <workItem from="1591686026744" duration="10545000" />
-      <workItem from="1591773656638" duration="2689000" />
+      <workItem from="1591773656638" duration="4141000" />
     </task>
     <servers />
   </component>
