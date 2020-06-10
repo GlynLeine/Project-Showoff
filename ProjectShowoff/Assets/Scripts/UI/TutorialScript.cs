@@ -35,6 +35,7 @@ public class TutorialScript : MonoBehaviour
             tutorialBuildStep = true;
             tutorialZoomStep = true;
             tutorialRotationStep = true;
+            GameManager.paused = false;
             StartCoroutine(BuildingAnimationStart());
             StartCoroutine(TimerAnimationStart());
             StartCoroutine(ResetAnimationStart());
@@ -76,26 +77,26 @@ public class TutorialScript : MonoBehaviour
             StartCoroutine(DestroyAnimationStart());
         }
     }
-
+    //shouldve used anchored positions instead but it works now
     IEnumerator SliderAnimationStart()
     {
         yield return new WaitForSeconds(tutorialDelaySeconds);
-        while (zoomSlider.transform.position.x > 1790)
+        while (zoomSlider.transform.localPosition.x > 810)
         {
             Vector3 sliderAnimationPosition;
-            sliderAnimationPosition = zoomSlider.transform.position;
+            sliderAnimationPosition = zoomSlider.transform.localPosition;
             animationSpeed += 0.1f;
             sliderAnimationPosition.x -= 3.6f * animationSpeed;
-            if (sliderAnimationPosition.x <= 1790)
+            if (sliderAnimationPosition.x <= 810)
             {
                 animationSpeed = 1;
                 tutorialRotationStep = true;
-                sliderAnimationPosition.x = 1790;
-                zoomSlider.transform.position = sliderAnimationPosition;
+                sliderAnimationPosition.x = 810;
+                zoomSlider.transform.localPosition = sliderAnimationPosition;
             }
             else
             {
-                zoomSlider.transform.position = sliderAnimationPosition;   
+                zoomSlider.transform.localPosition = sliderAnimationPosition;   
             }
             yield return new WaitForSeconds(0.01f);
         }
@@ -103,21 +104,22 @@ public class TutorialScript : MonoBehaviour
     IEnumerator BuildingAnimationStart()
     {
         yield return new WaitForSeconds(tutorialDelaySeconds);
-        while (buildings.transform.position.y < 125)
+        while (buildings.transform.localPosition.y < -420)
         {
             Vector3 buildingAnimationPosition;
-            buildingAnimationPosition = buildings.transform.position;
+            buildingAnimationPosition = buildings.transform.localPosition;
             animationSpeed += 0.1f;
+            Debug.Log(buildings.transform.localPosition);
             buildingAnimationPosition.y += 3.6f * animationSpeed;
-            if (buildingAnimationPosition.y >= 125)
+            if (buildingAnimationPosition.y >= -420)
             {
                 animationSpeed = 1;
-                buildingAnimationPosition.y = 125;
-                buildings.transform.position = buildingAnimationPosition;  
+                buildingAnimationPosition.y = -420;
+                buildings.transform.localPosition = buildingAnimationPosition;  
             }
             else
             {
-                buildings.transform.position = buildingAnimationPosition;   
+                buildings.transform.localPosition = buildingAnimationPosition;   
             }
             yield return new WaitForSeconds(0.01f);
         }
@@ -125,21 +127,21 @@ public class TutorialScript : MonoBehaviour
     IEnumerator DestroyAnimationStart()
     {
         yield return new WaitForSeconds(tutorialDelaySeconds*8);
-        while (destroy.transform.position.x < 135)
+        while (destroy.transform.localPosition.x < -810)
         {
             Vector3 destroyAnimationPosition;
-            destroyAnimationPosition = destroy.transform.position;
+            destroyAnimationPosition = destroy.transform.localPosition;
             animationSpeed += 0.1f;
             destroyAnimationPosition.x += 3.6f * animationSpeed;
-            if (destroyAnimationPosition.x >= 135)
+            if (destroyAnimationPosition.x >= -810)
             {
                 animationSpeed = 1;
-                destroyAnimationPosition.x = 135;
-                destroy.transform.position = destroyAnimationPosition;
+                destroyAnimationPosition.x = -810;
+                destroy.transform.localPosition = destroyAnimationPosition;
             }
             else
             {
-                destroy.transform.position = destroyAnimationPosition;   
+                destroy.transform.localPosition = destroyAnimationPosition;   
             }
             yield return new WaitForSeconds(0.01f);
         }
@@ -147,21 +149,21 @@ public class TutorialScript : MonoBehaviour
     IEnumerator TimerAnimationStart()
     {
         yield return new WaitForSeconds(tutorialDelaySeconds);
-        while (timeImages.transform.position.y > 990)
+        while (timeImages.transform.localPosition.y > 470)
         {
             Vector3 timeAnimationPosition;
-            timeAnimationPosition = timeImages.transform.position;
+            timeAnimationPosition = timeImages.transform.localPosition;
             animationSpeed += 0.1f;
             timeAnimationPosition.y -= 3.6f * animationSpeed;
-            if (timeAnimationPosition.y <= 990)
+            if (timeAnimationPosition.y <= 470)
             {
                 animationSpeed = 1;
-                timeAnimationPosition.y = 990;
-                timeImages.transform.position = timeAnimationPosition;
+                timeAnimationPosition.y = 470;
+                timeImages.transform.localPosition = timeAnimationPosition;
             }
             else
             {
-                timeImages.transform.position = timeAnimationPosition;   
+                timeImages.transform.localPosition = timeAnimationPosition;   
             }
             yield return new WaitForSeconds(0.01f);
         }
@@ -169,40 +171,42 @@ public class TutorialScript : MonoBehaviour
     IEnumerator ResetAnimationStart()
     {
         yield return new WaitForSeconds(tutorialDelaySeconds);
-        while(reset.transform.position.x > 1830)
+        while(reset.transform.localPosition.x > 800)
         {
             Vector3 resetAnimationPosition;
-            resetAnimationPosition = reset.transform.position;
+            resetAnimationPosition = reset.transform.localPosition;
             animationSpeed += 0.1f;
             resetAnimationPosition.x -= 3.6f * animationSpeed;
-            if (resetAnimationPosition.x <= 1830)
+            if (resetAnimationPosition.x <= 800)
             {
                 animationSpeed = 1;
-                resetAnimationPosition.x = 1830;
-                reset.transform.position = resetAnimationPosition;
+                resetAnimationPosition.x = 800;
+                reset.transform.localPosition = resetAnimationPosition;
             }
             else
             {
-                reset.transform.position = resetAnimationPosition;   
+                reset.transform.localPosition = resetAnimationPosition;   
             }
             yield return new WaitForSeconds(0.01f);
         }
     }
     IEnumerator NewsCasterAnimationStart()
     {
-        while(announcerBox.transform.position.x < 135)
+        while(announcerBox.transform.localPosition.x < -810)
         {
             Vector3 newsCasterAnimationPosition;
-            newsCasterAnimationPosition = announcerBox.transform.position;
+            newsCasterAnimationPosition = announcerBox.transform.localPosition;
             animationSpeed += 0.1f;
             newsCasterAnimationPosition.x += 3.6f * animationSpeed;
-            if (newsCasterAnimationPosition.x >= 135)
+            if (newsCasterAnimationPosition.x >= -810)
             {
                 animationSpeed = 1;
+                newsCasterAnimationPosition.x = -810;
+                announcerBox.transform.localPosition = newsCasterAnimationPosition; 
             }
             else
             {
-                announcerBox.transform.position = newsCasterAnimationPosition;   
+                announcerBox.transform.localPosition = newsCasterAnimationPosition;   
             }
             yield return new WaitForSeconds(0.01f);
         }

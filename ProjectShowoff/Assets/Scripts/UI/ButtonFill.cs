@@ -13,14 +13,19 @@ public class ButtonFill : MonoBehaviour
     public Image harborCDOverlay;
     public Image natureCDOverlay;
     private float animationCountDown;
+    private bool isAnimPlaying = false;
 
     public void buttonAnimationCall()
     {
-        StartCoroutine(fillAmountAnimation());
+        if (!isAnimPlaying)
+        {
+            StartCoroutine(fillAmountAnimation());   
+        }
     }
 
     IEnumerator fillAmountAnimation()
     {
+        isAnimPlaying = true;
         animationCountDown = 1 / GameManager.coolDown;
         factoryCDOverlay.fillAmount = 1;
         trainCDOverlay.fillAmount = 1;
@@ -41,5 +46,7 @@ public class ButtonFill : MonoBehaviour
             natureCDOverlay.fillAmount -= animationChange;
             yield return null;
         }
+
+        isAnimPlaying = false;
     }
 }
