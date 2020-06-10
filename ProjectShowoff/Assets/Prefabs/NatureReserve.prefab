@@ -44,10 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cba9861708699c49b30441e82031535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  environmentEffect: 0
+  buildingType: 0
+  natureEffect: 0
   pollutionEffect: 0
-  happinessEffect: 0
+  industryEffect: 0
   effectPeriod: 0
+  natureRemovalEffect: 0
+  pollutionRemovalEffect: 0
+  industryRemovalEffect: 0
 --- !u!1 &8165706126204822016
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,6 +63,7 @@ GameObject:
   - component: {fileID: 1603722596273812106}
   - component: {fileID: 9142987704029121663}
   - component: {fileID: 7273550494263784023}
+  - component: {fileID: 5321708199450369172}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -127,3 +132,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!135 &5321708199450369172
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8165706126204822016}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.05841291
+  m_Center: {x: -0.0038176775, y: 0, z: 0}
