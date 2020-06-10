@@ -175,6 +175,7 @@
             <e p="AnnouncerText.cs" t="Include" />
             <e p="ButtonFill.cs" t="Include" />
             <e p="EndScreenCounter.cs" t="Include" />
+            <e p="EndScreenCounterWater.cs" t="Include" />
             <e p="EndScreenPlanetMove.cs" t="Include" />
             <e p="PlanetReset.cs" t="Include" />
             <e p="SceneChanger.cs" t="Include" />

@@ -81,6 +81,7 @@
      <Compile Include="Assets\Scripts\UI\AnnouncerText.cs" />
      <Compile Include="Assets\Scripts\UI\ButtonFill.cs" />
      <Compile Include="Assets\Scripts\UI\EndScreenCounter.cs" />
+     <Compile Include="Assets\Scripts\UI\EndScreenCounterWater.cs" />
      <Compile Include="Assets\Scripts\UI\EndScreenPlanetMove.cs" />
      <Compile Include="Assets\Scripts\UI\PlanetReset.cs" />
      <Compile Include="Assets\Scripts\UI\SceneChanger.cs" />

@@ -19,6 +19,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/ZoomBarScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingPlacer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/EndScreenCounterWater.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/SceneChanger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Materials/Shaders/Tessellation/GlynTessellation.hlsl" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/YearTimer.cs" root0="FORCE_HIGHLIGHTING" />
@@ -70,6 +71,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/TutorialScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/ButtonFill.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/SceneChanger.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/EndScreenCounterWater.cs" />
       </list>
     </option>
   </component>
@@ -132,6 +134,7 @@
       <workItem from="1591650958846" duration="248000" />
       <workItem from="1591686026744" duration="10545000" />
       <workItem from="1591773656638" duration="5581000" />
+      <workItem from="1591786740775" duration="1485000" />
     </task>
     <servers />
   </component>
