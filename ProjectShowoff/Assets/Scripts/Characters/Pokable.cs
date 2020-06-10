@@ -7,10 +7,6 @@ public class Pokable : MonoBehaviour
     public bool pokePlay = false;
     public float animCoolDown = 2;
 
-    private void Update()
-    {
-        //Debug.Log(pokePlay);
-    }
     IEnumerator reset()
     {
         yield return new WaitForSeconds(animCoolDown + Time.deltaTime);

@@ -44,6 +44,8 @@ public class BuildingSystem : MonoBehaviour
     {
         foreach (Building building in FindObjectsOfType<Building>())
             building.gameObject.SetActive(false);
+
+        locations = new Dictionary<LocationType, List<BuildingLocation>>();
     }
 
     private void Update()
@@ -389,6 +391,7 @@ public class BuildingSystem : MonoBehaviour
 
     public void ReportLocation(BuildingLocation location)
     {
+        //  if reinit locations dict to new dict, this is unneccesary
         foreach (var locType in locations)
         {
             if (locType.Value.Contains(location))

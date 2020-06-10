@@ -63,6 +63,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Animation\Button animations\Button_animation_script.cs" />
+    <Compile Include="Assets\Profiler\BarGraph.cs" />
+    <Compile Include="Assets\Profiler\ProfileDisplay.cs" />
+    <Compile Include="Assets\Profiler\Profiler.cs" />
+    <Compile Include="Assets\Profiler\StandaloneFileBrowser\IStandaloneFileBrowser.cs" />
+    <Compile Include="Assets\Profiler\StandaloneFileBrowser\StandaloneFileBrowser.cs" />
+    <Compile Include="Assets\Profiler\StandaloneFileBrowser\StandaloneFileBrowserEditor.cs" />
+    <Compile Include="Assets\Profiler\StandaloneFileBrowser\StandaloneFileBrowserLinux.cs" />
+    <Compile Include="Assets\Profiler\StandaloneFileBrowser\StandaloneFileBrowserMac.cs" />
+    <Compile Include="Assets\Profiler\StandaloneFileBrowser\StandaloneFileBrowserWindows.cs" />
     <Compile Include="Assets\Scripts\Buildings\Building.cs" />
     <Compile Include="Assets\Scripts\Buildings\BuildingLocation.cs" />
     <Compile Include="Assets\Scripts\Buildings\BuildingPlacer.cs" />
@@ -101,7 +110,6 @@
     <Compile Include="Assets\Scripts\Util\InputRedirect.cs" />
     <Compile Include="Assets\Scripts\Util\Orbit.cs" />
     <Compile Include="Assets\Scripts\Util\Planet.cs" />
-    <Compile Include="Assets\Scripts\Util\Profiler.cs" />
     <Compile Include="Assets\Scripts\Util\SimpleOrbit.cs" />
     <Compile Include="Assets\Scripts\Util\Spline\Bezier.cs" />
     <Compile Include="Assets\Scripts\Util\Spline\Spline.cs" />
@@ -328,6 +336,12 @@
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.12f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="Ookii.Dialogs">
+      <HintPath>D:/Perforce/Project-Showoff/ProjectShowoff/Assets/Profiler/StandaloneFileBrowser/Plugins/Ookii.Dialogs.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <HintPath>D:/Perforce/Project-Showoff/ProjectShowoff/Assets/Profiler/StandaloneFileBrowser/Plugins/System.Windows.Forms.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

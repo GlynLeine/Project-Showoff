@@ -170,8 +170,6 @@ public class Character : MonoBehaviour
         velocity = vel.magnitude;
         if (velocity > 0)
             transform.rotation = Quaternion.LookRotation(vel / velocity, location.transform.up);
-        //else
-        //    transform.rotation = location.transform.rotation;
 
         prevpos = transform.position;
 
