@@ -177,6 +177,7 @@
             <e p="EndScreenCounter.cs" t="Include" />
             <e p="EndScreenPlanetMove.cs" t="Include" />
             <e p="PlanetReset.cs" t="Include" />
+            <e p="SceneChanger.cs" t="Include" />
             <e p="SnowController.cs" t="Include" />
             <e p="TimeLinePart.cs" t="Include" />
             <e p="TimeLineSaver.cs" t="Include" />
