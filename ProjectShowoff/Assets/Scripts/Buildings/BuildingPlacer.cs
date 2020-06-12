@@ -32,7 +32,7 @@ public class BuildingPlacer : MonoBehaviour
 
     public void Place()
     {
-        if (system.PlaceBuilding(this))
+        if (system.StartBuildingProcess(this))
         {
             GameManager.coolDown += cooldownEffect;
             locked = true;

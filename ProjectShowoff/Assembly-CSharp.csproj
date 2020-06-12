@@ -74,6 +74,7 @@
     <Compile Include="Assets\Profiler\StandaloneFileBrowser\StandaloneFileBrowserWindows.cs" />
     <Compile Include="Assets\Scripts\Audio\AudioTriggerManager.cs" />
     <Compile Include="Assets\Scripts\Buildings\Building.cs" />
+    <Compile Include="Assets\Scripts\Buildings\BuildingConstructor.cs" />
     <Compile Include="Assets\Scripts\Buildings\BuildingLocation.cs" />
     <Compile Include="Assets\Scripts\Buildings\BuildingPlacer.cs" />
     <Compile Include="Assets\Scripts\Buildings\BuildingSystem.cs" />
