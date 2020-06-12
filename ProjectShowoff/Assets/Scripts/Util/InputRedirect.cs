@@ -38,6 +38,7 @@ public class InputRedirect : MonoBehaviour
         raycaster.Raycast(pointerEventData, results);
 
         inputOverUI = results.Count > 0;
+
         timer += Time.deltaTime;
         
         if (Input.touchCount == 1)
@@ -96,7 +97,7 @@ public class InputRedirect : MonoBehaviour
 
         if (timer > 20)
         {
-            //planetResetScript.ResetOnNoInteract();
+            planetResetScript.ResetOnNoInteract();
             timer = 0;
         }
     }

@@ -137,6 +137,9 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="Audio" t="Include">
+            <e p="AudioTriggerManager.cs" t="Include" />
+          </e>
           <e p="Buildings" t="Include">
             <e p="Building.cs" t="Include" />
             <e p="BuildingLocation.cs" t="Include" />
@@ -162,6 +165,7 @@
             <e p="SplineMeshEditor.cs" t="Include" />
           </e>
           <e p="Effects" t="Include">
+            <e p="BuildingCloudEffect.cs" t="Include" />
             <e p="CloudEffect.cs" t="Include" />
             <e p="IceCaps.cs" t="Include" />
             <e p="PollutionSpheres.cs" t="Include" />
@@ -171,8 +175,10 @@
             <e p="AnnouncerText.cs" t="Include" />
             <e p="ButtonFill.cs" t="Include" />
             <e p="EndScreenCounter.cs" t="Include" />
+            <e p="EndScreenCounterWater.cs" t="Include" />
             <e p="EndScreenPlanetMove.cs" t="Include" />
             <e p="PlanetReset.cs" t="Include" />
+            <e p="SceneChanger.cs" t="Include" />
             <e p="SnowController.cs" t="Include" />
             <e p="TimeLinePart.cs" t="Include" />
             <e p="TimeLineSaver.cs" t="Include" />
@@ -187,6 +193,7 @@
             <e p="InputRedirect.cs" t="Include" />
             <e p="Orbit.cs" t="Include" />
             <e p="Planet.cs" t="Include" />
+            <e p="Profiler.cs" t="Include" />
             <e p="SimpleOrbit.cs" t="Include" />
             <e p="Spline" t="Include">
               <e p="Bezier.cs" t="Include" />

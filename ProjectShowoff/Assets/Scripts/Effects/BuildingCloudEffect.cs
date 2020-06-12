@@ -27,7 +27,6 @@ public class BuildingCloudEffect : MonoBehaviour
     {
         GameObject effectObject = Instantiate(cloudEffectPrefab, building.transform);
         effectObject.transform.localPosition = Vector3.up*0.07f;
-        //effectObject.transform.localRotation = Quaternion.identity;
         StartCoroutine(DestroyEffect(effectObject));
     }
 }

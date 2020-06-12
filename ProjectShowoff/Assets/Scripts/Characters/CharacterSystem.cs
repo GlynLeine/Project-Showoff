@@ -80,7 +80,6 @@ public class CharacterSystem : MonoBehaviour
                         break;
                     }
                 }
-
             }
         }
 

@@ -44,6 +44,8 @@ public class BuildingSystem : MonoBehaviour
     {
         foreach (Building building in FindObjectsOfType<Building>())
             building.gameObject.SetActive(false);
+
+        locations = new Dictionary<LocationType, List<BuildingLocation>>();
     }
 
     private void Update()
@@ -389,6 +391,7 @@ public class BuildingSystem : MonoBehaviour
 
     public void ReportLocation(BuildingLocation location)
     {
+        //  if reinit locations dict to new dict, this is unneccesary
         foreach (var locType in locations)
         {
             if (locType.Value.Contains(location))
@@ -407,7 +410,11 @@ public class BuildingSystem : MonoBehaviour
             parent.localRotation = Quaternion.identity;
         }
 
-        location.ocean = planet.Find("Ocean");
+        Transform ocean = planet.Find("Ocean");
+        SphereCollider oceanCollider = ocean.GetComponent<SphereCollider>();
+        location.oceanCenter = ocean.TransformPoint(oceanCollider.center);
+        location.oceanCollider = oceanCollider;
+        location.ocean = ocean;
 
         location.transform.parent = parent;
         location.transform.up = (location.transform.position - planet.position).normalized;

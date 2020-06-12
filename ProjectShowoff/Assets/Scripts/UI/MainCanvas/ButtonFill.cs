@@ -13,10 +13,15 @@ public class ButtonFill : MonoBehaviour
     public Image harborCDOverlay;
     public Image natureCDOverlay;
     private float animationCountDown;
+    private bool isAnimPlaying = false;
 
     public void buttonAnimationCall()
     {
-        StartCoroutine(fillAmountAnimation());
+        if (!isAnimPlaying)
+        {
+            StartCoroutine(fillAmountAnimation());  
+            isAnimPlaying = true;
+        }
     }
 
     IEnumerator fillAmountAnimation()
@@ -41,5 +46,7 @@ public class ButtonFill : MonoBehaviour
             natureCDOverlay.fillAmount -= animationChange;
             yield return null;
         }
+
+        isAnimPlaying = false;
     }
 }
