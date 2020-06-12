@@ -410,7 +410,11 @@ public class BuildingSystem : MonoBehaviour
             parent.localRotation = Quaternion.identity;
         }
 
-        location.ocean = planet.Find("Ocean");
+        Transform ocean = planet.Find("Ocean");
+        SphereCollider oceanCollider = ocean.GetComponent<SphereCollider>();
+        location.oceanCenter = ocean.TransformPoint(oceanCollider.center);
+        location.oceanCollider = oceanCollider;
+        location.ocean = ocean;
 
         location.transform.parent = parent;
         location.transform.up = (location.transform.position - planet.position).normalized;

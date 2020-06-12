@@ -64,11 +64,6 @@ public class Profiler : MonoBehaviour
 
     void Save()
     {
-        logMutex.WaitOne();
-        log = "saving";
-        logMutex.ReleaseMutex();
-
-
         FileStream file = File.Create(fileDir);
 
         Profile profile = new Profile();
@@ -95,11 +90,6 @@ public class Profiler : MonoBehaviour
         {
             file.Close();
         }
-
-        logMutex.WaitOne();
-        log = "done saving";
-        logMutex.ReleaseMutex();
-
     }
 
     // Update is called once per frame
@@ -134,6 +124,5 @@ public class Profiler : MonoBehaviour
             log = null;
         }
         logMutex.ReleaseMutex();
-
     }
 }
