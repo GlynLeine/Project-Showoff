@@ -12,3 +12,5 @@ ProjectShowoff/fmod_editor.log
 ProjectShowoff/Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset
 ProjectShowoff/Assets/FMOD/Threa FMOD/.cache
 *.data
+ProjectShowoff/Assets/Prefabs/Boat.fbx
+ProjectShowoff/Assets/Prefabs/Boat.fbx.meta
