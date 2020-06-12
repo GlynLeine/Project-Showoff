@@ -75,6 +75,8 @@ public class BuildingLocation : MonoBehaviour
     [HideInInspector]
     public BuildingLocation parent;
     [HideInInspector]
+    public Queue<BuildingLocation> path;
+    [HideInInspector]
     public Vector3 oceanCenter;
     [HideInInspector]
     public Transform ocean;
