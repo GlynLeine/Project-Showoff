@@ -32,12 +32,8 @@ public class BuildingPlacer : MonoBehaviour
 
     public void Place()
     {
-        if (system.StartBuildingProcess(this))
-        {
-            GameManager.coolDown += cooldownEffect;
-            locked = true;
-            StartCoroutine(Unlock());
-        }
+        system.buildUI.GetType().GetMethod(locationType.ToString() + "Stop").Invoke(system.buildUI, new object[] { });
+        system.PlaceBuilding(this);
     }
 
     IEnumerator Unlock()

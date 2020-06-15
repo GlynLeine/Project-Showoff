@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Button_animation_script : MonoBehaviour
+public class ButtonAnimation : MonoBehaviour
 {
     private Animator animator;
     void Start()
@@ -10,7 +10,7 @@ public class Button_animation_script : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    
+
     public void button_touch()
     {
         animator?.SetTrigger("play");

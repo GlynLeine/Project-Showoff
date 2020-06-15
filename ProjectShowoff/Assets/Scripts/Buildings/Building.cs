@@ -16,7 +16,7 @@ public class Building : MonoBehaviour
     [HideInInspector] public float pollutionRemovalEffect;
     [HideInInspector] public float industryRemovalEffect;
 
-    private float timeBuffer = 0;
+    //private float timeBuffer = 0;
 
     private void Start()
     {
