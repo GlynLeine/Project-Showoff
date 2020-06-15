@@ -35,7 +35,12 @@ public class BuildingSystem : MonoBehaviour
 
     public UnityEngine.UI.Toggle DestructionToggle;
     bool destroy = false;
-    bool place = false;
+
+    public ClickableBarPopup buildUI;
+    public BuildingLocation startLocation;
+    BuildingLocation selectedLocation;
+
+    //bool place = false;
 
     public void ToggleDestroyMode()
     {
@@ -52,40 +57,54 @@ public class BuildingSystem : MonoBehaviour
 
     private void Update()
     {
-        if (destroy && InputRedirect.tapped)
+        if (InputRedirect.tapped)
         {
             Ray ray = Camera.main.ScreenPointToRay(InputRedirect.inputPos);
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                if (hit.collider.transform.parent != null)
-                    if (hit.collider.transform.parent.parent != null)
-                    {
-                        BuildingLocation location = hit.collider.transform.parent.parent.gameObject.GetComponent<BuildingLocation>();
-                        if (location != null)
-                        {
-                            DestroyBuilding(location);
-                            DestructionToggle.isOn = false;
-                            destroy = false;
-                        }
-                    }
-            }
-        }
-
-        if (place && InputRedirect.tapped)
-        {
-            Ray ray = Camera.main.ScreenPointToRay(InputRedirect.inputPos);
-            if (Physics.Raycast(ray, out RaycastHit hit))
-            {
-                BuildingConstructor constructor = hit.collider.GetComponent<BuildingConstructor>();
-                if (constructor != null)
+                if (!destroy)
                 {
-                    HandlePath(constructor);
-                    ConstructBuilding(constructor.location, constructor.buildingData);
-                    foreach (BuildingConstructor buildingConstructor in FindObjectsOfType<BuildingConstructor>())
-                        Destroy(buildingConstructor.gameObject);
+                    BuildingConstructor constructor = hit.collider.GetComponent<BuildingConstructor>();
+                    if (constructor != null)
+                    {
+                        selectedLocation = constructor.location;
+
+                        buildUI.GetType().GetMethod(selectedLocation.locationType.ToString() + "Start").Invoke(buildUI, new object[] { });
+
+                        //HandlePath(constructor);
+                        //ConstructBuilding(constructor.location, constructor.buildingData);
+                        //foreach (BuildingConstructor buildingConstructor in FindObjectsOfType<BuildingConstructor>())
+                        //    Destroy(buildingConstructor.gameObject);
+                    }
+                }
+                else if (hit.collider.transform.parent != null && hit.collider.transform.parent.parent != null)
+                {
+                    BuildingLocation location = hit.collider.transform.parent.parent.gameObject.GetComponent<BuildingLocation>();
+                    if (location != null)
+                    {
+                        DestroyBuilding(location);
+                        DestructionToggle.isOn = false;
+                        destroy = false;
+                    }
                 }
             }
         }
+
+        //if (place && InputRedirect.tapped)
+        //{
+        //    Ray ray = Camera.main.ScreenPointToRay(InputRedirect.inputPos);
+        //    if (Physics.Raycast(ray, out RaycastHit hit))
+        //    {
+        //        BuildingConstructor constructor = hit.collider.GetComponent<BuildingConstructor>();
+        //        if (constructor != null)
+        //        {
+        //            HandlePath(constructor);
+        //            ConstructBuilding(constructor.location, constructor.buildingData);
+        //            foreach (BuildingConstructor buildingConstructor in FindObjectsOfType<BuildingConstructor>())
+        //                Destroy(buildingConstructor.gameObject);
+        //        }
+        //    }
+        //}
     }
 
     private void OnDrawGizmos()
@@ -413,13 +432,6 @@ public class BuildingSystem : MonoBehaviour
 
     public void ReportLocation(BuildingLocation location)
     {
-        //  if reinit locations dict to new dict, this is unneccesary
-        foreach (var locType in locations)
-        {
-            if (locType.Value.Contains(location))
-                locType.Value.Remove(location);
-        }
-
         if (!locations.ContainsKey(location.locationType))
             locations.Add(location.locationType, new List<BuildingLocation>());
 
@@ -441,33 +453,36 @@ public class BuildingSystem : MonoBehaviour
         location.transform.parent = parent;
         location.transform.up = (location.transform.position - planet.position).normalized;
         locations[location.locationType].Add(location);
+
+        if (location == startLocation)
+            EnableLocation(location, true);
     }
 
-
-    public bool StartBuildingProcess(BuildingPlacer buildingData)
+    private void EnableLocation(BuildingLocation location, bool enable)
     {
-        List<BuildingLocation> options = GetPossibleBuildingLocations(buildingData);
-        if (options != null && options.Count > 0)
+        BuildingConstructor constructor = location.GetComponentInChildren<BuildingConstructor>(true);
+        if (constructor == null)
         {
-            foreach (BuildingLocation location in options)
-            {
-                GameObject constuctorObject = Instantiate(buildingConstructorPrefab, location.transform);
-                constuctorObject.transform.localPosition = Vector3.zero;
-
-                BuildingConstructor constructor = constuctorObject.GetComponent<BuildingConstructor>();
-                constructor.location = location;
-                constructor.buildingData = buildingData;
-            }
-            place = true;
+            constructor = Instantiate(buildingConstructorPrefab, location.transform).GetComponent<BuildingConstructor>();
+            constructor.location = location;
         }
 
-        return place;
+        constructor.gameObject.SetActive(enable);
     }
 
-    public List<BuildingLocation> GetPossibleBuildingLocations(BuildingPlacer buildingData)
+    public void PlaceBuilding(BuildingPlacer buildingData)
     {
         Init();
+        EnableLocation(selectedLocation, false);
+        ConstructBuilding(selectedLocation, buildingData);
+        foreach (BuildingLocation location in GetPossibleBuildingLocations())
+        {
+            EnableLocation(location, true);
+        }
+    }
 
+    public List<BuildingLocation> GetPossibleBuildingLocations()
+    {
         if (unoccupied.Count == 0 && openSet.Count == 0)
         {
             if (unvisited.Count == 0)
@@ -479,22 +494,10 @@ public class BuildingSystem : MonoBehaviour
             if (closedSet.Count > 0 || GameManager.buildingsPlaced == 0)
                 GameManager.continentsDiscovered++;
 
-            List<BuildingLocation> locationsOfType = locations[buildingData.locationType];
-            for (int i = 0; i < locationsOfType.Count; i++)
-            {
-                locationsOfType[i].path = null;
-                if (closedSet.Contains(locationsOfType[i]))
-                {
-                    locationsOfType.RemoveAt(i);
-                    i--;
-                }
-            }
-
-            return locationsOfType;
+            return unvisited;
         }
 
         List<BuildingLocation> options = new List<BuildingLocation>();
-
         Queue<BuildingLocation> toCheck = new Queue<BuildingLocation>();
         List<BuildingLocation> visited = new List<BuildingLocation>();
 
@@ -504,11 +507,8 @@ public class BuildingSystem : MonoBehaviour
             toCheck.Enqueue(location);
             visited.Add(location);
 
-            if (location.locationType == buildingData.locationType)
-            {
-                location.path = null;
-                options.Add(location);
-            }
+            location.path = null;
+            options.Add(location);
         }
 
         foreach (BuildingLocation location in openSet)
@@ -517,220 +517,11 @@ public class BuildingSystem : MonoBehaviour
             toCheck.Enqueue(location);
             visited.Add(location);
 
-            if (location.locationType == buildingData.locationType)
-            {
-                location.path = null;
-                options.Add(location);
-            }
-        }
-
-        if (options.Count > 0)
-            return options;
-
-        while (toCheck.Count > 0)
-        {
-            BuildingLocation location = toCheck.Dequeue();
-            if (location.locationType == buildingData.locationType)
-            {
-                location.path = new Queue<BuildingLocation>();
-                ConstructPath(location, ref location.path);
-                options.Add(location);
-            }
-
-            if (!visited.Contains(location))
-                visited.Add(location);
-
-            foreach (BuildingLocation neighbour in location.neighbours)
-            {
-                if (!visited.Contains(neighbour) && !closedSet.Contains(neighbour))
-                {
-                    visited.Add(neighbour);
-                    neighbour.parent = location;
-                    toCheck.Enqueue(neighbour);
-                }
-            }
-        }
-
-        if (options.Count <= 0)
-        {
-            options = locations[buildingData.locationType];
-            for (int i = 0; i < options.Count; i++)
-            {
-                options[i].path = null;
-                if (closedSet.Contains(options[i]))
-                {
-                    options.RemoveAt(i);
-                    i--;
-                }
-            }
+            location.path = null;
+            options.Add(location);
         }
 
         return options;
-    }
-
-    private void ConstructPath(BuildingLocation location, ref Queue<BuildingLocation> path)
-    {
-        if (location.parent != null)
-            ConstructPath(location.parent, ref path);
-
-        path.Enqueue(location);
-    }
-
-    private void HandlePath(BuildingConstructor constructor)
-    {
-        BuildingLocation end = constructor.location;
-        if (end.path == null)
-            return;
-
-        while (end.path.Count > 0)
-        {
-            BuildingLocation location = end.path.Dequeue();
-
-            if (unoccupied.Contains(location))
-                unoccupied.Remove(location);
-            else if (openSet.Contains(location))
-                openSet.Remove(location);
-            else if (unvisited.Contains(location))
-                unvisited.Remove(location);
-
-            unoccupied.Add(location);
-
-            for (int i = 0; i < location.neighbours.Count; i++)
-            {
-                if (location.roads.Count <= i)
-                    break;
-                if (unoccupied.Contains(location.neighbours[i]) || closedSet.Contains(location.neighbours[i]))
-                {
-                    if (location.neighbours[i] != location.parent)
-                        location.parent = null;
-
-                    if (location.roads[location.neighbours[i]] != null)
-                        location.roads[location.neighbours[i]].gameObject.SetActive(true);
-                }
-            }
-        }
-    }
-
-
-    #region Old placement system
-    public bool PlaceBuilding(BuildingPlacer buildingData)
-    {
-        Init();
-
-        if (unoccupied.Count == 0 && openSet.Count == 0)
-        {
-            if (unvisited.Count == 0)
-            {
-                Debug.Log("No space");
-                return false;
-            }
-
-            if (GameManager.buildingsPlaced == 0)
-                GameManager.continentsDiscovered++;
-
-            if (closedSet.Count > 0)
-                GameManager.continentsDiscovered++;
-
-            return PlaceRandomBuilding(buildingData);
-        }
-
-        Queue<BuildingLocation> toCheck = new Queue<BuildingLocation>();
-        List<BuildingLocation> visited = new List<BuildingLocation>();
-
-        foreach (BuildingLocation location in unoccupied)
-        {
-            location.parent = null;
-            toCheck.Enqueue(location);
-            visited.Add(location);
-        }
-
-        foreach (BuildingLocation location in openSet)
-        {
-            location.parent = null;
-            toCheck.Enqueue(location);
-            visited.Add(location);
-        }
-
-        BuildingLocation end = null;
-        while (toCheck.Count > 0)
-        {
-            BuildingLocation location = toCheck.Dequeue();
-            if (location.locationType == buildingData.locationType)
-            {
-                end = location;
-                break;
-            }
-
-            if (!visited.Contains(location))
-                visited.Add(location);
-
-            foreach (BuildingLocation neighbour in location.neighbours)
-            {
-                if (!visited.Contains(neighbour) && !closedSet.Contains(neighbour))
-                {
-                    visited.Add(neighbour);
-                    neighbour.parent = location;
-                    toCheck.Enqueue(neighbour);
-                }
-            }
-        }
-
-        if (end != null)
-        {
-            for (int i = 0; i < end.neighbours.Count; i++)
-            {
-                if (end.roads.Count <= i)
-                    break;
-                if (unoccupied.Contains(end.neighbours[i]) || closedSet.Contains(end.neighbours[i]) || end.neighbours[i] == end.parent)
-                    if (end.roads[end.neighbours[i]] != null)
-                        end.roads[end.neighbours[i]].gameObject.SetActive(true);
-            }
-
-            if (end.parent != null)
-                HandlePath(end.parent);
-            ConstructBuilding(end, buildingData);
-            return true;
-        }
-        else
-        {
-            if (PlaceRandomBuilding(buildingData))
-            {
-                GameManager.continentsDiscovered++;
-                return true;
-            }
-
-            Debug.Log("No more of this type left");
-            return false;
-        }
-    }
-
-    private void HandlePath(BuildingLocation location)
-    {
-        if (unoccupied.Contains(location))
-            unoccupied.Remove(location);
-        else if (openSet.Contains(location))
-            openSet.Remove(location);
-        else if (unvisited.Contains(location))
-            unvisited.Remove(location);
-
-        unoccupied.Add(location);
-
-        for (int i = 0; i < location.neighbours.Count; i++)
-        {
-            if (location.roads.Count <= i)
-                break;
-            if (unoccupied.Contains(location.neighbours[i]) || closedSet.Contains(location.neighbours[i]))
-            {
-                if (location.neighbours[i] != location.parent)
-                    location.parent = null;
-
-                if (location.roads[location.neighbours[i]] != null)
-                    location.roads[location.neighbours[i]].gameObject.SetActive(true);
-            }
-        }
-
-        if (location.parent != null)
-            HandlePath(location.parent);
     }
 
     private void ConstructBuilding(BuildingLocation location, BuildingPlacer buildingData)
@@ -794,28 +585,379 @@ public class BuildingSystem : MonoBehaviour
         onBuildingPlaced?.Invoke(location, buildingData, building);
     }
 
-    private bool PlaceRandomBuilding(BuildingPlacer buildingData)
-    {
-        List<BuildingLocation> locationsOfType = locations[buildingData.locationType];
-        for (int i = 0; i < locationsOfType.Count; i++)
-            if (closedSet.Contains(locationsOfType[i]))
-            {
-                locationsOfType.RemoveAt(i);
-                i--;
-            }
+    #region Faulty placement system
+    //public bool StartBuildingProcess(BuildingPlacer buildingData)
+    //{
+    //    List<BuildingLocation> options = GetPossibleBuildingLocations(buildingData);
+    //    if (options != null && options.Count > 0)
+    //    {
+    //        foreach (BuildingLocation location in options)
+    //        {
+    //            GameObject constuctorObject = Instantiate(buildingConstructorPrefab, location.transform);
+    //            constuctorObject.transform.localPosition = Vector3.zero;
 
-        if (locationsOfType.Count > 0)
-        {
-            BuildingLocation location = locationsOfType[Random.Range(0, locationsOfType.Count)];
+    //            BuildingConstructor constructor = constuctorObject.GetComponent<BuildingConstructor>();
+    //            constructor.location = location;
+    //            constructor.buildingData = buildingData;
+    //        }
+    //        place = true;
+    //    }
 
-            Debug.Log("Got random location");
+    //    return place;
+    //}
 
-            ConstructBuilding(location, buildingData);
-            return true;
-        }
+    //public List<BuildingLocation> GetPossibleBuildingLocations(BuildingPlacer buildingData)
+    //{
+    //    Init();
 
-        Debug.Log("no space");
-        return false;
-    }
+    //    if (unoccupied.Count == 0 && openSet.Count == 0)
+    //    {
+    //        if (unvisited.Count == 0)
+    //        {
+    //            Debug.Log("No space");
+    //            return null;
+    //        }
+
+    //        if (closedSet.Count > 0 || GameManager.buildingsPlaced == 0)
+    //            GameManager.continentsDiscovered++;
+
+    //        List<BuildingLocation> locationsOfType = locations[buildingData.locationType];
+    //        for (int i = 0; i < locationsOfType.Count; i++)
+    //        {
+    //            locationsOfType[i].path = null;
+    //            if (closedSet.Contains(locationsOfType[i]))
+    //            {
+    //                locationsOfType.RemoveAt(i);
+    //                i--;
+    //            }
+    //        }
+
+    //        return locationsOfType;
+    //    }
+
+    //    List<BuildingLocation> options = new List<BuildingLocation>();
+
+    //    Queue<BuildingLocation> toCheck = new Queue<BuildingLocation>();
+    //    List<BuildingLocation> visited = new List<BuildingLocation>();
+
+    //    foreach (BuildingLocation location in unoccupied)
+    //    {
+    //        location.parent = null;
+    //        toCheck.Enqueue(location);
+    //        visited.Add(location);
+
+    //        if (location.locationType == buildingData.locationType)
+    //        {
+    //            location.path = null;
+    //            options.Add(location);
+    //        }
+    //    }
+
+    //    foreach (BuildingLocation location in openSet)
+    //    {
+    //        location.parent = null;
+    //        toCheck.Enqueue(location);
+    //        visited.Add(location);
+
+    //        if (location.locationType == buildingData.locationType)
+    //        {
+    //            location.path = null;
+    //            options.Add(location);
+    //        }
+    //    }
+
+    //    if (options.Count > 0)
+    //        return options;
+
+    //    while (toCheck.Count > 0)
+    //    {
+    //        BuildingLocation location = toCheck.Dequeue();
+    //        if (location.locationType == buildingData.locationType)
+    //        {
+    //            location.path = new Queue<BuildingLocation>();
+    //            ConstructPath(location, ref location.path);
+    //            options.Add(location);
+    //        }
+
+    //        if (!visited.Contains(location))
+    //            visited.Add(location);
+
+    //        foreach (BuildingLocation neighbour in location.neighbours)
+    //        {
+    //            if (!visited.Contains(neighbour) && !closedSet.Contains(neighbour))
+    //            {
+    //                visited.Add(neighbour);
+    //                neighbour.parent = location;
+    //                toCheck.Enqueue(neighbour);
+    //            }
+    //        }
+    //    }
+
+    //    if (options.Count <= 0)
+    //    {
+    //        options = locations[buildingData.locationType];
+    //        for (int i = 0; i < options.Count; i++)
+    //        {
+    //            options[i].path = null;
+    //            if (closedSet.Contains(options[i]))
+    //            {
+    //                options.RemoveAt(i);
+    //                i--;
+    //            }
+    //        }
+    //    }
+
+    //    return options;
+    //}
+
+    //private void ConstructPath(BuildingLocation location, ref Queue<BuildingLocation> path)
+    //{
+    //    if (location.parent != null)
+    //        ConstructPath(location.parent, ref path);
+
+    //    path.Enqueue(location);
+    //}
+
+    //private void HandlePath(BuildingConstructor constructor)
+    //{
+    //    BuildingLocation end = constructor.location;
+    //    if (end.path == null)
+    //        return;
+
+    //    while (end.path.Count > 0)
+    //    {
+    //        BuildingLocation location = end.path.Dequeue();
+
+    //        if (unoccupied.Contains(location))
+    //            unoccupied.Remove(location);
+    //        else if (openSet.Contains(location))
+    //            openSet.Remove(location);
+    //        else if (unvisited.Contains(location))
+    //            unvisited.Remove(location);
+
+    //        unoccupied.Add(location);
+
+    //        for (int i = 0; i < location.neighbours.Count; i++)
+    //        {
+    //            if (location.roads.Count <= i)
+    //                break;
+    //            if (unoccupied.Contains(location.neighbours[i]) || closedSet.Contains(location.neighbours[i]))
+    //            {
+    //                if (location.neighbours[i] != location.parent)
+    //                    location.parent = null;
+
+    //                if (location.roads[location.neighbours[i]] != null)
+    //                    location.roads[location.neighbours[i]].gameObject.SetActive(true);
+    //            }
+    //        }
+    //    }
+    //}
+    #endregion
+
+    #region Old placement system
+    //public bool PlaceBuilding(BuildingPlacer buildingData)
+    //{
+    //    Init();
+
+    //    if (unoccupied.Count == 0 && openSet.Count == 0)
+    //    {
+    //        if (unvisited.Count == 0)
+    //        {
+    //            Debug.Log("No space");
+    //            return false;
+    //        }
+
+    //        if (GameManager.buildingsPlaced == 0)
+    //            GameManager.continentsDiscovered++;
+
+    //        if (closedSet.Count > 0)
+    //            GameManager.continentsDiscovered++;
+
+    //        return PlaceRandomBuilding(buildingData);
+    //    }
+
+    //    Queue<BuildingLocation> toCheck = new Queue<BuildingLocation>();
+    //    List<BuildingLocation> visited = new List<BuildingLocation>();
+
+    //    foreach (BuildingLocation location in unoccupied)
+    //    {
+    //        location.parent = null;
+    //        toCheck.Enqueue(location);
+    //        visited.Add(location);
+    //    }
+
+    //    foreach (BuildingLocation location in openSet)
+    //    {
+    //        location.parent = null;
+    //        toCheck.Enqueue(location);
+    //        visited.Add(location);
+    //    }
+
+    //    BuildingLocation end = null;
+    //    while (toCheck.Count > 0)
+    //    {
+    //        BuildingLocation location = toCheck.Dequeue();
+    //        if (location.locationType == buildingData.locationType)
+    //        {
+    //            end = location;
+    //            break;
+    //        }
+
+    //        if (!visited.Contains(location))
+    //            visited.Add(location);
+
+    //        foreach (BuildingLocation neighbour in location.neighbours)
+    //        {
+    //            if (!visited.Contains(neighbour) && !closedSet.Contains(neighbour))
+    //            {
+    //                visited.Add(neighbour);
+    //                neighbour.parent = location;
+    //                toCheck.Enqueue(neighbour);
+    //            }
+    //        }
+    //    }
+
+    //    if (end != null)
+    //    {
+    //        for (int i = 0; i < end.neighbours.Count; i++)
+    //        {
+    //            if (end.roads.Count <= i)
+    //                break;
+    //            if (unoccupied.Contains(end.neighbours[i]) || closedSet.Contains(end.neighbours[i]) || end.neighbours[i] == end.parent)
+    //                if (end.roads[end.neighbours[i]] != null)
+    //                    end.roads[end.neighbours[i]].gameObject.SetActive(true);
+    //        }
+
+    //        if (end.parent != null)
+    //            HandlePath(end.parent);
+    //        ConstructBuilding(end, buildingData);
+    //        return true;
+    //    }
+    //    else
+    //    {
+    //        if (PlaceRandomBuilding(buildingData))
+    //        {
+    //            GameManager.continentsDiscovered++;
+    //            return true;
+    //        }
+
+    //        Debug.Log("No more of this type left");
+    //        return false;
+    //    }
+    //}
+
+    //private void HandlePath(BuildingLocation location)
+    //{
+    //    if (unoccupied.Contains(location))
+    //        unoccupied.Remove(location);
+    //    else if (openSet.Contains(location))
+    //        openSet.Remove(location);
+    //    else if (unvisited.Contains(location))
+    //        unvisited.Remove(location);
+
+    //    unoccupied.Add(location);
+
+    //    for (int i = 0; i < location.neighbours.Count; i++)
+    //    {
+    //        if (location.roads.Count <= i)
+    //            break;
+    //        if (unoccupied.Contains(location.neighbours[i]) || closedSet.Contains(location.neighbours[i]))
+    //        {
+    //            if (location.neighbours[i] != location.parent)
+    //                location.parent = null;
+
+    //            if (location.roads[location.neighbours[i]] != null)
+    //                location.roads[location.neighbours[i]].gameObject.SetActive(true);
+    //        }
+    //    }
+
+    //    if (location.parent != null)
+    //        HandlePath(location.parent);
+    //}
+
+    //private void ConstructBuilding(BuildingLocation location, BuildingPlacer buildingData)
+    //{
+    //    if (unoccupied.Contains(location))
+    //        unoccupied.Remove(location);
+    //    if (openSet.Contains(location))
+    //        openSet.Remove(location);
+    //    if (unvisited.Contains(location))
+    //        unvisited.Remove(location);
+
+    //    GameObject source = location.GetType().GetField(buildingData.buildingType.ToString()).GetValue(location) as GameObject;
+    //    GameObject buildingObj;
+    //    if (source.scene.name == null || source.scene.rootCount == 0)
+    //    {
+    //        buildingObj = Instantiate(source, location.transform);
+    //        buildingObj.transform.localRotation = Quaternion.identity;
+    //        buildingObj.transform.localPosition = Vector3.zero;
+    //    }
+    //    else
+    //    {
+    //        buildingObj = source;
+    //        buildingObj.SetActive(true);
+    //        buildingObj.transform.parent = location.transform;
+    //    }
+
+    //    Building building = buildingObj.GetComponent<Building>();
+    //    building.buildingType = buildingData.buildingType;
+
+    //    building.natureRemovalEffect = buildingData.natureEffect;
+    //    building.pollutionRemovalEffect = buildingData.pollutionEffect;
+    //    building.industryRemovalEffect = buildingData.industryEffect;
+
+    //    if (!closedSet.Contains(location))
+    //        closedSet.Add(location);
+    //    foreach (BuildingLocation neighbour in location.neighbours)
+    //        if (unvisited.Contains(neighbour))
+    //        {
+    //            if (!openSet.Contains(neighbour))
+    //                openSet.Add(neighbour);
+    //            unvisited.Remove(neighbour);
+    //        }
+
+    //    GameManager.AddState(buildingData.natureEffect, buildingData.pollutionEffect, buildingData.industryEffect);
+    //    characterSystem.SpawnCharacter(location);
+
+    //    if (buildingData.natureEffect > 0)
+    //        GameManager.natureBuildings++;
+
+    //    if (location.locationType == LocationType.Rural)
+    //        GameManager.ruralBuildings++;
+    //    else
+    //        GameManager.coastalBuildings++;
+
+    //    GameManager.buildingsPlaced++;
+
+    //    int buildingCount = GameManager.buildingsPlaced - GameManager.buildingsDestroyed;
+    //    if (buildingCount > GameManager.maxBuildings)
+    //        GameManager.maxBuildings = buildingCount;
+
+    //    onBuildingPlaced?.Invoke(location, buildingData, building);
+    //}
+
+    //private bool PlaceRandomBuilding(BuildingPlacer buildingData)
+    //{
+    //    List<BuildingLocation> locationsOfType = locations[buildingData.locationType];
+    //    for (int i = 0; i < locationsOfType.Count; i++)
+    //        if (closedSet.Contains(locationsOfType[i]))
+    //        {
+    //            locationsOfType.RemoveAt(i);
+    //            i--;
+    //        }
+
+    //    if (locationsOfType.Count > 0)
+    //    {
+    //        BuildingLocation location = locationsOfType[Random.Range(0, locationsOfType.Count)];
+
+    //        Debug.Log("Got random location");
+
+    //        ConstructBuilding(location, buildingData);
+    //        return true;
+    //    }
+
+    //    Debug.Log("no space");
+    //    return false;
+    //}
     #endregion
 }
