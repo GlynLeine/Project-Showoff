@@ -136,12 +136,26 @@
             </e>
           </e>
         </e>
+        <e p="Profiler" t="Include">
+          <e p="BarGraph.cs" t="Include" />
+          <e p="ProfileDisplay.cs" t="Include" />
+          <e p="Profiler.cs" t="Include" />
+          <e p="StandaloneFileBrowser" t="Include">
+            <e p="IStandaloneFileBrowser.cs" t="Include" />
+            <e p="StandaloneFileBrowser.cs" t="Include" />
+            <e p="StandaloneFileBrowserEditor.cs" t="Include" />
+            <e p="StandaloneFileBrowserLinux.cs" t="Include" />
+            <e p="StandaloneFileBrowserMac.cs" t="Include" />
+            <e p="StandaloneFileBrowserWindows.cs" t="Include" />
+          </e>
+        </e>
         <e p="Scripts" t="Include">
           <e p="Audio" t="Include">
             <e p="AudioTriggerManager.cs" t="Include" />
           </e>
           <e p="Buildings" t="Include">
             <e p="Building.cs" t="Include" />
+            <e p="BuildingConstructor.cs" t="Include" />
             <e p="BuildingLocation.cs" t="Include" />
             <e p="BuildingPlacer.cs" t="Include" />
             <e p="BuildingSystem.cs" t="Include" />
@@ -172,28 +186,35 @@
           </e>
           <e p="GameManager.cs" t="Include" />
           <e p="UI" t="Include">
-            <e p="AnnouncerText.cs" t="Include" />
-            <e p="ButtonFill.cs" t="Include" />
-            <e p="EndScreenCounter.cs" t="Include" />
-            <e p="EndScreenCounterWater.cs" t="Include" />
-            <e p="EndScreenPlanetMove.cs" t="Include" />
-            <e p="PlanetReset.cs" t="Include" />
-            <e p="SceneChanger.cs" t="Include" />
-            <e p="SnowController.cs" t="Include" />
-            <e p="TimeLinePart.cs" t="Include" />
-            <e p="TimeLineSaver.cs" t="Include" />
-            <e p="TutorialScript.cs" t="Include" />
+            <e p="EndScreen" t="Include">
+              <e p="EndScreenCounter.cs" t="Include" />
+              <e p="EndScreenCounterWater.cs" t="Include" />
+              <e p="EndScreenPlanetMove.cs" t="Include" />
+              <e p="SceneChanger.cs" t="Include" />
+              <e p="TimeLinePart.cs" t="Include" />
+              <e p="TimeLineSaver.cs" t="Include" />
+            </e>
+            <e p="LanguageSelector.cs" t="Include" />
+            <e p="MainCanvas" t="Include">
+              <e p="AnnouncerText.cs" t="Include" />
+              <e p="ButtonFill.cs" t="Include" />
+              <e p="ClickableBarPopup.cs" t="Include" />
+              <e p="PlanetReset.cs" t="Include" />
+              <e p="TutorialScript.cs" t="Include" />
+              <e p="VoiceCasterTestScript.cs" t="Include" />
+              <e p="YearTimer.cs" t="Include" />
+            </e>
+            <e p="StartScreen" t="Include">
+              <e p="languagechecker.cs" t="Include" />
+              <e p="UIFader.cs" t="Include" />
+            </e>
             <e p="UIController.cs" t="Include" />
-            <e p="VoiceCasterTestScript.cs" t="Include" />
-            <e p="YearTimer.cs" t="Include" />
-            <e p="ZoomBarScript.cs" t="Include" />
           </e>
           <e p="Util" t="Include">
             <e p="Focus.cs" t="Include" />
             <e p="InputRedirect.cs" t="Include" />
             <e p="Orbit.cs" t="Include" />
             <e p="Planet.cs" t="Include" />
-            <e p="Profiler.cs" t="Include" />
             <e p="SimpleOrbit.cs" t="Include" />
             <e p="Spline" t="Include">
               <e p="Bezier.cs" t="Include" />
