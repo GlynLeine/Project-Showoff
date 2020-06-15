@@ -1,26 +1,88 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class QuestSystem : MonoBehaviour
 {
-    void Start()
+    private BuildingType SelectedBuildingType;
+    private int counterValue = 0;
+    private int maxCounterValue;
+    private float waitTime = 0;
+    private string timerValue;
+    public TMP_Text counterText;
+    public TMP_Text timerText;
+    [Serializable] public class Quest
     {
-        Debug.Log(BuildingSystem.onBuildingPlaced);
+        public BuildingType buildingType;
+        public int buildHowMany;
+        public int maxTimeInSeconds;
+        public int waitTimeInSeconds;
+    }
+    public Quest[] questList;
+    void OnEnable()
+    {
+        StartCoroutine(QuestQueueSystem());
+        BuildingSystem.onBuildingPlaced = OnBuildingPlaced;
     }
     IEnumerator QuestQueueSystem()
     {
-        while (true)
+        for(int i=0;i<questList.Length;i++)
         {
-            yield return new WaitForSeconds(5);
+            counterValue = 0;
+            SelectedBuildingType = questList[i].buildingType;
+            maxCounterValue = questList[i].buildHowMany;
+            waitTime = questList[i].maxTimeInSeconds;
+            StartCoroutine(TempUpdate());
+            QuestInitialization();
+            yield return new WaitForSeconds(waitTime);
+            if (counterValue < maxCounterValue)
+            {
+                counterText.text = "Productivity decreased!";
+            }
+            yield return new WaitForSeconds(questList[i].waitTimeInSeconds);
         }
+    }
+
+    public void QuestInitialization()
+    {
+        counterText.text = SelectedBuildingType + " " + counterValue + "/" + maxCounterValue;
     }
     private void OnBuildingPlaced(BuildingLocation location, BuildingPlacer buildingData, Building building)
     {
+        BuildingChecker(buildingData);
     }
 
-    IEnumerator TemporaryUpdate()
+    private void BuildingChecker(BuildingPlacer buildingData)
     {
-        yield return null;
+        if (buildingData.buildingType == SelectedBuildingType)
+        {
+            counterValue += 1;
+            counterText.text = SelectedBuildingType + " " + counterValue + "/" + maxCounterValue;
+            if (counterValue == maxCounterValue)
+            {
+                counterText.text = "productivity increased!";
+            }
+        }
+    }
+
+    IEnumerator TempUpdate()
+    {
+        while (waitTime > 0)
+        {
+            if (waitTime < 10)
+            {
+                timerValue = "0" + Mathf.Ceil(waitTime);
+            }
+            else
+            {
+                timerValue = Mathf.Ceil(waitTime).ToString();
+            }
+
+            timerText.text = "0:" + timerValue;
+            waitTime -= GameManager.deltaTime;
+            yield return null;
+        }
     }
 }
