@@ -13,6 +13,11 @@ public enum BuildingType
     Factory, TrainStation, CoalMine, OilRig, SolarFarm, Harbor, NatureReserve
 }
 
+public enum LocationState
+{
+    Open, Closed, Unvisited, Destroyed
+}
+
 public class BuildingSystem : MonoBehaviour
 {
     Dictionary<LocationType, List<BuildingLocation>> locations = new Dictionary<LocationType, List<BuildingLocation>>();
@@ -22,7 +27,6 @@ public class BuildingSystem : MonoBehaviour
     List<BuildingLocation> unvisited = new List<BuildingLocation>();
     List<BuildingLocation> closedSet = new List<BuildingLocation>();
     List<BuildingLocation> openSet = new List<BuildingLocation>();
-    List<BuildingLocation> unoccupied = new List<BuildingLocation>();
 
     public Transform planet;
     public GameObject buildingConstructorPrefab;
@@ -53,6 +57,14 @@ public class BuildingSystem : MonoBehaviour
             building.gameObject.SetActive(false);
 
         locations = new Dictionary<LocationType, List<BuildingLocation>>();
+
+        BuildingCloudEffect.onEffectFinish += () =>
+        {
+            foreach (BuildingLocation location in GetPossibleBuildingLocations())
+            {
+                EnableLocation(location, true);
+            }
+        };
     }
 
     private void Update()
@@ -67,15 +79,20 @@ public class BuildingSystem : MonoBehaviour
                     BuildingConstructor constructor = hit.collider.GetComponent<BuildingConstructor>();
                     if (constructor != null)
                     {
+                        if (selectedLocation != null)
+                            foreach (BuildingLocation neighbour in selectedLocation.neighbours)
+                                selectedLocation.roads[neighbour].gameObject.SetActive(false);
+
                         selectedLocation = constructor.location;
 
-                        buildUI.GetType().GetMethod(selectedLocation.locationType.ToString() + "Start").Invoke(buildUI, new object[] { });
+                        foreach (BuildingLocation neighbour in selectedLocation.neighbours)
+                            if (neighbour.state == LocationState.Closed)
+                                selectedLocation.roads[neighbour].gameObject.SetActive(true);
 
-                        //HandlePath(constructor);
-                        //ConstructBuilding(constructor.location, constructor.buildingData);
-                        //foreach (BuildingConstructor buildingConstructor in FindObjectsOfType<BuildingConstructor>())
-                        //    Destroy(buildingConstructor.gameObject);
+                        buildUI.GetType().GetMethod(selectedLocation.locationType.ToString() + "Start").Invoke(buildUI, new object[] { });
                     }
+                    else
+                        InvalidateSelection();
                 }
                 else if (hit.collider.transform.parent != null && hit.collider.transform.parent.parent != null)
                 {
@@ -86,25 +103,32 @@ public class BuildingSystem : MonoBehaviour
                         DestructionToggle.isOn = false;
                         destroy = false;
                     }
-                }
-            }
-        }
 
-        //if (place && InputRedirect.tapped)
-        //{
-        //    Ray ray = Camera.main.ScreenPointToRay(InputRedirect.inputPos);
-        //    if (Physics.Raycast(ray, out RaycastHit hit))
-        //    {
-        //        BuildingConstructor constructor = hit.collider.GetComponent<BuildingConstructor>();
-        //        if (constructor != null)
-        //        {
-        //            HandlePath(constructor);
-        //            ConstructBuilding(constructor.location, constructor.buildingData);
-        //            foreach (BuildingConstructor buildingConstructor in FindObjectsOfType<BuildingConstructor>())
-        //                Destroy(buildingConstructor.gameObject);
-        //        }
-        //    }
-        //}
+                    if (selectedLocation != null)
+                        foreach (BuildingLocation neighbour in selectedLocation.neighbours)
+                            selectedLocation.roads[neighbour].gameObject.SetActive(false);
+
+                    selectedLocation = null;
+                }
+                else
+                    InvalidateSelection();
+            }
+            else
+                InvalidateSelection();
+        }
+    }
+
+    private void InvalidateSelection()
+    {
+        if (selectedLocation != null && !InputRedirect.inputOverUI)
+        {
+            foreach (BuildingLocation neighbour in selectedLocation.neighbours)
+                selectedLocation.roads[neighbour].gameObject.SetActive(false);
+
+            buildUI.GetType().GetMethod(selectedLocation.locationType.ToString() + "Stop").Invoke(buildUI, new object[] { });
+
+            selectedLocation = null;
+        }
     }
 
     private void OnDrawGizmos()
@@ -121,7 +145,7 @@ public class BuildingSystem : MonoBehaviour
             }).Count;
             if (count > 1)
                 Debug.Log("destroyed " + count);
-            Gizmos.DrawSphere(location.transform.position, 0.125f);
+            Gizmos.DrawSphere(location.transform.position, 0.055f);
         }
 
         Gizmos.color = Color.red;
@@ -133,7 +157,7 @@ public class BuildingSystem : MonoBehaviour
             }).Count;
             if (count > 1)
                 Debug.Log("closedSet " + count);
-            Gizmos.DrawSphere(location.transform.position, 0.1f);
+            Gizmos.DrawSphere(location.transform.position, 0.045f);
         }
 
         Gizmos.color = Color.green;
@@ -145,19 +169,7 @@ public class BuildingSystem : MonoBehaviour
             }).Count;
             if (count > 1)
                 Debug.Log("openSet " + count);
-            Gizmos.DrawSphere(location.transform.position, 0.075f);
-        }
-
-        Gizmos.color = Color.blue;
-        foreach (BuildingLocation location in unoccupied)
-        {
-            count = unoccupied.FindAll(delegate (BuildingLocation loc)
-            {
-                return loc == location;
-            }).Count;
-            if (count > 1)
-                Debug.Log("unoccupied " + count);
-            Gizmos.DrawSphere(location.transform.position, 0.05f);
+            Gizmos.DrawSphere(location.transform.position, 0.035f);
         }
 
         Gizmos.color = Color.white;
@@ -176,50 +188,33 @@ public class BuildingSystem : MonoBehaviour
     #region destruction and recovery
     public void RecoverLocation(BuildingLocation location)
     {
-        if (destroyed.Contains(location))
+        if (location.state == LocationState.Destroyed)
         {
-            destroyed.Remove(location);
-
-            int closedNeighbours = 0;
             foreach (BuildingLocation neighbour in location.neighbours)
-                if (closedSet.Contains(neighbour))
-                    closedNeighbours++;
+                if (neighbour.state == LocationState.Closed)
+                {
+                    SetLocationState(location, LocationState.Open);
+                    return;
+                }
 
-            if (closedNeighbours > 0)
-            {
-                if (closedNeighbours >= 2)
-                    unoccupied.Add(location);
-                else
-                    openSet.Add(location);
-            }
-            else
-                unvisited.Add(location);
+            SetLocationState(location, LocationState.Unvisited);
         }
     }
 
     public void DestroyLocation(BuildingLocation location)
     {
-        if (destroyed.Contains(location))
+        if (location.state == LocationState.Destroyed)
             return;
 
         if (DestroyBuilding(location))
             GameManager.buildingsFlooded++;
 
-        if (openSet.Contains(location))
-            openSet.Remove(location);
-
-        if (unoccupied.Contains(location))
-            unoccupied.Remove(location);
-
-        if (unvisited.Contains(location))
-            unvisited.Remove(location);
-
-        destroyed.Add(location);
+        SetLocationState(location, LocationState.Destroyed);
     }
 
     public bool DestroyBuilding(BuildingLocation location)
     {
-        if (!closedSet.Contains(location))
+        if (location.state != LocationState.Closed)
             return false;
 
         GameManager.buildingsDestroyed++;
@@ -228,49 +223,35 @@ public class BuildingSystem : MonoBehaviour
         if (building == null)
             return false;
 
-        closedSet.Remove(location);
-
-        int closedNeighbours = 0;
+        bool closedNeighbours = false;
         foreach (BuildingLocation neighbour in location.neighbours)
         {
-            if (closedSet.Contains(neighbour))
-                closedNeighbours++;
-            else if (!unvisited.Contains(neighbour)) // check destroyed
+            if (neighbour.state == LocationState.Open)
             {
-                int closedfurterNeighbours = 0;
+                bool closedfurterNeighbours = false;
 
                 foreach (BuildingLocation furterNeighbour in neighbour.neighbours)
-                    if (furterNeighbour != location && closedSet.Contains(furterNeighbour))
+                    if (furterNeighbour != location && furterNeighbour.state == LocationState.Closed)
                     {
-                        closedfurterNeighbours++;
+                        closedfurterNeighbours = true;
+                        break;
                     }
 
-                if (closedfurterNeighbours <= 1 && unoccupied.Contains(neighbour))
+                if (!closedfurterNeighbours)
                 {
-                    unoccupied.Remove(neighbour);
-                    unvisited.Add(neighbour);
-                }
-
-                if (openSet.Contains(neighbour) && closedfurterNeighbours <= 0)
-                {
-                    openSet.Remove(neighbour);
-                    unvisited.Add(neighbour);
+                    SetLocationState(neighbour, LocationState.Unvisited);
                 }
             }
+            else if (neighbour.state == LocationState.Closed)
+                closedNeighbours = true;
         }
 
-        if (closedNeighbours > 0)
+        if (closedNeighbours)
         {
-            if (closedNeighbours >= 2)
-            {
-                if (!unoccupied.Contains(location))
-                    unoccupied.Add(location);
-            }
-            else if (!openSet.Contains(location))
-                openSet.Add(location);
+            SetLocationState(location, LocationState.Open);
         }
-        else if (!unvisited.Contains(location))
-            unvisited.Add(location);
+        else
+            SetLocationState(location, LocationState.Unvisited);
 
         for (int i = 0; i < location.roads.Count; i++)
             location.roads[i].gameObject.SetActive(false);
@@ -293,13 +274,13 @@ public class BuildingSystem : MonoBehaviour
     #region character path finding
     public bool IsValidTravelLocation(BuildingLocation location)
     {
-        return closedSet.Contains(location);
+        return location.state == LocationState.Closed;
     }
 
     public BuildingLocation GetValidTravelLocation(BuildingLocation exclude = null)
     {
         List<BuildingLocation> possibilities = new List<BuildingLocation>(closedSet);
-        if (exclude != null && possibilities.Contains(exclude))
+        if (exclude != null && exclude.state == LocationState.Closed)
             possibilities.Remove(exclude);
 
         if (possibilities.Count > 0)
@@ -322,12 +303,12 @@ public class BuildingSystem : MonoBehaviour
         public float fScore = float.MaxValue;
     }
 
-    private Stack<BuildingLocation> ConstructReverseAStarPath(Stack<BuildingLocation> reversePath, AStarNode current)
+    private void ConstructAStarPath(ref Queue<BuildingLocation> path, AStarNode current)
     {
-        reversePath.Push(current.location);
         if (current.parent != null)
-            return ConstructReverseAStarPath(reversePath, current.parent);
-        return reversePath;
+            ConstructAStarPath(ref path, current.parent);
+
+        path.Enqueue(current.location);
     }
 
     public Queue<BuildingLocation> GetPath(BuildingLocation start, BuildingLocation target)
@@ -337,11 +318,6 @@ public class BuildingSystem : MonoBehaviour
 
         foreach (var loc in closedSet)
             nodes.Add(loc, new AStarNode(loc));
-
-        foreach (var loc in unoccupied)
-        {
-            nodes.Add(loc, new AStarNode(loc));
-        }
 
         foreach (var node in nodes)
         {
@@ -374,14 +350,8 @@ public class BuildingSystem : MonoBehaviour
 
             if (current.location == target)
             {
-                Stack<BuildingLocation> reversePath = new Stack<BuildingLocation>();
-                reversePath = ConstructReverseAStarPath(reversePath, current);
                 Queue<BuildingLocation> path = new Queue<BuildingLocation>();
-                while (reversePath.Count != 0)
-                {
-                    path.Enqueue(reversePath.Pop());
-                }
-
+                ConstructAStarPath(ref path, current);
                 return path;
             }
 
@@ -427,7 +397,52 @@ public class BuildingSystem : MonoBehaviour
             foreach (BuildingLocation location in locType.Value)
             {
                 unvisited.Add(location);
+                location.state = LocationState.Unvisited;
             }
+    }
+
+    private void SetLocationState(BuildingLocation location, LocationState state)
+    {
+        if (location.state == state)
+            return;
+
+        switch (location.state)
+        {
+            case LocationState.Unvisited:
+                unvisited.Remove(location);
+                break;
+            case LocationState.Open:
+                openSet.Remove(location);
+                break;
+            case LocationState.Closed:
+                closedSet.Remove(location);
+                break;
+            case LocationState.Destroyed:
+                destroyed.Remove(location);
+                break;
+            default:
+                break;
+        }
+
+        location.state = state;
+
+        switch (location.state)
+        {
+            case LocationState.Unvisited:
+                unvisited.Add(location);
+                break;
+            case LocationState.Open:
+                openSet.Add(location);
+                break;
+            case LocationState.Closed:
+                closedSet.Add(location);
+                break;
+            case LocationState.Destroyed:
+                destroyed.Add(location);
+                break;
+            default:
+                break;
+        }
     }
 
     public void ReportLocation(BuildingLocation location)
@@ -473,17 +488,21 @@ public class BuildingSystem : MonoBehaviour
     public void PlaceBuilding(BuildingPlacer buildingData)
     {
         Init();
-        EnableLocation(selectedLocation, false);
+
+        foreach(BuildingLocation location in openSet)
+            EnableLocation(location, false);
+
+        foreach (BuildingLocation location in unvisited)
+            EnableLocation(location, false);
+
         ConstructBuilding(selectedLocation, buildingData);
-        foreach (BuildingLocation location in GetPossibleBuildingLocations())
-        {
-            EnableLocation(location, true);
-        }
+
+        selectedLocation = null;
     }
 
     public List<BuildingLocation> GetPossibleBuildingLocations()
     {
-        if (unoccupied.Count == 0 && openSet.Count == 0)
+        if (openSet.Count == 0)
         {
             if (unvisited.Count == 0)
             {
@@ -497,42 +516,11 @@ public class BuildingSystem : MonoBehaviour
             return unvisited;
         }
 
-        List<BuildingLocation> options = new List<BuildingLocation>();
-        Queue<BuildingLocation> toCheck = new Queue<BuildingLocation>();
-        List<BuildingLocation> visited = new List<BuildingLocation>();
-
-        foreach (BuildingLocation location in unoccupied)
-        {
-            location.parent = null;
-            toCheck.Enqueue(location);
-            visited.Add(location);
-
-            location.path = null;
-            options.Add(location);
-        }
-
-        foreach (BuildingLocation location in openSet)
-        {
-            location.parent = null;
-            toCheck.Enqueue(location);
-            visited.Add(location);
-
-            location.path = null;
-            options.Add(location);
-        }
-
-        return options;
+        return openSet;
     }
 
     private void ConstructBuilding(BuildingLocation location, BuildingPlacer buildingData)
     {
-        if (unoccupied.Contains(location))
-            unoccupied.Remove(location);
-        if (openSet.Contains(location))
-            openSet.Remove(location);
-        if (unvisited.Contains(location))
-            unvisited.Remove(location);
-
         GameObject source = location.GetType().GetField(buildingData.buildingType.ToString()).GetValue(location) as GameObject;
         GameObject buildingObj;
         if (source.scene.name == null || source.scene.rootCount == 0)
@@ -555,14 +543,16 @@ public class BuildingSystem : MonoBehaviour
         building.pollutionRemovalEffect = buildingData.pollutionEffect;
         building.industryRemovalEffect = buildingData.industryEffect;
 
-        if (!closedSet.Contains(location))
-            closedSet.Add(location);
+        SetLocationState(location, LocationState.Closed);
+
         foreach (BuildingLocation neighbour in location.neighbours)
-            if (unvisited.Contains(neighbour))
+            if (neighbour.state == LocationState.Unvisited)
             {
-                if (!openSet.Contains(neighbour))
-                    openSet.Add(neighbour);
-                unvisited.Remove(neighbour);
+                SetLocationState(neighbour, LocationState.Open);
+            }
+            else if (neighbour.state == LocationState.Closed)
+            {
+                location.roads[neighbour].gameObject.SetActive(true);
             }
 
         GameManager.AddState(buildingData.natureEffect, buildingData.pollutionEffect, buildingData.industryEffect);

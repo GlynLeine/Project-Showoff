@@ -2501,6 +2501,7 @@ GameObject:
   - component: {fileID: 8872052277093650017}
   - component: {fileID: 8872052277093650018}
   - component: {fileID: 8872052277093650016}
+  - component: {fileID: 5305112448214675877}
   m_Layer: 5
   m_Name: AnnouncerScreen
   m_TagString: Untagged
@@ -2578,6 +2579,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blablaVoiceLines: 0
   textScript: {fileID: 8872052277587456257}
+--- !u!95 &5305112448214675877
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872052277093650020}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 359569b922a94b44db44ba4563234cab, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8872052277124362404
 GameObject:
   m_ObjectHideFlags: 0
@@ -2613,7 +2633,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -44.999756, y: 120}
+  m_AnchoredPosition: {x: -44.999634, y: 120}
   m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8872052277124362400
@@ -3597,7 +3617,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 49.999756, y: 280}
+  m_AnchoredPosition: {x: 49.999634, y: 280}
   m_SizeDelta: {x: 20, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8872052277353791947
@@ -4083,7 +4103,7 @@ MonoBehaviour:
   reset: {fileID: 8872052277157053846}
   tutorialArrow: {fileID: 2044814642868960924}
   tutorialHand: {fileID: 7550313252392505652}
-  tutorialSkip: 0
+  tutorialSkip: 1
 --- !u!114 &3744976374586019810
 MonoBehaviour:
   m_ObjectHideFlags: 0
