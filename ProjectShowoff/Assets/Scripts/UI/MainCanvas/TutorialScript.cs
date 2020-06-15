@@ -36,10 +36,8 @@ public class TutorialScript : MonoBehaviour
             tutorialZoomStep = true;
             tutorialRotationStep = true;
             GameManager.paused = false;
-            StartCoroutine(BuildingAnimationStart());
             StartCoroutine(TimerAnimationStart());
             StartCoroutine(ResetAnimationStart());
-            StartCoroutine(DestroyAnimationStart());
             StartCoroutine(SliderAnimationStart());
         }
     }
@@ -62,7 +60,6 @@ public class TutorialScript : MonoBehaviour
         if (!tutorialZoomStep)
         {
             tutorialZoomStep = true;
-            StartCoroutine(BuildingAnimationStart());
         }
     }
 
@@ -74,7 +71,6 @@ public class TutorialScript : MonoBehaviour
             tutorialBuildStep = true;
             StartCoroutine(TimerAnimationStart());
             StartCoroutine(ResetAnimationStart());
-            StartCoroutine(DestroyAnimationStart());
         }
     }
     //shouldve used anchored positions instead but it works now
@@ -96,51 +92,6 @@ public class TutorialScript : MonoBehaviour
             else
             {
                 zoomSlider.transform.localPosition = sliderAnimationPosition;   
-            }
-            yield return new WaitForSeconds(0.01f);
-        }
-    }
-    IEnumerator BuildingAnimationStart()
-    {
-        yield return new WaitForSeconds(tutorialDelaySeconds);
-        while (buildings.transform.localPosition.y < -420)
-        {
-            Vector3 buildingAnimationPosition;
-            buildingAnimationPosition = buildings.transform.localPosition;
-            animationSpeed += 0.1f;
-            Debug.Log(buildings.transform.localPosition);
-            buildingAnimationPosition.y += 3.6f * animationSpeed;
-            if (buildingAnimationPosition.y >= -420)
-            {
-                animationSpeed = 1;
-                buildingAnimationPosition.y = -420;
-                buildings.transform.localPosition = buildingAnimationPosition;  
-            }
-            else
-            {
-                buildings.transform.localPosition = buildingAnimationPosition;   
-            }
-            yield return new WaitForSeconds(0.01f);
-        }
-    }
-    IEnumerator DestroyAnimationStart()
-    {
-        yield return new WaitForSeconds(tutorialDelaySeconds*8);
-        while (destroy.transform.localPosition.x < -810)
-        {
-            Vector3 destroyAnimationPosition;
-            destroyAnimationPosition = destroy.transform.localPosition;
-            animationSpeed += 0.1f;
-            destroyAnimationPosition.x += 3.6f * animationSpeed;
-            if (destroyAnimationPosition.x >= -810)
-            {
-                animationSpeed = 1;
-                destroyAnimationPosition.x = -810;
-                destroy.transform.localPosition = destroyAnimationPosition;
-            }
-            else
-            {
-                destroy.transform.localPosition = destroyAnimationPosition;   
             }
             yield return new WaitForSeconds(0.01f);
         }

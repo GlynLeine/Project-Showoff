@@ -38,6 +38,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Util/Spline/SplineMesh.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/TutorialScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Materials/Shaders/MasterWebGL.shader" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/PlanetReset.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -64,6 +65,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/ButtonFill.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/SceneChanger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/EndScreenCounterWater.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/TutorialScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/ClickableBarPopup.cs" />
       </list>
     </option>
@@ -128,7 +130,7 @@
       <workItem from="1591686026744" duration="10545000" />
       <workItem from="1591773656638" duration="5581000" />
       <workItem from="1591786740775" duration="1485000" />
-      <workItem from="1592207558220" duration="2347000" />
+      <workItem from="1592207558220" duration="4990000" />
     </task>
     <servers />
   </component>
