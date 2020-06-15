@@ -14,6 +14,5 @@ public class Button_animation_script : MonoBehaviour
     public void button_touch()
     {
         animator?.SetTrigger("play");
-        Debug.Log("play");
     }
 }

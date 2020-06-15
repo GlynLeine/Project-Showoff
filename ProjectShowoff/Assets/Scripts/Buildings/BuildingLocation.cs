@@ -75,10 +75,15 @@ public class BuildingLocation : MonoBehaviour
     [HideInInspector]
     public BuildingLocation parent;
     [HideInInspector]
+    public Queue<BuildingLocation> path;
+    [HideInInspector]
+    public Vector3 oceanCenter;
+    [HideInInspector]
     public Transform ocean;
+    [HideInInspector]
+    public SphereCollider oceanCollider;
 
     public LocationType locationType;
-
     public GameObject Factory;
     public GameObject TrainStation;
     public GameObject CoalMine;
@@ -98,13 +103,12 @@ public class BuildingLocation : MonoBehaviour
         {
             system.ReportLocation(this);
         }
-
         //transform.Rotate(Vector3.up, Random.Range(0f, 360f), Space.Self);
     }
 
     private void Update()
     {
-        if (Vector3.Distance(transform.position, ocean.position) < ocean.localScale.x * 0.92f)
+        if (Vector3.Distance(transform.position, oceanCenter) < oceanCollider.radius * ocean.localScale.x)
         {
             system.DestroyLocation(this);
         }

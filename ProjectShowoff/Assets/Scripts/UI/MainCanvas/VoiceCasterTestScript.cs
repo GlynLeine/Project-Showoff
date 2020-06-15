@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class VoiceCasterTestScript : MonoBehaviour
 {
+    [FMODUnity.EventRef] 
+    public float blablaVoiceLines;
     [SerializeField] private GameObject textScript = null;
     private AnnouncerText atScript;
     private float timer = 0;
@@ -15,7 +17,7 @@ public class VoiceCasterTestScript : MonoBehaviour
 
     private void Update()
     {
-        timer += 1 * GameManager.deltaTime;
+        timer += GameManager.deltaTime;
         if (timer > 5)
         {
             atScript.TextChanger("World News!");

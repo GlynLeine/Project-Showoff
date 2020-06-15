@@ -13,6 +13,7 @@ public class BuildingLocationToolEditor : Editor
 
     static bool alwaysShow = false;
 
+    bool cullHandles = true;
     BuildingLocation selected;
     bool neighbourMode = false;
     bool viewRoadmap = false;
@@ -81,6 +82,11 @@ public class BuildingLocationToolEditor : Editor
         if (GUILayout.Button(alwaysShow ? "Stop always showing locations" : "Always show locations"))
         {
             alwaysShow = !alwaysShow;
+        }
+
+        if (GUILayout.Button(cullHandles ? "Stop culling handles" : "Cull handles"))
+        {
+            cullHandles = !cullHandles;
         }
 
         if (selected != null)
@@ -253,21 +259,25 @@ public class BuildingLocationToolEditor : Editor
 
         if (tool.planet != null && tool != null)
         {
+            SphereCollider oceanCollider = GameObject.Find("Ocean").GetComponent<SphereCollider>();
             BuildingLocation[] locations = tool.transform.GetComponentsInChildren<BuildingLocation>();
             for (int i = 0; i < locations.Length; i++)
             {
-                Vector3 rayPos = Camera.current.transform.position;
-                Vector3 rayDir = (locations[i].transform.position - rayPos).normalized;
-
                 HandleInput(locations[i]);
 
-                if (Physics.Raycast(rayPos, rayDir, out RaycastHit hit))
+                if (cullHandles)
                 {
-                    if (hit.collider != locations[i].GetComponent<SphereCollider>())
+                    Vector3 rayPos = Camera.current.transform.position;
+                    Vector3 rayDir = (locations[i].transform.position - rayPos).normalized;
+
+                    if (Physics.Raycast(rayPos, rayDir, out RaycastHit hit))
+                    {
+                        if (hit.collider == oceanCollider)
+                            continue;
+                    }
+                    else
                         continue;
                 }
-                else
-                    continue;
 
                 if (neighbourMode)
                     DrawNeighbourModeSceneHandles(locations[i]);
