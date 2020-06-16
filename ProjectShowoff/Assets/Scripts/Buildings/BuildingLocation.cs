@@ -61,7 +61,7 @@ public class RoadDictionary
     public void Remove(BuildingLocation key)
     {
         int index = keys.IndexOf(key);
-        if(index < 0 || index >= keys.Count)
+        if (index < 0 || index >= keys.Count)
             return;
         keys.RemoveAt(index);
         values.RemoveAt(index);
@@ -97,6 +97,18 @@ public class BuildingLocation : MonoBehaviour
     public RoadDictionary roads = new RoadDictionary();
 
     public LocationState state;
+
+    public void Revalidate()
+    {
+        foreach (BuildingLocation neighbour in neighbours)
+        {
+            if (!neighbour.neighbours.Contains(this))
+            {
+                neighbour.neighbours.Add(this);
+                neighbour.roads.Add(this, roads[neighbour]);
+            }
+        }
+    }
 
     private void Start()
     {
