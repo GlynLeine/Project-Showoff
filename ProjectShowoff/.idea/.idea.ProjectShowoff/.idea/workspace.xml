@@ -55,6 +55,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EditorBankRef.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/ClickableBarPopup.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Util/InputRedirect.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/languagechecker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Util/Zoom.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Util/Planet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/QuestSystem.cs" root0="FORCE_HIGHLIGHTING" />
@@ -99,6 +100,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/QuestSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/TutorialRotator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/StartScreen/UIFader.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/languagechecker.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/TutorialScript.cs" />
       </list>
     </option>
@@ -166,7 +168,7 @@
       <workItem from="1592207558220" duration="16172000" />
       <workItem from="1592291548820" duration="7813000" />
       <workItem from="1592318203981" duration="2674000" />
-      <workItem from="1592324949646" duration="2340000" />
+      <workItem from="1592324949646" duration="5098000" />
     </task>
     <servers />
   </component>
