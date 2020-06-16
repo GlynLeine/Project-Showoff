@@ -114,7 +114,7 @@ public class TutorialScript : MonoBehaviour
             }
             else
             {
-                questBoxText.text = "Wow! Het hele eiland is vol! Probeer is uit te zoomen en een nieuwe plek te vinden!";
+                questBoxText.text = "Wow! Het hele eiland is vol! Probeer eens uit te zoomen en een nieuwe plek te vinden!";
             }
             StartCoroutine(SliderAnimationStart());
         }
