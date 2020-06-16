@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using Image = UnityEngine.UI.Image;
 using Slider = UnityEngine.UI.Slider;
 
 public class TutorialScript : MonoBehaviour
@@ -15,9 +16,10 @@ public class TutorialScript : MonoBehaviour
     public GameObject reset;
     public GameObject tutorialArrow;
     public GameObject tutorialHand;
-    public TMP_Text questBoxText;
+    public TMP_Text questBoxTextTMP;
     public GameObject questSystem;
     public GameObject ruralBuildings;
+    public Image questBoxImage;
     private Slider slider;
     private float animationSpeed = 1; //reset at end of every animation, makes animations move faster as they go on
     //tutorial step bools so we can check where the player is
@@ -25,11 +27,13 @@ public class TutorialScript : MonoBehaviour
     private bool tutorialZoomStep;
     private bool tutorialBuildStep;
     private bool gameHasStarted;
-    private float tutorialDelaySeconds = 2.5f;
-    public bool tutorialSkip;
-    private bool English;
-    private int buildingCount;
-
+    
+    private float tutorialDelaySeconds = 2.5f;//how long you need to wait before you start a tutorial step, potentially redundant
+    public bool tutorialSkip;//if active, start does all the tutorial steps right away
+    private bool English;//if true, text in english, if false, text is in dutch
+    private int buildingCount;//for the tutorial steps, how many buildings have you placed yet?
+    private float timer;
+    
     void Start()
     {
         BuildingSystem.onBuildingPlaced += OnBuildingPlaced;
@@ -53,7 +57,7 @@ public class TutorialScript : MonoBehaviour
         }
     }
     //this function gets called when ui slider disabled the main canvas, its the first thing that gets called
-    public void tutorialStart()
+    public void OnEnable()
     {
         if (LanguageSelector.LanguageSelected == LanguageSelector.LanguageSelectorSelected.English)
         {
@@ -72,11 +76,14 @@ public class TutorialScript : MonoBehaviour
 
         if (English)
         {
-            questBoxText.text = "Click on the purple dome and place a factory there!";
+            questBoxTextTMP.text = "Click on the purple dome and place a factory there!";
         } else
         {
-            questBoxText.text = "Klik op de paarse cirkel en plaats daar een fabriek!";
+            questBoxTextTMP.text = "Klik op de paarse cirkel en plaats daar een fabriek!";
         }
+
+        //StartCoroutine(QuestBoxFlash());
+        //basically set all the stuff that needs to be set, set the starting text, etc
     }
     //this gets called when a building is placed, we have tutorialized the first 4 buildings so far 
     private void OnBuildingPlaced(BuildingLocation location, BuildingPlacer buildingData, Building building)
@@ -84,14 +91,14 @@ public class TutorialScript : MonoBehaviour
         buildingCount += 1;
         if (buildingCount == 1)
         {
-            StartCoroutine(BuildingNatureReserveWaiter());
+            StartCoroutine(BuildingNatureReserveWaiter("Nature reserve"));
             if (English)
             {
-                questBoxText.text = "Good job! Now place a nature reserve to balance the pollution!";
+                questBoxTextTMP.text = "Good job! Now place a nature reserve to balance the pollution!";
             }
             else
             {
-                questBoxText.text = "Goed gedaan! Plaats nu een natuurgebied om de vervuiling te stoppen!";
+                questBoxTextTMP.text = "Goed gedaan! Plaats nu een natuurgebied om de vervuiling te stoppen!";
             }   
         }
         else if (buildingCount == 2)
@@ -99,22 +106,22 @@ public class TutorialScript : MonoBehaviour
             StartCoroutine(BuildingActivationWaiter());
             if (English)
             {
-                questBoxText.text = "Nice! There is one spot left, why don't you try something new?";
+                questBoxTextTMP.text = "Nice! There is one spot left, why don't you try something new?";
             }
             else
             {
-                questBoxText.text = "Netjes! Er is nog een plek over, waarom probeer je niet iets nieuws?";
+                questBoxTextTMP.text = "Netjes! Er is nog een plek over, waarom probeer je niet iets nieuws?";
             }  
         }
         else if (buildingCount == 3)
         {
             if (English)
             {
-                questBoxText.text = "Wow! The island is full! Try zooming out and finding a new spot!";
+                questBoxTextTMP.text = "Wow! The island is full! Try zooming out and finding a new spot!";
             }
             else
             {
-                questBoxText.text = "Wow! Het hele eiland is vol! Probeer is uit te zoomen en een nieuwe plek te vinden!";
+                questBoxTextTMP.text = "Wow! Het hele eiland is vol! Probeer eens uit te zoomen en een nieuwe plek te vinden!";
             }
             StartCoroutine(SliderAnimationStart());
         }
@@ -122,11 +129,11 @@ public class TutorialScript : MonoBehaviour
         {
             if (English)
             {
-                questBoxText.text = "Good job, you can place what you want now, but you can help us more!.";
+                questBoxTextTMP.text = "Good job, you can place what you want now, but you can help us more!.";
             }
             else
             {
-                questBoxText.text = "Goed gedaan, je kan nu doen wat je wil, maar je kan ooks ons helpen!";
+                questBoxTextTMP.text = "Goed gedaan, je kan nu doen wat je wil, maar je kan ooks ons helpen!";
             }
             StartCoroutine(QuestChanger());
         }
@@ -135,6 +142,7 @@ public class TutorialScript : MonoBehaviour
             BuildingSystem.onBuildingPlaced -= OnBuildingPlaced;
         }
     }
+    //on slider change, this gets called, but since it only needs to be called when the user touches the slider for the first time it also unsubs from the slider
     public void SliderTutorialChange(float value)
     {
         slider.onValueChanged.RemoveListener(SliderTutorialChange);
@@ -144,7 +152,7 @@ public class TutorialScript : MonoBehaviour
         StartCoroutine(TimerAnimationStart());
         StartCoroutine(ResetAnimationStart());
     }
-
+    //gets called when you press a button, keeping it here for now if i need that again so i dont need to go through the hassle of adding all the buttons again
     public void BuildingTutorialButton()
     {
         /*if (!tutorialBuildStep)
@@ -155,19 +163,20 @@ public class TutorialScript : MonoBehaviour
             StartCoroutine(ResetAnimationStart());
         }*/
     }
-
+    //does what it says on the tin, called when you finish the tutorial to change the tutorial box to the quest system
     IEnumerator QuestChanger()
     {
-        yield return new WaitForSeconds(2);
-        questBoxText.gameObject.SetActive(false);
+        yield return new WaitForSeconds(6);
+        questBoxTextTMP.gameObject.SetActive(false);
         questSystem.SetActive(true);
     }
-    IEnumerator BuildingNatureReserveWaiter()
+    //waits one second before deactivating everything but the nature reserve, so it doesnt happen on screen and ppl dont notice
+    IEnumerator BuildingNatureReserveWaiter(string name)
     {
         yield return new WaitForSeconds(1);
         foreach (Transform child in ruralBuildings.transform)
         {
-            if (child.gameObject.name != "Nature reserve")
+            if (child.gameObject.name != name)
             {
                 child.gameObject.SetActive(false);
             }
@@ -177,6 +186,7 @@ public class TutorialScript : MonoBehaviour
             }
         }
     }
+    //same as above, just for activating everything
     IEnumerator BuildingActivationWaiter()
     {
         yield return new WaitForSeconds(1);
@@ -185,7 +195,21 @@ public class TutorialScript : MonoBehaviour
             child.gameObject.SetActive(true);
         }
     }
-    //shouldve used anchored positions instead but it works now
+    //making it glow at the start - doesnt work rn? just does it instantly
+    /*IEnumerator QuestBoxFlash()
+    {
+        while (timer < 2)
+        {
+            Color color = questBoxImage.color;
+            color.b -= 510 * Time.deltaTime;
+            questBoxImage.color = color;
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        timer = 0;
+    }*/
+    //everything below here is things moving
     IEnumerator SliderAnimationStart()
     {
         while (zoomSlider.transform.localPosition.x > 810)
@@ -272,6 +296,7 @@ public class TutorialScript : MonoBehaviour
             yield return null;
         }
     }
+    //animation of the hand popping in, if youve completed the first tutorial step it doesnt activate at all potentially doesnt do anything anymore with the new tutorial
     IEnumerator HandAnimation()
     {
         yield return new WaitForSeconds(10);
