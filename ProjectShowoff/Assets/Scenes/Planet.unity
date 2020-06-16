@@ -1989,6 +1989,18 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &349847818 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7149047631756176688, guid: 9a1544356b636fe478f34b9a6bb8508d,
+    type: 3}
+  m_PrefabInstance: {fileID: 913900900}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &351254422
 Mesh:
   m_ObjectHideFlags: 0
@@ -5885,6 +5897,11 @@ PrefabInstance:
       propertyPath: ruralBuildings
       value: 
       objectReference: {fileID: 589582832}
+    - target: {fileID: 2946203210707287117, guid: 9a1544356b636fe478f34b9a6bb8508d,
+        type: 3}
+      propertyPath: questBoxTextTMP
+      value: 
+      objectReference: {fileID: 349847818}
     - target: {fileID: 3147618996375246795, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
       propertyPath: m_PlayAutomatically

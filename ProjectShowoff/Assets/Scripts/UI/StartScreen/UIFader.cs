@@ -76,7 +76,6 @@ public class UIFader : MonoBehaviour
             yield return null;
         }
         mainCanvas.SetActive(true);
-        tutorialScript.tutorialStart();
         startScreen.SetActive(false);
     }
 }
