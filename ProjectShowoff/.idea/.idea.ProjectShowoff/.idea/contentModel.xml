@@ -8,11 +8,6 @@
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="Animation" t="Include">
-          <e p="Button animations" t="Include">
-            <e p="Button_animation_script.cs" t="Include" />
-          </e>
-        </e>
         <e p="FMOD" t="Include">
           <e p="Threa FMOD" t="Include">
             <e p="Metadata" t="Include">
@@ -197,9 +192,11 @@
             <e p="LanguageSelector.cs" t="Include" />
             <e p="MainCanvas" t="Include">
               <e p="AnnouncerText.cs" t="Include" />
+              <e p="ButtonAnimation.cs" t="Include" />
               <e p="ButtonFill.cs" t="Include" />
               <e p="ClickableBarPopup.cs" t="Include" />
               <e p="PlanetReset.cs" t="Include" />
+              <e p="QuestSystem.cs" t="Include" />
               <e p="TutorialScript.cs" t="Include" />
               <e p="VoiceCasterTestScript.cs" t="Include" />
               <e p="YearTimer.cs" t="Include" />

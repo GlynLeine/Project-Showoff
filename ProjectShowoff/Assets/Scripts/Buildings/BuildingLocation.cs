@@ -96,6 +96,8 @@ public class BuildingLocation : MonoBehaviour
     [SerializeField]
     public RoadDictionary roads = new RoadDictionary();
 
+    public LocationState state;
+
     private void Start()
     {
         system = FindObjectOfType<BuildingSystem>();
@@ -103,7 +105,6 @@ public class BuildingLocation : MonoBehaviour
         {
             system.ReportLocation(this);
         }
-        //transform.Rotate(Vector3.up, Random.Range(0f, 360f), Space.Self);
     }
 
     private void Update()

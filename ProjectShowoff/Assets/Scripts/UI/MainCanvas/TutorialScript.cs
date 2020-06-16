@@ -5,8 +5,6 @@ using UnityEngine;
 public class TutorialScript : MonoBehaviour
 {
     //drag all UI elements in
-    public GameObject buildings;
-    public GameObject destroy;
     public GameObject zoomSlider;
     public GameObject announcerBox;
     public GameObject timeImages;
@@ -25,9 +23,10 @@ public class TutorialScript : MonoBehaviour
 
     void Start()
     {
+        GameManager.paused = true;
         StartCoroutine(NewsCasterAnimationStart());
         StartCoroutine(HandAnimation());
-        GameManager.paused = true;
+        StartCoroutine(TemporaryUpdate());
         if (tutorialSkip)
         {
             //basically sets the delay of the animations to 0 nd just throws em all in at the start
@@ -39,22 +38,9 @@ public class TutorialScript : MonoBehaviour
             StartCoroutine(TimerAnimationStart());
             StartCoroutine(ResetAnimationStart());
             StartCoroutine(SliderAnimationStart());
+            StartCoroutine(HandAnimation());
         }
     }
-    void Update()
-    {
-        if (!tutorialRotationStep)
-        {
-            if (InputRedirect.pressed)
-            {
-                tutorialArrow.SetActive(false);
-                tutorialHand.SetActive(false);
-                tutorialRotationStep = true;
-                StartCoroutine(SliderAnimationStart());
-            }
-        }
-    }
-
     public void SliderTutorialChange()
     {
         if (!tutorialZoomStep)
@@ -73,6 +59,21 @@ public class TutorialScript : MonoBehaviour
             StartCoroutine(ResetAnimationStart());
         }
     }
+
+    IEnumerator TemporaryUpdate()
+    {
+        while (!tutorialRotationStep)
+        {
+            if (InputRedirect.pressed)
+            {
+                tutorialArrow.SetActive(false);
+                tutorialHand.SetActive(false);
+                tutorialRotationStep = true;
+                StartCoroutine(SliderAnimationStart());
+            }
+            yield return null;
+        }
+    }
     //shouldve used anchored positions instead but it works now
     IEnumerator SliderAnimationStart()
     {
@@ -81,7 +82,7 @@ public class TutorialScript : MonoBehaviour
         {
             Vector3 sliderAnimationPosition = zoomSlider.transform.localPosition;
             animationSpeed += 0.1f;
-            sliderAnimationPosition.x -= 3.6f * animationSpeed;
+            sliderAnimationPosition.x -= 360f * animationSpeed * Time.deltaTime;
             if (sliderAnimationPosition.x <= 810)
             {
                 animationSpeed = 1;
@@ -93,7 +94,7 @@ public class TutorialScript : MonoBehaviour
             {
                 zoomSlider.transform.localPosition = sliderAnimationPosition;   
             }
-            yield return new WaitForSeconds(0.01f);
+            yield return null;
         }
     }
     IEnumerator TimerAnimationStart()
@@ -104,7 +105,7 @@ public class TutorialScript : MonoBehaviour
             Vector3 timeAnimationPosition;
             timeAnimationPosition = timeImages.transform.localPosition;
             animationSpeed += 0.1f;
-            timeAnimationPosition.y -= 3.6f * animationSpeed;
+            timeAnimationPosition.y -= 360f * animationSpeed * Time.deltaTime;
             if (timeAnimationPosition.y <= 470)
             {
                 animationSpeed = 1;
@@ -115,29 +116,29 @@ public class TutorialScript : MonoBehaviour
             {
                 timeImages.transform.localPosition = timeAnimationPosition;   
             }
-            yield return new WaitForSeconds(0.01f);
+            yield return null;
         }
     }
     IEnumerator ResetAnimationStart()
     {
         yield return new WaitForSeconds(tutorialDelaySeconds);
-        while(reset.transform.localPosition.x > 800)
+        while (reset.transform.localPosition.x < -810)
         {
-            Vector3 resetAnimationPosition;
-            resetAnimationPosition = reset.transform.localPosition;
+            Vector3 destroyAnimationPosition;
+            destroyAnimationPosition = reset.transform.localPosition;
             animationSpeed += 0.1f;
-            resetAnimationPosition.x -= 3.6f * animationSpeed;
-            if (resetAnimationPosition.x <= 800)
+            destroyAnimationPosition.x += 360f * animationSpeed * Time.deltaTime;
+            if (destroyAnimationPosition.x >= -810)
             {
                 animationSpeed = 1;
-                resetAnimationPosition.x = 800;
-                reset.transform.localPosition = resetAnimationPosition;
+                destroyAnimationPosition.x = -810;
+                reset.transform.localPosition = destroyAnimationPosition;
             }
             else
             {
-                reset.transform.localPosition = resetAnimationPosition;   
+                reset.transform.localPosition = destroyAnimationPosition;   
             }
-            yield return new WaitForSeconds(0.01f);
+            yield return null;
         }
     }
     IEnumerator NewsCasterAnimationStart()
@@ -147,7 +148,7 @@ public class TutorialScript : MonoBehaviour
             Vector3 newsCasterAnimationPosition;
             newsCasterAnimationPosition = announcerBox.transform.localPosition;
             animationSpeed += 0.1f;
-            newsCasterAnimationPosition.x += 3.6f * animationSpeed;
+            newsCasterAnimationPosition.x += 360f * animationSpeed * Time.deltaTime;
             if (newsCasterAnimationPosition.x >= -810)
             {
                 animationSpeed = 1;
@@ -158,7 +159,7 @@ public class TutorialScript : MonoBehaviour
             {
                 announcerBox.transform.localPosition = newsCasterAnimationPosition;   
             }
-            yield return new WaitForSeconds(0.01f);
+            yield return null;
         }
     }
     IEnumerator HandAnimation()
@@ -169,8 +170,8 @@ public class TutorialScript : MonoBehaviour
             tutorialHand.SetActive(true);
             while (tutorialHand.transform.rotation.z > -0.6f)
             {
-                tutorialHand.transform.Rotate(0, 0, -0.6f);
-                yield return new WaitForSeconds(0.01f);
+                tutorialHand.transform.Rotate(0, 0, -60*Time.deltaTime);
+                yield return null;
                 if (tutorialHand.transform.rotation.z <= -0.6f)
                 {
                     tutorialHand.transform.rotation = Quaternion.Euler(0, 0, 15);

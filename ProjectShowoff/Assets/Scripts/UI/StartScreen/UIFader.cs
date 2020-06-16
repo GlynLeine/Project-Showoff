@@ -6,6 +6,7 @@ public class UIFader : MonoBehaviour
 {
     private CanvasGroup startCanvasGroup;
     private float turnTimer;
+    public GameObject mainCanvas;
     
     void Start()
     {
@@ -35,5 +36,7 @@ public class UIFader : MonoBehaviour
             startCanvasGroup.alpha -= 1f * Time.deltaTime;
             yield return null;
         }
+        mainCanvas.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 }

@@ -62,15 +62,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Profiler\BarGraph.cs" />
-    <Compile Include="Assets\Profiler\ProfileDisplay.cs" />
-    <Compile Include="Assets\Profiler\Profiler.cs" />
-    <Compile Include="Assets\Profiler\StandaloneFileBrowser\IStandaloneFileBrowser.cs" />
-    <Compile Include="Assets\Profiler\StandaloneFileBrowser\StandaloneFileBrowser.cs" />
-    <Compile Include="Assets\Profiler\StandaloneFileBrowser\StandaloneFileBrowserEditor.cs" />
-    <Compile Include="Assets\Profiler\StandaloneFileBrowser\StandaloneFileBrowserLinux.cs" />
-    <Compile Include="Assets\Profiler\StandaloneFileBrowser\StandaloneFileBrowserMac.cs" />
-    <Compile Include="Assets\Profiler\StandaloneFileBrowser\StandaloneFileBrowserWindows.cs" />
     <Compile Include="Assets\Scripts\Audio\AudioTriggerManager.cs" />
     <Compile Include="Assets\Scripts\Buildings\Building.cs" />
     <Compile Include="Assets\Scripts\Buildings\BuildingConstructor.cs" />
@@ -106,6 +97,7 @@
     <Compile Include="Assets\Scripts\UI\MainCanvas\ButtonFill.cs" />
     <Compile Include="Assets\Scripts\UI\MainCanvas\ClickableBarPopup.cs" />
     <Compile Include="Assets\Scripts\UI\MainCanvas\PlanetReset.cs" />
+    <Compile Include="Assets\Scripts\UI\MainCanvas\QuestSystem.cs" />
     <Compile Include="Assets\Scripts\UI\MainCanvas\TutorialScript.cs" />
     <Compile Include="Assets\Scripts\UI\MainCanvas\VoiceCasterTestScript.cs" />
     <Compile Include="Assets\Scripts\UI\MainCanvas\YearTimer.cs" />
@@ -342,12 +334,6 @@
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.12f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="Ookii.Dialogs">
-      <HintPath>F:/GIT Projects/Project-Showoff/ProjectShowoff/Assets/Profiler/StandaloneFileBrowser/Plugins/Ookii.Dialogs.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Windows.Forms">
-      <HintPath>F:/GIT Projects/Project-Showoff/ProjectShowoff/Assets/Profiler/StandaloneFileBrowser/Plugins/System.Windows.Forms.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
