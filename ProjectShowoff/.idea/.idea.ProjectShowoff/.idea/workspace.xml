@@ -97,10 +97,10 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/ClickableBarPopup.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/StartScreen/languagechecker.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/LanguageSelector.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/QuestSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/TutorialRotator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/StartScreen/UIFader.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/languagechecker.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/QuestSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/TutorialScript.cs" />
       </list>
     </option>
@@ -169,7 +169,7 @@
       <workItem from="1592291548820" duration="7813000" />
       <workItem from="1592318203981" duration="2674000" />
       <workItem from="1592324949646" duration="5785000" />
-      <workItem from="1592331212049" duration="3507000" />
+      <workItem from="1592331212049" duration="7276000" />
     </task>
     <servers />
   </component>

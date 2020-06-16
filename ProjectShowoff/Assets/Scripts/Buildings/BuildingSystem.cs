@@ -76,6 +76,8 @@ public class BuildingSystem : MonoBehaviour
     {
         if (InputRedirect.tapped && !InputRedirect.inputOverUI)
         {
+            InvalidateSelection();
+
             Ray ray = Camera.main.ScreenPointToRay(InputRedirect.inputPos);
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
@@ -102,23 +104,17 @@ public class BuildingSystem : MonoBehaviour
                         buildUI.GetType().GetMethod(selectedLocation.locationType.ToString() + "Start").Invoke(buildUI, new object[] { });
                         uiActive = true;
                     }
-                    else
-                        InvalidateSelection();
                 }
                 else
                 {
-                    InvalidateSelection();
-
                     BuildingLocation location = hit.collider.transform.parent.parent.gameObject.GetComponent<BuildingLocation>();
                     if (location != null)
                     {
                         selectedLocation = location;
-                        buildUI.DestroyStart();
+                        buildUI.DestroyStart(building);
                     }
                 }
             }
-            else if (!InputRedirect.inputOverUI)
-                InvalidateSelection();
         }
     }
 
@@ -138,7 +134,6 @@ public class BuildingSystem : MonoBehaviour
                 buildUI.DestroyStop();
 
             selectedLocation = null;
-            Debug.Log("invalidated");
         }
     }
 
@@ -505,9 +500,6 @@ public class BuildingSystem : MonoBehaviour
             constructor = Instantiate(buildingConstructorPrefab, location.transform).GetComponent<BuildingConstructor>();
             constructor.location = location;
         }
-
-        if(enable)
-            Debug.Log("set true");
 
         constructor.gameObject.SetActive(enable);
     }

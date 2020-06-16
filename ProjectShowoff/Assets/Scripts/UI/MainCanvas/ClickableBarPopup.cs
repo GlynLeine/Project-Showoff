@@ -8,6 +8,7 @@ public class ClickableBarPopup : MonoBehaviour
     public GameObject coastalBuildings;
     public GameObject destroyBar;
     public GameObject harbour;
+    public StatDisplay statDisplay;
     public BuildingSystem buildingSystem;
     private float animationSpeed = 1;
     private bool testHasStarted;
@@ -34,7 +35,7 @@ public class ClickableBarPopup : MonoBehaviour
             }
         }
     }*/
-    
+
     //stop function only has to be called when clicking away, otherwise start functions naturally call the stop functions for other bars
     public void RuralStart()
     {
@@ -46,7 +47,7 @@ public class ClickableBarPopup : MonoBehaviour
     }
     public void CoastalStart()
     {
-        if(buildingSystem.selectedLocation.Harbor == null)
+        if (buildingSystem.selectedLocation.Harbor == null)
             harbour.SetActive(false);
         else
             harbour.SetActive(true);
@@ -57,8 +58,18 @@ public class ClickableBarPopup : MonoBehaviour
     {
         StartCoroutine(CoastalBuildingAnimationStop());
     }
-    public void DestroyStart()
+    public void DestroyStart(Building building)
     {
+        if (building.effectPeriod > 0)
+        {
+            statDisplay.SetHappiness(building.industryEffect / building.effectPeriod);
+            statDisplay.SetPollution(building.pollutionEffect - building.natureRemovalEffect / building.effectPeriod);
+        }
+        else
+        {
+            statDisplay.SetHappiness(0);
+            statDisplay.SetPollution(0);
+        }
         StartCoroutine(BuildingOnClickAnimationStart());
     }
     public void DestroyStop()
@@ -74,16 +85,16 @@ public class ClickableBarPopup : MonoBehaviour
             Vector3 buildingAnimationPosition;
             buildingAnimationPosition = ruralBuildings.transform.localPosition;
             animationSpeed += 0.1f;
-            buildingAnimationPosition.y += 360 * animationSpeed *Time.deltaTime;
+            buildingAnimationPosition.y += 360 * animationSpeed * Time.deltaTime;
             if (buildingAnimationPosition.y >= -420)
             {
                 animationSpeed = 1;
                 buildingAnimationPosition.y = -420;
-                ruralBuildings.transform.localPosition = buildingAnimationPosition;  
+                ruralBuildings.transform.localPosition = buildingAnimationPosition;
             }
             else
             {
-                ruralBuildings.transform.localPosition = buildingAnimationPosition;   
+                ruralBuildings.transform.localPosition = buildingAnimationPosition;
             }
             yield return null;
         }
@@ -96,16 +107,16 @@ public class ClickableBarPopup : MonoBehaviour
             Vector3 buildingAnimationPosition;
             buildingAnimationPosition = ruralBuildings.transform.localPosition;
             animationSpeed += 0.1f;
-            buildingAnimationPosition.y -= 360 * animationSpeed *Time.deltaTime;
+            buildingAnimationPosition.y -= 360 * animationSpeed * Time.deltaTime;
             if (buildingAnimationPosition.y <= -640)
             {
                 animationSpeed = 1;
                 buildingAnimationPosition.y = -640;
-                ruralBuildings.transform.localPosition = buildingAnimationPosition;  
+                ruralBuildings.transform.localPosition = buildingAnimationPosition;
             }
             else
             {
-                ruralBuildings.transform.localPosition = buildingAnimationPosition;   
+                ruralBuildings.transform.localPosition = buildingAnimationPosition;
             }
             yield return null;
         }
@@ -119,16 +130,16 @@ public class ClickableBarPopup : MonoBehaviour
             Vector3 buildingAnimationPosition;
             buildingAnimationPosition = coastalBuildings.transform.localPosition;
             animationSpeed += 0.1f;
-            buildingAnimationPosition.y += 360 * animationSpeed *Time.deltaTime;
+            buildingAnimationPosition.y += 360 * animationSpeed * Time.deltaTime;
             if (buildingAnimationPosition.y >= -420)
             {
                 animationSpeed = 1;
                 buildingAnimationPosition.y = -420;
-                coastalBuildings.transform.localPosition = buildingAnimationPosition;  
+                coastalBuildings.transform.localPosition = buildingAnimationPosition;
             }
             else
             {
-                coastalBuildings.transform.localPosition = buildingAnimationPosition;   
+                coastalBuildings.transform.localPosition = buildingAnimationPosition;
             }
             yield return null;
         }
@@ -141,16 +152,16 @@ public class ClickableBarPopup : MonoBehaviour
             Vector3 buildingAnimationPosition;
             buildingAnimationPosition = coastalBuildings.transform.localPosition;
             animationSpeed += 0.1f;
-            buildingAnimationPosition.y -= 360 * animationSpeed *Time.deltaTime;
+            buildingAnimationPosition.y -= 360 * animationSpeed * Time.deltaTime;
             if (buildingAnimationPosition.y <= -640)
             {
                 animationSpeed = 1;
                 buildingAnimationPosition.y = -640;
-                coastalBuildings.transform.localPosition = buildingAnimationPosition;  
+                coastalBuildings.transform.localPosition = buildingAnimationPosition;
             }
             else
             {
-                coastalBuildings.transform.localPosition = buildingAnimationPosition;   
+                coastalBuildings.transform.localPosition = buildingAnimationPosition;
             }
             yield return null;
         }
@@ -164,16 +175,16 @@ public class ClickableBarPopup : MonoBehaviour
             Vector3 buildingAnimationPosition;
             buildingAnimationPosition = destroyBar.transform.localPosition;
             animationSpeed += 0.1f;
-            buildingAnimationPosition.y += 360 * animationSpeed *Time.deltaTime;
+            buildingAnimationPosition.y += 360 * animationSpeed * Time.deltaTime;
             if (buildingAnimationPosition.y >= -420)
             {
                 animationSpeed = 1;
                 buildingAnimationPosition.y = -420;
-                destroyBar.transform.localPosition = buildingAnimationPosition;  
+                destroyBar.transform.localPosition = buildingAnimationPosition;
             }
             else
             {
-                destroyBar.transform.localPosition = buildingAnimationPosition;   
+                destroyBar.transform.localPosition = buildingAnimationPosition;
             }
             yield return null;
         }
@@ -186,16 +197,16 @@ public class ClickableBarPopup : MonoBehaviour
             Vector3 buildingAnimationPosition;
             buildingAnimationPosition = destroyBar.transform.localPosition;
             animationSpeed += 0.1f;
-            buildingAnimationPosition.y -= 360 * animationSpeed *Time.deltaTime;
+            buildingAnimationPosition.y -= 360 * animationSpeed * Time.deltaTime;
             if (buildingAnimationPosition.y <= -640)
             {
                 animationSpeed = 1;
                 buildingAnimationPosition.y = -640;
-                destroyBar.transform.localPosition = buildingAnimationPosition;  
+                destroyBar.transform.localPosition = buildingAnimationPosition;
             }
             else
             {
-                destroyBar.transform.localPosition = buildingAnimationPosition;   
+                destroyBar.transform.localPosition = buildingAnimationPosition;
             }
             yield return null;
         }

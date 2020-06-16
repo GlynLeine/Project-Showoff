@@ -43,7 +43,7 @@ public class TutorialScript : MonoBehaviour
     private string[] englishCoastalBuildingsArray = {"harbor","oil rig"};
     private string[] englishRuralBuildingsArray = {"factory","nature reserve","coal mine","train station","solar farm"};
     private string[] dutchCoastalBuildingsArray = {"haven","boorplatform"};
-    private string[] dutchRuralBuildingsArray = {"fabriek","natuurgebied","koolmijn","trein station","zonnepanelen"};
+    private string[] dutchRuralBuildingsArray = {"fabriek","natuurgebied","koolmijn","trein station","zonnepaneel"};
     
     void Start()
     {
@@ -97,7 +97,7 @@ public class TutorialScript : MonoBehaviour
         //StartCoroutine(QuestBoxFlash());
         //basically set all the stuff that needs to be set, set the starting text, etc
     }
-    //this gets called when a building is placed, we have tutorialized the first 4 buildings so far 
+    //this gets called when a building is placed 
     private void OnBuildingPlaced(BuildingLocation location, BuildingPlacer buildingData, Building building)
     {
         buildingCount += 1;
@@ -107,11 +107,11 @@ public class TutorialScript : MonoBehaviour
             StartCoroutine(BuildingNatureReserveWaiter("Nature reserve"));
             if (English)
             {
-                questBoxTextTMP.text = "Good job! Now place a " + englishRuralBuildingsArray[buildingCount] + " to balance the pollution!";
+                questBoxTextTMP.text = "Good job! Now place a " + englishRuralBuildingsArray[ruralCount] + " to balance the pollution!";
             }
             else
             {
-                questBoxTextTMP.text = "Goed gedaan! Plaats nu een " + dutchRuralBuildingsArray[buildingCount] + " om de vervuiling te stoppen!";
+                questBoxTextTMP.text = "Goed gedaan! Plaats nu een " + dutchRuralBuildingsArray[ruralCount] + " om de vervuiling te stoppen!";
             }   
         }
         else if (buildingCount == 2)
@@ -121,28 +121,34 @@ public class TutorialScript : MonoBehaviour
             StartCoroutine(BuildingHarborWaiter("Harbor"));
             if (English)
             {
-                questBoxTextTMP.text = "Nice! Try placing a " + englishRuralBuildingsArray[buildingCount] + " this time!";
+                questBoxTextTMP.text = "Nice! Try placing a " + englishRuralBuildingsArray[ruralCount] + " this time!";
             }
             else
             {
-                questBoxTextTMP.text = "Netjes! Probeer nu is een " + dutchRuralBuildingsArray[buildingCount] + " te plaatsen.";
+                questBoxTextTMP.text = "Netjes! Probeer nu is een " + dutchRuralBuildingsArray[ruralCount] + " te plaatsen.";
             }  
         }
         else if (buildingCount == 3)
         {
             if (buildingData.locationType == LocationType.Coastal)
             {
-                coastalCount += 1;
+                if (coastalCount < 1)
+                {
+                    coastalCount += 1;
+                }
                 StartCoroutine(BuildingHarborWaiter("Oil rig"));
             }
             else if (buildingData.locationType == LocationType.Rural)
             {
-                ruralCount += 1;
+                if (ruralCount < 4)
+                {
+                    ruralCount += 1;
+                }
                 StartCoroutine(BuildingNatureReserveWaiter("Train station"));
             }
             if (English)
                 {
-                    questBoxTextTMP.text = "Wow! That smells! Try putting down a " + englishRuralBuildingsArray[buildingCount] + ".";
+                    questBoxTextTMP.text = "Wow! That smells! Try putting down a " + englishRuralBuildingsArray[ruralCount] + ".";
                 }
                 else
                 {
@@ -154,12 +160,18 @@ public class TutorialScript : MonoBehaviour
             
             if (buildingData.locationType == LocationType.Coastal)
             {
-                coastalCount += 1;
+                if (coastalCount < 1)
+                {
+                    coastalCount += 1;
+                }
                 StartCoroutine(BuildingHarborWaiter("Oil rig"));
             }
             else if (buildingData.locationType == LocationType.Rural)
             {
-                ruralCount += 1;
+                if (ruralCount < 4)
+                {
+                    ruralCount += 1;
+                }
                 StartCoroutine(BuildingNatureReserveWaiter(ruralBuildingsArray[ruralCount]));
             }
             if (English)
@@ -176,12 +188,18 @@ public class TutorialScript : MonoBehaviour
             
             if (buildingData.locationType == LocationType.Coastal)
             {
-                coastalCount += 1;
+                if (coastalCount < 1)
+                {
+                    coastalCount += 1;
+                }
                 StartCoroutine(BuildingHarborWaiter("Oil rig"));
             }
             else if (buildingData.locationType == LocationType.Rural)
             {
-                ruralCount += 1;
+                if (ruralCount < 4)
+                {
+                    ruralCount += 1;
+                }
                 StartCoroutine(BuildingNatureReserveWaiter(ruralBuildingsArray[ruralCount]));
             }
 
@@ -189,7 +207,7 @@ public class TutorialScript : MonoBehaviour
             {
                 if (English)
                 {
-                    questBoxTextTMP.text = "Wow! You already know about coastal buildings? Place a " + englishRuralBuildingsArray[buildingCount] + " instead!";
+                    questBoxTextTMP.text = "Wow! You already know about coastal buildings? Place a " + englishRuralBuildingsArray[ruralCount] + " instead!";
                 }
                 else
                 {
@@ -213,12 +231,18 @@ public class TutorialScript : MonoBehaviour
             
             if (buildingData.locationType == LocationType.Coastal)
             {
-                coastalCount += 1;
+                if (coastalCount < 1)
+                {
+                    coastalCount += 1;
+                }
                 StartCoroutine(BuildingHarborWaiter("Oil rig"));
             }
             else if (buildingData.locationType == LocationType.Rural)
             {
-                ruralCount += 1;
+                if (ruralCount < 4)
+                {
+                    ruralCount += 1;
+                }
                 StartCoroutine(BuildingNatureReserveWaiter(ruralBuildingsArray[ruralCount]));
             }
             if (coastalCount > 0)
@@ -291,6 +315,11 @@ public class TutorialScript : MonoBehaviour
             StartCoroutine(TimerAnimationStart());
             StartCoroutine(ResetAnimationStart());
         }*/
+    }
+
+    public void PostBuildingTutorial()
+    {
+        
     }
     //does what it says on the tin, called when you finish the tutorial to change the tutorial box to the quest system
     IEnumerator QuestChanger()
