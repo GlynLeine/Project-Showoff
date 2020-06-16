@@ -4439,6 +4439,8 @@ MonoBehaviour:
   ruralBuildings: {fileID: 8872052276598536428}
   coastalBuildings: {fileID: 9001626134141880646}
   destroyBar: {fileID: 5133413115055181115}
+  harbour: {fileID: 3253924448904002968}
+  buildingSystem: {fileID: 0}
 --- !u!95 &5088064781938175821
 Animator:
   serializedVersion: 3

@@ -41,7 +41,7 @@ public class BuildingSystem : MonoBehaviour
     bool uiActive = false;
     bool isBuilding = false;
     public BuildingLocation startLocation;
-    BuildingLocation selectedLocation;
+    public BuildingLocation selectedLocation;
 
     //bool place = false;
 

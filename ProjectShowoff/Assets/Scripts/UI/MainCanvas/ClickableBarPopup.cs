@@ -7,6 +7,8 @@ public class ClickableBarPopup : MonoBehaviour
     public GameObject ruralBuildings;
     public GameObject coastalBuildings;
     public GameObject destroyBar;
+    public GameObject harbour;
+    public BuildingSystem buildingSystem;
     private float animationSpeed = 1;
     private bool testHasStarted;
     private bool testHasStarted2;
@@ -44,6 +46,11 @@ public class ClickableBarPopup : MonoBehaviour
     }
     public void CoastalStart()
     {
+        if(buildingSystem.selectedLocation.Harbor == null)
+            harbour.SetActive(false);
+        else
+            harbour.SetActive(true);
+
         StartCoroutine(CoastalBuildingAnimationStart());
     }
     public void CoastalStop()
