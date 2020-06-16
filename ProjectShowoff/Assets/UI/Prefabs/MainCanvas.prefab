@@ -461,7 +461,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5581779802898302178
 RectTransform:
   m_ObjectHideFlags: 0
@@ -478,6 +478,7 @@ RectTransform:
   - {fileID: 2400130613717854377}
   - {fileID: 4872431992859605854}
   - {fileID: 5636574769614990375}
+  - {fileID: 7252757284190223960}
   m_Father: {fileID: 359013031667045953}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -498,9 +499,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b80be42fbdaca147a96c9d23318d36b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingIcon: {fileID: 6542626864887728967}
   taskText: {fileID: 2088988154698848082}
   counterText: {fileID: 6167337352802637470}
   timerText: {fileID: 1651219731120601553}
+  factorySprite: {fileID: 21300000, guid: 118807f199691564086c36324bb80d9d, type: 3}
+  harborSprite: {fileID: 21300000, guid: d5176ee26ba948642b83c1038c702b2b, type: 3}
+  mineSprite: {fileID: 21300000, guid: 8413d63425574b848acee63f546adb0e, type: 3}
+  natureSprite: {fileID: 21300000, guid: 959f947416341b046afd1233ede6cbfd, type: 3}
+  oilSprite: {fileID: 21300000, guid: e7503849313b5fe42b555c2e67ea7974, type: 3}
+  solarSprite: {fileID: 21300000, guid: 70a107c2dd653914f9fd00402b6137b8, type: 3}
+  trainSprite: {fileID: 21300000, guid: 009b393aa17409a4ab7b62b4f857dec3, type: 3}
   questList:
   - buildingType: 2
     buildHowMany: 3
@@ -1257,6 +1266,80 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!1 &6287515546879907347
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7252757284190223960}
+  - component: {fileID: 7251779067995429229}
+  - component: {fileID: 6542626864887728967}
+  m_Layer: 5
+  m_Name: Icon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7252757284190223960
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6287515546879907347}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5581779802898302178}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 100, y: -10}
+  m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7251779067995429229
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6287515546879907347}
+  m_CullTransparentMesh: 0
+--- !u!114 &6542626864887728967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6287515546879907347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &7246546856353928904
 GameObject:
   m_ObjectHideFlags: 0
@@ -4440,6 +4523,7 @@ MonoBehaviour:
   coastalBuildings: {fileID: 9001626134141880646}
   destroyBar: {fileID: 5133413115055181115}
   harbour: {fileID: 3253924448904002968}
+  statDisplay: {fileID: 0}
   buildingSystem: {fileID: 0}
 --- !u!95 &5088064781938175821
 Animator:
