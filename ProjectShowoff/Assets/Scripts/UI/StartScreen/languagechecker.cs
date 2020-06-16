@@ -9,8 +9,6 @@ public class languagechecker : MonoBehaviour
     private TMP_Text tmpText;
     public string dutchText;
     public string englishText;
-    private bool englishAlreadySelected;
-    private bool dutchAlreadySelected;
 
     private void Start()
     {
@@ -19,23 +17,13 @@ public class languagechecker : MonoBehaviour
 
     void Update()
     {
-        if (!englishAlreadySelected)
+        if (LanguageSelector.LanguageSelected == LanguageSelector.LanguageSelectorSelected.English)
         {
-            if (LanguageSelector.EnglishSelected)
-            {
-                englishAlreadySelected = true;
-                dutchAlreadySelected = false;
                 tmpText.text = englishText;
-            }
         }
-        if (!dutchAlreadySelected)
+        if (LanguageSelector.LanguageSelected == LanguageSelector.LanguageSelectorSelected.Dutch)
         {
-            if (LanguageSelector.DutchSelected)
-            {
-                englishAlreadySelected = false;
-                dutchAlreadySelected = true;
                 tmpText.text = dutchText;
-            }
         }
     }
 }

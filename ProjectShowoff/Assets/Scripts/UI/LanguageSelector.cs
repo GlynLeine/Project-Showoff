@@ -1,21 +1,24 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LanguageSelector : MonoBehaviour
 {
-    public static bool EnglishSelected = true;
-    public static bool DutchSelected;
+    public enum LanguageSelectorSelected
+    {
+        English, Dutch
+    }
+
+    public static LanguageSelectorSelected LanguageSelected = LanguageSelectorSelected.Dutch;
 
     public void englishSelectButton()
     {
-        EnglishSelected = true;
-        DutchSelected = false;
+        LanguageSelected = LanguageSelectorSelected.English;
     }
 
     public void dutchSelectButton()
     {
-        EnglishSelected = false;
-        DutchSelected = true;
+        LanguageSelected = LanguageSelectorSelected.Dutch;
     }
 }
