@@ -200,6 +200,7 @@
               <e p="ClickableBarPopup.cs" t="Include" />
               <e p="PlanetReset.cs" t="Include" />
               <e p="QuestSystem.cs" t="Include" />
+              <e p="TutorialRotator.cs" t="Include" />
               <e p="TutorialScript.cs" t="Include" />
               <e p="VoiceCasterTestScript.cs" t="Include" />
               <e p="YearTimer.cs" t="Include" />
