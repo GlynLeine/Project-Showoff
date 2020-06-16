@@ -204,14 +204,17 @@ public class TutorialScript : MonoBehaviour
             }
             else if (buildingData.locationType == LocationType.Rural)
             {
+                if (ruralCount < 5)
+                {
+                    StartCoroutine(BuildingNatureReserveWaiter(ruralBuildingsArray[ruralCount]));
+                }
                 if (ruralCount < 4)
                 {
-                    ruralCount += 1;
+                    ruralCount += 1;   
                 }
-                StartCoroutine(BuildingNatureReserveWaiter(ruralBuildingsArray[ruralCount]));
             }
 
-            if (coastalCount > 0)
+            if (ruralCount < 5)
             {
                 if (English)
                 {
@@ -247,13 +250,17 @@ public class TutorialScript : MonoBehaviour
             }
             else if (buildingData.locationType == LocationType.Rural)
             {
+                if (ruralCount < 5)
+                {
+                    StartCoroutine(BuildingNatureReserveWaiter(ruralBuildingsArray[ruralCount]));
+                }
+
                 if (ruralCount < 4)
                 {
-                    ruralCount += 1;
+                    ruralCount += 1;   
                 }
-                StartCoroutine(BuildingNatureReserveWaiter(ruralBuildingsArray[ruralCount]));
             }
-            if (coastalCount > 0)
+            if (ruralCount < 5)
             {
                 if (English)
                 {
