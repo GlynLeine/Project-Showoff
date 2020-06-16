@@ -37,19 +37,11 @@ public class BuildingSystem : MonoBehaviour
     public delegate void OnBuildingPlaced(BuildingLocation location, BuildingPlacer buildingData, Building building);
     public static OnBuildingPlaced onBuildingPlaced;
 
-    public UnityEngine.UI.Toggle DestructionToggle;
-    bool destroy = false;
-
     public ClickableBarPopup buildUI;
     public BuildingLocation startLocation;
     BuildingLocation selectedLocation;
 
     //bool place = false;
-
-    public void ToggleDestroyMode()
-    {
-        destroy = DestructionToggle.isOn;
-    }
 
     private void Awake()
     {
@@ -74,7 +66,12 @@ public class BuildingSystem : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(InputRedirect.inputPos);
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                if (!destroy)
+                Building building = null;
+
+                if (hit.transform.parent != null)
+                    building = hit.transform.parent.GetComponent<Building>();
+
+                if (building == null)
                 {
                     BuildingConstructor constructor = hit.collider.GetComponent<BuildingConstructor>();
                     if (constructor != null)
@@ -94,24 +91,17 @@ public class BuildingSystem : MonoBehaviour
                     else
                         InvalidateSelection();
                 }
-                else if (hit.collider.transform.parent != null && hit.collider.transform.parent.parent != null)
-                {
-                    BuildingLocation location = hit.collider.transform.parent.parent.gameObject.GetComponent<BuildingLocation>();
-                    if (location != null)
-                    {
-                        DestroyBuilding(location);
-                        DestructionToggle.isOn = false;
-                        destroy = false;
-                    }
-
-                    if (selectedLocation != null)
-                        foreach (BuildingLocation neighbour in selectedLocation.neighbours)
-                            selectedLocation.roads[neighbour].gameObject.SetActive(false);
-
-                    selectedLocation = null;
-                }
                 else
+                {
                     InvalidateSelection();
+                    //BuildingLocation location = hit.collider.transform.parent.parent.gameObject.GetComponent<BuildingLocation>();
+                    //if (location != null)
+                    //{
+                    //    //DestroyBuilding(location);
+                    //    selectedLocation = location;
+                    //    buildUI.DestroyStart();
+                    //}
+                }
             }
             else
                 InvalidateSelection();
@@ -122,10 +112,15 @@ public class BuildingSystem : MonoBehaviour
     {
         if (selectedLocation != null && !InputRedirect.inputOverUI)
         {
-            foreach (BuildingLocation neighbour in selectedLocation.neighbours)
-                selectedLocation.roads[neighbour].gameObject.SetActive(false);
+            if (selectedLocation.state == LocationState.Closed)
+            {
+                foreach (BuildingLocation neighbour in selectedLocation.neighbours)
+                    selectedLocation.roads[neighbour].gameObject.SetActive(false);
 
-            buildUI.GetType().GetMethod(selectedLocation.locationType.ToString() + "Stop").Invoke(buildUI, new object[] { });
+                buildUI.GetType().GetMethod(selectedLocation.locationType.ToString() + "Stop").Invoke(buildUI, new object[] { });
+            }
+            else
+                buildUI.DestroyStop();
 
             selectedLocation = null;
         }
@@ -489,7 +484,7 @@ public class BuildingSystem : MonoBehaviour
     {
         Init();
 
-        foreach(BuildingLocation location in openSet)
+        foreach (BuildingLocation location in openSet)
             EnableLocation(location, false);
 
         foreach (BuildingLocation location in unvisited)
