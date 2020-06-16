@@ -32,7 +32,6 @@ public class BuildingPlacer : MonoBehaviour
 
     public void Place()
     {
-        system.buildUI.GetType().GetMethod(locationType.ToString() + "Stop").Invoke(system.buildUI, new object[] { });
         system.PlaceBuilding(this);
     }
 
