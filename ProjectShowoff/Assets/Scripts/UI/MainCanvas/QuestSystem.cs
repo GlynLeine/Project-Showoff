@@ -11,6 +11,7 @@ public class QuestSystem : MonoBehaviour
     private int maxCounterValue;
     private float waitTime = 0;
     private string timerValue;
+    public TMP_Text taskText;
     public TMP_Text counterText;
     public TMP_Text timerText;
     [Serializable] public class Quest
@@ -47,7 +48,8 @@ public class QuestSystem : MonoBehaviour
 
     public void QuestInitialization()
     {
-        counterText.text = SelectedBuildingType + " " + counterValue + "/" + maxCounterValue;
+        taskText.text = "Build " + maxCounterValue + " " + SelectedBuildingType;
+        counterText.text = counterValue + "/" + maxCounterValue;
     }
     private void OnBuildingPlaced(BuildingLocation location, BuildingPlacer buildingData, Building building)
     {
@@ -59,7 +61,7 @@ public class QuestSystem : MonoBehaviour
         if (buildingData.buildingType == SelectedBuildingType)
         {
             counterValue += 1;
-            counterText.text = SelectedBuildingType + " " + counterValue + "/" + maxCounterValue;
+            counterText.text = counterValue + "/" + maxCounterValue;
             if (counterValue == maxCounterValue)
             {
                 counterText.text = "productivity increased!";
