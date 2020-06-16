@@ -48,6 +48,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/StartScreen/UIFader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EditorParamRef.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/AudioTriggerManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/TutorialRotator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/BankRefDrawer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EditorUtils.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EditorBankRef.cs" root0="FORCE_HIGHLIGHTING" />
@@ -96,6 +97,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/StartScreen/languagechecker.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/LanguageSelector.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/StartScreen/UIFader.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/TutorialRotator.cs" />
       </list>
     </option>
   </component>
