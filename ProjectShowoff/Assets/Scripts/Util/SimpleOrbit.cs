@@ -26,7 +26,7 @@ public class SimpleOrbit : MonoBehaviour
     {
         Vector3 up = (transform.position - target.position).normalized;
         forward = Vector3.Cross(right, up).normalized;
-        transform.position += (speed * range * GameManager.deltaTime) / 100 * forward;
+        transform.position += (speed * range * Time.deltaTime) / 100 * forward;
 
         Vector3 normal = (transform.position - target.position).normalized;
         transform.position = target.position + (normal * range);

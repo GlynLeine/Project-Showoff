@@ -37,6 +37,6 @@ public class CloudEffect : MonoBehaviour
 
     private void Update()
     {
-        cloudMaterial.SetFloat("_ScaledTime", GameManager.time);
+        cloudMaterial.SetFloat("_ScaledTime", Time.time);
     }
 }

@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
     static public void SetOzoneState(float ozoneState)
     {
         ozone = ozoneState;
-        ozoneMat.SetFloat("_Dissolve", lerp(0.26f, 0.7f, ozoneState));
+        ozoneMat.SetFloat("_Dissolve", lerp(0.25f, 0.7f, ozoneState));
     }
 
     static public void SetCloudState(float cloudState)
