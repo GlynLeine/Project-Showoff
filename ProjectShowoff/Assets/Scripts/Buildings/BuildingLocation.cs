@@ -47,6 +47,14 @@ public class RoadDictionary
         }
     }
 
+    public BuildingLocation KeyAt(int index)
+    {
+        if (index < 0 || index >= keys.Count)
+            return null;
+
+        return keys[index];
+    }
+
     public bool ContainsKey(BuildingLocation key)
     {
         return keys.Contains(key);
@@ -61,6 +69,14 @@ public class RoadDictionary
     public void Remove(BuildingLocation key)
     {
         int index = keys.IndexOf(key);
+        if (index < 0 || index >= keys.Count)
+            return;
+        keys.RemoveAt(index);
+        values.RemoveAt(index);
+    }
+
+    public void RemoveAt(int index)
+    {
         if (index < 0 || index >= keys.Count)
             return;
         keys.RemoveAt(index);
@@ -106,6 +122,15 @@ public class BuildingLocation : MonoBehaviour
             {
                 neighbour.neighbours.Add(this);
                 neighbour.roads.Add(this, roads[neighbour]);
+            }
+        }
+
+        for (int i = 0; i < roads.Count; i++)
+        {
+            if (roads[i] == null)
+            {
+                roads.RemoveAt(i);
+                i--;
             }
         }
     }

@@ -69,6 +69,12 @@ public class TutorialScript : MonoBehaviour
             StartCoroutine(HandAnimation());
         }
     }
+
+    private void OnDisable()
+    {
+        BuildingSystem.onBuildingPlaced -= OnBuildingPlaced;
+    }
+
     //this function gets called when ui slider disabled the main canvas, its the first thing that gets called
     public void OnEnable()
     {
