@@ -19,6 +19,7 @@ public class TutorialScript : MonoBehaviour
     public TMP_Text questBoxTextTMP;
     public GameObject questSystem;
     public GameObject ruralBuildings;
+    public GameObject coastalBuildings;
     public Image questBoxImage;
     private Slider slider;
     private float animationSpeed = 1; //reset at end of every animation, makes animations move faster as they go on
@@ -27,12 +28,22 @@ public class TutorialScript : MonoBehaviour
     private bool tutorialZoomStep;
     private bool tutorialBuildStep;
     private bool gameHasStarted;
+    private bool ifHarborBuilt;
+    private bool ifOilRigBuilt;
     
     private float tutorialDelaySeconds = 2.5f;//how long you need to wait before you start a tutorial step, potentially redundant
     public bool tutorialSkip;//if active, start does all the tutorial steps right away
     private bool English;//if true, text in english, if false, text is in dutch
     private int buildingCount;//for the tutorial steps, how many buildings have you placed yet?
+    private int coastalCount;
+    private int ruralCount;
     private float timer;
+    private string[] coastalBuildingsArray = {"Harbor","Oil rig"};
+    private string[] ruralBuildingsArray = {"Factory","Nature reserve","Coal mine","Train station","Solar farm"};
+    private string[] englishCoastalBuildingsArray = {"harbor","oil rig"};
+    private string[] englishRuralBuildingsArray = {"factory","nature reserve","coal mine","train station","solar farm"};
+    private string[] dutchCoastalBuildingsArray = {"haven","boorplatform"};
+    private string[] dutchRuralBuildingsArray = {"fabriek","natuurgebied","koolmijn","trein station","zonnepanelen"};
     
     void Start()
     {
@@ -92,41 +103,161 @@ public class TutorialScript : MonoBehaviour
         buildingCount += 1;
         if (buildingCount == 1)
         {
+            ruralCount += 1;
             StartCoroutine(BuildingNatureReserveWaiter("Nature reserve"));
             if (English)
             {
-                questBoxTextTMP.text = "Good job! Now place a nature reserve to balance the pollution!";
+                questBoxTextTMP.text = "Good job! Now place a " + englishRuralBuildingsArray[buildingCount] + " to balance the pollution!";
             }
             else
             {
-                questBoxTextTMP.text = "Goed gedaan! Plaats nu een natuurgebied om de vervuiling te stoppen!";
+                questBoxTextTMP.text = "Goed gedaan! Plaats nu een " + dutchRuralBuildingsArray[buildingCount] + " om de vervuiling te stoppen!";
             }   
         }
         else if (buildingCount == 2)
         {
-            StartCoroutine(BuildingActivationWaiter());
+            ruralCount += 1;
+            StartCoroutine(BuildingNatureReserveWaiter("Coal mine"));
+            StartCoroutine(BuildingHarborWaiter("Harbor"));
             if (English)
             {
-                questBoxTextTMP.text = "Nice! There is one spot left, why don't you try something new?";
+                questBoxTextTMP.text = "Nice! Try placing a " + englishRuralBuildingsArray[buildingCount] + " this time!";
             }
             else
             {
-                questBoxTextTMP.text = "Netjes! Er is nog een plek over, waarom probeer je niet iets nieuws?";
+                questBoxTextTMP.text = "Netjes! Probeer nu is een " + dutchRuralBuildingsArray[buildingCount] + " te plaatsen.";
             }  
         }
         else if (buildingCount == 3)
         {
+            if (buildingData.locationType == LocationType.Coastal)
+            {
+                coastalCount += 1;
+                StartCoroutine(BuildingHarborWaiter("Oil rig"));
+            }
+            else if (buildingData.locationType == LocationType.Rural)
+            {
+                ruralCount += 1;
+                StartCoroutine(BuildingNatureReserveWaiter("Train station"));
+            }
+            if (English)
+                {
+                    questBoxTextTMP.text = "Wow! That smells! Try putting down a " + englishRuralBuildingsArray[buildingCount] + ".";
+                }
+                else
+                {
+                    questBoxTextTMP.text = "Wow! Dat stinkt! Probeer is een " + dutchRuralBuildingsArray[ruralCount] + " te plaatsen.";
+                }
+        }
+        else if (buildingCount == 4)
+        {
+            
+            if (buildingData.locationType == LocationType.Coastal)
+            {
+                coastalCount += 1;
+                StartCoroutine(BuildingHarborWaiter("Oil rig"));
+            }
+            else if (buildingData.locationType == LocationType.Rural)
+            {
+                ruralCount += 1;
+                StartCoroutine(BuildingNatureReserveWaiter(ruralBuildingsArray[ruralCount]));
+            }
             if (English)
             {
-                questBoxTextTMP.text = "Wow! The island is full! Try zooming out and finding a new spot!";
+                questBoxTextTMP.text = "Good! Now put down a " + englishRuralBuildingsArray[ruralCount] + "!";
             }
             else
             {
-                questBoxTextTMP.text = "Wow! Het hele eiland is vol! Probeer eens uit te zoomen en een nieuwe plek te vinden!";
+                questBoxTextTMP.text = "Goed! Probeer nu is een " + dutchRuralBuildingsArray[ruralCount] + " te plaatsen.";
+            }
+        }
+        else if (buildingCount == 5)
+        {
+            
+            if (buildingData.locationType == LocationType.Coastal)
+            {
+                coastalCount += 1;
+                StartCoroutine(BuildingHarborWaiter("Oil rig"));
+            }
+            else if (buildingData.locationType == LocationType.Rural)
+            {
+                ruralCount += 1;
+                StartCoroutine(BuildingNatureReserveWaiter(ruralBuildingsArray[ruralCount]));
+            }
+
+            if (coastalCount > 0)
+            {
+                if (English)
+                {
+                    questBoxTextTMP.text = "Wow! You already know about coastal buildings? Place a " + englishRuralBuildingsArray[buildingCount] + " instead!";
+                }
+                else
+                {
+                    questBoxTextTMP.text = "Wow! Je weet al wat kust gebouwen zijn? Plaats dan maar een " + dutchRuralBuildingsArray[ruralCount] + ".";
+                }
+            }
+            else
+            {
+                if (English)
+                {
+                    questBoxTextTMP.text = "We also have coastal buildings, place a " + englishCoastalBuildingsArray[coastalCount] + ".";
+                }
+                else
+                {
+                    questBoxTextTMP.text = "We hebben ook kust gebouwen, plaats een " + dutchCoastalBuildingsArray[coastalCount] + ".";
+                }
+            }
+        }
+        else if (buildingCount == 6)
+        {
+            
+            if (buildingData.locationType == LocationType.Coastal)
+            {
+                coastalCount += 1;
+                StartCoroutine(BuildingHarborWaiter("Oil rig"));
+            }
+            else if (buildingData.locationType == LocationType.Rural)
+            {
+                ruralCount += 1;
+                StartCoroutine(BuildingNatureReserveWaiter(ruralBuildingsArray[ruralCount]));
+            }
+            if (coastalCount > 0)
+            {
+                if (English)
+                {
+                    questBoxTextTMP.text = "Good! Now put down a " + englishRuralBuildingsArray[ruralCount] + "!";
+                }
+                else
+                {
+                    questBoxTextTMP.text = "Goed! Probeer nu is een " + dutchRuralBuildingsArray[ruralCount] + " te plaatsen.";
+                }
+            }
+            else
+            {
+                if (English)
+                {
+                    questBoxTextTMP.text = "Almost done! Try placing a "+ englishCoastalBuildingsArray[coastalCount] + ".";
+                }
+                else
+                {
+                    questBoxTextTMP.text = "Bijna klaar! Plaats nu is een " + dutchCoastalBuildingsArray[coastalCount] + ".";
+                }
+            }
+        }
+        else if (buildingCount == 7)
+        {
+            if (English)
+            {
+                questBoxTextTMP.text = "The island is full. Try zooming out and looking for a new place!";
+            }
+            else
+            {
+                questBoxTextTMP.text = "Het is vol! Zoom uit en zoek naar een nieuwe plek!";
             }
             StartCoroutine(SliderAnimationStart());
+            StartCoroutine(BuildingActivationWaiter());
         }
-        else if (buildingCount == 4)
+        else if (buildingCount >= 8)
         {
             if (English)
             {
@@ -137,9 +268,6 @@ public class TutorialScript : MonoBehaviour
                 questBoxTextTMP.text = "Goed gedaan, je kan nu doen wat je wil, maar je kan ooks ons helpen!";
             }
             StartCoroutine(QuestChanger());
-        }
-        else if (buildingCount >= 5)
-        {
             BuildingSystem.onBuildingPlaced -= OnBuildingPlaced;
         }
     }
@@ -171,7 +299,7 @@ public class TutorialScript : MonoBehaviour
         questBoxTextTMP.gameObject.SetActive(false);
         questSystem.SetActive(true);
     }
-    //waits one second before deactivating everything but the nature reserve, so it doesnt happen on screen and ppl dont notice
+    //waits one second before deactivating everything but the game object with the name, so it doesnt happen on screen and ppl dont notice
     IEnumerator BuildingNatureReserveWaiter(string name)
     {
         yield return new WaitForSeconds(1);
@@ -187,10 +315,29 @@ public class TutorialScript : MonoBehaviour
             }
         }
     }
+    IEnumerator BuildingHarborWaiter(string name)
+    {
+        yield return new WaitForSeconds(1);
+        foreach (Transform child in coastalBuildings.transform)
+        {
+            if (child.gameObject.name != name)
+            {
+                child.gameObject.SetActive(false);
+            }
+            else
+            {
+                child.gameObject.SetActive(true);
+            }
+        }
+    }
     //same as above, just for activating everything
     IEnumerator BuildingActivationWaiter()
     {
         yield return new WaitForSeconds(1);
+        foreach (Transform child in coastalBuildings.transform)
+        {
+            child.gameObject.SetActive(true);
+        }
         foreach (Transform child in ruralBuildings.transform)
         {
             child.gameObject.SetActive(true);

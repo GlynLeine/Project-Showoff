@@ -501,7 +501,15 @@ MonoBehaviour:
   taskText: {fileID: 2088988154698848082}
   counterText: {fileID: 6167337352802637470}
   timerText: {fileID: 1651219731120601553}
-  questList: []
+  questList:
+  - buildingType: 2
+    buildHowMany: 3
+    maxTimeInSeconds: 30
+    waitTimeInSeconds: 10
+  - buildingType: 4
+    buildHowMany: 4
+    maxTimeInSeconds: 30
+    waitTimeInSeconds: 10
 --- !u!1 &2766883279786236331
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,8 +603,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 34
+  m_fontSizeBase: 34
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4413,6 +4421,7 @@ MonoBehaviour:
   questBoxTextTMP: {fileID: 7149047631756176688}
   questSystem: {fileID: 2427180683102806792}
   ruralBuildings: {fileID: 8872052276598536428}
+  coastalBuildings: {fileID: 9001626134141880646}
   questBoxImage: {fileID: 3415754310035426241}
   tutorialSkip: 0
 --- !u!114 &3744976374586019810
