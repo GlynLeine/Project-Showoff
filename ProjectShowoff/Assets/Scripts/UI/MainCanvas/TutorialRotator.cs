@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class TutorialRotator : MonoBehaviour
 {
-    public GameObject cameraRotationObject;
+    public Transform cameraRotationObject;
     public Zoom zoomScript;
-    private bool allTrue;
+    public BuildingSystem buildingSystem;
+    public float rotationDuration = 1f;
+    public float endZoom = 2f;
+
     void Start()
     {
         StartCoroutine(zoomDone());
@@ -14,86 +17,28 @@ public class TutorialRotator : MonoBehaviour
 
     IEnumerator zoomDone()
     {
-        while (!allTrue)
-        {
-            Vector3 tempRotation = cameraRotationObject.transform.eulerAngles;
-            //i cant fucking get it to work so lets move on for a sec
-            allTrue = true;
-            zoomScript.range = 2;
-            tempRotation.x = 26;
-            tempRotation.y = 57;
-            tempRotation.z = 7;
-            /*if (tempRotation.x > 26)
-            {
-                tempRotation.x -= 100 * Time.deltaTime;
-                if (tempRotation.x <= 26)
-                {
-                    tempRotation.x = 26;
-                }
-            }
-            else if (tempRotation.x < 26)
-            {
-                tempRotation.x += 100 * Time.deltaTime;
-                if (tempRotation.x >= 26)
-                {
-                    tempRotation.x = 26;
-                }
-                else if (tempRotation.x < 0)
-                {
-                    tempRotation.x = 0;
-                }
-            }
-            if (tempRotation.y > 57)
-            {
-                tempRotation.y -= 100 * Time.deltaTime;
-                if (tempRotation.y <= 57)
-                {
-                    tempRotation.y = 57;
-                }
-            }
-            else if (tempRotation.y < 57)
-            {
-                tempRotation.y += 100 * Time.deltaTime;
-                if (tempRotation.y >= 57)
-                {
-                    tempRotation.y = 57;
-                }
-            }
-            /*if (tempRotation.z > 7)
-            {
-                tempRotation.z -= 100 * Time.deltaTime;
-                if (tempRotation.z <= 7)
-                {
-                    tempRotation.z = 7;
-                }
-            }
-            else if (tempRotation.z < 7)
-            {
-                tempRotation.z += 100 * Time.deltaTime;
-                if (tempRotation.z >= 7)
-                {
-                    tempRotation.z = 7;
-                }
-            }#1#
-            if (zoomScript.range > 2)
-            {
-                zoomScript.range -= 8 * Time.deltaTime;
-                if (zoomScript.range <= 2)
-                {
-                    zoomScript.range = 2;
-                }
-            }
-            else if (zoomScript.range < 2)
-            {
-                zoomScript.range += 8 * Time.deltaTime;
-                if (zoomScript.range >= 2)
-                {
-                    zoomScript.range = 2;
-                }
-            }*/
+        float timeBuffer = 0;
 
-            cameraRotationObject.transform.eulerAngles = tempRotation;
+        Vector3 toStartLocation = (buildingSystem.startLocation.transform.position - cameraRotationObject.position).normalized;
+
+        Quaternion startRotation = cameraRotationObject.rotation;
+        Quaternion endRotation = Quaternion.LookRotation(-toStartLocation, cameraRotationObject.up);
+
+        float startZoom = zoomScript.range;
+
+        while (timeBuffer < rotationDuration)
+        {
+            timeBuffer += Time.deltaTime;
+            float interp01 = GameManager.smoothstep(0, rotationDuration, timeBuffer);
+
+            zoomScript.range = GameManager.lerp(startZoom, endZoom, interp01);
+
+            cameraRotationObject.rotation = Quaternion.Lerp(startRotation, endRotation, interp01);
+
             yield return null;
         }
+
+        zoomScript.range = endZoom;
+        cameraRotationObject.rotation = endRotation;
     }
 }

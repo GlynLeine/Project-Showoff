@@ -4106,6 +4106,7 @@ GameObject:
   - component: {fileID: 2946203210707287117}
   - component: {fileID: 3744976374586019810}
   - component: {fileID: 5088064781938175821}
+  - component: {fileID: 3169854686054731884}
   m_Layer: 5
   m_Name: MainCanvas
   m_TagString: Untagged
@@ -4257,6 +4258,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3169854686054731884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872052277425209316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a2874ab38147ef498d4b8f2e43ad169, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraRotationObject: {fileID: 0}
+  zoomScript: {fileID: 0}
+  buildingSystem: {fileID: 0}
+  rotationDuration: 2
+  endZoom: 2
 --- !u!1 &8872052277587456257
 GameObject:
   m_ObjectHideFlags: 0
