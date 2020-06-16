@@ -6,9 +6,11 @@ public class TutorialRotator : MonoBehaviour
 {
     public GameObject cameraRotationObject;
     public Zoom zoomScript;
+    private TutorialScript tutorialScript;
     private bool allTrue;
     void Start()
     {
+        tutorialScript = gameObject.GetComponent<TutorialScript>();
         StartCoroutine(zoomDone());
     }
 
@@ -95,5 +97,6 @@ public class TutorialRotator : MonoBehaviour
             cameraRotationObject.transform.eulerAngles = tempRotation;
             yield return null;
         }
+        tutorialScript.tutorialStart();
     }
 }

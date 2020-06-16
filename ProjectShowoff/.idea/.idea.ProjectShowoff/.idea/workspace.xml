@@ -92,12 +92,12 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/EndScreenCounterWater.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/PlanetReset.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/ClickableBarPopup.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/TutorialScript.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/QuestSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/StartScreen/languagechecker.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/LanguageSelector.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/StartScreen/UIFader.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/TutorialRotator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/QuestSystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/TutorialScript.cs" />
       </list>
     </option>
   </component>
