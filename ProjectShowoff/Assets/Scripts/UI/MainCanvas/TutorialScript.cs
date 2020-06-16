@@ -208,7 +208,10 @@ public class TutorialScript : MonoBehaviour
                 {
                     StartCoroutine(BuildingNatureReserveWaiter(ruralBuildingsArray[ruralCount]));
                 }
-                ruralCount += 1;
+                if (ruralCount < 4)
+                {
+                    ruralCount += 1;   
+                }
             }
 
             if (ruralCount < 5)
@@ -251,8 +254,11 @@ public class TutorialScript : MonoBehaviour
                 {
                     StartCoroutine(BuildingNatureReserveWaiter(ruralBuildingsArray[ruralCount]));
                 }
-                ruralCount += 1;
-                
+
+                if (ruralCount < 4)
+                {
+                    ruralCount += 1;   
+                }
             }
             if (ruralCount < 5)
             {
