@@ -18,6 +18,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingPlacer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/StartScreen/languagechecker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Materials/Shaders/Tessellation/GlynTessellation.hlsl" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Effects/BuildingCloudEffect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Characters/Character.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Characters/Pokable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -25,7 +26,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/StartScreen/UIFader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EditorParamRef.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/AudioTriggerManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Animation/Button animations/Button_animation_script.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/BankRefDrawer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EditorUtils.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EditorBankRef.cs" root0="FORCE_HIGHLIGHTING" />
@@ -33,7 +33,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Util/InputRedirect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Util/Zoom.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Util/Planet.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/QuestSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Materials/LineShader.shader" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/VoiceCasterTestScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/addons/ResonanceAudio/Editor/FmodResonanceAudioRoomEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Util/Spline/SplineMesh.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/TutorialScript.cs" root0="FORCE_HIGHLIGHTING" />
@@ -65,9 +67,10 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/ButtonFill.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/SceneChanger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/EndScreenCounterWater.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/TutorialScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/PlanetReset.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/ClickableBarPopup.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/TutorialScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/QuestSystem.cs" />
       </list>
     </option>
   </component>
@@ -131,7 +134,8 @@
       <workItem from="1591686026744" duration="10545000" />
       <workItem from="1591773656638" duration="5581000" />
       <workItem from="1591786740775" duration="1485000" />
-      <workItem from="1592207558220" duration="5921000" />
+      <workItem from="1592207558220" duration="16172000" />
+      <workItem from="1592291548820" duration="942000" />
     </task>
     <servers />
   </component>

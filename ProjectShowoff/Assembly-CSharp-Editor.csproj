@@ -62,8 +62,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\DX11_Tessellation\DX11_Tessellation_Free\Editor\ShaderGUI\FreeTessPimped_GUI.cs" />
-    <Compile Include="Assets\DX11_Tessellation\DX11_Tessellation_Free\Editor\ShaderGUI\TessStandard_GUI.cs" />
+    <Compile Include="Assets\Profiler\Editor\BarGraph.cs" />
+    <Compile Include="Assets\Profiler\Editor\ProfileDisplay.cs" />
+    <Compile Include="Assets\Profiler\Editor\Profiler.cs" />
+    <Compile Include="Assets\Profiler\Editor\StandaloneFileBrowser\IStandaloneFileBrowser.cs" />
+    <Compile Include="Assets\Profiler\Editor\StandaloneFileBrowser\StandaloneFileBrowser.cs" />
+    <Compile Include="Assets\Profiler\Editor\StandaloneFileBrowser\StandaloneFileBrowserEditor.cs" />
+    <Compile Include="Assets\Profiler\Editor\StandaloneFileBrowser\StandaloneFileBrowserLinux.cs" />
+    <Compile Include="Assets\Profiler\Editor\StandaloneFileBrowser\StandaloneFileBrowserMac.cs" />
+    <Compile Include="Assets\Profiler\Editor\StandaloneFileBrowser\StandaloneFileBrowserWindows.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -262,6 +269,9 @@
     <Reference Include="UnityEditor.WebGL.Extensions">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.12f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.OSXStandalone.Extensions">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.12f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.Android.Extensions">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.12f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
     </Reference>
@@ -270,6 +280,12 @@
     </Reference>
     <Reference Include="ICSharpCode.NRefactory">
       <HintPath>D:/Perforce/Project-Showoff/ProjectShowoff/Library/PackageCache/com.unity.render-pipelines.core@7.3.1/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
+    </Reference>
+    <Reference Include="Ookii.Dialogs">
+      <HintPath>D:/Perforce/Project-Showoff/ProjectShowoff/Assets/Profiler/Editor/StandaloneFileBrowser/Plugins/Ookii.Dialogs.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <HintPath>D:/Perforce/Project-Showoff/ProjectShowoff/Assets/Profiler/Editor/StandaloneFileBrowser/Plugins/System.Windows.Forms.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>D:/Perforce/Project-Showoff/ProjectShowoff/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
@@ -652,6 +668,9 @@
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
       <HintPath>D:/Perforce/Project-Showoff/ProjectShowoff/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.VisualEffectGraph.Runtime">
+      <HintPath>D:/Perforce/Project-Showoff/ProjectShowoff/Library/ScriptAssemblies/Unity.VisualEffectGraph.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/Perforce/Project-Showoff/ProjectShowoff/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -675,6 +694,12 @@
     </Reference>
     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
       <HintPath>D:/Perforce/Project-Showoff/ProjectShowoff/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>D:/Perforce/Project-Showoff/ProjectShowoff/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualEffectGraph.Editor">
+      <HintPath>D:/Perforce/Project-Showoff/ProjectShowoff/Library/ScriptAssemblies/Unity.VisualEffectGraph.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ShaderGraph.Editor">
       <HintPath>D:/Perforce/Project-Showoff/ProjectShowoff/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>

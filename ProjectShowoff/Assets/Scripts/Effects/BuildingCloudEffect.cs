@@ -7,6 +7,8 @@ public class BuildingCloudEffect : MonoBehaviour
     public GameObject cloudEffectPrefab;
     public float effectTime = 5f;
 
+    public static System.Action onEffectFinish;
+
     private void OnEnable()
     {
         BuildingSystem.onBuildingPlaced += OnBuildingPlaced;
@@ -21,6 +23,7 @@ public class BuildingCloudEffect : MonoBehaviour
     {
         yield return new WaitForSeconds(effectTime);
         Destroy(effectObject);
+        onEffectFinish?.Invoke();
     }
 
     private void OnBuildingPlaced(BuildingLocation location, BuildingPlacer buildingData, Building building)
