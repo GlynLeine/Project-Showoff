@@ -39,6 +39,7 @@ public class BuildingSystem : MonoBehaviour
 
     public ClickableBarPopup buildUI;
     bool uiActive = false;
+    bool isBuilding = false;
     public BuildingLocation startLocation;
     BuildingLocation selectedLocation;
 
@@ -57,6 +58,7 @@ public class BuildingSystem : MonoBehaviour
             {
                 EnableLocation(location, true);
             }
+            isBuilding = false;
         };
     }
 
@@ -114,7 +116,7 @@ public class BuildingSystem : MonoBehaviour
     {
         if (selectedLocation != null)
         {
-            if (selectedLocation.state != LocationState.Closed && selectedLocation.state != LocationState.Destroyed)
+            if (uiActive)
             {
                 foreach (BuildingLocation neighbour in selectedLocation.neighbours)
                     selectedLocation.roads[neighbour].gameObject.SetActive(false);
@@ -192,7 +194,7 @@ public class BuildingSystem : MonoBehaviour
             foreach (BuildingLocation neighbour in location.neighbours)
                 if (neighbour.state == LocationState.Closed)
                 {
-                    SetLocationState(location, LocationState.Open);
+                    SetLocationState(location, LocationState.Open);                    
                     return;
                 }
 
@@ -202,9 +204,12 @@ public class BuildingSystem : MonoBehaviour
 
     public void DestroySelectedBuilding()
     {
-        BuildingLocation loc = selectedLocation;
+        if (openSet.Count == 0)
+            foreach (BuildingLocation location in unvisited)
+                EnableLocation(location, false);
+
+        DestroyBuilding(selectedLocation);
         InvalidateSelection();
-        DestroyBuilding(loc);
     }
 
     public void DestroyLocation(BuildingLocation location)
@@ -440,7 +445,8 @@ public class BuildingSystem : MonoBehaviour
                 break;
             case LocationState.Open:
                 openSet.Add(location);
-                EnableLocation(location, true);
+                if(!isBuilding)
+                    EnableLocation(location, true);
                 break;
             case LocationState.Closed:
                 closedSet.Add(location);
@@ -452,7 +458,7 @@ public class BuildingSystem : MonoBehaviour
                 break;
         }
 
-        if(closedSet.Count == 0)
+        if (closedSet.Count == 0)
             EnableLocation(startLocation, true);
     }
 
@@ -481,7 +487,7 @@ public class BuildingSystem : MonoBehaviour
         locations[location.locationType].Add(location);
 
         if (location == startLocation)
-            EnableLocation(location, true);
+            EnableLocation(startLocation, true);
     }
 
     private void EnableLocation(BuildingLocation location, bool enable)
@@ -503,11 +509,14 @@ public class BuildingSystem : MonoBehaviour
         foreach (BuildingLocation location in openSet)
             EnableLocation(location, false);
 
-        foreach (BuildingLocation location in unvisited)
-            EnableLocation(location, false);
+        if (openSet.Count == 0)
+            foreach (BuildingLocation location in unvisited)
+                EnableLocation(location, false);
 
+        isBuilding = true;
         ConstructBuilding(selectedLocation, buildingData);
-
+        buildUI.GetType().GetMethod(selectedLocation.locationType.ToString() + "Stop").Invoke(buildUI, new object[] { });
+        uiActive = false;
         selectedLocation = null;
     }
 
