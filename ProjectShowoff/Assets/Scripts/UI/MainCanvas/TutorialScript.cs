@@ -214,7 +214,7 @@ public class TutorialScript : MonoBehaviour
                 }
             }
 
-            if (ruralCount < 5)
+            if (ruralCount < 4)
             {
                 if (English)
                 {
@@ -260,7 +260,7 @@ public class TutorialScript : MonoBehaviour
                     ruralCount += 1;   
                 }
             }
-            if (ruralCount < 5)
+            if (ruralCount < 4)
             {
                 if (English)
                 {
