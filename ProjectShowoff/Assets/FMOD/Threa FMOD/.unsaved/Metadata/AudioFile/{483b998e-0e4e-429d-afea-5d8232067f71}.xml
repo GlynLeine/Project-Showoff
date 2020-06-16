@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{483b998e-0e4e-429d-afea-5d8232067f71}">
+		<property name="assetPath">
+			<value>NL_season_change_winter.flac</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>3.8538541666666668</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{c5e18e81-3898-4af6-834b-a15b3ca1f3bd}</destination>
+		</relationship>
+	</object>
+</objects>
