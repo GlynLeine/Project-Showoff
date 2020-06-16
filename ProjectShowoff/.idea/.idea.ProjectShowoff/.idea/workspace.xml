@@ -94,7 +94,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/SceneChanger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/EndScreenCounterWater.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/PlanetReset.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/ClickableBarPopup.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/StartScreen/languagechecker.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/LanguageSelector.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/TutorialRotator.cs" />
@@ -102,6 +101,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/languagechecker.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/QuestSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/TutorialScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/ClickableBarPopup.cs" />
       </list>
     </option>
   </component>
@@ -171,6 +171,7 @@
       <workItem from="1592324949646" duration="5785000" />
       <workItem from="1592331212049" duration="7276000" />
       <workItem from="1592339998640" duration="26000" />
+      <workItem from="1592340759045" duration="1089000" />
     </task>
     <servers />
   </component>

@@ -13,7 +13,12 @@ public class ClickableBarPopup : MonoBehaviour
     private float animationSpeed = 1;
     private bool testHasStarted;
     private bool testHasStarted2;
+    private TutorialScript tutorialScript;
 
+    void Start()
+    {
+        tutorialScript = gameObject.GetComponent<TutorialScript>();
+    }
     /*//test to see if animations work
     void Update()
     {
@@ -188,6 +193,7 @@ public class ClickableBarPopup : MonoBehaviour
             }
             yield return null;
         }
+        tutorialScript.BuildingCheckTutorial();
     }
     IEnumerator BuildingOnClickAnimationStop()
     {

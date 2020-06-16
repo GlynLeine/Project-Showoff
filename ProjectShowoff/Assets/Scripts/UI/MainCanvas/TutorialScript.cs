@@ -30,6 +30,8 @@ public class TutorialScript : MonoBehaviour
     private bool gameHasStarted;
     private bool ifHarborBuilt;
     private bool ifOilRigBuilt;
+    private bool tutorialBuildingCheckStep;
+    private bool tutorialDestroyStep;
     
     private float tutorialDelaySeconds = 2.5f;//how long you need to wait before you start a tutorial step, potentially redundant
     public bool tutorialSkip;//if active, start does all the tutorial steps right away
@@ -253,7 +255,7 @@ public class TutorialScript : MonoBehaviour
                 }
                 else
                 {
-                    questBoxTextTMP.text = "Goed! Probeer nu is een " + dutchRuralBuildingsArray[ruralCount] + " te plaatsen.";
+                    questBoxTextTMP.text = "Goed! Probeer nu eens een " + dutchRuralBuildingsArray[ruralCount] + " te plaatsen.";
                 }
             }
             else
@@ -264,7 +266,7 @@ public class TutorialScript : MonoBehaviour
                 }
                 else
                 {
-                    questBoxTextTMP.text = "Bijna klaar! Plaats nu is een " + dutchCoastalBuildingsArray[coastalCount] + ".";
+                    questBoxTextTMP.text = "Bijna klaar! Plaats nu eens een " + dutchCoastalBuildingsArray[coastalCount] + ".";
                 }
             }
         }
@@ -272,11 +274,11 @@ public class TutorialScript : MonoBehaviour
         {
             if (English)
             {
-                questBoxTextTMP.text = "The island is full. Try zooming out and looking for a new place!";
+                questBoxTextTMP.text = "Press on an existing building now!";
             }
             else
             {
-                questBoxTextTMP.text = "Het is vol! Zoom uit en zoek naar een nieuwe plek!";
+                questBoxTextTMP.text = "Klik nu op een bestaand gebouw!";
             }
             StartCoroutine(SliderAnimationStart());
             StartCoroutine(BuildingActivationWaiter());
@@ -289,8 +291,10 @@ public class TutorialScript : MonoBehaviour
             }
             else
             {
-                questBoxTextTMP.text = "Goed gedaan, je kan nu doen wat je wil, maar je kan ooks ons helpen!";
+                questBoxTextTMP.text = "Goed gedaan, je kan nu doen wat je wilt, maar je kan ooks ons helpen!";
             }
+            tutorialBuildingCheckStep = true;
+            tutorialDestroyStep = true;
             StartCoroutine(QuestChanger());
             BuildingSystem.onBuildingPlaced -= OnBuildingPlaced;
         }
@@ -317,9 +321,38 @@ public class TutorialScript : MonoBehaviour
         }*/
     }
 
-    public void PostBuildingTutorial()
+    public void BuildingCheckTutorial()
     {
-        
+        if (!tutorialBuildingCheckStep)
+        {
+            if (English)
+            {
+                questBoxTextTMP.text = "Press the icon on the right to destroy the building!”";
+            }
+            else
+            {
+                questBoxTextTMP.text = "Klik op de rechtse knop om het gebouw te vernietigen!";
+            }
+            tutorialBuildingCheckStep = true;
+            StartCoroutine(FindNewLocationWaiter());
+        }
+    }
+
+    IEnumerator FindNewLocationWaiter()
+    {
+        yield return new WaitForSeconds(6);
+        if (!tutorialDestroyStep)
+        {
+            if (English)
+            {
+                questBoxTextTMP.text = "Zoom out and look around to find a new place to build!";
+            }
+            else
+            {
+                questBoxTextTMP.text = "Zoom uit en kijk rond om een nieuwe plek te vinden om te bouwen!";
+            }
+            tutorialDestroyStep = true;
+        }
     }
     //does what it says on the tin, called when you finish the tutorial to change the tutorial box to the quest system
     IEnumerator QuestChanger()
