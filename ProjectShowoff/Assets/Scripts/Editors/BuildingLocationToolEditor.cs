@@ -174,7 +174,7 @@ public class BuildingLocationToolEditor : Editor
                     }
                 }
             }
-            
+
             location.Revalidate();
         }
     }
@@ -256,6 +256,8 @@ public class BuildingLocationToolEditor : Editor
 
     private void OnSceneGUI()
     {
+        HandleUtility.AddDefaultControl(0);
+
         if (camera == null)
             camera = Camera.current;
 
@@ -269,6 +271,12 @@ public class BuildingLocationToolEditor : Editor
 
                 if (cullHandles)
                 {
+                    Vector3 toCamera = (Camera.current.transform.position - tool.planet.transform.position).normalized;
+                    Vector3 toLocation = (locations[i].transform.position - tool.planet.transform.position).normalized;
+
+                    if(Vector3.Dot(toCamera, toLocation) < 0)
+                        continue;
+
                     Vector3 rayPos = Camera.current.transform.position;
                     Vector3 rayDir = (locations[i].transform.position - rayPos).normalized;
 
@@ -297,7 +305,7 @@ public class BuildingLocationToolEditor : Editor
     private void HandleInput(BuildingLocation location)
     {
         SphereCollider collider = location.GetComponent<SphereCollider>();
-        collider.radius = HandleUtility.GetHandleSize(location.transform.position) * 0.1f;
+        collider.radius = 0.05f;
 
         if (Event.current.type == EventType.MouseDown && Physics.Raycast(HandleUtility.GUIPointToWorldRay(Event.current.mousePosition), out RaycastHit hit))
             if (hit.collider == collider)
@@ -341,6 +349,8 @@ public class BuildingLocationToolEditor : Editor
                     selected = location;
                     Repaint();
                 }
+            else
+                Debug.Log(hit.collider.gameObject);
     }
 
     private void DrawRoadmap(BuildingLocation location)
@@ -387,7 +397,7 @@ public class BuildingLocationToolEditor : Editor
                 Handles.color = new Color(1, 1, 1);
             else
                 Handles.color = new Color(0, 1 - (int)location.locationType, (int)location.locationType);
-            Handles.SphereHandleCap(0, newPos, Quaternion.identity, HandleUtility.GetHandleSize(newPos) * 0.2f, Event.current.type);
+            Handles.SphereHandleCap(0, newPos, Quaternion.identity, 0.1f, Event.current.type);
             Handles.color = prevColor;
         }
 

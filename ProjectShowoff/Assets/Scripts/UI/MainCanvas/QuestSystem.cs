@@ -47,7 +47,7 @@ public class QuestSystem : MonoBehaviour
             yield return new WaitForSeconds(waitTime);
             if (counterValue < maxCounterValue)
             {
-                counterText.text = "Productivity decreased!";
+                taskText.text = "Productivity decreased!";
             }
             yield return new WaitForSeconds(questList[i].waitTimeInSeconds);
         }
@@ -71,7 +71,7 @@ public class QuestSystem : MonoBehaviour
             counterText.text = counterValue + "/" + maxCounterValue;
             if (counterValue == maxCounterValue)
             {
-                counterText.text = "productivity increased!";
+                taskText.text = "productivity increased!";
             }
         }
     }
