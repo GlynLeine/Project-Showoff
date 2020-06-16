@@ -6,15 +6,25 @@ public class UIFader : MonoBehaviour
 {
     private CanvasGroup startCanvasGroup;
     private float turnTimer;
+    public GameObject contextFrame;
+    public GameObject startTurnOff;
+    public GameObject startScreen;
     public GameObject mainCanvas;
-    
+    public GameObject otherObjects;
+    //this should 100% be split up into different scripts im just a lazy fucker who wants to get it working
     void Start()
     {
-        startCanvasGroup = this.GetComponent<CanvasGroup>();
-        StartCoroutine(updateCheck());
+        GameManager.paused = true;
+        startCanvasGroup = startTurnOff.GetComponent<CanvasGroup>();
+        StartCoroutine(UpdateCheck());
     }
 
-    IEnumerator updateCheck()
+    public void ContextButtonPress()
+    {
+        StartCoroutine(ContextMoveAway());
+    }
+
+    IEnumerator UpdateCheck()
     {
         while (turnTimer < 0.4f)
         {
@@ -26,17 +36,43 @@ public class UIFader : MonoBehaviour
             }
             yield return null;
         }
-        StartCoroutine(fadeAnimation());
+        StartCoroutine(FadeAnimation());
     }
 
-    IEnumerator fadeAnimation()
+    IEnumerator FadeAnimation()
     {
         while (startCanvasGroup.alpha > 0)
         {
             startCanvasGroup.alpha -= 1f * Time.deltaTime;
             yield return null;
         }
+        contextFrame.SetActive(true);
+        startTurnOff.SetActive(false);
+        StartCoroutine(ContextMove());
+    }
+
+    IEnumerator ContextMove()
+    {
+        while (contextFrame.transform.localPosition.x < 0)
+        {
+            Vector3 tempLocalPosition = contextFrame.transform.localPosition;
+            tempLocalPosition.x += 2400 * Time.deltaTime;
+            contextFrame.transform.localPosition = tempLocalPosition;
+            yield return null;
+        }
+    }
+
+    IEnumerator ContextMoveAway()
+    {
+        while (contextFrame.transform.localPosition.x < 1600)
+        {
+            Vector3 tempLocalPosition = contextFrame.transform.localPosition;
+            tempLocalPosition.x += 2400 * Time.deltaTime;
+            otherObjects.transform.localPosition = tempLocalPosition;
+            contextFrame.transform.localPosition = tempLocalPosition;
+            yield return null;
+        }
         mainCanvas.SetActive(true);
-        this.gameObject.SetActive(false);
+        startScreen.SetActive(false);
     }
 }

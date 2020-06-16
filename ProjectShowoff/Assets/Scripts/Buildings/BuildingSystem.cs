@@ -38,6 +38,7 @@ public class BuildingSystem : MonoBehaviour
     public static OnBuildingPlaced onBuildingPlaced;
 
     public ClickableBarPopup buildUI;
+    bool uiActive = false;
     public BuildingLocation startLocation;
     BuildingLocation selectedLocation;
 
@@ -61,7 +62,7 @@ public class BuildingSystem : MonoBehaviour
 
     private void Update()
     {
-        if (InputRedirect.tapped)
+        if (InputRedirect.tapped && !InputRedirect.inputOverUI)
         {
             Ray ray = Camera.main.ScreenPointToRay(InputRedirect.inputPos);
             if (Physics.Raycast(ray, out RaycastHit hit))
@@ -87,6 +88,7 @@ public class BuildingSystem : MonoBehaviour
                                 selectedLocation.roads[neighbour].gameObject.SetActive(true);
 
                         buildUI.GetType().GetMethod(selectedLocation.locationType.ToString() + "Start").Invoke(buildUI, new object[] { });
+                        uiActive = true;
                     }
                     else
                         InvalidateSelection();
@@ -94,35 +96,37 @@ public class BuildingSystem : MonoBehaviour
                 else
                 {
                     InvalidateSelection();
-                    //BuildingLocation location = hit.collider.transform.parent.parent.gameObject.GetComponent<BuildingLocation>();
-                    //if (location != null)
-                    //{
-                    //    //DestroyBuilding(location);
-                    //    selectedLocation = location;
-                    //    buildUI.DestroyStart();
-                    //}
+
+                    BuildingLocation location = hit.collider.transform.parent.parent.gameObject.GetComponent<BuildingLocation>();
+                    if (location != null)
+                    {
+                        selectedLocation = location;
+                        buildUI.DestroyStart();
+                    }
                 }
             }
-            else
+            else if (!InputRedirect.inputOverUI)
                 InvalidateSelection();
         }
     }
 
     private void InvalidateSelection()
     {
-        if (selectedLocation != null && !InputRedirect.inputOverUI)
+        if (selectedLocation != null)
         {
-            if (selectedLocation.state == LocationState.Closed)
+            if (selectedLocation.state != LocationState.Closed && selectedLocation.state != LocationState.Destroyed)
             {
                 foreach (BuildingLocation neighbour in selectedLocation.neighbours)
                     selectedLocation.roads[neighbour].gameObject.SetActive(false);
 
                 buildUI.GetType().GetMethod(selectedLocation.locationType.ToString() + "Stop").Invoke(buildUI, new object[] { });
+                uiActive = false;
             }
             else
                 buildUI.DestroyStop();
 
             selectedLocation = null;
+            Debug.Log("invalidated");
         }
     }
 
@@ -194,6 +198,13 @@ public class BuildingSystem : MonoBehaviour
 
             SetLocationState(location, LocationState.Unvisited);
         }
+    }
+
+    public void DestroySelectedBuilding()
+    {
+        BuildingLocation loc = selectedLocation;
+        InvalidateSelection();
+        DestroyBuilding(loc);
     }
 
     public void DestroyLocation(BuildingLocation location)
@@ -419,6 +430,7 @@ public class BuildingSystem : MonoBehaviour
                 break;
         }
 
+        EnableLocation(location, false);
         location.state = state;
 
         switch (location.state)
@@ -428,6 +440,7 @@ public class BuildingSystem : MonoBehaviour
                 break;
             case LocationState.Open:
                 openSet.Add(location);
+                EnableLocation(location, true);
                 break;
             case LocationState.Closed:
                 closedSet.Add(location);
@@ -438,6 +451,9 @@ public class BuildingSystem : MonoBehaviour
             default:
                 break;
         }
+
+        if(closedSet.Count == 0)
+            EnableLocation(startLocation, true);
     }
 
     public void ReportLocation(BuildingLocation location)
@@ -516,6 +532,12 @@ public class BuildingSystem : MonoBehaviour
 
     private void ConstructBuilding(BuildingLocation location, BuildingPlacer buildingData)
     {
+        if (location == null)
+            Debug.Log("zafuq?");
+
+        if (buildingData == null)
+            Debug.Log("dafuq?");
+
         GameObject source = location.GetType().GetField(buildingData.buildingType.ToString()).GetValue(location) as GameObject;
         GameObject buildingObj;
         if (source.scene.name == null || source.scene.rootCount == 0)
