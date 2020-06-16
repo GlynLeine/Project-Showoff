@@ -25,7 +25,7 @@ public class QuestSystem : MonoBehaviour
     void OnEnable()
     {
         StartCoroutine(QuestQueueSystem());
-        BuildingSystem.onBuildingPlaced = OnBuildingPlaced;
+        BuildingSystem.onBuildingPlaced += OnBuildingPlaced;
     }
     IEnumerator QuestQueueSystem()
     {
