@@ -3,6 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace FMODUnity
+{
+    public class EventRefAttribute : PropertyAttribute
+    {
+    }
+}
+
+
 public class VoiceCasterTestScript : MonoBehaviour
 {
     [FMODUnity.EventRef] 
