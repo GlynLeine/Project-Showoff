@@ -495,12 +495,9 @@ public class BuildingSystem : MonoBehaviour
         location.transform.parent = parent;
         location.transform.up = (location.transform.position - planet.position).normalized;
         locations[location.locationType].Add(location);
-
-        if (location == startLocation)
-            EnableLocation(startLocation, true);
     }
 
-    private void EnableLocation(BuildingLocation location, bool enable)
+    public void EnableLocation(BuildingLocation location, bool enable)
     {
         BuildingConstructor constructor = location.GetComponentInChildren<BuildingConstructor>(true);
         if (constructor == null)
@@ -508,6 +505,9 @@ public class BuildingSystem : MonoBehaviour
             constructor = Instantiate(buildingConstructorPrefab, location.transform).GetComponent<BuildingConstructor>();
             constructor.location = location;
         }
+
+        if(enable)
+            Debug.Log("set true");
 
         constructor.gameObject.SetActive(enable);
     }
