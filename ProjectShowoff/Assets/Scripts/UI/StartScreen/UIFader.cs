@@ -26,7 +26,7 @@ public class UIFader : MonoBehaviour
 
     IEnumerator UpdateCheck()
     {
-        while (turnTimer < 0.4f)
+        while (turnTimer < 0.3f)
         {
             turnTimer = 0;
             while (InputRedirect.pressed)

@@ -28,7 +28,7 @@ Material:
     - Vector1_B5DE08A8: 1.72
     - Vector1_EFABEAD9: 0.045
     - Vector1_F31BF83A: 0.1
-    - _Dissolve: 0.28
+    - _Dissolve: 0.28167218
     m_Colors:
     - Color_15E3D6D0: {r: 66.077385, g: 33.557625, b: 0, a: 0}
     - Color_BB236BCB: {r: 1.2607075, g: 1.690003, b: 1.9797776, a: 0}
