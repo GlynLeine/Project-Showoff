@@ -151,7 +151,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  oceanCenter: {x: 0, y: 0, z: 0}
   ocean: {fileID: 0}
+  oceanCollider: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -180,6 +182,7 @@ MonoBehaviour:
     - {fileID: 2008069994}
     - {fileID: 1257461275}
     - {fileID: 1512409817}
+  state: 0
 --- !u!4 &3496033
 Transform:
   m_ObjectHideFlags: 0
@@ -818,8 +821,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f666bfdb866504db5691a89db2612b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 0.01
+  maxRotationSpeed: 0.1
+  minRotationSpeed: 0.001
+  maxScale: 0.001
+  minScale: 0.0004
   invert: 0
+  zoom: {fileID: 0}
+  range: 0
+  speed: 0
 --- !u!4 &107534205
 Transform:
   m_ObjectHideFlags: 0
@@ -1172,7 +1181,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  oceanCenter: {x: 0, y: 0, z: 0}
   ocean: {fileID: 0}
+  oceanCollider: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -1195,6 +1206,7 @@ MonoBehaviour:
     values:
     - {fileID: 98725336}
     - {fileID: 2090052427}
+  state: 0
 --- !u!4 &288059957
 Transform:
   m_ObjectHideFlags: 0
@@ -2866,7 +2878,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  oceanCenter: {x: 0, y: 0, z: 0}
   ocean: {fileID: 0}
+  oceanCollider: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -2889,6 +2903,7 @@ MonoBehaviour:
     values:
     - {fileID: 1908822808}
     - {fileID: 1492433762}
+  state: 0
 --- !u!1 &576086914
 GameObject:
   m_ObjectHideFlags: 0
@@ -2942,7 +2957,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planet: {fileID: 1928020327}
-  DestructionToggle: {fileID: 0}
+  buildingConstructorPrefab: {fileID: 0}
+  buildUI: {fileID: 0}
+  startLocation: {fileID: 0}
 --- !u!4 &576086917
 Transform:
   m_ObjectHideFlags: 0
@@ -3881,7 +3898,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  oceanCenter: {x: 0, y: 0, z: 0}
   ocean: {fileID: 0}
+  oceanCollider: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -3910,6 +3929,7 @@ MonoBehaviour:
     - {fileID: 2008069994}
     - {fileID: 1962048655}
     - {fileID: 98725336}
+  state: 0
 --- !u!4 &729367115
 Transform:
   m_ObjectHideFlags: 0
@@ -5207,10 +5227,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1252819268553535421, guid: 9a1544356b636fe478f34b9a6bb8508d,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252819268553535421, guid: 9a1544356b636fe478f34b9a6bb8508d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252819268553535421, guid: 9a1544356b636fe478f34b9a6bb8508d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252819268553535421, guid: 9a1544356b636fe478f34b9a6bb8508d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2946203210707287117, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
       propertyPath: tutorialSkip
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691162839611051736, guid: 9a1544356b636fe478f34b9a6bb8508d,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691162839611051736, guid: 9a1544356b636fe478f34b9a6bb8508d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691162839611051736, guid: 9a1544356b636fe478f34b9a6bb8508d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691162839611051736, guid: 9a1544356b636fe478f34b9a6bb8508d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8872052276245405129, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
@@ -5313,6 +5373,26 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8872052277008806075, guid: 9a1544356b636fe478f34b9a6bb8508d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8872052277124362403, guid: 9a1544356b636fe478f34b9a6bb8508d,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8872052277124362403, guid: 9a1544356b636fe478f34b9a6bb8508d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8872052277124362403, guid: 9a1544356b636fe478f34b9a6bb8508d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8872052277124362403, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
@@ -6366,6 +6446,7 @@ GameObject:
   - component: {fileID: 980212959}
   - component: {fileID: 980212960}
   - component: {fileID: 980212961}
+  - component: {fileID: 980212955}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6373,6 +6454,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &980212955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980212954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Music/Main Music
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!20 &980212956
 Camera:
   m_ObjectHideFlags: 0
@@ -6851,7 +6955,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  oceanCenter: {x: 0, y: 0, z: 0}
   ocean: {fileID: 0}
+  oceanCollider: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -6874,6 +6980,7 @@ MonoBehaviour:
     values:
     - {fileID: 1103853084}
     - {fileID: 855938655}
+  state: 0
 --- !u!43 &1036036613
 Mesh:
   m_ObjectHideFlags: 0
@@ -7707,7 +7814,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  oceanCenter: {x: 0, y: 0, z: 0}
   ocean: {fileID: 0}
+  oceanCollider: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -7736,6 +7845,7 @@ MonoBehaviour:
     - {fileID: 1208910372}
     - {fileID: 1230530159}
     - {fileID: 1592727731}
+  state: 0
 --- !u!43 &1162344384
 Mesh:
   m_ObjectHideFlags: 0
@@ -8073,7 +8183,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  oceanCenter: {x: 0, y: 0, z: 0}
   ocean: {fileID: 0}
+  oceanCollider: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -8102,6 +8214,7 @@ MonoBehaviour:
     - {fileID: 1257461275}
     - {fileID: 2090052427}
     - {fileID: 2043486049}
+  state: 0
 --- !u!4 &1202519940
 Transform:
   m_ObjectHideFlags: 0
@@ -9013,7 +9126,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  oceanCenter: {x: 0, y: 0, z: 0}
   ocean: {fileID: 0}
+  oceanCollider: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -9045,6 +9160,7 @@ MonoBehaviour:
     - {fileID: 855938655}
     - {fileID: 827238132}
     - {fileID: 739235312}
+  state: 0
 --- !u!4 &1306700500
 Transform:
   m_ObjectHideFlags: 0
@@ -9429,7 +9545,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  oceanCenter: {x: 0, y: 0, z: 0}
   ocean: {fileID: 0}
+  oceanCollider: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -9461,6 +9579,7 @@ MonoBehaviour:
     - {fileID: 692643998}
     - {fileID: 1592727731}
     - {fileID: 341378644}
+  state: 0
 --- !u!1 &1376494888
 GameObject:
   m_ObjectHideFlags: 0
@@ -10104,7 +10223,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  oceanCenter: {x: 0, y: 0, z: 0}
   ocean: {fileID: 0}
+  oceanCollider: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -10139,6 +10260,7 @@ MonoBehaviour:
     - {fileID: 1969754425}
     - {fileID: 692643998}
     - {fileID: 776181247}
+  state: 0
 --- !u!43 &1450543115
 Mesh:
   m_ObjectHideFlags: 0
@@ -10672,7 +10794,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  oceanCenter: {x: 0, y: 0, z: 0}
   ocean: {fileID: 0}
+  oceanCollider: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -10701,6 +10825,7 @@ MonoBehaviour:
     - {fileID: 1987457805}
     - {fileID: 1908822808}
     - {fileID: 434362421}
+  state: 0
 --- !u!1 &1492433761
 GameObject:
   m_ObjectHideFlags: 0
@@ -12417,7 +12542,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  oceanCenter: {x: 0, y: 0, z: 0}
   ocean: {fileID: 0}
+  oceanCollider: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -12452,6 +12579,7 @@ MonoBehaviour:
     - {fileID: 827238132}
     - {fileID: 924887026}
     - {fileID: 1987457805}
+  state: 0
 --- !u!43 &1678433073
 Mesh:
   m_ObjectHideFlags: 0
@@ -12971,7 +13099,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  oceanCenter: {x: 0, y: 0, z: 0}
   ocean: {fileID: 0}
+  oceanCollider: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -13003,6 +13133,7 @@ MonoBehaviour:
     - {fileID: 924887026}
     - {fileID: 1492433762}
     - {fileID: 434362421}
+  state: 0
 --- !u!4 &1721431778
 Transform:
   m_ObjectHideFlags: 0
@@ -15044,8 +15175,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f666bfdb866504db5691a89db2612b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 0.01
+  maxRotationSpeed: 0.1
+  minRotationSpeed: 0.001
+  maxScale: 0.001
+  minScale: 0.0004
   invert: 1
+  zoom: {fileID: 0}
+  range: 0
+  speed: 0
 --- !u!23 &1928020325
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -15297,7 +15434,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  oceanCenter: {x: 0, y: 0, z: 0}
   ocean: {fileID: 0}
+  oceanCollider: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -15326,6 +15465,7 @@ MonoBehaviour:
     - {fileID: 341378644}
     - {fileID: 1512409817}
     - {fileID: 2043486049}
+  state: 0
 --- !u!1 &1957522333
 GameObject:
   m_ObjectHideFlags: 0
@@ -17944,7 +18084,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  oceanCenter: {x: 0, y: 0, z: 0}
   ocean: {fileID: 0}
+  oceanCollider: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -17973,6 +18115,7 @@ MonoBehaviour:
     - {fileID: 436086520}
     - {fileID: 1196715387}
     - {fileID: 1208910372}
+  state: 0
 --- !u!114 &7029965743921993872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17986,7 +18129,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  oceanCenter: {x: 0, y: 0, z: 0}
   ocean: {fileID: 0}
+  oceanCollider: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18009,6 +18154,7 @@ MonoBehaviour:
     values:
     - {fileID: 1196715387}
     - {fileID: 1230530159}
+  state: 0
 --- !u!114 &7029965744197239765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18022,7 +18168,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  oceanCenter: {x: 0, y: 0, z: 0}
   ocean: {fileID: 0}
+  oceanCollider: {fileID: 0}
   locationType: 0
   Factory: {fileID: 317366304}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18054,6 +18202,7 @@ MonoBehaviour:
     - {fileID: 1103853084}
     - {fileID: 1092901536}
     - {fileID: 1208258306}
+  state: 0
 --- !u!114 &7029965745149687365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18067,7 +18216,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  oceanCenter: {x: 0, y: 0, z: 0}
   ocean: {fileID: 0}
+  oceanCollider: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18093,6 +18244,7 @@ MonoBehaviour:
     - {fileID: 1653130638}
     - {fileID: 1610137022}
     - {fileID: 91579321}
+  state: 0
 --- !u!114 &7029965745236275950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18106,7 +18258,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  oceanCenter: {x: 0, y: 0, z: 0}
   ocean: {fileID: 0}
+  oceanCollider: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18142,6 +18296,7 @@ MonoBehaviour:
     - {fileID: 931542498}
     - {fileID: 1939346690}
     - {fileID: 739235312}
+  state: 0
 --- !u!114 &7029965745428351289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18155,7 +18310,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  oceanCenter: {x: 0, y: 0, z: 0}
   ocean: {fileID: 0}
+  oceanCollider: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18186,6 +18343,7 @@ MonoBehaviour:
     - {fileID: 1497441790}
     - {fileID: 66773707}
     - {fileID: 461940189}
+  state: 0
 --- !u!114 &7029965745501516531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18199,7 +18357,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  oceanCenter: {x: 0, y: 0, z: 0}
   ocean: {fileID: 0}
+  oceanCollider: {fileID: 0}
   locationType: 0
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18228,6 +18388,7 @@ MonoBehaviour:
     - {fileID: 619738533}
     - {fileID: 1765320320}
     - {fileID: 461940189}
+  state: 0
 --- !u!114 &7029965745762038177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18241,7 +18402,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  oceanCenter: {x: 0, y: 0, z: 0}
   ocean: {fileID: 0}
+  oceanCollider: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18270,6 +18433,7 @@ MonoBehaviour:
     - {fileID: 1897702824}
     - {fileID: 1939346690}
     - {fileID: 334575100}
+  state: 0
 --- !u!114 &7029965745783958475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18283,7 +18447,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  oceanCenter: {x: 0, y: 0, z: 0}
   ocean: {fileID: 0}
+  oceanCollider: {fileID: 0}
   locationType: 1
   Factory: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e, type: 3}
   TrainStation: {fileID: 6403839157077601926, guid: 5934bf941ac6fd64b8c4f661e20ada0a,
@@ -18309,6 +18475,7 @@ MonoBehaviour:
     - {fileID: 2004811707}
     - {fileID: 1828637218}
     - {fileID: 436086520}
+  state: 0
 --- !u!4 &7392369989059984507
 Transform:
   m_ObjectHideFlags: 0
