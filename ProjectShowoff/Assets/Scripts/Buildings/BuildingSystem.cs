@@ -270,7 +270,15 @@ public class BuildingSystem : MonoBehaviour
             SetLocationState(location, LocationState.Unvisited);
 
         for (int i = 0; i < location.roads.Count; i++)
+        {
+            if(location.roads[i] == null)
+            {
+                location.roads.RemoveAt(i);
+                i--;
+                continue;
+            }
             location.roads[i].gameObject.SetActive(false);
+        }
 
         GameObject source = location.GetType().GetField(building.buildingType.ToString()).GetValue(location) as GameObject;
 
