@@ -17,6 +17,8 @@ public class TutorialRotator : MonoBehaviour
 
     IEnumerator zoomDone()
     {
+        buildingSystem.EnableLocation(buildingSystem.startLocation, true);
+
         float timeBuffer = 0;
 
         Vector3 toStartLocation = (buildingSystem.startLocation.transform.position - cameraRotationObject.position).normalized;

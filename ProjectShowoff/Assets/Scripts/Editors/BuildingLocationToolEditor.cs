@@ -277,16 +277,16 @@ public class BuildingLocationToolEditor : Editor
                     if(Vector3.Dot(toCamera, toLocation) < 0)
                         continue;
 
-                    Vector3 rayPos = Camera.current.transform.position;
-                    Vector3 rayDir = (locations[i].transform.position - rayPos).normalized;
+                    //Vector3 rayPos = Camera.current.transform.position;
+                    //Vector3 rayDir = (locations[i].transform.position - rayPos).normalized;
 
-                    if (Physics.Raycast(rayPos, rayDir, out RaycastHit hit))
-                    {
-                        if (hit.collider == oceanCollider)
-                            continue;
-                    }
-                    else
-                        continue;
+                    //if (Physics.Raycast(rayPos, rayDir, out RaycastHit hit))
+                    //{
+                    //    if (hit.collider == oceanCollider)
+                    //        continue;
+                    //}
+                    //else
+                    //    continue;
                 }
 
                 if (neighbourMode)
@@ -305,7 +305,7 @@ public class BuildingLocationToolEditor : Editor
     private void HandleInput(BuildingLocation location)
     {
         SphereCollider collider = location.GetComponent<SphereCollider>();
-        collider.radius = 0.05f;
+        collider.radius = 0.025f;
 
         if (Event.current.type == EventType.MouseDown && Physics.Raycast(HandleUtility.GUIPointToWorldRay(Event.current.mousePosition), out RaycastHit hit))
             if (hit.collider == collider)
@@ -355,7 +355,6 @@ public class BuildingLocationToolEditor : Editor
 
     private void DrawRoadmap(BuildingLocation location)
     {
-
         foreach (BuildingLocation neighbour in location.neighbours)
         {
             if (neighbour == null)
@@ -378,7 +377,7 @@ public class BuildingLocationToolEditor : Editor
         else
             Handles.color = new Color(0, 0, 1);
 
-        Handles.SphereHandleCap(0, location.transform.position, Quaternion.identity, HandleUtility.GetHandleSize(location.transform.position) * 0.2f, Event.current.type);
+        Handles.SphereHandleCap(0, location.transform.position, Quaternion.identity, 0.05f, Event.current.type);
         Handles.color = prevColor;
 
         if (selected.neighbours.Contains(location))
@@ -397,7 +396,7 @@ public class BuildingLocationToolEditor : Editor
                 Handles.color = new Color(1, 1, 1);
             else
                 Handles.color = new Color(0, 1 - (int)location.locationType, (int)location.locationType);
-            Handles.SphereHandleCap(0, newPos, Quaternion.identity, 0.1f, Event.current.type);
+            Handles.SphereHandleCap(0, newPos, Quaternion.identity, 0.05f, Event.current.type);
             Handles.color = prevColor;
         }
 
