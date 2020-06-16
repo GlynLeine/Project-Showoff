@@ -7,9 +7,14 @@ public class PollutionSpheres : MonoBehaviour
     public GameObject pollutionSpherePrefab;
     public Material pollutionMaterial;
 
-    void Start()
+    private void OnEnable()
     {
         BuildingSystem.onBuildingPlaced += OnBuildingPlaced;
+    }
+
+    private void OnDisable()
+    {
+        BuildingSystem.onBuildingPlaced -= OnBuildingPlaced;
     }
 
     void OnBuildingPlaced(BuildingLocation location, BuildingPlacer buildingData, Building building)

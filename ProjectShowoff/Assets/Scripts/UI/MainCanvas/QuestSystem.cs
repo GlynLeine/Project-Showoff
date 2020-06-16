@@ -14,7 +14,8 @@ public class QuestSystem : MonoBehaviour
     public TMP_Text taskText;
     public TMP_Text counterText;
     public TMP_Text timerText;
-    [Serializable] public class Quest
+    [Serializable]
+    public class Quest
     {
         public BuildingType buildingType;
         public int buildHowMany;
@@ -27,9 +28,15 @@ public class QuestSystem : MonoBehaviour
         StartCoroutine(QuestQueueSystem());
         BuildingSystem.onBuildingPlaced += OnBuildingPlaced;
     }
+
+    private void OnDisable()
+    {
+        BuildingSystem.onBuildingPlaced -= OnBuildingPlaced;
+    }
+
     IEnumerator QuestQueueSystem()
     {
-        for(int i=0;i<questList.Length;i++)
+        for (int i = 0; i < questList.Length; i++)
         {
             counterValue = 0;
             SelectedBuildingType = questList[i].buildingType;
