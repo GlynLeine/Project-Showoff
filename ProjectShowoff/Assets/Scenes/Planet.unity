@@ -5879,6 +5879,21 @@ PrefabInstance:
       propertyPath: m_PlayAutomatically
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3169854686054731884, guid: 9a1544356b636fe478f34b9a6bb8508d,
+        type: 3}
+      propertyPath: buildingSystem
+      value: 
+      objectReference: {fileID: 576086916}
+    - target: {fileID: 3169854686054731884, guid: 9a1544356b636fe478f34b9a6bb8508d,
+        type: 3}
+      propertyPath: zoomScript
+      value: 
+      objectReference: {fileID: 980212960}
+    - target: {fileID: 3169854686054731884, guid: 9a1544356b636fe478f34b9a6bb8508d,
+        type: 3}
+      propertyPath: cameraRotationObject
+      value: 
+      objectReference: {fileID: 107534205}
     - target: {fileID: 3867317504277791913, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
       propertyPath: m_PlayAutomatically
