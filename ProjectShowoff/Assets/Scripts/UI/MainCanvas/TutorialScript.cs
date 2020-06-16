@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class TutorialScript : MonoBehaviour
 {
-    //drag all UI elements in
+    //drag all UI elements in + anything else we might need to alter or turn off
     public GameObject zoomSlider;
     public GameObject announcerBox;
     public GameObject timeImages;
@@ -15,7 +15,7 @@ public class TutorialScript : MonoBehaviour
     public GameObject tutorialHand;
     public TMP_Text questBoxText;
     public GameObject questSystem;
-
+    public GameObject ruralBuildings;
     private Slider slider;
     private float animationSpeed = 1; //reset at end of every animation, makes animations move faster as they go on
     //tutorial step bools so we can check where the player is
@@ -33,10 +33,6 @@ public class TutorialScript : MonoBehaviour
         BuildingSystem.onBuildingPlaced += OnBuildingPlaced;
         slider = zoomSlider.GetComponent<Slider>();
         slider.onValueChanged.AddListener(SliderTutorialChange);
-        if (LanguageSelector.LanguageSelected == LanguageSelector.LanguageSelectorSelected.English)
-        {
-            English = true;
-        }
         GameManager.paused = true;
         StartCoroutine(NewsCasterAnimationStart());
         StartCoroutine(HandAnimation());
@@ -54,11 +50,24 @@ public class TutorialScript : MonoBehaviour
             StartCoroutine(HandAnimation());
         }
     }
+    //this function gets called when ui slider disabled the main canvas, its the first thing that gets called
     public void tutorialStart()
     {
+        if (LanguageSelector.LanguageSelected == LanguageSelector.LanguageSelectorSelected.English)
+        {
+            English = true;
+        }
         tutorialArrow.SetActive(false);
         tutorialHand.SetActive(false);
         tutorialRotationStep = true;
+        foreach (Transform child in ruralBuildings.transform)
+        {
+            if (child.gameObject.name != "Factory")
+            {
+                child.gameObject.SetActive(false);
+            }
+        }
+
         if (English)
         {
             questBoxText.text = "Click on the purple dome and place a factory there!";
@@ -67,13 +76,14 @@ public class TutorialScript : MonoBehaviour
         {
             questBoxText.text = "Klik op de paarse cirkel en plaats daar een fabriek!";
         }
-        //StartCoroutine(SliderAnimationStart());
     }
+    //this gets called when a building is placed, we have tutorialized the first 4 buildings so far 
     private void OnBuildingPlaced(BuildingLocation location, BuildingPlacer buildingData, Building building)
     {
         buildingCount += 1;
         if (buildingCount == 1)
         {
+            StartCoroutine(BuildingNatureReserveWaiter());
             if (English)
             {
                 questBoxText.text = "Good job! Now place a nature reserve to balance the pollution!";
@@ -85,6 +95,7 @@ public class TutorialScript : MonoBehaviour
         }
         else if (buildingCount == 2)
         {
+            StartCoroutine(BuildingActivationWaiter());
             if (English)
             {
                 questBoxText.text = "Nice! There is one spot left, why don't you try something new?";
@@ -104,8 +115,23 @@ public class TutorialScript : MonoBehaviour
             {
                 questBoxText.text = "Wow! Het hele eiland is vol! Probeer is uit te zoomen en een nieuwe plek te vinden!";
             }
-
             StartCoroutine(SliderAnimationStart());
+        }
+        else if (buildingCount == 4)
+        {
+            if (English)
+            {
+                questBoxText.text = "Good job, you can place what you want now, but you can help us more!.";
+            }
+            else
+            {
+                questBoxText.text = "Goed gedaan, je kan nu plaatsen wat je wil, maar we zouden het erg waarderen als je ons helpt.";
+            }
+            StartCoroutine(QuestChanger());
+        }
+        else if (buildingCount >= 5)
+        {
+            BuildingSystem.onBuildingPlaced -= OnBuildingPlaced;
         }
     }
     public void SliderTutorialChange(float value)
@@ -128,7 +154,36 @@ public class TutorialScript : MonoBehaviour
             StartCoroutine(ResetAnimationStart());
         }*/
     }
-    
+
+    IEnumerator QuestChanger()
+    {
+        yield return new WaitForSeconds(2);
+        questBoxText.gameObject.SetActive(false);
+        questSystem.SetActive(true);
+    }
+    IEnumerator BuildingNatureReserveWaiter()
+    {
+        yield return new WaitForSeconds(1);
+        foreach (Transform child in ruralBuildings.transform)
+        {
+            if (child.gameObject.name != "Nature reserve")
+            {
+                child.gameObject.SetActive(false);
+            }
+            else
+            {
+                child.gameObject.SetActive(true);
+            }
+        }
+    }
+    IEnumerator BuildingActivationWaiter()
+    {
+        yield return new WaitForSeconds(1);
+        foreach (Transform child in ruralBuildings.transform)
+        {
+            child.gameObject.SetActive(true);
+        }
+    }
     //shouldve used anchored positions instead but it works now
     IEnumerator SliderAnimationStart()
     {

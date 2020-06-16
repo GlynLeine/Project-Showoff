@@ -11,9 +11,12 @@ public class UIFader : MonoBehaviour
     public GameObject startScreen;
     public GameObject mainCanvas;
     public GameObject otherObjects;
+
+    private TutorialScript tutorialScript;
     //this should 100% be split up into different scripts im just a lazy fucker who wants to get it working
     void Start()
     {
+        tutorialScript = mainCanvas.GetComponent<TutorialScript>();
         GameManager.paused = true;
         startCanvasGroup = startTurnOff.GetComponent<CanvasGroup>();
         StartCoroutine(UpdateCheck());
@@ -73,6 +76,7 @@ public class UIFader : MonoBehaviour
             yield return null;
         }
         mainCanvas.SetActive(true);
+        tutorialScript.tutorialStart();
         startScreen.SetActive(false);
     }
 }
