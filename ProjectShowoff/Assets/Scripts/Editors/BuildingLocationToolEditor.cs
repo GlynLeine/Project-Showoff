@@ -174,6 +174,8 @@ public class BuildingLocationToolEditor : Editor
                     }
                 }
             }
+            
+            location.Revalidate();
         }
     }
 

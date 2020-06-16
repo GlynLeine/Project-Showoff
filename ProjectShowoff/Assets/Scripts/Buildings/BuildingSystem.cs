@@ -51,15 +51,25 @@ public class BuildingSystem : MonoBehaviour
             building.gameObject.SetActive(false);
 
         locations = new Dictionary<LocationType, List<BuildingLocation>>();
+    }
 
-        BuildingCloudEffect.onEffectFinish += () =>
+    private void OnEnable()
+    {
+        BuildingCloudEffect.onEffectFinish += UpdateConstructors;
+    }
+
+    private void OnDisable()
+    {
+        BuildingCloudEffect.onEffectFinish -= UpdateConstructors;
+    }
+
+    private void UpdateConstructors()
+    {
+        foreach (BuildingLocation location in GetPossibleBuildingLocations())
         {
-            foreach (BuildingLocation location in GetPossibleBuildingLocations())
-            {
-                EnableLocation(location, true);
-            }
-            isBuilding = false;
-        };
+            EnableLocation(location, true);
+        }
+        isBuilding = false;
     }
 
     private void Update()
@@ -194,7 +204,7 @@ public class BuildingSystem : MonoBehaviour
             foreach (BuildingLocation neighbour in location.neighbours)
                 if (neighbour.state == LocationState.Closed)
                 {
-                    SetLocationState(location, LocationState.Open);                    
+                    SetLocationState(location, LocationState.Open);
                     return;
                 }
 
@@ -445,7 +455,7 @@ public class BuildingSystem : MonoBehaviour
                 break;
             case LocationState.Open:
                 openSet.Add(location);
-                if(!isBuilding)
+                if (!isBuilding)
                     EnableLocation(location, true);
                 break;
             case LocationState.Closed:

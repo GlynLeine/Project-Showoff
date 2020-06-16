@@ -97,6 +97,7 @@
     <Compile Include="Assets\Scripts\UI\MainCanvas\ClickableBarPopup.cs" />
     <Compile Include="Assets\Scripts\UI\MainCanvas\PlanetReset.cs" />
     <Compile Include="Assets\Scripts\UI\MainCanvas\QuestSystem.cs" />
+    <Compile Include="Assets\Scripts\UI\MainCanvas\TutorialRotator.cs" />
     <Compile Include="Assets\Scripts\UI\MainCanvas\TutorialScript.cs" />
     <Compile Include="Assets\Scripts\UI\MainCanvas\VoiceCasterTestScript.cs" />
     <Compile Include="Assets\Scripts\UI\MainCanvas\YearTimer.cs" />
