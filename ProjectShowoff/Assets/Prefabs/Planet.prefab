@@ -3233,7 +3233,7 @@ MonoBehaviour:
   OilRig: {fileID: 2949981639321295614}
   SolarFarm: {fileID: 950372485321456134, guid: 523254cc2a8e770449dc0c4e12fbde3d,
     type: 3}
-  Harbor: {fileID: 7100183442372346360, guid: 3e88dba4103847941b7d0b402f29fdec, type: 3}
+  Harbor: {fileID: 0}
   NatureReserve: {fileID: 1461026915376175517, guid: 5e59fbb585d9d5f4497fff92692c4942,
     type: 3}
   neighbours: []
@@ -4829,7 +4829,7 @@ MonoBehaviour:
   OilRig: {fileID: 2949981638001941890}
   SolarFarm: {fileID: 950372485321456134, guid: 523254cc2a8e770449dc0c4e12fbde3d,
     type: 3}
-  Harbor: {fileID: 7100183442372346360, guid: 3e88dba4103847941b7d0b402f29fdec, type: 3}
+  Harbor: {fileID: 0}
   NatureReserve: {fileID: 1461026915376175517, guid: 5e59fbb585d9d5f4497fff92692c4942,
     type: 3}
   neighbours: []
@@ -5231,7 +5231,7 @@ MonoBehaviour:
   OilRig: {fileID: 2949981638757792625}
   SolarFarm: {fileID: 950372485321456134, guid: 523254cc2a8e770449dc0c4e12fbde3d,
     type: 3}
-  Harbor: {fileID: 7100183442372346360, guid: 3e88dba4103847941b7d0b402f29fdec, type: 3}
+  Harbor: {fileID: 0}
   NatureReserve: {fileID: 1461026915376175517, guid: 5e59fbb585d9d5f4497fff92692c4942,
     type: 3}
   neighbours: []
@@ -11692,7 +11692,7 @@ MonoBehaviour:
   OilRig: {fileID: 2949981637942047362}
   SolarFarm: {fileID: 950372485321456134, guid: 523254cc2a8e770449dc0c4e12fbde3d,
     type: 3}
-  Harbor: {fileID: 7100183442372346360, guid: 3e88dba4103847941b7d0b402f29fdec, type: 3}
+  Harbor: {fileID: 0}
   NatureReserve: {fileID: 1461026915376175517, guid: 5e59fbb585d9d5f4497fff92692c4942,
     type: 3}
   neighbours: []

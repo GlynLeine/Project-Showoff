@@ -22,6 +22,9 @@ public class BuildingLocationEditor : Editor
 
             foreach (BuildingType buildingType in System.Enum.GetValues(typeof(BuildingType)).Cast<BuildingType>())
             {
+                if(buildingType == BuildingType.Harbor)
+                    continue;
+
                 string buildingTypeName = buildingType.ToString();
                 var field = type.GetField(buildingTypeName);
 
@@ -47,6 +50,9 @@ public class BuildingLocationEditor : Editor
 
             foreach (BuildingType buildingType in System.Enum.GetValues(typeof(BuildingType)).Cast<BuildingType>())
             {
+                if (buildingType == BuildingType.Harbor)
+                    continue;
+
                 string buildingTypeName = buildingType.ToString();
                 var field = type.GetField(buildingTypeName);
 
@@ -76,6 +82,9 @@ public class BuildingLocationEditor : Editor
 
             foreach (BuildingType buildingType in System.Enum.GetValues(typeof(BuildingType)).Cast<BuildingType>())
             {
+                if (buildingType == BuildingType.Harbor)
+                    continue;
+
                 string buildingTypeName = buildingType.ToString();
                 var field = type.GetField(buildingTypeName);
 
