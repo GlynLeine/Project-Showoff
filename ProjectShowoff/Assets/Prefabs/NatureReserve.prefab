@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingType: 0
-  natureEffect: 0
+  natureEffect: 25
   pollutionEffect: 0
   industryEffect: 0
   effectPeriod: 0

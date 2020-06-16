@@ -9612,12 +9612,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2100000, guid: 483609bb7082fa84eb6072937700c909, type: 2}
     - target: {fileID: 9082639449307604067, guid: 93ae5ed2473471e41b4a257c7bc4bd13,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2100000, guid: 483609bb7082fa84eb6072937700c909, type: 2}
     - target: {fileID: 9082639449461505710, guid: 93ae5ed2473471e41b4a257c7bc4bd13,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

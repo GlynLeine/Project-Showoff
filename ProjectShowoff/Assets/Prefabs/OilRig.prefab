@@ -143,7 +143,7 @@ MonoBehaviour:
   buildingType: 0
   natureEffect: 0
   pollutionEffect: 4
-  industryEffect: 0
+  industryEffect: 1
   effectPeriod: 5
   natureRemovalEffect: 0
   pollutionRemovalEffect: 0
