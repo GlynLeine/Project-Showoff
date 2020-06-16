@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5825485985832185703}
   - component: {fileID: 3012726238010701150}
   - component: {fileID: 3796460173286661516}
+  - component: {fileID: 789743610999178223}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -35,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1050, y: 55}
+  m_SizeDelta: {x: 1050, y: 550}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3012726238010701150
 CanvasRenderer:
@@ -112,7 +113,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -159,6 +160,26 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &789743610999178223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982701468703382192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ecec1132078ac3488e2fc35b735d815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dutchText: Hoi! Welkom op planeet Threa!  Het is een leuke planeet, maar een beetje
+    leeg! Jij hebt de kracht om dingen te bouwen en het een leuke plek te maken voor
+    de beestjes op de planeet!  Maar wees voorzicht met wat je bouwt want  Meer gebouwen 
+    kan minder natuur betekenen  Kijk maar wat er kan gebeuren en veel plezier!
+  englishText: "Hi!   This is planet Threa!  It\u2019s a nice planet but a bit empty..
+    You have the power to create things  and make it a great place to live for the
+    creatures on it.  but, be careful what you build because,   more buildings might
+    mean less nature\u2026 See what can happen and have fun!"
 --- !u!1 &4555866108198113955
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,7 +195,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4953018993983726918
 RectTransform:
   m_ObjectHideFlags: 0
@@ -207,6 +228,7 @@ GameObject:
   - component: {fileID: 7675103437500676819}
   - component: {fileID: 3615588829634937329}
   - component: {fileID: 1531215806164063551}
+  - component: {fileID: 7030303697169689522}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -353,6 +375,20 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7030303697169689522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4715462610516813966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ecec1132078ac3488e2fc35b735d815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dutchText: Druk om verder te gaan
+  englishText: Press to continue
 --- !u!1 &5427768027851355023
 GameObject:
   m_ObjectHideFlags: 0
@@ -1161,8 +1197,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: f0bb55fa1c9801f498474dbe635eb5fc, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

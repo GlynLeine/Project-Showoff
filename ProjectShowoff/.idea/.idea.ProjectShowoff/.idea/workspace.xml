@@ -14,9 +14,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingLocation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Buildings/Building.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingSystem.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/LanguageSelector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingPlacer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/StartScreen/languagechecker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Materials/Shaders/Tessellation/GlynTessellation.hlsl" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Effects/BuildingCloudEffect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Characters/Character.cs" root0="FORCE_HIGHLIGHTING" />
@@ -71,6 +69,9 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/ClickableBarPopup.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/TutorialScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/QuestSystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/StartScreen/languagechecker.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/LanguageSelector.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/StartScreen/UIFader.cs" />
       </list>
     </option>
   </component>
@@ -135,7 +136,7 @@
       <workItem from="1591773656638" duration="5581000" />
       <workItem from="1591786740775" duration="1485000" />
       <workItem from="1592207558220" duration="16172000" />
-      <workItem from="1592291548820" duration="942000" />
+      <workItem from="1592291548820" duration="7813000" />
     </task>
     <servers />
   </component>
@@ -144,6 +145,17 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
