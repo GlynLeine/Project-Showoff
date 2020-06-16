@@ -13,6 +13,8 @@ public class languagechecker : MonoBehaviour
     private void Start()
     {
         tmpText = this.GetComponent<TMP_Text>();
+        dutchText = dutchText.Replace("//n", Environment.NewLine);
+        englishText = englishText.Replace("//n", Environment.NewLine);
     }
 
     void Update()

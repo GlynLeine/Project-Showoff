@@ -59,6 +59,7 @@ public class TutorialScript : MonoBehaviour
     //this function gets called when ui slider disabled the main canvas, its the first thing that gets called
     public void OnEnable()
     {
+        StartCoroutine(QuestBoxFlash());
         if (LanguageSelector.LanguageSelected == LanguageSelector.LanguageSelectorSelected.English)
         {
             English = true;
@@ -196,19 +197,75 @@ public class TutorialScript : MonoBehaviour
         }
     }
     //making it glow at the start - doesnt work rn? just does it instantly
-    /*IEnumerator QuestBoxFlash()
+    IEnumerator QuestBoxFlash()
     {
+        while (timer < 0.5)
+        {
+            Color color = questBoxImage.color;
+            color.b -= 1f * Time.deltaTime;
+            questBoxImage.color = color;
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        while (timer < 1)
+        {
+            Color color = questBoxImage.color;
+            color.b += 1f * Time.deltaTime;
+            questBoxImage.color = color;
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        while (timer < 1.5)
+        {
+            Color color = questBoxImage.color;
+            color.b -= 1f * Time.deltaTime;
+            questBoxImage.color = color;
+            timer += Time.deltaTime;
+            yield return null;
+        }
         while (timer < 2)
         {
             Color color = questBoxImage.color;
-            color.b -= 510 * Time.deltaTime;
+            color.b += 1f * Time.deltaTime;
+            questBoxImage.color = color;
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        while (timer < 2.5)
+        {
+            Color color = questBoxImage.color;
+            color.b -= 1f * Time.deltaTime;
+            questBoxImage.color = color;
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        while (timer < 3)
+        {
+            Color color = questBoxImage.color;
+            color.b += 1f * Time.deltaTime;
+            questBoxImage.color = color;
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        while (timer < 3.5)
+        {
+            Color color = questBoxImage.color;
+            color.b -= 1f * Time.deltaTime;
+            questBoxImage.color = color;
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        while (timer < 4)
+        {
+            Color color = questBoxImage.color;
+            color.b += 1f * Time.deltaTime;
             questBoxImage.color = color;
             timer += Time.deltaTime;
             yield return null;
         }
 
         timer = 0;
-    }*/
+    }
     //everything below here is things moving
     IEnumerator SliderAnimationStart()
     {
