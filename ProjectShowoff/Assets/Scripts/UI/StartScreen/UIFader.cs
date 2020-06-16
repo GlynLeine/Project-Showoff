@@ -44,14 +44,14 @@ public class UIFader : MonoBehaviour
 
     IEnumerator FadeAnimation()
     {
+        contextFrame.SetActive(true);
+        StartCoroutine(ContextMove());
         while (startCanvasGroup.alpha > 0)
         {
-            startCanvasGroup.alpha -= 1f * Time.deltaTime;
+            startCanvasGroup.alpha -= 2f * Time.deltaTime;
             yield return null;
         }
-        contextFrame.SetActive(true);
         startTurnOff.SetActive(false);
-        StartCoroutine(ContextMove());
     }
 
     IEnumerator ContextMove()

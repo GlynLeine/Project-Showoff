@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
+using Slider = UnityEngine.UI.Slider;
 
 public class TutorialScript : MonoBehaviour
 {
@@ -25,7 +27,7 @@ public class TutorialScript : MonoBehaviour
     private bool gameHasStarted;
     private float tutorialDelaySeconds = 2.5f;
     public bool tutorialSkip;
-    public bool English;
+    private bool English;
     private int buildingCount;
 
     void Start()
@@ -71,8 +73,7 @@ public class TutorialScript : MonoBehaviour
         if (English)
         {
             questBoxText.text = "Click on the purple dome and place a factory there!";
-        }
-        else
+        } else
         {
             questBoxText.text = "Klik op de paarse cirkel en plaats daar een fabriek!";
         }
@@ -125,7 +126,7 @@ public class TutorialScript : MonoBehaviour
             }
             else
             {
-                questBoxText.text = "Goed gedaan, je kan nu plaatsen wat je wil, maar we zouden het erg waarderen als je ons helpt.";
+                questBoxText.text = "Goed gedaan, je kan nu doen wat je wil, maar je kan ooks ons helpen!";
             }
             StartCoroutine(QuestChanger());
         }

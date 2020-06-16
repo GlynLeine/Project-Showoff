@@ -2117,7 +2117,7 @@ RectTransform:
   m_Father: {fileID: 8872052277030848750}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.85287845}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 10}
@@ -3844,8 +3844,8 @@ RectTransform:
   m_Father: {fileID: 8872052276540056488}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMin: {x: 0, y: 0.85287845}
+  m_AnchorMax: {x: 1, y: 0.85287845}
   m_AnchoredPosition: {x: 7.5, y: 0}
   m_SizeDelta: {x: 125, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4412,9 +4412,8 @@ MonoBehaviour:
   tutorialHand: {fileID: 7550313252392505652}
   questBoxText: {fileID: 7149047631756176688}
   questSystem: {fileID: 2427180683102806792}
-  ruralBuildings: {fileID: 8872052276598536428}
+  ruralBuildings: {fileID: 8872052277425209316}
   tutorialSkip: 0
-  English: 0
 --- !u!114 &3744976374586019810
 MonoBehaviour:
   m_ObjectHideFlags: 0
