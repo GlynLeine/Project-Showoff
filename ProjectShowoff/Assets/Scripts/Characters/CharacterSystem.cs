@@ -16,6 +16,9 @@ public class CharacterSystem : MonoBehaviour
 
     public void SpawnCharacter(BuildingLocation location)
     {
+        if(location.roads.Count == 0)
+            return;
+
         Transform parent = planet.Find("Characters");
         if (parent == null)
         {
@@ -49,6 +52,9 @@ public class CharacterSystem : MonoBehaviour
 
     public void DespawnCharacter(BuildingLocation focus)
     {
+        if (focus.roads.Count == 0)
+            return;
+
         bool despawnedOne = false;
         for (int i = 0; i < characters.Count; i++)
         {
