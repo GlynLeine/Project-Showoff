@@ -5018,7 +5018,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 49.99951, y: 115}
+  m_AnchoredPosition: {x: -50, y: 115}
   m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8872052277157053842
@@ -6323,6 +6323,7 @@ MonoBehaviour:
   ruralBuildings: {fileID: 8872052276598536428}
   coastalBuildings: {fileID: 9001626134141880646}
   questBoxImage: {fileID: 3415754310035426241}
+  tutorialBuildStep: 0
   tutorialSkip: 0
 --- !u!114 &3744976374586019810
 MonoBehaviour:

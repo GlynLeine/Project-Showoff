@@ -50,7 +50,7 @@ public class EndScreenCounter : MonoBehaviour
         }
         else if (counterType == typeChoice.BuildingsDestroyed)
         {
-            yourValue = (float)GameManager.buildingsDestroyed;
+            yourValue = (float)GameManager.buildingsDestroyed - (float)GameManager.buildingsFlooded;
             averageValue = 7f;
         }
         else if (counterType == typeChoice.BuildingsPlaced)
