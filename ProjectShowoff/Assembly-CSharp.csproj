@@ -322,6 +322,7 @@
     <None Include="Assets\FMOD\Threa FMOD\Metadata\Event\{f6df08fc-36a3-411d-b05d-9f02369c05c3}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{735cbd75-2369-444f-894e-896630883eb3}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{34c550eb-b440-4a9d-bbbd-ebd4f9c0b657}.xml" />
+    <None Include="Assets\FMOD\Threa FMOD\Metadata\ParameterPreset\{c8f1077b-9ae7-4dff-bad1-62f1f9e11440}.xml" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\ParameterPreset\{921d4fee-16b4-4603-9cbd-3ad7aaaf7fde}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\SnapshotGroup\{efe20fc5-e761-4722-851e-6843fc3f46c3}.xml" />
