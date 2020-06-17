@@ -79,6 +79,7 @@ public class TutorialScript : MonoBehaviour
     public void OnEnable()
     {
         StartCoroutine(QuestBoxFlash());
+        StartCoroutine(ResetAnimationStart());
         if (LanguageSelector.LanguageSelected == LanguageSelector.LanguageSelectorSelected.English)
         {
             English = true;
@@ -315,7 +316,6 @@ public class TutorialScript : MonoBehaviour
             tutorialZoomStep = true;
             GameManager.paused = false;
             StartCoroutine(TimerAnimationStart());
-            StartCoroutine(ResetAnimationStart());
         }
         slider.onValueChanged.RemoveListener(SliderTutorialChange);
     }

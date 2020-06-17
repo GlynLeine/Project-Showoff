@@ -25,6 +25,6 @@ public class PollutionSpheres : MonoBehaviour
 
     private void Update()
     {
-        pollutionMaterial.SetFloat("_Growth", GameManager.smoothstep(400f, 2400f, GameManager.pollution));
+        pollutionMaterial.SetFloat("_Growth", GameManager.lerp(0.35f, 1f, GameManager.smoothstep(400f, 2400f, GameManager.pollution)));
     }
 }

@@ -12686,8 +12686,8 @@ MonoBehaviour:
   spline: {fileID: 1706820270}
   mesh: {fileID: 0}
   flattenSurface: 0
-  meshWidth: 0
-  thickness: 0
+  meshWidth: 0.005
+  thickness: 0.005
 --- !u!114 &1706820269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32543,7 +32543,7 @@ PrefabInstance:
     - target: {fileID: 6980296591725388520, guid: 3745be03dc19cb742be0d5ba1abcf11e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7972426480979829519, guid: 3745be03dc19cb742be0d5ba1abcf11e,
         type: 3}
@@ -32558,7 +32558,7 @@ PrefabInstance:
     - target: {fileID: 8697817264040170082, guid: 3745be03dc19cb742be0d5ba1abcf11e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8697817264040170092, guid: 3745be03dc19cb742be0d5ba1abcf11e,
         type: 3}
