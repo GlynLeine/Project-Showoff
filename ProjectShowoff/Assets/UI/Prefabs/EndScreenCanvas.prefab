@@ -9188,7 +9188,7 @@ MonoBehaviour:
   graySky: {fileID: 292384339858555778}
   waterLevel: {fileID: 85551362187174236}
   sideWater: {fileID: 7772976019654534643}
-  iceCap: {fileID: 0}
+  iceCap: {fileID: 1571431863796526552}
   buildings: {fileID: 7478232665045542224}
   nature: {fileID: 7890865628051350751}
 --- !u!114 &4777786925646216792
