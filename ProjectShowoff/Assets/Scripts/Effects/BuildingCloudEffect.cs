@@ -22,8 +22,8 @@ public class BuildingCloudEffect : MonoBehaviour
     private IEnumerator DestroyEffect(GameObject effectObject)
     {
         yield return new WaitForSeconds(effectTime);
-        Destroy(effectObject);
         onEffectFinish?.Invoke();
+        Destroy(effectObject);
     }
 
     private void OnBuildingPlaced(BuildingLocation location, BuildingPlacer buildingData, Building building)

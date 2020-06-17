@@ -65,10 +65,12 @@ public class BuildingSystem : MonoBehaviour
 
     private void UpdateConstructors()
     {
-        foreach (BuildingLocation location in GetPossibleBuildingLocations())
-        {
-            EnableLocation(location, true);
-        }
+        var possibilities = GetPossibleBuildingLocations();
+
+        if (possibilities != null)
+            foreach (BuildingLocation location in possibilities)
+                EnableLocation(location, true);
+
         isBuilding = false;
     }
 
@@ -215,6 +217,14 @@ public class BuildingSystem : MonoBehaviour
 
         DestroyBuilding(selectedLocation);
         InvalidateSelection();
+
+        if (openSet.Count == 0)
+        {
+            foreach (BuildingLocation loc in GetPossibleBuildingLocations())
+            {
+                EnableLocation(loc, true);
+            }
+        }
     }
 
     public void DestroyLocation(BuildingLocation location)
@@ -271,7 +281,7 @@ public class BuildingSystem : MonoBehaviour
 
         for (int i = 0; i < location.roads.Count; i++)
         {
-            if(location.roads[i] == null)
+            if (location.roads[i] == null)
             {
                 location.roads.RemoveAt(i);
                 i--;
