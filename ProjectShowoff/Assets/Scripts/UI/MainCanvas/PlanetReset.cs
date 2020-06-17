@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -15,7 +16,14 @@ public class PlanetReset : MonoBehaviour
     private float timer = 0;
     private bool resetPressed = false;
     private bool resetTriggered = false;
-    
+
+    private void OnEnable()
+    {
+        resetTriggered = false;
+        resetPressed = false;
+        resetPanel.SetActive(false);
+    }
+
     public void SceneResetButton()
     {
         resetPressed = true;

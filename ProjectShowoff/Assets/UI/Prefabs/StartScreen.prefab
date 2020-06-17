@@ -170,11 +170,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ecec1132078ac3488e2fc35b735d815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dutchText: Hoi! Welkom op planeet Threa!//nHet is een leuke planeet, maar een beetje
-    leeg!//nJij hebt de kracht om dingen te bouwen en het een leuke plek te maken
-    voor de beestjes op de planeet!//n Maar wees voorzicht met wat je bouwt want
-    meer gebouwen//nkan minder natuur betekenen //n//nKijk maar wat er kan gebeuren
-    en veel plezier!
+  dutchText: 'Hoi! Welkom op Threa!//nHet is een leuke planeet, maar een beetje leeg!
+    Jij hebt de kracht om dingen te bouwen en het een leuke plek te maken voor de
+    bewoners op de planeet!//n//nMaar wees voorzicht met wat je bouwt,//nwant meer
+    gebouwen kan minder natuur betekenen//n//nKijk maar wat er kan gebeuren en veel
+    plezier! '
   englishText: "Hi! This is planet Threa!//nIt\u2019s a nice planet but a bit empty..
     //nYou have the power to create things  and make it a great place to live for
     the creatures on it. //nbut, be careful what you build because, more buildings
