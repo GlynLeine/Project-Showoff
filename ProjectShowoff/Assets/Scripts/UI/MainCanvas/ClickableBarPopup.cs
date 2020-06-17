@@ -54,7 +54,7 @@ public class ClickableBarPopup : MonoBehaviour
     {
         if (buildingSystem.selectedLocation.Harbor == null)
             harbour.SetActive(false);
-        else
+        else if(tutorialScript.tutorialBuildStep)
             harbour.SetActive(true);
 
         StartCoroutine(CoastalBuildingAnimationStart());

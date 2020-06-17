@@ -26,7 +26,7 @@ public class TutorialScript : MonoBehaviour
     //tutorial step bools so we can check where the player is
     private bool tutorialRotationStep;
     private bool tutorialZoomStep;
-    private bool tutorialBuildStep;
+    public bool tutorialBuildStep;
     private bool gameHasStarted;
     private bool ifHarborBuilt;
     private bool ifOilRigBuilt;
@@ -119,21 +119,21 @@ public class TutorialScript : MonoBehaviour
             }
             else
             {
-                questBoxTextTMP.text = "Goed gedaan! Plaats nu een " + dutchRuralBuildingsArray[ruralCount] + " om de vervuiling te stoppen!";
+                questBoxTextTMP.text = "Goed gedaan! Plaats nu een " + dutchRuralBuildingsArray[ruralCount] + " om vervuiling tegen te gaan.";
             }   
         }
         else if (buildingCount == 2)
         {
             ruralCount += 1;
             StartCoroutine(BuildingNatureReserveWaiter("Coal mine"));
-            StartCoroutine(BuildingHarborWaiter("Harbor"));
+            StartCoroutine(BuildingHarborWaiter(coastalBuildingsArray[coastalCount]));
             if (English)
             {
                 questBoxTextTMP.text = "Nice! Try placing a " + englishRuralBuildingsArray[ruralCount] + " this time!";
             }
             else
             {
-                questBoxTextTMP.text = "Netjes! Probeer nu is een " + dutchRuralBuildingsArray[ruralCount] + " te plaatsen.";
+                questBoxTextTMP.text = "Netjes! Probeer nu eens een " + dutchRuralBuildingsArray[ruralCount] + " te bouwen.";
             }  
         }
         else if (buildingCount == 3)
@@ -144,14 +144,11 @@ public class TutorialScript : MonoBehaviour
                 {
                     coastalCount += 1;
                 }
-                StartCoroutine(BuildingHarborWaiter("Oil rig"));
+                StartCoroutine(BuildingHarborWaiter(coastalBuildingsArray[coastalCount]));
             }
             else if (buildingData.locationType == LocationType.Rural)
             {
-                if (ruralCount < 4)
-                {
-                    ruralCount += 1;
-                }
+                ruralCount += 1;
                 StartCoroutine(BuildingNatureReserveWaiter("Train station"));
             }
             if (English)
@@ -160,7 +157,7 @@ public class TutorialScript : MonoBehaviour
                 }
                 else
                 {
-                    questBoxTextTMP.text = "Wow! Dat stinkt! Probeer is een " + dutchRuralBuildingsArray[ruralCount] + " te plaatsen.";
+                    questBoxTextTMP.text = "Wow... Dat stinkt! Probeer eens een " + dutchRuralBuildingsArray[ruralCount] + " te plaatsen.";
                 }
         }
         else if (buildingCount == 4)
@@ -172,14 +169,11 @@ public class TutorialScript : MonoBehaviour
                 {
                     coastalCount += 1;
                 }
-                StartCoroutine(BuildingHarborWaiter("Oil rig"));
+                StartCoroutine(BuildingHarborWaiter(coastalBuildingsArray[coastalCount]));
             }
             else if (buildingData.locationType == LocationType.Rural)
             {
-                if (ruralCount < 4)
-                {
-                    ruralCount += 1;
-                }
+                ruralCount += 1;
                 StartCoroutine(BuildingNatureReserveWaiter(ruralBuildingsArray[ruralCount]));
             }
             if (English)
@@ -188,7 +182,7 @@ public class TutorialScript : MonoBehaviour
             }
             else
             {
-                questBoxTextTMP.text = "Goed! Probeer nu is een " + dutchRuralBuildingsArray[ruralCount] + " te plaatsen.";
+                questBoxTextTMP.text = "Heel goed! Kun je ook een " + dutchRuralBuildingsArray[ruralCount] + " plaatsen.";
             }
         }
         else if (buildingCount == 5)
@@ -200,7 +194,7 @@ public class TutorialScript : MonoBehaviour
                 {
                     coastalCount += 1;
                 }
-                StartCoroutine(BuildingHarborWaiter("Oil rig"));
+                StartCoroutine(BuildingHarborWaiter(coastalBuildingsArray[coastalCount]));
             }
             else if (buildingData.locationType == LocationType.Rural)
             {
@@ -208,13 +202,10 @@ public class TutorialScript : MonoBehaviour
                 {
                     StartCoroutine(BuildingNatureReserveWaiter(ruralBuildingsArray[ruralCount]));
                 }
-                if (ruralCount < 4)
-                {
-                    ruralCount += 1;   
-                }
+                ruralCount += 1;
             }
 
-            if (ruralCount < 4)
+            if (ruralCount < 5)
             {
                 if (English)
                 {
@@ -233,7 +224,7 @@ public class TutorialScript : MonoBehaviour
                 }
                 else
                 {
-                    questBoxTextTMP.text = "We hebben ook kust gebouwen, plaats een " + dutchCoastalBuildingsArray[coastalCount] + ".";
+                    questBoxTextTMP.text = "We hebben ook gebouwen voor de kust, bouw een " + dutchCoastalBuildingsArray[coastalCount] + ".";
                 }
             }
         }
@@ -246,7 +237,7 @@ public class TutorialScript : MonoBehaviour
                 {
                     coastalCount += 1;
                 }
-                StartCoroutine(BuildingHarborWaiter("Oil rig"));
+                StartCoroutine(BuildingHarborWaiter(coastalBuildingsArray[coastalCount]));
             }
             else if (buildingData.locationType == LocationType.Rural)
             {
@@ -254,13 +245,9 @@ public class TutorialScript : MonoBehaviour
                 {
                     StartCoroutine(BuildingNatureReserveWaiter(ruralBuildingsArray[ruralCount]));
                 }
-
-                if (ruralCount < 4)
-                {
-                    ruralCount += 1;   
-                }
+                ruralCount += 1;
             }
-            if (ruralCount < 4)
+            if (ruralCount < 5)
             {
                 if (English)
                 {
@@ -279,48 +266,58 @@ public class TutorialScript : MonoBehaviour
                 }
                 else
                 {
-                    questBoxTextTMP.text = "Bijna klaar! Plaats nu eens een " + dutchCoastalBuildingsArray[coastalCount] + ".";
+                    questBoxTextTMP.text = "Bijna klaar! Plaats nu een " + dutchCoastalBuildingsArray[coastalCount] + ".";
                 }
             }
         }
         else if (buildingCount == 7)
         {
+            tutorialBuildStep = true;
             if (English)
             {
                 questBoxTextTMP.text = "Press on an existing building now!";
             }
             else
             {
-                questBoxTextTMP.text = "Klik nu op een bestaand gebouw!";
+                questBoxTextTMP.text = "Klik op een bestaand gebouw om meer informatie te zien!";
             }
-            StartCoroutine(SliderAnimationStart());
             StartCoroutine(BuildingActivationWaiter());
         }
         else if (buildingCount >= 8)
         {
             if (English)
             {
-                questBoxTextTMP.text = "Good job, you can place what you want now, but you can help us more!.";
+                questBoxTextTMP.text = "Good job, you can place what you want now, but you can help us more!";
             }
             else
             {
-                questBoxTextTMP.text = "Goed gedaan, je kan nu doen wat je wilt, maar je kan ooks ons helpen!";
+                questBoxTextTMP.text = "Goed gedaan, je kan nu doen wat je wilt! Maar je kan ooks ons helpen!";
             }
+            StartCoroutine(SliderAnimationStart());
             tutorialBuildingCheckStep = true;
             tutorialDestroyStep = true;
             StartCoroutine(QuestChanger());
+            if (!tutorialZoomStep)
+            {
+                GameManager.paused = false;
+                StartCoroutine(TimerAnimationStart());
+                StartCoroutine(ResetAnimationStart());
+                tutorialZoomStep = true;
+            }
             BuildingSystem.onBuildingPlaced -= OnBuildingPlaced;
         }
     }
     //on slider change, this gets called, but since it only needs to be called when the user touches the slider for the first time it also unsubs from the slider
     public void SliderTutorialChange(float value)
     {
+        if (!tutorialZoomStep)
+        {
+            tutorialZoomStep = true;
+            GameManager.paused = false;
+            StartCoroutine(TimerAnimationStart());
+            StartCoroutine(ResetAnimationStart());
+        }
         slider.onValueChanged.RemoveListener(SliderTutorialChange);
-        tutorialZoomStep = true;
-        GameManager.paused = false;
-        tutorialBuildStep = true;
-        StartCoroutine(TimerAnimationStart());
-        StartCoroutine(ResetAnimationStart());
     }
     //gets called when you press a button, keeping it here for now if i need that again so i dont need to go through the hassle of adding all the buttons again
     public void BuildingTutorialButton()
@@ -340,11 +337,11 @@ public class TutorialScript : MonoBehaviour
         {
             if (English)
             {
-                questBoxTextTMP.text = "Press the icon on the right to destroy the building!”";
+                questBoxTextTMP.text = "Press the icon on the right to destroy the building!";
             }
             else
             {
-                questBoxTextTMP.text = "Klik op de rechtse knop om het gebouw te vernietigen!";
+                questBoxTextTMP.text = "Klik op de knop rechts om het gebouw te vernietigen!";
             }
             tutorialBuildingCheckStep = true;
             StartCoroutine(FindNewLocationWaiter());
@@ -395,13 +392,13 @@ public class TutorialScript : MonoBehaviour
         yield return new WaitForSeconds(1);
         foreach (Transform child in coastalBuildings.transform)
         {
-            if (child.gameObject.name != name)
+            if (child.gameObject.name == name)
             {
-                child.gameObject.SetActive(false);
+                child.gameObject.SetActive(true);
             }
             else
             {
-                child.gameObject.SetActive(true);
+                child.gameObject.SetActive(false);
             }
         }
     }
