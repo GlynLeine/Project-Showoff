@@ -85,15 +85,15 @@ public class TimeLinePart : MonoBehaviour
         color = graySky.color;
         color.a = timeLinePollution / maxPollution;
         graySky.color = color;
-        if (timeLineWaterLevel <= 0.5f)
+        if (timeLineWaterLevel <= 0.4f)
         {
             Vector3 transformSave = waterLevel.transform.localPosition;
-            transformSave.y += 200 * timeLineWaterLevel;
+            transformSave.y += 250 * timeLineWaterLevel;
             waterLevel.transform.localPosition = transformSave;
             if (sideWater != null)
             {
                 transformSave = sideWater.transform.localPosition;
-                transformSave.y += 200 * timeLineWaterLevel;
+                transformSave.y += 250 * timeLineWaterLevel;
                 sideWater.transform.localPosition = transformSave;
             }
         }else
