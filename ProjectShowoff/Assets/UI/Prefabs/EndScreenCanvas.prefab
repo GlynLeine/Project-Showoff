@@ -470,7 +470,7 @@ MonoBehaviour:
   yourFill: {fileID: 9168478116555624732}
   theirFill: {fileID: 8672702413241550266}
   maxAmount: 625
-  counterType: 3
+  counterType: 2
 --- !u!1 &343654164985102315
 GameObject:
   m_ObjectHideFlags: 0
@@ -10624,8 +10624,8 @@ MonoBehaviour:
     type: 3}
   yourFill: {fileID: 1320413326177470175}
   theirFill: {fileID: 6510056153655315411}
-  maxAmount: 20
-  counterType: 4
+  maxAmount: 70
+  counterType: 3
 --- !u!1 &5616781546165090266
 GameObject:
   m_ObjectHideFlags: 0
@@ -11552,7 +11552,7 @@ MonoBehaviour:
   yourFill: {fileID: 5863146424888606293}
   theirFill: {fileID: 8436343703635845499}
   maxAmount: 1
-  counterType: 2
+  counterType: 1
 --- !u!1 &6421910895014800515
 GameObject:
   m_ObjectHideFlags: 0
@@ -14695,7 +14695,7 @@ MonoBehaviour:
   yourFill: {fileID: 5746748306173377730}
   theirFill: {fileID: 7055096151326476177}
   maxAmount: 60
-  counterType: 5
+  counterType: 4
 --- !u!1 &8311842335294484519
 GameObject:
   m_ObjectHideFlags: 0
