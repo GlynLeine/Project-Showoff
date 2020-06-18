@@ -13,9 +13,11 @@ public class QuestSystem : MonoBehaviour
     private float waitTime = 0;
     private string timerValue;
     public Image buildingIcon;
-    public TMP_Text taskText;
+    public TMP_Text forText;
+    public Image plusMinusImage;
     public TMP_Text counterText;
     public TMP_Text timerText;
+    public Image rewardImage;
     public Sprite factorySprite;
     public Sprite harborSprite;
     public Sprite mineSprite;
@@ -23,6 +25,16 @@ public class QuestSystem : MonoBehaviour
     public Sprite oilSprite;
     public Sprite solarSprite;
     public Sprite trainSprite;
+    private bool English;
+
+    public enum RewardChoice
+    {
+        Pollution,Nature,Happiness
+    }
+    public enum BuildOrDestroy
+    {
+        Build,Destroy
+    }
     [Serializable] 
     public class Quest
     {
@@ -30,10 +42,18 @@ public class QuestSystem : MonoBehaviour
         public int buildHowMany;
         public int maxTimeInSeconds;
         public int waitTimeInSeconds;
+        [Tooltip("Set to true if reward should get added, false if it should get removed. Punishment simply acts as the reverse")]
+        public bool addReward;
+        [Tooltip("This will be the punishment as well")]
+        public RewardChoice reward;
     }
     public Quest[] questList;
     void OnEnable()
-    {   
+    {
+        if (LanguageSelector.LanguageSelected == LanguageSelector.LanguageSelectorSelected.English)
+        {
+            English = true;
+        }
         StartCoroutine(QuestQueueSystem());
         BuildingSystem.onBuildingPlaced += OnBuildingPlaced;
     }
@@ -78,7 +98,7 @@ public class QuestSystem : MonoBehaviour
             yield return new WaitForSeconds(waitTime);
             if (counterValue < maxCounterValue)
             {
-                taskText.text = "Productivity decreased!";
+                //taskText.text = "Productivity decreased!";
             }
             yield return new WaitForSeconds(questList[i].waitTimeInSeconds);
         }
@@ -86,7 +106,7 @@ public class QuestSystem : MonoBehaviour
 
     public void QuestInitialization()
     {
-        taskText.text = "Build " + maxCounterValue + " " + SelectedBuildingType;
+        //taskText.text = "Build " + maxCounterValue + " " + SelectedBuildingType;
         counterText.text = counterValue + "/" + maxCounterValue;
     }
     private void OnBuildingPlaced(BuildingLocation location, BuildingPlacer buildingData, Building building)
@@ -102,7 +122,7 @@ public class QuestSystem : MonoBehaviour
             counterText.text = counterValue + "/" + maxCounterValue;
             if (counterValue == maxCounterValue)
             {
-                taskText.text = "productivity increased!";
+                //taskText.text = "productivity increased!";
             }
         }
     }

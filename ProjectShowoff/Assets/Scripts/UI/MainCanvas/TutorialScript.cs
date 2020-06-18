@@ -183,7 +183,7 @@ public class TutorialScript : MonoBehaviour
             }
             else
             {
-                questBoxTextTMP.text = "Heel goed! Kun je ook een " + dutchRuralBuildingsArray[ruralCount] + " plaatsen.";
+                questBoxTextTMP.text = "Heel goed! Kun je ook een " + dutchRuralBuildingsArray[ruralCount] + " plaatsen?";
             }
         }
         else if (buildingCount == 5)
@@ -292,7 +292,7 @@ public class TutorialScript : MonoBehaviour
             }
             else
             {
-                questBoxTextTMP.text = "Goed gedaan, je kan nu doen wat je wilt! Maar je kan ooks ons helpen!";
+                questBoxTextTMP.text = "Goed gedaan, je kan nu doen wat je wilt! Maar je kunt ooks ons helpen!";
             }
             StartCoroutine(SliderAnimationStart());
             tutorialBuildingCheckStep = true;
