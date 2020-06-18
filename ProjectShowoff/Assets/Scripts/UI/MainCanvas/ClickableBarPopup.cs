@@ -1,11 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-enum ActiveBar
-{
-    Rural, Coastal, Destroy, None
-}
 
 public class ClickableBarPopup : MonoBehaviour
 {
@@ -19,8 +15,6 @@ public class ClickableBarPopup : MonoBehaviour
     private bool testHasStarted;
     private bool testHasStarted2;
     private TutorialScript tutorialScript;
-    private ActiveBar PreviouslyActive;
-    private ActiveBar currentlyActive;
 
     private bool ruralStartActive;
     private bool ruralStopActive;
@@ -28,6 +22,11 @@ public class ClickableBarPopup : MonoBehaviour
     private bool coastalStopActive;
     private bool destroyStartActive;
     private bool destroyStopActive;
+
+    private void OnEnable()
+    {
+        tutorialScript = GetComponent<TutorialScript>();
+    }
     /*//test to see if animations work
     void Update()
     {
