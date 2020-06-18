@@ -1,11 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-enum ActiveBar
-{
-    Rural, Coastal, Destroy, None
-}
 
 public class ClickableBarPopup : MonoBehaviour
 {
@@ -19,13 +15,17 @@ public class ClickableBarPopup : MonoBehaviour
     private bool testHasStarted;
     private bool testHasStarted2;
     private TutorialScript tutorialScript;
-    private ActiveBar PreviouslyActive;
-    private ActiveBar currentlyActive;
-    bool abort = false;
 
-    void Start()
+    private bool ruralStartActive;
+    private bool ruralStopActive;
+    private bool coastalStartActive;
+    private bool coastalStopActive;
+    private bool destroyStartActive;
+    private bool destroyStopActive;
+
+    private void OnEnable()
     {
-        tutorialScript = gameObject.GetComponent<TutorialScript>();
+        tutorialScript = GetComponent<TutorialScript>();
     }
     /*//test to see if animations work
     void Update()
@@ -52,8 +52,6 @@ public class ClickableBarPopup : MonoBehaviour
     //stop function only has to be called when clicking away, otherwise start functions naturally call the stop functions for other bars
     public void RuralStart()
     {
-        PreviouslyActive = currentlyActive;
-        currentlyActive = ActiveBar.Rural;
         StartCoroutine(RuralBuildingAnimationStart());
     }
     public void RuralStop()
@@ -67,7 +65,6 @@ public class ClickableBarPopup : MonoBehaviour
         else if (tutorialScript.tutorialBuildStep)
             harbour.SetActive(true);
 
-        abort = true;
         StartCoroutine(CoastalBuildingAnimationStart());
     }
     public void CoastalStop()
@@ -94,160 +91,187 @@ public class ClickableBarPopup : MonoBehaviour
     }
     IEnumerator RuralBuildingAnimationStart()
     {
-        yield return null;
-        abort = false;
-        StartCoroutine(CoastalBuildingAnimationStop());
-        StartCoroutine(BuildingOnClickAnimationStop());
-        while (ruralBuildings.transform.localPosition.y < -420)
+        if (!ruralStartActive)
         {
-            // down previouslyActive
-            switch (PreviouslyActive)
+            ruralStartActive = true;
+            StartCoroutine(CoastalBuildingAnimationStop());
+            StartCoroutine(BuildingOnClickAnimationStop());
+            StopCoroutine(RuralBuildingAnimationStop());
+            while (ruralBuildings.transform.localPosition.y < -420)
             {
-                case ActiveBar.Coastal:
-                    // go down logic
+
+                Vector3 buildingAnimationPosition;
+                buildingAnimationPosition = ruralBuildings.transform.localPosition;
+                animationSpeed += 0.1f;
+                buildingAnimationPosition.y += 360 * animationSpeed * Time.deltaTime;
+                if (buildingAnimationPosition.y >= -420)
+                {
+                    animationSpeed = 1;
+                    buildingAnimationPosition.y = -420;
+                    ruralBuildings.transform.localPosition = buildingAnimationPosition;
+                }
+                else
+                {
+                    ruralBuildings.transform.localPosition = buildingAnimationPosition;
+                }
+
+                if (ruralStopActive)
+                {
                     break;
+                }
+                yield return null;
             }
-
-
-            // up currentlyActive
-            switch (currentlyActive)
-            {
-                case ActiveBar.Coastal:
-                    // go up logic
-                    break;
-            }
-
-            Vector3 buildingAnimationPosition;
-            buildingAnimationPosition = ruralBuildings.transform.localPosition;
-            animationSpeed += 0.1f;
-            buildingAnimationPosition.y += 360 * animationSpeed * Time.deltaTime;
-            if (buildingAnimationPosition.y >= -420)
-            {
-                animationSpeed = 1;
-                buildingAnimationPosition.y = -420;
-                ruralBuildings.transform.localPosition = buildingAnimationPosition;
-            }
-            else
-            {
-                ruralBuildings.transform.localPosition = buildingAnimationPosition;
-            }
-
-            if (abort)
-                break;
-            yield return null;
+            ruralStartActive = false;
         }
     }
     IEnumerator RuralBuildingAnimationStop()
     {
-        StopCoroutine(RuralBuildingAnimationStart());
-        while (ruralBuildings.transform.localPosition.y > -640)
+        if (!ruralStopActive)
         {
-            Vector3 buildingAnimationPosition;
-            buildingAnimationPosition = ruralBuildings.transform.localPosition;
-            animationSpeed += 0.1f;
-            buildingAnimationPosition.y -= 360 * animationSpeed * Time.deltaTime;
-            if (buildingAnimationPosition.y <= -640)
+            ruralStopActive = true;
+            StopCoroutine(RuralBuildingAnimationStart());
+            while (ruralBuildings.transform.localPosition.y > -640)
             {
-                animationSpeed = 1;
-                buildingAnimationPosition.y = -640;
-                ruralBuildings.transform.localPosition = buildingAnimationPosition;
+                Vector3 buildingAnimationPosition;
+                buildingAnimationPosition = ruralBuildings.transform.localPosition;
+                animationSpeed += 0.1f;
+                buildingAnimationPosition.y -= 360 * animationSpeed * Time.deltaTime;
+                if (buildingAnimationPosition.y <= -640)
+                {
+                    animationSpeed = 1;
+                    buildingAnimationPosition.y = -640;
+                    ruralBuildings.transform.localPosition = buildingAnimationPosition;
+                }
+                else
+                {
+                    ruralBuildings.transform.localPosition = buildingAnimationPosition;
+                }
+
+                yield return null;
             }
-            else
-            {
-                ruralBuildings.transform.localPosition = buildingAnimationPosition;
-            }
-            yield return null;
+
+            ruralStopActive = false;
         }
     }
     IEnumerator CoastalBuildingAnimationStart()
     {
-        StartCoroutine(RuralBuildingAnimationStop());
-        StartCoroutine(BuildingOnClickAnimationStop());
-        while (coastalBuildings.transform.localPosition.y < -420)
+        if (!coastalStartActive)
         {
-            Vector3 buildingAnimationPosition;
-            buildingAnimationPosition = coastalBuildings.transform.localPosition;
-            animationSpeed += 0.1f;
-            buildingAnimationPosition.y += 360 * animationSpeed * Time.deltaTime;
-            if (buildingAnimationPosition.y >= -420)
+            coastalStartActive = true;
+            StartCoroutine(RuralBuildingAnimationStop());
+            StartCoroutine(BuildingOnClickAnimationStop());
+            StopCoroutine(CoastalBuildingAnimationStop());
+            while (coastalBuildings.transform.localPosition.y < -420)
             {
-                animationSpeed = 1;
-                buildingAnimationPosition.y = -420;
-                coastalBuildings.transform.localPosition = buildingAnimationPosition;
+                Vector3 buildingAnimationPosition;
+                buildingAnimationPosition = coastalBuildings.transform.localPosition;
+                animationSpeed += 0.1f;
+                buildingAnimationPosition.y += 360 * animationSpeed * Time.deltaTime;
+                if (buildingAnimationPosition.y >= -420)
+                {
+                    animationSpeed = 1;
+                    buildingAnimationPosition.y = -420;
+                    coastalBuildings.transform.localPosition = buildingAnimationPosition;
+                }
+                else
+                {
+                    coastalBuildings.transform.localPosition = buildingAnimationPosition;
+                }
+                if (coastalStopActive)
+                {
+                    break;
+                }
+                yield return null;
             }
-            else
-            {
-                coastalBuildings.transform.localPosition = buildingAnimationPosition;
-            }
-            yield return null;
+            coastalStartActive = false;
         }
     }
     IEnumerator CoastalBuildingAnimationStop()
     {
-        StopCoroutine(CoastalBuildingAnimationStart());
-        while (coastalBuildings.transform.localPosition.y > -640)
+        if (!coastalStopActive)
         {
-            Vector3 buildingAnimationPosition;
-            buildingAnimationPosition = coastalBuildings.transform.localPosition;
-            animationSpeed += 0.1f;
-            buildingAnimationPosition.y -= 360 * animationSpeed * Time.deltaTime;
-            if (buildingAnimationPosition.y <= -640)
+            coastalStopActive = true;
+            StopCoroutine(CoastalBuildingAnimationStart());
+            while (coastalBuildings.transform.localPosition.y > -640)
             {
-                animationSpeed = 1;
-                buildingAnimationPosition.y = -640;
-                coastalBuildings.transform.localPosition = buildingAnimationPosition;
+                Vector3 buildingAnimationPosition;
+                buildingAnimationPosition = coastalBuildings.transform.localPosition;
+                animationSpeed += 0.1f;
+                buildingAnimationPosition.y -= 360 * animationSpeed * Time.deltaTime;
+                if (buildingAnimationPosition.y <= -640)
+                {
+                    animationSpeed = 1;
+                    buildingAnimationPosition.y = -640;
+                    coastalBuildings.transform.localPosition = buildingAnimationPosition;
+                }
+                else
+                {
+                    coastalBuildings.transform.localPosition = buildingAnimationPosition;
+                }
+                yield return null;
             }
-            else
-            {
-                coastalBuildings.transform.localPosition = buildingAnimationPosition;
-            }
-            yield return null;
+            coastalStopActive = false;
         }
     }
     IEnumerator BuildingOnClickAnimationStart()
     {
-        StartCoroutine(RuralBuildingAnimationStop());
-        StartCoroutine(CoastalBuildingAnimationStop());
-        while (destroyBar.transform.localPosition.y < -420)
+        if (!destroyStartActive)
         {
-            Vector3 buildingAnimationPosition;
-            buildingAnimationPosition = destroyBar.transform.localPosition;
-            animationSpeed += 0.1f;
-            buildingAnimationPosition.y += 360 * animationSpeed * Time.deltaTime;
-            if (buildingAnimationPosition.y >= -420)
+            destroyStartActive = true;
+            StartCoroutine(RuralBuildingAnimationStop());
+            StartCoroutine(CoastalBuildingAnimationStop());
+            StopCoroutine(BuildingOnClickAnimationStop());
+            while (destroyBar.transform.localPosition.y < -420)
             {
-                animationSpeed = 1;
-                buildingAnimationPosition.y = -420;
-                destroyBar.transform.localPosition = buildingAnimationPosition;
+                Vector3 buildingAnimationPosition;
+                buildingAnimationPosition = destroyBar.transform.localPosition;
+                animationSpeed += 0.1f;
+                buildingAnimationPosition.y += 360 * animationSpeed * Time.deltaTime;
+                if (buildingAnimationPosition.y >= -420)
+                {
+                    animationSpeed = 1;
+                    buildingAnimationPosition.y = -420;
+                    destroyBar.transform.localPosition = buildingAnimationPosition;
+                }
+                else
+                {
+                    destroyBar.transform.localPosition = buildingAnimationPosition;
+                }
+                if (destroyStopActive)
+                {
+                    break;
+                }
+                yield return null;
             }
-            else
-            {
-                destroyBar.transform.localPosition = buildingAnimationPosition;
-            }
-            yield return null;
+            destroyStartActive = false;
+            tutorialScript.BuildingCheckTutorial();
         }
-        tutorialScript.BuildingCheckTutorial();
     }
     IEnumerator BuildingOnClickAnimationStop()
     {
-        StopCoroutine(BuildingOnClickAnimationStart());
-        while (destroyBar.transform.localPosition.y > -640)
+        if (!destroyStopActive)
         {
-            Vector3 buildingAnimationPosition;
-            buildingAnimationPosition = destroyBar.transform.localPosition;
-            animationSpeed += 0.1f;
-            buildingAnimationPosition.y -= 360 * animationSpeed * Time.deltaTime;
-            if (buildingAnimationPosition.y <= -640)
+            destroyStopActive = true;
+            StopCoroutine(BuildingOnClickAnimationStart());
+            while (destroyBar.transform.localPosition.y > -640)
             {
-                animationSpeed = 1;
-                buildingAnimationPosition.y = -640;
-                destroyBar.transform.localPosition = buildingAnimationPosition;
+                Vector3 buildingAnimationPosition;
+                buildingAnimationPosition = destroyBar.transform.localPosition;
+                animationSpeed += 0.1f;
+                buildingAnimationPosition.y -= 360 * animationSpeed * Time.deltaTime;
+                if (buildingAnimationPosition.y <= -640)
+                {
+                    animationSpeed = 1;
+                    buildingAnimationPosition.y = -640;
+                    destroyBar.transform.localPosition = buildingAnimationPosition;
+                }
+                else
+                {
+                    destroyBar.transform.localPosition = buildingAnimationPosition;
+                }
+                yield return null;
             }
-            else
-            {
-                destroyBar.transform.localPosition = buildingAnimationPosition;
-            }
-            yield return null;
+            destroyStopActive = false;
         }
     }
 }
