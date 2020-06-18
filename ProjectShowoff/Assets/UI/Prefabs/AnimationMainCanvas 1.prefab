@@ -1745,26 +1745,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b80be42fbdaca147a96c9d23318d36b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingIcon: {fileID: 6542626864887728967}
-  taskText: {fileID: 0}
+  blockerImage: {fileID: 0}
+  blockerText: {fileID: 0}
+  objectives: {fileID: 0}
+  buildingOrDestroy: {fileID: 0}
   counterText: {fileID: 6167337352802637470}
+  buildingIcon: {fileID: 6542626864887728967}
+  forText: {fileID: 0}
+  plusMinusImage: {fileID: 0}
+  rewardImage: {fileID: 0}
   timerText: {fileID: 1651219731120601553}
+  buildSprite: {fileID: 0}
+  destroySprite: {fileID: 0}
+  pollutionSprite: {fileID: 0}
+  natureSprite: {fileID: 21300000, guid: 959f947416341b046afd1233ede6cbfd, type: 3}
+  creatureSprite: {fileID: 0}
   factorySprite: {fileID: 21300000, guid: 118807f199691564086c36324bb80d9d, type: 3}
   harborSprite: {fileID: 21300000, guid: d5176ee26ba948642b83c1038c702b2b, type: 3}
   mineSprite: {fileID: 21300000, guid: 8413d63425574b848acee63f546adb0e, type: 3}
-  natureSprite: {fileID: 21300000, guid: 959f947416341b046afd1233ede6cbfd, type: 3}
+  natureReserveSprite: {fileID: 0}
   oilSprite: {fileID: 21300000, guid: e7503849313b5fe42b555c2e67ea7974, type: 3}
   solarSprite: {fileID: 21300000, guid: 70a107c2dd653914f9fd00402b6137b8, type: 3}
   trainSprite: {fileID: 21300000, guid: 009b393aa17409a4ab7b62b4f857dec3, type: 3}
+  plusSprite: {fileID: 0}
+  minusSprite: {fileID: 0}
   questList:
   - buildingType: 2
+    buildOrDestroy: 0
     buildHowMany: 3
     maxTimeInSeconds: 30
     waitTimeInSeconds: 10
+    addReward: 0
+    reward: 0
   - buildingType: 4
+    buildOrDestroy: 0
     buildHowMany: 4
     maxTimeInSeconds: 30
     waitTimeInSeconds: 10
+    addReward: 0
+    reward: 0
 --- !u!1 &2766883279786236331
 GameObject:
   m_ObjectHideFlags: 0
@@ -6477,6 +6496,7 @@ GameObject:
   - component: {fileID: 8872052277272169928}
   - component: {fileID: 8872052277272169926}
   - component: {fileID: 2492309369576556696}
+  - component: {fileID: 6995273035738759507}
   m_Layer: 5
   m_Name: TimeImages
   m_TagString: Untagged
@@ -6537,6 +6557,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a281b3d23c18747adc68832447e53a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &6995273035738759507
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872052277272169929}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2966f7f7508f9fd4c9f58cd16154347a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8872052277295596727
 GameObject:
   m_ObjectHideFlags: 0
@@ -7020,7 +7059,7 @@ GameObject:
   - component: {fileID: 5088064781938175821}
   - component: {fileID: 3169854686054731884}
   m_Layer: 5
-  m_Name: AnimationMainCanvas
+  m_Name: AnimationMainCanvas 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
