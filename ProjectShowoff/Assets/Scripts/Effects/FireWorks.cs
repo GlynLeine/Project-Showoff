@@ -23,7 +23,8 @@ public class FireWorks : MonoBehaviour
         {
             foreach (Building building in FindObjectsOfType<Building>())
             {
-                fireWorks.Add(Instantiate(fireWorksEffectPrefab, building.transform).GetComponent<VisualEffect>());
+                if (building.industryRemovalEffect > 0)
+                    fireWorks.Add(Instantiate(fireWorksEffectPrefab, building.transform).GetComponent<VisualEffect>());
             }
 
             StartCoroutine(DestroyEffect());
@@ -32,10 +33,13 @@ public class FireWorks : MonoBehaviour
 
     IEnumerator DestroyEffect()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(20f);
 
         foreach (VisualEffect fireWork in fireWorks)
+        {
             fireWork.Stop();
+            fireWork.GetComponent<FMODUnity.StudioEventEmitter>().Stop();
+        }
 
         yield return new WaitForSeconds(2.5f);
 

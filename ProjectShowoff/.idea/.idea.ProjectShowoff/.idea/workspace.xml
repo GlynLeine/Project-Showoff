@@ -51,6 +51,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/AudioTriggerManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/TutorialRotator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/BankRefDrawer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/EndScreen/TimeLinePart.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EditorUtils.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EditorBankRef.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/ClickableBarPopup.cs" root0="FORCE_HIGHLIGHTING" />
@@ -99,9 +100,9 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/TutorialRotator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/StartScreen/UIFader.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/languagechecker.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/QuestSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/ClickableBarPopup.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/TutorialScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainCanvas/QuestSystem.cs" />
       </list>
     </option>
   </component>
@@ -174,6 +175,7 @@
       <workItem from="1592340759045" duration="1089000" />
       <workItem from="1592342439972" duration="1208000" />
       <workItem from="1592383558807" duration="1607000" />
+      <workItem from="1592469547886" duration="4832000" />
     </task>
     <servers />
   </component>

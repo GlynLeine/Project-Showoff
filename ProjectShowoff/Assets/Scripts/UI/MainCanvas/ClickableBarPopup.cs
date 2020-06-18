@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+enum ActiveBar
+{
+    Rural, Coastal, Destroy, None
+}
+
 public class ClickableBarPopup : MonoBehaviour
 {
     public GameObject ruralBuildings;
@@ -14,6 +19,9 @@ public class ClickableBarPopup : MonoBehaviour
     private bool testHasStarted;
     private bool testHasStarted2;
     private TutorialScript tutorialScript;
+    private ActiveBar PreviouslyActive;
+    private ActiveBar currentlyActive;
+    bool abort = false;
 
     void Start()
     {
@@ -44,6 +52,8 @@ public class ClickableBarPopup : MonoBehaviour
     //stop function only has to be called when clicking away, otherwise start functions naturally call the stop functions for other bars
     public void RuralStart()
     {
+        PreviouslyActive = currentlyActive;
+        currentlyActive = ActiveBar.Rural;
         StartCoroutine(RuralBuildingAnimationStart());
     }
     public void RuralStop()
@@ -57,6 +67,7 @@ public class ClickableBarPopup : MonoBehaviour
         else if(tutorialScript.tutorialBuildStep)
             harbour.SetActive(true);
 
+        abort = true;
         StartCoroutine(CoastalBuildingAnimationStart());
     }
     public void CoastalStop()
@@ -83,10 +94,29 @@ public class ClickableBarPopup : MonoBehaviour
     }
     IEnumerator RuralBuildingAnimationStart()
     {
+        yield return null;
+        abort = false;
         StartCoroutine(CoastalBuildingAnimationStop());
         StartCoroutine(BuildingOnClickAnimationStop());
         while (ruralBuildings.transform.localPosition.y < -420)
         {
+            // down previouslyActive
+            switch(PreviouslyActive)
+            {
+                case ActiveBar.Coastal:
+                    // go down logic
+                    break;
+            }
+
+
+            // up currentlyActive
+            switch (currentlyActive)
+            {
+                case ActiveBar.Coastal:
+                    // go up logic
+                    break;
+            }
+
             Vector3 buildingAnimationPosition;
             buildingAnimationPosition = ruralBuildings.transform.localPosition;
             animationSpeed += 0.1f;
@@ -101,6 +131,9 @@ public class ClickableBarPopup : MonoBehaviour
             {
                 ruralBuildings.transform.localPosition = buildingAnimationPosition;
             }
+
+            if(abort)
+                break;
             yield return null;
         }
     }
