@@ -534,7 +534,7 @@ GameObject:
   - component: {fileID: 1979351096406679000}
   - component: {fileID: 771241309272490141}
   m_Layer: 5
-  m_Name: StatBar (3)
+  m_Name: creaturesfill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1739,6 +1739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b80be42fbdaca147a96c9d23318d36b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onBuildingDestroy: {fileID: 0}
   blockerImage: {fileID: 6536734136791585919}
   blockerText: {fileID: 1900001782523437133}
   objectives: {fileID: 2534867637074462815}
@@ -1766,17 +1767,45 @@ MonoBehaviour:
   minusSprite: {fileID: 21300000, guid: 580df8573909bff4896e179cb2288b37, type: 3}
   questList:
   - buildingType: 2
-    buildOrDestroy: 0
-    buildHowMany: 3
-    maxTimeInSeconds: 30
-    waitTimeInSeconds: 10
+    buildOrDestroy: 1
+    buildHowMany: 2
+    maxTimeInSeconds: 20
+    waitTimeInSeconds: 15
     addReward: 1
     reward: 2
+  - buildingType: 0
+    buildOrDestroy: 0
+    buildHowMany: 3
+    maxTimeInSeconds: 25
+    waitTimeInSeconds: 15
+    addReward: 1
+    reward: 2
+  - buildingType: 5
+    buildOrDestroy: 0
+    buildHowMany: 2
+    maxTimeInSeconds: 25
+    waitTimeInSeconds: 15
+    addReward: 1
+    reward: 1
+  - buildingType: 1
+    buildOrDestroy: 0
+    buildHowMany: 3
+    maxTimeInSeconds: 25
+    waitTimeInSeconds: 15
+    addReward: 1
+    reward: 2
+  - buildingType: 0
+    buildOrDestroy: 1
+    buildHowMany: 2
+    maxTimeInSeconds: 25
+    waitTimeInSeconds: 15
+    addReward: 0
+    reward: 0
   - buildingType: 4
     buildOrDestroy: 0
-    buildHowMany: 4
-    maxTimeInSeconds: 30
-    waitTimeInSeconds: 10
+    buildHowMany: 2
+    maxTimeInSeconds: 25
+    waitTimeInSeconds: 60
     addReward: 0
     reward: 0
 --- !u!1 &2766883279786236331
@@ -3109,7 +3138,7 @@ GameObject:
   - component: {fileID: 7943007562220267717}
   - component: {fileID: 2409113065059080712}
   m_Layer: 5
-  m_Name: StatBar (3)
+  m_Name: naturefill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4242,7 +4271,7 @@ GameObject:
   - component: {fileID: 2584030746584936701}
   - component: {fileID: 8346910766071308045}
   m_Layer: 5
-  m_Name: StatBar (3)
+  m_Name: pollutionfill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
