@@ -295,10 +295,10 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="Ookii.Dialogs">
-      <HintPath>D:/Perforce/Project-Showoff/ProjectShowoff/Assets/Profiler/Editor/StandaloneFileBrowser/Plugins/Ookii.Dialogs.dll</HintPath>
+      <HintPath>D:/Perforce/Project-Showoff/ProjectShowoff/Assets/Profiler/StandaloneFileBrowser/Plugins/Ookii.Dialogs.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Forms">
-      <HintPath>D:/Perforce/Project-Showoff/ProjectShowoff/Assets/Profiler/Editor/StandaloneFileBrowser/Plugins/System.Windows.Forms.dll</HintPath>
+      <HintPath>D:/Perforce/Project-Showoff/ProjectShowoff/Assets/Profiler/StandaloneFileBrowser/Plugins/System.Windows.Forms.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.NRefactory">
       <HintPath>D:/Perforce/Project-Showoff/ProjectShowoff/Library/PackageCache/com.unity.render-pipelines.core@7.3.1/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>

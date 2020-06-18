@@ -514,7 +514,7 @@ MonoBehaviour:
   maxStartText: {fileID: 316875334}
   timeStartSlider: {fileID: 25633334}
   startStamp: 0
-  displayStamps: 10
+  displayStamps: 0
 --- !u!114 &133353267
 MonoBehaviour:
   m_ObjectHideFlags: 0

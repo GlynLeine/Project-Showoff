@@ -76,6 +76,8 @@ public class BarGraph : MonoBehaviour
         timeStartSlider.minValue = 0;
         timeStartSlider.maxValue = profile.timeMap.Length - displayStamps;
 
+        display.totalTime = 0f;
+
         for (int j = startStamp; j < startStamp + displayStamps; j++)
         {
             int startIndex = profile.timeMap[j];
@@ -92,8 +94,14 @@ public class BarGraph : MonoBehaviour
                 Slider slider = bar.GetComponent<Slider>();
                 slider.value = profile.deltaTimes[i] / profile.maxDelta;
                 slider.colors = new ColorBlock() { disabledColor = new Color(slider.value, 1f - slider.value, 0), colorMultiplier = 1f };
+
+                Text text = bar.GetComponentInChildren<Text>();
+                text.text = profile.deltaTimes[i].ToString("N3");
+
                 LayoutElement layout = bar.GetComponent<LayoutElement>();
                 layout.preferredWidth = profile.deltaTimes[i];
+
+                display.totalTime += profile.deltaTimes[i];
             }
 
             if (j + 1 < startStamp + displayStamps)
@@ -101,6 +109,10 @@ public class BarGraph : MonoBehaviour
                 GameObject seperator = Instantiate(graphSeperatorPrefab, graphArea);
                 LayoutElement layout = seperator.GetComponent<LayoutElement>();
                 layout.preferredWidth = profile.timeStamps[j + 1] - profile.timeStamps[j];
+
+                Text text = seperator.GetComponentInChildren<Text>();
+                text.text = layout.preferredWidth.ToString("N3");
+                display.totalTime += layout.preferredWidth;
             }
         }
 
