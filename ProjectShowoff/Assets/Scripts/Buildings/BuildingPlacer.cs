@@ -15,44 +15,17 @@ public class BuildingPlacer : MonoBehaviour
     public float natureEffect;
     public float pollutionEffect;
     public float industryEffect;
-
-    public float cooldownEffect;
-
-    private static float timeBuffer;
-
-    private static bool locked;
+    public float happinessEffect;
 
     private BuildingSystem system;
 
     private void Start()
     {
-        locked = false;
         system = FindObjectOfType<BuildingSystem>();
     }
 
     public void Place()
     {
         system.PlaceBuilding(this);
-    }
-
-    IEnumerator Unlock()
-    {
-        yield return null;
-        while (locked)
-        {
-            timeBuffer += GameManager.deltaTime;
-            if (timeBuffer >= GameManager.coolDown)
-            {
-                timeBuffer -= GameManager.coolDown;
-                locked = false;
-            }
-            yield return null;
-        }
-
-    }
-
-    private void Update()
-    {
-        button.interactable = !locked;
     }
 }
