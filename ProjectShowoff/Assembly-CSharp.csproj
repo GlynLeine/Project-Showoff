@@ -103,6 +103,7 @@
      <Compile Include="Assets\Scripts\UI\MainCanvas\ClickableBarPopup.cs" />
      <Compile Include="Assets\Scripts\UI\MainCanvas\PlanetReset.cs" />
      <Compile Include="Assets\Scripts\UI\MainCanvas\QuestSystem.cs" />
+     <Compile Include="Assets\Scripts\UI\MainCanvas\StatBarScript.cs" />
      <Compile Include="Assets\Scripts\UI\MainCanvas\StatDisplay.cs" />
      <Compile Include="Assets\Scripts\UI\MainCanvas\TutorialRotator.cs" />
      <Compile Include="Assets\Scripts\UI\MainCanvas\TutorialScript.cs" />

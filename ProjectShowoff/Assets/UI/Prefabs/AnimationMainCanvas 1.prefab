@@ -1832,6 +1832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b80be42fbdaca147a96c9d23318d36b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onBuildingDestroy: {fileID: 0}
   blockerImage: {fileID: 0}
   blockerText: {fileID: 0}
   objectives: {fileID: 0}
