@@ -11,7 +11,11 @@ public class QuestSystem : MonoBehaviour
     private int counterValue = 0;
     private int maxCounterValue;
     private float waitTime = 0;
+    private int forLoopInt = 0;
     private string timerValue;
+    private string rewardPlusMinus;
+    private bool English;
+    private string dutchReward;
     public GameObject blockerImage;
     public TMP_Text blockerText;
     public TMP_Text objectives;
@@ -36,11 +40,10 @@ public class QuestSystem : MonoBehaviour
     public Sprite trainSprite;
     public Sprite plusSprite;
     public Sprite minusSprite;
-    private bool English;
 
     public enum RewardChoice
     {
-        Pollution,Nature,Happiness
+        Pollution,Nature,Happiness,Industry
     }
     public enum BuildOrDestroy
     {
@@ -91,6 +94,7 @@ public class QuestSystem : MonoBehaviour
         for (int i = 0; i < questList.Length; i++)
         {
             blockerImage.SetActive(false);
+            forLoopInt = i;
             if (questList[i].buildOrDestroy == BuildOrDestroy.Build)
             {
                 buildingOrDestroy.sprite = buildSprite;
@@ -147,10 +151,9 @@ public class QuestSystem : MonoBehaviour
             }
             StartCoroutine(TempUpdate());
             yield return new WaitForSeconds(waitTime);
-            QuestDone();
             if (counterValue < maxCounterValue)
             {
-                //taskText.text = "Productivity decreased!";
+                QuestDone();
             }
             yield return new WaitForSeconds(questList[i].waitTimeInSeconds);
         }
@@ -159,6 +162,112 @@ public class QuestSystem : MonoBehaviour
     public void QuestDone()
     {
         blockerImage.SetActive(true);
+        if (counterValue >= maxCounterValue)
+        {
+            if (questList[forLoopInt].addReward)
+            {
+                if (English)
+                {
+                    rewardPlusMinus = "increased";
+                }
+                else
+                {
+                    rewardPlusMinus = "is gestegen";
+                }
+                if (questList[forLoopInt].reward == RewardChoice.Happiness)
+                {
+                    dutchReward = "Blijdschap";
+                    GameManager.happiness += 8;
+                }
+                else if (questList[forLoopInt].reward == RewardChoice.Nature)
+                {
+                    dutchReward = "Natuur";
+                    GameManager.nature += 50;
+                }
+                else if (questList[forLoopInt].reward == RewardChoice.Industry){
+                 dutchReward = "Technologie";
+                 GameManager.industry += 2;
+                }
+            }
+            else
+            {
+                if (English)
+                {
+                    rewardPlusMinus = "decreased";
+                }
+                else
+                {
+                    rewardPlusMinus = "is gedaald";
+                }
+                if (questList[forLoopInt].reward == RewardChoice.Pollution)
+                {
+                    dutchReward = "Vervuiling";
+                    GameManager.pollution -= 100;
+                }
+            }
+
+            if (English)
+            {
+                blockerText.text = "Success! " + questList[forLoopInt].reward + " " + rewardPlusMinus + "!";
+            }
+            else
+            {
+                blockerText.text = "Succes! " + dutchReward + " " + rewardPlusMinus + "!";
+            }
+        }
+        else
+        {
+            
+            if (questList[forLoopInt].addReward)
+            {
+                if (questList[forLoopInt].reward == RewardChoice.Happiness)
+                {
+                    dutchReward = "Blijdschap";
+                    GameManager.happiness -= 6;
+                }
+                else if (questList[forLoopInt].reward == RewardChoice.Nature)
+                {
+                    dutchReward = "Natuur";
+                    GameManager.nature -= 25;
+                }
+                else if (questList[forLoopInt].reward == RewardChoice.Industry){
+                 dutchReward = "Technologie";
+                 GameManager.industry -= 1;
+                }
+                if (English)
+                {
+                    rewardPlusMinus = "decreased";
+                }
+                else
+                {
+                    rewardPlusMinus = "is gedaald";
+                }
+            }
+            else
+            {
+                if (English)
+                {
+                    rewardPlusMinus = "increased";
+                }
+                else
+                {
+                    rewardPlusMinus = "is gestegen";
+                }
+                if (questList[forLoopInt].reward == RewardChoice.Pollution)
+                {
+                    dutchReward = "Vervuiling";
+                    GameManager.pollution += 100;
+                }
+            }
+            if (English)
+            {
+                blockerText.text = "Oh no! " + questList[forLoopInt].reward + " " + rewardPlusMinus + "!";
+            }
+            else
+            {
+                blockerText.text = "Oh jee! " + dutchReward + " " + rewardPlusMinus + "!";
+            }
+        }
     }
     private void OnBuildingPlaced(BuildingLocation location, BuildingPlacer buildingData, Building building)
     {

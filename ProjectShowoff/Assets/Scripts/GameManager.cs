@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static float nature;
     public static float pollution;
     public static float industry;
+    public static float happiness;
 
     public static int buildingsPlaced;
     public static int buildingsDestroyed;
@@ -32,6 +33,9 @@ public class GameManager : MonoBehaviour
     public Text debugText;
     public Material masterMaterial;
     static Material masterMat;
+
+    public Material treeMaterial;
+    static Material treeMat;
 
     public Shader tesselationShader;
     public Shader webGLShader;
@@ -64,6 +68,7 @@ public class GameManager : MonoBehaviour
     {
         season = seasonTime;
         masterMat.SetFloat("_SeasonTime", seasonTime);
+        treeMat.SetFloat("_SeasonTime", seasonTime);
     }
 
     static public void SetOzoneState(float ozoneState)
@@ -82,19 +87,23 @@ public class GameManager : MonoBehaviour
     {
         climate = climateState;
         masterMat.SetFloat("_Pollution", climateState);
+        treeMat.SetFloat("_Pollution", climateState);
     }
 
-    static public void AddState(float natureEffect, float pollutionEffect, float industryEffect)
+    static public void AddState(float natureEffect, float pollutionEffect, float industryEffect, float happinessEffect)
     {
         nature += natureEffect;
         pollution += pollutionEffect;
         industry += industryEffect;
+        happiness += happinessEffect;
     }
 
     private void Awake()
     {
         if (masterMat == null)
             masterMat = masterMaterial;
+        if (treeMat == null)
+            treeMat = treeMaterial;
         if (ozoneMat == null)
             ozoneMat = ozoneMaterial;
         if (cloudMat == null)
@@ -128,6 +137,7 @@ public class GameManager : MonoBehaviour
         nature = 50f;
         pollution = 0f;
         industry = 0f;
+        happiness = 0f;
 
         buildingsPlaced = 0;
         buildingsDestroyed = 0;
@@ -172,6 +182,8 @@ public class GameManager : MonoBehaviour
 
             pollution = Mathf.Clamp(pollution - (nature / 50f) * (deltaTime / 5f) * 4f, 0, float.MaxValue);
 
+            happiness = Mathf.Clamp(happiness - (0.05f * (pollution / 100f) * (deltaTime / 5f)), 0, float.MaxValue);
+
             if (pollution < minPollution)
                 minPollution = pollution;
 
@@ -187,7 +199,7 @@ public class GameManager : MonoBehaviour
             SetClimateState(smoothstep(100f, 3000f, pollution));
 
             float linearScale = smoothstep(0, 2000f, pollution);
-            SetOzoneState(1f - Mathf.Pow(1f-linearScale, 2f));
+            SetOzoneState(1f - Mathf.Pow(1f - linearScale, 2f));
 
             SetCloudState(smoothstep(-1000f, 3000f, pollution));
         }
@@ -202,6 +214,7 @@ public class GameManager : MonoBehaviour
             debugText.text = "nature: " + nature;
             debugText.text += "\npollution: " + pollution;
             debugText.text += "\nindustry: " + industry;
+            debugText.text += "\nhappiness: " + happiness;
             debugText.text += "\nfps: " + 1f / Time.deltaTime;
             debugText.text += "\nframetime: " + Time.deltaTime;
             debugText.text += "\ngraphics device: " + SystemInfo.graphicsDeviceType.ToString();
