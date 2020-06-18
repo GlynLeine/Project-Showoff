@@ -31,8 +31,8 @@ public class TrainStation : MonoBehaviour
             else if (lvl > 1)
             {
                 trainStation.SetActive(false);
-                airPort.SetActive(true);
-                spaceCenter.SetActive(false);
+                airPort.SetActive(false);
+                spaceCenter.SetActive(true);
             }
         }
     }
