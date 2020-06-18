@@ -16,6 +16,8 @@ public class QuestSystem : MonoBehaviour
     private string rewardPlusMinus;
     private bool English;
     private string dutchReward;
+    private bool onBuildingPlacedCalled;
+    public Button onBuildingDestroy;
     public GameObject blockerImage;
     public TMP_Text blockerText;
     public TMP_Text objectives;
@@ -43,7 +45,7 @@ public class QuestSystem : MonoBehaviour
 
     public enum RewardChoice
     {
-        Pollution,Nature,Happiness
+        Pollution,Nature,Happiness,Industry
     }
     public enum BuildOrDestroy
     {
@@ -81,7 +83,6 @@ public class QuestSystem : MonoBehaviour
             objectives.text = "Taken";
         }
         StartCoroutine(QuestQueueSystem());
-        BuildingSystem.onBuildingPlaced += OnBuildingPlaced;
     }
 
     private void OnDisable()
@@ -109,6 +110,17 @@ public class QuestSystem : MonoBehaviour
             maxCounterValue = questList[i].buildHowMany;
             waitTime = questList[i].maxTimeInSeconds;
             counterText.text = "X" + (maxCounterValue - counterValue);
+            if (questList[i].buildOrDestroy == BuildOrDestroy.Build)
+            {
+                onBuildingPlacedCalled = true;
+                BuildingSystem.onBuildingPlaced += OnBuildingPlaced;
+            }
+            else if (questList[i].buildOrDestroy == BuildOrDestroy.Destroy)
+            {
+                onBuildingPlacedCalled = false;
+                BuildingSystem.onBuildingDestroyed += OnBuildingDestroyed;
+            }
+
             if (questList[i].buildingType == BuildingType.Factory)
             {
                 buildingIcon.sprite = factorySprite;
@@ -151,6 +163,8 @@ public class QuestSystem : MonoBehaviour
             }
             StartCoroutine(TempUpdate());
             yield return new WaitForSeconds(waitTime);
+            BuildingSystem.onBuildingPlaced -= OnBuildingPlaced;
+            BuildingSystem.onBuildingDestroyed -= OnBuildingDestroyed;
             if (counterValue < maxCounterValue)
             {
                 QuestDone();
@@ -177,17 +191,17 @@ public class QuestSystem : MonoBehaviour
                 if (questList[forLoopInt].reward == RewardChoice.Happiness)
                 {
                     dutchReward = "Blijdschap";
-                    //increase happiness
+                    GameManager.happiness += 8;
                 }
                 else if (questList[forLoopInt].reward == RewardChoice.Nature)
                 {
                     dutchReward = "Natuur";
-                    //increase nature
+                    GameManager.nature += 50;
                 }
-                /*else if (questList[forLoopInt].reward == RewardChoice.Industry){
+                else if (questList[forLoopInt].reward == RewardChoice.Industry){
                  dutchReward = "Technologie";
-                //increase industry
-                }*/
+                 GameManager.industry += 2;
+                }
             }
             else
             {
@@ -202,7 +216,7 @@ public class QuestSystem : MonoBehaviour
                 if (questList[forLoopInt].reward == RewardChoice.Pollution)
                 {
                     dutchReward = "Vervuiling";
-                    //decrease pollution
+                    GameManager.pollution -= 100;
                 }
             }
 
@@ -223,17 +237,17 @@ public class QuestSystem : MonoBehaviour
                 if (questList[forLoopInt].reward == RewardChoice.Happiness)
                 {
                     dutchReward = "Blijdschap";
-                    //decrease happiness
+                    GameManager.happiness -= 6;
                 }
                 else if (questList[forLoopInt].reward == RewardChoice.Nature)
                 {
                     dutchReward = "Natuur";
-                    //decrease nature
+                    GameManager.nature -= 25;
                 }
-                /*else if (questList[forLoopInt].reward == RewardChoice.Industry){
+                else if (questList[forLoopInt].reward == RewardChoice.Industry){
                  dutchReward = "Technologie";
-                //decrease industry
-                }*/
+                 GameManager.industry -= 1;
+                }
                 if (English)
                 {
                     rewardPlusMinus = "decreased";
@@ -256,7 +270,7 @@ public class QuestSystem : MonoBehaviour
                 if (questList[forLoopInt].reward == RewardChoice.Pollution)
                 {
                     dutchReward = "Vervuiling";
-                    //increase pollution
+                    GameManager.pollution += 100;
                 }
             }
             if (English)
@@ -272,6 +286,19 @@ public class QuestSystem : MonoBehaviour
     private void OnBuildingPlaced(BuildingLocation location, BuildingPlacer buildingData, Building building)
     {
         if (buildingData.buildingType == SelectedBuildingType)
+        {
+            counterValue += 1;
+            counterText.text = "X" + (maxCounterValue - counterValue);
+            if (counterValue == maxCounterValue)
+            {
+                QuestDone();
+            }
+        }    
+    }
+
+    private void OnBuildingDestroyed(BuildingLocation location, BuildingPlacer buildingData, Building building)
+    {
+        if (building.buildingType == SelectedBuildingType)
         {
             counterValue += 1;
             counterText.text = "X" + (maxCounterValue - counterValue);
