@@ -62,7 +62,7 @@ public class ClickableBarPopup : MonoBehaviour
     {
         if (buildingSystem.selectedLocation.Harbor == null)
             harbour.SetActive(false);
-        else if(tutorialScript.tutorialBuildStep)
+        else if (tutorialScript.tutorialBuildStep)
             harbour.SetActive(true);
 
         StartCoroutine(CoastalBuildingAnimationStart());
@@ -75,13 +75,13 @@ public class ClickableBarPopup : MonoBehaviour
     {
         if (building.effectPeriod > 0)
         {
-            statDisplay.SetHappiness(building.industryEffect / building.effectPeriod);
-            statDisplay.SetPollution(building.pollutionEffect - building.natureRemovalEffect / building.effectPeriod);
+            statDisplay.SetHappiness(building.industryRemovalEffect / 2f);
+            statDisplay.SetPollution((building.pollutionEffect - building.natureRemovalEffect) / building.effectPeriod);
         }
         else
         {
-            statDisplay.SetHappiness(0);
-            statDisplay.SetPollution(0);
+            statDisplay.SetHappiness(building.industryRemovalEffect / 2f);
+            statDisplay.SetPollution(-building.natureRemovalEffect);
         }
         StartCoroutine(BuildingOnClickAnimationStart());
     }

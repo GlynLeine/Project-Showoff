@@ -299,7 +299,7 @@ public class BuildingSystem : MonoBehaviour
 
         characterSystem.DespawnCharacter(location);
 
-        GameManager.AddState(-building.natureRemovalEffect, -building.pollutionRemovalEffect, -building.industryRemovalEffect);
+        GameManager.AddState(-building.natureRemovalEffect, -building.pollutionRemovalEffect, -building.industryRemovalEffect, - building.happinessRemovalEffect);
 
         return true;
     }
@@ -588,6 +588,7 @@ public class BuildingSystem : MonoBehaviour
         building.natureRemovalEffect = buildingData.natureEffect;
         building.pollutionRemovalEffect = buildingData.pollutionEffect;
         building.industryRemovalEffect = buildingData.industryEffect;
+        building.happinessRemovalEffect = buildingData.happinessEffect;
 
         SetLocationState(location, LocationState.Closed);
 
@@ -601,7 +602,7 @@ public class BuildingSystem : MonoBehaviour
                 location.roads[neighbour].gameObject.SetActive(true);
             }
 
-        GameManager.AddState(buildingData.natureEffect, buildingData.pollutionEffect, buildingData.industryEffect);
+        GameManager.AddState(buildingData.natureEffect, buildingData.pollutionEffect, buildingData.industryEffect, buildingData.happinessEffect);
         characterSystem.SpawnCharacter(location);
 
         if (buildingData.natureEffect > 0)

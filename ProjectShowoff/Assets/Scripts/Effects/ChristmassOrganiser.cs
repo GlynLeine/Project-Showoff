@@ -21,7 +21,8 @@ public class ChristmassOrganiser : MonoBehaviour
         while (GameManager.season < 0.8f)
             yield return null;
 
-        foreach(ChristmassTree tree in trees)
-            tree.gameObject.SetActive(true);
+        if (GameManager.industry >= 20f)
+            foreach (ChristmassTree tree in trees)
+                tree.gameObject.SetActive(true);
     }
 }

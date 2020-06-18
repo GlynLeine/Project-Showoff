@@ -146,7 +146,7 @@
 
 					float3 toThis = SafeNormalize(vertexInput.positionWS - _WorldCenter.xyz);
 
-					output.snowy = clamp(pow(clamp(dot(toThis, vertexNormalInput.normalWS), 0, 1), _SnowThreshold), 0.0, 1.0) * smoothstep(2.0 / 3.0, 1.0, _SeasonTime);
+					output.snowy = pow(clamp(dot(toThis, vertexNormalInput.normalWS), 0, 1), _SnowThreshold) * smoothstep(2.0 / 3.0, 1.0, _SeasonTime);
 
 					float snowFactor = clamp(snoise(float2(dot(output.normalWS, float3(0.0, 1.0, 0.0)), dot(output.normalWS, float3(1.0, 0.0, 0.0))) * _NoiseScale), 0.0, 1.0);
 					snowFactor = clamp(snowFactor + lerp(1.0, -1.0, _Pollution), 0.0, 1.0);

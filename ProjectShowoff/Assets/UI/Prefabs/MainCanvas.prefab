@@ -1073,8 +1073,8 @@ MonoBehaviour:
   button: {fileID: 8390605371031302068}
   natureEffect: 0
   pollutionEffect: 4
-  industryEffect: 1
-  cooldownEffect: -0.05
+  industryEffect: 2
+  happinessEffect: 2
 --- !u!114 &519313145166615632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2312,7 +2312,7 @@ MonoBehaviour:
   natureEffect: 0
   pollutionEffect: 0
   industryEffect: 1
-  cooldownEffect: -0.05
+  happinessEffect: 4
 --- !u!114 &1965620292275756017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4983,7 +4983,7 @@ MonoBehaviour:
   natureEffect: 25
   pollutionEffect: 0
   industryEffect: 0
-  cooldownEffect: 0
+  happinessEffect: 2
 --- !u!114 &9039077146645611166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5512,7 +5512,7 @@ MonoBehaviour:
   natureEffect: 0
   pollutionEffect: 0
   industryEffect: 1
-  cooldownEffect: 0
+  happinessEffect: 4
 --- !u!114 &538938839970897234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6584,8 +6584,8 @@ MonoBehaviour:
   button: {fileID: 8872052277241891094}
   natureEffect: 0
   pollutionEffect: 4
-  industryEffect: 1
-  cooldownEffect: -0.05
+  industryEffect: 2
+  happinessEffect: 2
 --- !u!114 &6125047934237583473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7864,7 +7864,7 @@ MonoBehaviour:
   natureEffect: 0
   pollutionEffect: 0
   industryEffect: 1
-  cooldownEffect: 0
+  happinessEffect: 3
 --- !u!114 &2939018981580030789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8494,7 +8494,7 @@ MonoBehaviour:
   natureEffect: 0
   pollutionEffect: 0
   industryEffect: 1
-  cooldownEffect: -0.05
+  happinessEffect: 0
 --- !u!114 &8235950987674732319
 MonoBehaviour:
   m_ObjectHideFlags: 0
