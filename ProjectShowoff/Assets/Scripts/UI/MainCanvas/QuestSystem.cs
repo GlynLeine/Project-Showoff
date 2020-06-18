@@ -11,7 +11,9 @@ public class QuestSystem : MonoBehaviour
     private int counterValue = 0;
     private int maxCounterValue;
     private float waitTime = 0;
+    private int forLoopInt = 0;
     private string timerValue;
+    private string rewardPlusMinus;
     public GameObject blockerImage;
     public TMP_Text blockerText;
     public TMP_Text objectives;
@@ -91,6 +93,7 @@ public class QuestSystem : MonoBehaviour
         for (int i = 0; i < questList.Length; i++)
         {
             blockerImage.SetActive(false);
+            forLoopInt = i;
             if (questList[i].buildOrDestroy == BuildOrDestroy.Build)
             {
                 buildingOrDestroy.sprite = buildSprite;
@@ -147,10 +150,10 @@ public class QuestSystem : MonoBehaviour
             }
             StartCoroutine(TempUpdate());
             yield return new WaitForSeconds(waitTime);
-            QuestDone();
+            blockerImage.SetActive(true);
             if (counterValue < maxCounterValue)
             {
-                //taskText.text = "Productivity decreased!";
+                QuestDone();
             }
             yield return new WaitForSeconds(questList[i].waitTimeInSeconds);
         }
@@ -158,7 +161,30 @@ public class QuestSystem : MonoBehaviour
 
     public void QuestDone()
     {
-        blockerImage.SetActive(true);
+        if (counterValue >= maxCounterValue)
+        {
+            if (questList[forLoopInt].addReward)
+            {
+                rewardPlusMinus = "increased";
+            }
+            else
+            {
+                rewardPlusMinus = "decreased";
+            }
+            blockerText.text = "Success!" + questList[forLoopInt].reward + rewardPlusMinus + "!";
+        }
+        else
+        {
+            if (questList[forLoopInt].addReward)
+            {
+                rewardPlusMinus = "decreased";
+            }
+            else
+            {
+                rewardPlusMinus = "increased";
+            }
+            blockerText.text = "Oh no!" + questList[forLoopInt].reward + rewardPlusMinus + "!";
+        }
     }
     private void OnBuildingPlaced(BuildingLocation location, BuildingPlacer buildingData, Building building)
     {
