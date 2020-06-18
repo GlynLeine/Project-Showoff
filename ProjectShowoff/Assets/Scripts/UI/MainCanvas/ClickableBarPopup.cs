@@ -114,11 +114,6 @@ public class ClickableBarPopup : MonoBehaviour
                 {
                     ruralBuildings.transform.localPosition = buildingAnimationPosition;
                 }
-
-                if (ruralStopActive)
-                {
-                    break;
-                }
                 yield return null;
             }
             ruralStartActive = false;
@@ -146,7 +141,10 @@ public class ClickableBarPopup : MonoBehaviour
                 {
                     ruralBuildings.transform.localPosition = buildingAnimationPosition;
                 }
-
+                if (ruralStartActive)
+                {
+                    break;
+                }
                 yield return null;
             }
 
@@ -177,10 +175,6 @@ public class ClickableBarPopup : MonoBehaviour
                 {
                     coastalBuildings.transform.localPosition = buildingAnimationPosition;
                 }
-                if (coastalStopActive)
-                {
-                    break;
-                }
                 yield return null;
             }
             coastalStartActive = false;
@@ -207,6 +201,10 @@ public class ClickableBarPopup : MonoBehaviour
                 else
                 {
                     coastalBuildings.transform.localPosition = buildingAnimationPosition;
+                }
+                if (coastalStartActive)
+                {
+                    break;
                 }
                 yield return null;
             }
@@ -237,10 +235,6 @@ public class ClickableBarPopup : MonoBehaviour
                 {
                     destroyBar.transform.localPosition = buildingAnimationPosition;
                 }
-                if (destroyStopActive)
-                {
-                    break;
-                }
                 yield return null;
             }
             destroyStartActive = false;
@@ -268,6 +262,10 @@ public class ClickableBarPopup : MonoBehaviour
                 else
                 {
                     destroyBar.transform.localPosition = buildingAnimationPosition;
+                }
+                if (destroyStartActive)
+                {
+                    break;
                 }
                 yield return null;
             }
