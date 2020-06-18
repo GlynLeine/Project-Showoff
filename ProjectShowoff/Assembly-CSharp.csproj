@@ -97,6 +97,8 @@
     <Compile Include="Assets\Scripts\Effects\IceCaps.cs" />
     <Compile Include="Assets\Scripts\Effects\PollutionSpheres.cs" />
     <Compile Include="Assets\Scripts\Effects\Snow.cs" />
+    <Compile Include="Assets\Scripts\Effects\Technology.cs" />
+    <Compile Include="Assets\Scripts\Effects\TrainStation.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\UI\EndScreen\EndScreenCounter.cs" />
     <Compile Include="Assets\Scripts\UI\EndScreen\EndScreenCounterWater.cs" />
@@ -110,6 +112,7 @@
     <Compile Include="Assets\Scripts\UI\MainCanvas\ClickableBarPopup.cs" />
     <Compile Include="Assets\Scripts\UI\MainCanvas\PlanetReset.cs" />
     <Compile Include="Assets\Scripts\UI\MainCanvas\QuestSystem.cs" />
+    <Compile Include="Assets\Scripts\UI\MainCanvas\StatBarScript.cs" />
     <Compile Include="Assets\Scripts\UI\MainCanvas\StatDisplay.cs" />
     <Compile Include="Assets\Scripts\UI\MainCanvas\TutorialRotator.cs" />
     <Compile Include="Assets\Scripts\UI\MainCanvas\TutorialScript.cs" />
