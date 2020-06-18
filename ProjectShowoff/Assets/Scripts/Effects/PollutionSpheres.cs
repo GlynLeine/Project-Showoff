@@ -20,7 +20,13 @@ public class PollutionSpheres : MonoBehaviour
     void OnBuildingPlaced(BuildingLocation location, BuildingPlacer buildingData, Building building)
     {
         if (buildingData.buildingType == BuildingType.Factory || buildingData.buildingType == BuildingType.CoalMine)
-            Instantiate(pollutionSpherePrefab, location.transform);
+        {
+            foreach (Transform child in building.transform)
+                if (child.tag == "PollutionSphere")
+                    return;
+
+            Instantiate(pollutionSpherePrefab, building.transform);
+        }
     }
 
     private void Update()
