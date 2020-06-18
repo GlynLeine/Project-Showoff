@@ -43,7 +43,7 @@ public class QuestSystem : MonoBehaviour
 
     public enum RewardChoice
     {
-        Pollution,Nature,Happiness
+        Pollution,Nature,Happiness,Industry
     }
     public enum BuildOrDestroy
     {
@@ -177,17 +177,17 @@ public class QuestSystem : MonoBehaviour
                 if (questList[forLoopInt].reward == RewardChoice.Happiness)
                 {
                     dutchReward = "Blijdschap";
-                    //increase happiness
+                    GameManager.happiness += 8;
                 }
                 else if (questList[forLoopInt].reward == RewardChoice.Nature)
                 {
                     dutchReward = "Natuur";
-                    //increase nature
+                    GameManager.nature += 50;
                 }
-                /*else if (questList[forLoopInt].reward == RewardChoice.Industry){
+                else if (questList[forLoopInt].reward == RewardChoice.Industry){
                  dutchReward = "Technologie";
-                //increase industry
-                }*/
+                 GameManager.industry += 2;
+                }
             }
             else
             {
@@ -202,7 +202,7 @@ public class QuestSystem : MonoBehaviour
                 if (questList[forLoopInt].reward == RewardChoice.Pollution)
                 {
                     dutchReward = "Vervuiling";
-                    //decrease pollution
+                    GameManager.pollution -= 100;
                 }
             }
 
@@ -223,17 +223,17 @@ public class QuestSystem : MonoBehaviour
                 if (questList[forLoopInt].reward == RewardChoice.Happiness)
                 {
                     dutchReward = "Blijdschap";
-                    //decrease happiness
+                    GameManager.happiness -= 6;
                 }
                 else if (questList[forLoopInt].reward == RewardChoice.Nature)
                 {
                     dutchReward = "Natuur";
-                    //decrease nature
+                    GameManager.nature -= 25;
                 }
-                /*else if (questList[forLoopInt].reward == RewardChoice.Industry){
+                else if (questList[forLoopInt].reward == RewardChoice.Industry){
                  dutchReward = "Technologie";
-                //decrease industry
-                }*/
+                 GameManager.industry -= 1;
+                }
                 if (English)
                 {
                     rewardPlusMinus = "decreased";
@@ -256,7 +256,7 @@ public class QuestSystem : MonoBehaviour
                 if (questList[forLoopInt].reward == RewardChoice.Pollution)
                 {
                     dutchReward = "Vervuiling";
-                    //increase pollution
+                    GameManager.pollution += 100;
                 }
             }
             if (English)
