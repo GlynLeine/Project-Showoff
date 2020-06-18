@@ -25,7 +25,7 @@ public class Snow : MonoBehaviour
         while (GameManager.season < 1f)
         {
             float snowRate = GameManager.smoothstep(0.7f, 1f, GameManager.season);
-            snowEffect.SetFloat("SnowRate", GameManager.lerp(0, snowRate * snowRate, GameManager.climate));
+            snowEffect.SetFloat("SnowRate", GameManager.lerp(snowRate * snowRate, 0, GameManager.climate));
             yield return null;
         }
 

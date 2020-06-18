@@ -7167,7 +7167,7 @@ MonoBehaviour:
   coastalBuildings: {fileID: 9001626134141880646}
   questBoxImage: {fileID: 3415754310035426241}
   tutorialBuildStep: 0
-  tutorialSkip: 1
+  tutorialSkip: 0
 --- !u!114 &3744976374586019810
 MonoBehaviour:
   m_ObjectHideFlags: 0

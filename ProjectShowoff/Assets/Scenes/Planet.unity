@@ -8889,6 +8889,7 @@ GameObject:
   - component: {fileID: 1234615122}
   - component: {fileID: 1234615123}
   - component: {fileID: 1234615124}
+  - component: {fileID: 1234615125}
   m_Layer: 10
   m_Name: Effects
   m_TagString: Untagged
@@ -9004,6 +9005,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snowEffectPrefab: {fileID: 7328600759295643187, guid: 3eefb68e8e71e2642b5a1fc89eb22cbf,
     type: 3}
+--- !u!114 &1234615125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234615117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ce9af1dea7de544c96f10bca74cdede, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1237391434
 GameObject:
   m_ObjectHideFlags: 0
