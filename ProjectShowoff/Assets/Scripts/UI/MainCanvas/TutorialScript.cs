@@ -63,10 +63,14 @@ public class TutorialScript : MonoBehaviour
             tutorialZoomStep = true;
             tutorialRotationStep = true;
             GameManager.paused = false;
+            tutorialBuildingCheckStep = true;
+            tutorialDestroyStep = true;
+            StartCoroutine(QuestChanger());
             StartCoroutine(TimerAnimationStart());
             StartCoroutine(ResetAnimationStart());
             StartCoroutine(SliderAnimationStart());
-            StartCoroutine(HandAnimation());
+            BuildingSystem.onBuildingPlaced -= OnBuildingPlaced;
+
         }
     }
 
@@ -84,23 +88,25 @@ public class TutorialScript : MonoBehaviour
         {
             English = true;
         }
-        tutorialArrow.SetActive(false);
-        tutorialHand.SetActive(false);
-        tutorialRotationStep = true;
-        foreach (Transform child in ruralBuildings.transform)
+        if (!tutorialSkip)
         {
-            if (child.gameObject.name != "Factory")
+            tutorialArrow.SetActive(false);
+            tutorialHand.SetActive(false);
+            tutorialRotationStep = true;
+            foreach (Transform child in ruralBuildings.transform)
             {
-                child.gameObject.SetActive(false);
+                if (child.gameObject.name != "Factory")
+                {
+                    child.gameObject.SetActive(false);
+                }
             }
-        }
-
-        if (English)
-        {
-            questBoxTextTMP.text = "Click on the purple dome and place a factory there!";
-        } else
-        {
-            questBoxTextTMP.text = "Klik op de paarse cirkel en plaats daar een fabriek!";
+            if (English)
+            {
+                questBoxTextTMP.text = "Click on the purple dome and place a factory there!";
+            } else
+            {
+                questBoxTextTMP.text = "Klik op de paarse cirkel en plaats daar een fabriek!";
+            }
         }
 
         //StartCoroutine(QuestBoxFlash());
