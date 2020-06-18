@@ -36,6 +36,7 @@ public class BuildingSystem : MonoBehaviour
 
     public delegate void OnBuildingPlaced(BuildingLocation location, BuildingPlacer buildingData, Building building);
     public static OnBuildingPlaced onBuildingPlaced;
+    public static OnBuildingPlaced onBuildingDestroyed;
 
     public ClickableBarPopup buildUI;
     bool uiActive = false;
@@ -215,6 +216,8 @@ public class BuildingSystem : MonoBehaviour
             foreach (BuildingLocation location in unvisited)
                 EnableLocation(location, false);
 
+        onBuildingDestroyed?.Invoke(selectedLocation, null, selectedLocation.GetComponentInChildren<Building>());
+
         DestroyBuilding(selectedLocation);
         InvalidateSelection();
 
@@ -299,7 +302,7 @@ public class BuildingSystem : MonoBehaviour
 
         characterSystem.DespawnCharacter(location);
 
-        GameManager.AddState(-building.natureRemovalEffect, -building.pollutionRemovalEffect, -building.industryRemovalEffect, - building.happinessRemovalEffect);
+        GameManager.AddState(-building.natureRemovalEffect, -building.pollutionRemovalEffect, -building.industryRemovalEffect, -building.happinessRemovalEffect);
 
         return true;
     }
