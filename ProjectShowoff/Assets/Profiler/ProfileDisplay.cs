@@ -5,16 +5,20 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System.Threading;
 using UnityEngine;
+#if UNITY_EDITOR
 using SFB;
+#endif
 
 public class ProfileDisplay : MonoBehaviour
 {
     public Profile profile;
 
     public System.Action onLoadProfile;
+    public float totalTime;
 
     public void LoadData()
     {
+#if UNITY_EDITOR
         string[] paths = StandaloneFileBrowser.OpenFilePanel("Data file", "", "data", false);
 
         if (paths.Length == 0)
@@ -35,6 +39,7 @@ public class ProfileDisplay : MonoBehaviour
                 profile = newProfile;
 
                 Debug.Log("Loaded file: " + path);
+                totalTime = 0f;
                 onLoadProfile?.Invoke();
             }
             catch (System.Exception e)
@@ -50,6 +55,6 @@ public class ProfileDisplay : MonoBehaviour
         {
             Debug.LogWarning("File not found");
         }
-
+        #endif
     }
 }
