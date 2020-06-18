@@ -34,6 +34,9 @@ public class GameManager : MonoBehaviour
     public Material masterMaterial;
     static Material masterMat;
 
+    public Material treeMaterial;
+    static Material treeMat;
+
     public Shader tesselationShader;
     public Shader webGLShader;
 
@@ -65,6 +68,7 @@ public class GameManager : MonoBehaviour
     {
         season = seasonTime;
         masterMat.SetFloat("_SeasonTime", seasonTime);
+        treeMat.SetFloat("_SeasonTime", seasonTime);
     }
 
     static public void SetOzoneState(float ozoneState)
@@ -83,6 +87,7 @@ public class GameManager : MonoBehaviour
     {
         climate = climateState;
         masterMat.SetFloat("_Pollution", climateState);
+        treeMat.SetFloat("_Pollution", climateState);
     }
 
     static public void AddState(float natureEffect, float pollutionEffect, float industryEffect, float happinessEffect)
@@ -97,6 +102,8 @@ public class GameManager : MonoBehaviour
     {
         if (masterMat == null)
             masterMat = masterMaterial;
+        if (treeMat == null)
+            treeMat = treeMaterial;
         if (ozoneMat == null)
             ozoneMat = ozoneMaterial;
         if (cloudMat == null)
