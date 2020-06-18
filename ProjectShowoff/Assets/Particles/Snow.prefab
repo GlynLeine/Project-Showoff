@@ -50,12 +50,36 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 0.3
+      - m_Value: 0.01
         m_Name: Gravity Scale
         m_Overridden: 1
       - m_Value: 1
         m_Name: Earth Collider_radius
         m_Overridden: 1
+      - m_Value: 0.02
+        m_Name: TimeSpeed
+        m_Overridden: 1
+      - m_Value: 8
+        m_Name: NoiseScale
+        m_Overridden: 1
+      - m_Value: 1
+        m_Name: SnowRate
+        m_Overridden: 1
+      - m_Value: 0
+        m_Name: Cloudiness
+        m_Overridden: 1
+      - m_Value: 0.1
+        m_Name: WindScale
+        m_Overridden: 1
+      - m_Value: 20
+        m_Name: WindNoise
+        m_Overridden: 1
+      - m_Value: 1.35
+        m_Name: SpawnHeight
+        m_Overridden: 1
+      - m_Value: 0.1
+        m_Name: MaxSize
+        m_Overridden: 0
     m_Vector2f:
       m_Array: []
     m_Vector3f:
@@ -74,7 +98,10 @@ VisualEffect:
     m_Uint:
       m_Array: []
     m_Int:
-      m_Array: []
+      m_Array:
+      - m_Value: 500
+        m_Name: MaxSnow
+        m_Overridden: 1
     m_Matrix4x4f:
       m_Array: []
     m_AnimationCurve:
