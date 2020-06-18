@@ -16,6 +16,8 @@ public class QuestSystem : MonoBehaviour
     private string rewardPlusMinus;
     private bool English;
     private string dutchReward;
+    private bool onBuildingPlacedCalled;
+    public Button onBuildingDestroy;
     public GameObject blockerImage;
     public TMP_Text blockerText;
     public TMP_Text objectives;
@@ -81,7 +83,6 @@ public class QuestSystem : MonoBehaviour
             objectives.text = "Taken";
         }
         StartCoroutine(QuestQueueSystem());
-        BuildingSystem.onBuildingPlaced += OnBuildingPlaced;
     }
 
     private void OnDisable()
@@ -109,6 +110,17 @@ public class QuestSystem : MonoBehaviour
             maxCounterValue = questList[i].buildHowMany;
             waitTime = questList[i].maxTimeInSeconds;
             counterText.text = "X" + (maxCounterValue - counterValue);
+            if (questList[i].buildOrDestroy == BuildOrDestroy.Build)
+            {
+                onBuildingPlacedCalled = true;
+                BuildingSystem.onBuildingPlaced += OnBuildingPlaced;
+            }
+            else if (questList[i].buildOrDestroy == BuildOrDestroy.Destroy)
+            {
+                onBuildingPlacedCalled = false;
+                BuildingSystem.onBuildingDestroyed += OnBuildingDestroyed;
+            }
+
             if (questList[i].buildingType == BuildingType.Factory)
             {
                 buildingIcon.sprite = factorySprite;
@@ -151,6 +163,8 @@ public class QuestSystem : MonoBehaviour
             }
             StartCoroutine(TempUpdate());
             yield return new WaitForSeconds(waitTime);
+            BuildingSystem.onBuildingPlaced -= OnBuildingPlaced;
+            BuildingSystem.onBuildingDestroyed -= OnBuildingDestroyed;
             if (counterValue < maxCounterValue)
             {
                 QuestDone();
@@ -272,6 +286,19 @@ public class QuestSystem : MonoBehaviour
     private void OnBuildingPlaced(BuildingLocation location, BuildingPlacer buildingData, Building building)
     {
         if (buildingData.buildingType == SelectedBuildingType)
+        {
+            counterValue += 1;
+            counterText.text = "X" + (maxCounterValue - counterValue);
+            if (counterValue == maxCounterValue)
+            {
+                QuestDone();
+            }
+        }    
+    }
+
+    private void OnBuildingDestroyed(BuildingLocation location, BuildingPlacer buildingData, Building building)
+    {
+        if (building.buildingType == SelectedBuildingType)
         {
             counterValue += 1;
             counterText.text = "X" + (maxCounterValue - counterValue);
