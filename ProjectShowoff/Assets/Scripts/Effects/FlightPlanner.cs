@@ -11,6 +11,7 @@ public class FlightPlanner : MonoBehaviour
     public float minFlightInterval;
     public float maxFlightInterval;
     public float planeAcceleration;
+    public float apexHeight;
 
     public void StartPlanningFlights(Technology technology)
     {
@@ -20,23 +21,42 @@ public class FlightPlanner : MonoBehaviour
 
     IEnumerator PlanFlights(Technology technology)
     {
+        planning = true;
+
         while (technology.level == 1)
         {
-            while (technology.trainStations.Count < 2)
-                yield return new WaitForSeconds(Random.Range(minFlightInterval, maxFlightInterval));
-
             List<TrainStation> options = technology.trainStations.ToList();
-            TrainStation origin = options[Random.Range(0, options.Count)];
-            options.Remove(origin);
-            TrainStation destination = options[Random.Range(0, options.Count)];
+            for (int i = 0; i < options.Count; i++)
+                if (options[i].arrival)
+                {
+                    options.RemoveAt(i);
+                    i--;
+                }
 
-            AirPlane airPlane = Instantiate(airPlanePrefab).GetComponent<AirPlane>();
-            airPlane.origin = origin;
-            airPlane.destination = destination;
-            airPlane.acceleration = planeAcceleration;
-            Debug.Log("spawned plane");
+            if (options.Count >= 2)
+            {
+                TrainStation origin = options[Random.Range(0, options.Count)];
+                origin.arrival = true;
+
+                options.Remove(origin);
+
+                TrainStation destination = options[Random.Range(0, options.Count)];
+                destination.arrival = true;
+
+                AirPlane airPlane = Instantiate(airPlanePrefab).GetComponent<AirPlane>();
+                airPlane.gameObject.name = "Airplane " + AirPlane.airplanes;
+                airPlane.origin = origin;
+                airPlane.destination = destination;
+                airPlane.acceleration = planeAcceleration;
+                Spline flightPlan = new GameObject("Flight Plan " + AirPlane.airplanes).AddComponent<Spline>();
+                airPlane.flightPlan = flightPlan;
+                airPlane.apexHeight = apexHeight;
+                Debug.Log("spawned plane");
+            }
 
             yield return new WaitForSeconds(Random.Range(minFlightInterval, maxFlightInterval));
         }
+
+        planning = false;
     }
 }
