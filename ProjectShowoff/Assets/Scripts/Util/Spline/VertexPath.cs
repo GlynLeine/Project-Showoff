@@ -70,7 +70,7 @@ public struct VertexPath
                 {
                     float distanceBetweenPoints = distances[i + 1] - distances[i];
                     float distanceSinceLastPoint = distance - distances[i];
-                    
+
                     forward = Vector3.Slerp(tangents[i], tangents[i + 1], distanceSinceLastPoint / distanceBetweenPoints);
                     right = Vector3.Slerp(normals[i], normals[i + 1], distanceSinceLastPoint / distanceBetweenPoints);
                 }
@@ -83,10 +83,17 @@ public struct VertexPath
 
     public void UpdatePath(Spline spline)
     {
+        if (length == 0f)
+            length = 1f;
+
         valid = true;
         up = spline.transform.up;
 
-        SplineVertexData vertexData = spline.CalculateEvenlySpacedPoints(1f / spline.resolution * 0.5f);
+        float resolution = spline.resolution;
+        if(resolution % 1 == 0)
+            resolution += 0.001f;
+
+        SplineVertexData vertexData = spline.CalculateEvenlySpacedPoints(length / resolution);
 
         vertices = vertexData.vertices;
         normals = vertexData.normals;
