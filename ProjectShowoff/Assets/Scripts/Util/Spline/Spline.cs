@@ -13,9 +13,9 @@ public class SplineVertexData
 public class Spline : MonoBehaviour
 {
     [SerializeField, HideInInspector]
-    List<Vector3> points;
+    List<Vector3> points = new List<Vector3>();
     [SerializeField, HideInInspector]
-    List<Vector3> normals;
+    List<Vector3> normals = new List<Vector3>();
 
     [SerializeField, HideInInspector]
     bool automaticTangents;
@@ -40,13 +40,18 @@ public class Spline : MonoBehaviour
     [HideInInspector]
     public float length;
 
+    public void UpdateVertexPath()
+    {
+        vertexPath.UpdatePath(this);
+        length = vertexPath.length;
+    }
+
     public VertexPath VertexPath
     {
         get
         {
             if (!runtime || recalculateOnRunTime)
-                vertexPath.UpdatePath(this);
-            length = vertexPath.length;
+                UpdateVertexPath();
             return vertexPath;
         }
     }
@@ -73,8 +78,10 @@ public class Spline : MonoBehaviour
 
     private void OnValidate()
     {
-        vertexPath.UpdatePath(this);
-        length = vertexPath.length;
+        if(points == null || points.Count == 0)
+            Reset();
+
+        UpdateVertexPath();
     }
 
     public void Reset()
@@ -106,6 +113,14 @@ public class Spline : MonoBehaviour
         get
         {
             return points.Count;
+        }
+    }
+
+    public int anchorCount
+    {
+        get
+        {
+            return normals.Count;
         }
     }
 
@@ -292,6 +307,9 @@ public class Spline : MonoBehaviour
 
     public SplineVertexData CalculateEvenlySpacedPoints(float spacing, float resolution = 1)
     {
+        if (points == null || points.Count == 0)
+            Reset();
+
         List<Vector3> vertices = new List<Vector3>();
         List<Vector3> vertNormals = new List<Vector3>();
         List<Vector3> tangents = new List<Vector3>();

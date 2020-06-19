@@ -61,7 +61,7 @@ public class Technology : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.industry < 5)
+        if (GameManager.industry < 15)
         {
             if (lvl != 0)
                 level = 0;
