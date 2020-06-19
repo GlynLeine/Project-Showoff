@@ -8,6 +8,8 @@ public class TrainStation : MonoBehaviour
     public GameObject airPort;
     public GameObject spaceCenter;
 
+    public bool arrival;
+
     private int lvl;
     public int level
     {
