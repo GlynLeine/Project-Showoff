@@ -10,10 +10,10 @@ public class SplineEditor : Editor
 
     float controlSize = 0.3f;
     int selectedSegment = -1;
-    bool hideMainTool = true;
-    bool showVertexPath = false;
-    bool disableOtherSelection = false;
-    bool alternateMousePos = false;
+    static bool hideMainTool;
+    static bool showVertexPath;
+    static bool disableOtherSelection;
+    static bool alternateMousePos;
 
     ArcHandle rotationHandle = new ArcHandle();
 
@@ -23,6 +23,11 @@ public class SplineEditor : Editor
         spline = target as Spline;
         if (hideMainTool)
             Tools.hidden = true;
+
+        disableOtherSelection = false;
+        alternateMousePos = false;
+        showVertexPath = false;
+        hideMainTool = true;
     }
 
     private void OnDisable()
@@ -61,17 +66,11 @@ public class SplineEditor : Editor
             Tools.hidden = hideMainTool;
         }
 
-        bool newShowVertex = GUILayout.Toggle(showVertexPath, "Show vertex path");
-        if (newShowVertex != showVertexPath)
-            showVertexPath = newShowVertex;
+        showVertexPath = GUILayout.Toggle(showVertexPath, "Show vertex path");
 
-        bool newDisableOtherSelection = GUILayout.Toggle(disableOtherSelection, "Lock selection on this object");
-        if (newDisableOtherSelection != disableOtherSelection)
-            disableOtherSelection = newDisableOtherSelection;
+        disableOtherSelection = GUILayout.Toggle(disableOtherSelection, "Lock selection on this object");
 
-        bool newAlternateMousePos = GUILayout.Toggle(alternateMousePos, "Unity mouse position glitch fix");
-        if (newAlternateMousePos != alternateMousePos)
-            alternateMousePos = newAlternateMousePos;
+        alternateMousePos = GUILayout.Toggle(alternateMousePos, "Unity mouse position glitch fix");
 
         if (EditorGUI.EndChangeCheck())
         {

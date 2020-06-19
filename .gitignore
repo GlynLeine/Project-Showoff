@@ -15,3 +15,9 @@ ProjectShowoff/Assets/FMOD/Threa FMOD/.cache
 ProjectShowoff/Assets/Prefabs/Boat.fbx
 ProjectShowoff/Assets/Prefabs/Boat.fbx.meta
 docs/ThreaWeb.zip
+
+!ProjectShowoff/Assembly-CSharp.csproj
+!ProjectShowoff/Assembly-CSharp-Editor.csproj
+!ProjectShowoff/Assembly-CSharp-Editor-firstpass.csproj
+!ProjectShowoff/Assembly-CSharp-firstpass.csproj
+*.csproj

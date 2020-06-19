@@ -38,7 +38,7 @@ public class FireWorks : MonoBehaviour
         foreach (VisualEffect fireWork in fireWorks)
         {
             fireWork.Stop();
-            fireWork.GetComponent<FMODUnity.StudioEventEmitter>().Stop();
+            //fireWork.GetComponent<FMODUnity.StudioEventEmitter>().Stop();
         }
 
         yield return new WaitForSeconds(2.5f);

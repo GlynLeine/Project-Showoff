@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 7889815828800840899}
   - component: {fileID: 7643542764911080976}
   - component: {fileID: 6327706966300190267}
+  - component: {fileID: 1191698654735664737}
   m_Layer: 0
   m_Name: TrainStation
   m_TagString: Untagged
@@ -265,6 +266,40 @@ MonoBehaviour:
   trainStation: {fileID: 2814769980010806361}
   airPort: {fileID: 7904013870470895801}
   spaceCenter: {fileID: 7892151331634893656}
+--- !u!114 &1191698654735664737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6403839157077601926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85a88781cd14a414c867597274b61556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points:
+  - {x: -0.0064411685, y: 0.03942845, z: 0.08615288}
+  - {x: -0.006486403, y: 0.027279446, z: 0.07590851}
+  - {x: -0.006482198, y: 0.017338825, z: 0.07156703}
+  - {x: -0.006734592, y: 0.008502133, z: 0.043446183}
+  - {x: -0.0067700553, y: 0.007260507, z: 0.039494976}
+  - {x: -0.006847439, y: 0.006007288, z: 0.033417895}
+  - {x: -0.006871735, y: 0.005989639, z: 0.029276157}
+  - {x: -0.007044006, y: 0.0058644996, z: -0.00009047985}
+  - {x: -0.006983715, y: 0.005834742, z: -0.01477428}
+  - {x: -0.0069410475, y: 0.0059016133, z: -0.029458553}
+  normals:
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  automaticTangents: 0
+  gaussianNormalInterpolation: 0
+  sphericalNormalInterpolation: 1
+  recalculateOnRunTime: 0
+  resolution: 5
+  length: 0.12037567
 --- !u!1 &7892151331634893656
 GameObject:
   m_ObjectHideFlags: 0
