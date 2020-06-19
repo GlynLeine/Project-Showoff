@@ -7239,7 +7239,11 @@ MonoBehaviour:
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
-  Params: []
+  Params:
+  - Name: Life Begins
+    Value: 0
+  - Name: Pollution
+    Value: 0
   OverrideAttenuation: 0
   OverrideMinDistance: 0
   OverrideMaxDistance: 0
@@ -7262,7 +7266,19 @@ MonoBehaviour:
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
-  Params: []
+  Params:
+  - Name: EN_pollution_up
+    Value: 0
+  - Name: EN_water_level_rises
+    Value: 0
+  - Name: EN_pollution_fog_increases
+    Value: 0
+  - Name: EN_nature_decreases
+    Value: 0
+  - Name: EN_nature_grows
+    Value: 0
+  - Name: EN_pollution_down
+    Value: 0
   OverrideAttenuation: 0
   OverrideMinDistance: 0
   OverrideMaxDistance: 0
@@ -7285,7 +7301,15 @@ MonoBehaviour:
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
-  Params: []
+  Params:
+  - Name: NL_destroy
+    Value: 0
+  - Name: NL_zoom
+    Value: 0
+  - Name: NL_swipe
+    Value: 0
+  - Name: NL_build
+    Value: 0
   OverrideAttenuation: 0
   OverrideMinDistance: 0
   OverrideMaxDistance: 0
@@ -7308,7 +7332,15 @@ MonoBehaviour:
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
-  Params: []
+  Params:
+  - Name: EN_destroy
+    Value: 0
+  - Name: EN_swipe
+    Value: 0
+  - Name: EN_zoom
+    Value: 0
+  - Name: EN_build
+    Value: 0
   OverrideAttenuation: 0
   OverrideMinDistance: 0
   OverrideMaxDistance: 0
@@ -7331,7 +7363,21 @@ MonoBehaviour:
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
-  Params: []
+  Params:
+  - Name: NL_season_change_winter
+    Value: 0
+  - Name: NL_season_change_spring
+    Value: 0
+  - Name: NL_season_change_autumn
+    Value: 0
+  - Name: NL_satellites_start_appearing
+    Value: 0
+  - Name: NL_season_change_summer
+    Value: 0
+  - Name: NL_airplanes _start_appearing
+    Value: 0
+  - Name: NL_first_building_on_new_area_(growth)
+    Value: 0
   OverrideAttenuation: 0
   OverrideMinDistance: 0
   OverrideMaxDistance: 0
@@ -7354,7 +7400,21 @@ MonoBehaviour:
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
-  Params: []
+  Params:
+  - Name: EN_first_building_on_new_area_(growth)
+    Value: 0
+  - Name: EN_airplanes _start_appearing
+    Value: 0
+  - Name: EN_season_change_winter
+    Value: 0
+  - Name: EN_season_change_summer
+    Value: 0
+  - Name: EN_season_change_spring
+    Value: 0
+  - Name: EN_season_change_autumn
+    Value: 0
+  - Name: EN_satellites_start_appearing
+    Value: 0
   OverrideAttenuation: 0
   OverrideMinDistance: 0
   OverrideMaxDistance: 0
@@ -7377,7 +7437,21 @@ MonoBehaviour:
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
-  Params: []
+  Params:
+  - Name: NL_new_solar_panel
+    Value: 0
+  - Name: NL_new_coast_building
+    Value: 0
+  - Name: NL_new_train_depot
+    Value: 0
+  - Name: NL_new_nuclear_power_plant
+    Value: 0
+  - Name: NL_new_nature_reserve
+    Value: 0
+  - Name: NL_new_factory
+    Value: 0
+  - Name: NL_new_coalmine
+    Value: 0
   OverrideAttenuation: 0
   OverrideMinDistance: 0
   OverrideMaxDistance: 0
@@ -7400,7 +7474,21 @@ MonoBehaviour:
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
-  Params: []
+  Params:
+  - Name: NL_new_train_depot
+    Value: 0
+  - Name: NL_new_coast_building
+    Value: 0
+  - Name: NL_new_solar_panel
+    Value: 0
+  - Name: NL_new_nuclear_power_plant
+    Value: 0
+  - Name: NL_new_nature_reserve
+    Value: 0
+  - Name: NL_new_coalmine
+    Value: 0
+  - Name: NL_new_factory
+    Value: 0
   OverrideAttenuation: 0
   OverrideMinDistance: 0
   OverrideMaxDistance: 0
@@ -7423,7 +7511,17 @@ MonoBehaviour:
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
-  Params: []
+  Params:
+  - Name: NL_new_movie_comes_out
+    Value: 0
+  - Name: NL_lost_dog
+    Value: 0
+  - Name: NL_president_eats_pizza
+    Value: 0
+  - Name: NL_holiday
+    Value: 0
+  - Name: NL_record_number_of_donuts_sold
+    Value: 0
   OverrideAttenuation: 0
   OverrideMinDistance: 0
   OverrideMaxDistance: 0
@@ -7446,7 +7544,17 @@ MonoBehaviour:
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
-  Params: []
+  Params:
+  - Name: EN_new_movie_comes_out
+    Value: 0
+  - Name: EN_record_number_of_donuts_sold
+    Value: 0
+  - Name: EN_holiday
+    Value: 0
+  - Name: EN_lost_dog
+    Value: 0
+  - Name: EN_president_eats_pizza
+    Value: 0
   OverrideAttenuation: 0
   OverrideMinDistance: 0
   OverrideMaxDistance: 0
@@ -7469,7 +7577,19 @@ MonoBehaviour:
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
-  Params: []
+  Params:
+  - Name: NL_nature_decreases
+    Value: 0
+  - Name: NL_pollution_down
+    Value: 0
+  - Name: NL_pollution_fog_increases
+    Value: 0
+  - Name: NL_water_level_rises
+    Value: 0
+  - Name: NL_pollution_up
+    Value: 0
+  - Name: NL_nature_grows
+    Value: 0
   OverrideAttenuation: 0
   OverrideMinDistance: 0
   OverrideMaxDistance: 0

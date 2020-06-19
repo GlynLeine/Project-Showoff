@@ -123,6 +123,7 @@
     <Compile Include="Assets\Scripts\UI\StartScreen\LanguageSelector.cs" />
     <Compile Include="Assets\Scripts\UI\StartScreen\UIFader.cs" />
     <Compile Include="Assets\Scripts\UI\UIController.cs" />
+    <Compile Include="Assets\Scripts\UI\VoiceLineController.cs" />
     <Compile Include="Assets\Scripts\UI\languagechecker.cs" />
     <Compile Include="Assets\Scripts\Util\Focus.cs" />
     <Compile Include="Assets\Scripts\Util\InputRedirect.cs" />
