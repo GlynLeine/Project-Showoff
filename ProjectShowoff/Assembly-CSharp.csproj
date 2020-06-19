@@ -146,6 +146,7 @@
     <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{f3691ca5-406b-4204-8d53-a0525808590d}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{645c4ecf-8d57-4567-8440-261489e8080f}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\ParameterPreset\{208986b6-2473-4691-93b7-fbecaeff1dad}.xml" />
+    <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{9eb8d6b3-e2bf-4038-b561-d35078a32f3a}.xml" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\ParameterPreset\{8fcd259d-3556-4000-8882-80be4164ebf0}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{f62555cb-6fae-4067-ac5f-3658ad53d53e}.xml" />
@@ -158,6 +159,7 @@
     <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{b37476bc-652b-4b2c-86a0-b9d9b663a45a}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\EventFolder\{10eade91-09fc-46c1-a2cb-1a99e64f4de8}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\ParameterPreset\{ee8c957f-675f-46a3-a004-1fec4baefcf3}.xml" />
+    <None Include="Assets\FMOD\Threa FMOD\Metadata\Event\{fc276f5f-36e5-41d5-b20f-e9fc8e2a5c28}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\ParameterPreset\{61f4664b-8bc4-430e-8f2a-4485a64b0cb4}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{a58db173-30ea-4a03-9293-1f1422357aaa}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{99cfa301-3438-4b47-958a-39b835f36b04}.xml" />
@@ -186,6 +188,7 @@
     <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{92c4d35b-1161-4e4d-b87d-c765029819b4}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{2c655e6e-5cba-4d27-96ad-9f05d1241ecb}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\Event\{c52fd284-4d45-4f1f-ba5a-616c0ce41313}.xml" />
+    <None Include="Assets\FMOD\Threa FMOD\Metadata\Event\{3bb171bd-e3a3-4e11-809e-d1f46157a23f}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\Platform\{6d1069c6-a3ea-4007-8e94-79d85f8e41bf}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{ebe29ae1-a3ff-4f2b-8567-b04ed1e8cf8f}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\ParameterPreset\{349e86cc-79e9-47e6-8b09-84c757a98d39}.xml" />
@@ -206,6 +209,7 @@
     <None Include="Assets\FMOD\Threa FMOD\Metadata\ParameterPreset\{0fc31732-f356-4e8a-9184-ff463f496394}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\Event\{3cbd3b72-308b-4c77-a5c0-04aecad82cf9}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\EncodingSetting\{4cea5825-bbaa-4f8d-bb35-593480e82c38}.xml" />
+    <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{2146a2f7-e69c-4ee8-af97-4ccb879daab2}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{b532f9d8-e590-4bc4-9156-ec5eddd0eb53}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\Event\{3fd7f785-b933-4ac9-99f7-902b9ed9ba16}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\Mixer.xml" />
@@ -215,6 +219,7 @@
     <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{334d8fd4-7183-436b-a9ca-0048085e766f}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{bee2fa5b-7d7f-452e-97a6-003881a8e114}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{6f4d9963-6813-4ad0-b466-912c8c244cea}.xml" />
+    <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{05c98a3f-32c1-4afa-b76d-f25bad9b4304}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\ParameterPreset\{9c042480-2d3f-4988-8452-609edb9d3130}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\Return\{86ce9f7b-87b0-4fd6-8633-df1c319149f7}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\ParameterPreset\{14592d61-c808-4e7b-a154-2e186c3ecdc9}.xml" />
@@ -246,6 +251,7 @@
     <None Include="Assets\FMOD\Threa FMOD\Metadata\Event\{911af5a7-1cae-4e23-87b2-831862cf9248}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\ParameterPreset\{b1ff7623-25d3-4c37-9e57-8339a4b8a051}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{f1843091-aa25-4638-8a26-3cf187832c18}.xml" />
+    <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{79451cf4-db24-4a7a-b98c-7b01032ba066}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{400de546-91c8-46d7-800a-0d08a9e23e52}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{2764d1d6-ff8b-429b-beba-d0483b7f6034}.xml" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
@@ -279,7 +285,9 @@
     <None Include="Assets\Materials\LineShader.shader" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{0dbfd7c8-4ce5-4dc5-baec-c1aeb1792c52}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\ParameterPreset\{9aacab3b-76db-404e-aa70-739004417af6}.xml" />
+    <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{d316f1b5-c1c2-489a-949b-9edc14a6daac}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\EventFolder\{5b907880-7d9a-40b8-8e74-d60da5392388}.xml" />
+    <None Include="Assets\FMOD\Threa FMOD\Metadata\Event\{09288113-3baf-44dd-9752-6588da02ccac}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{38dae311-108f-4c2e-9b34-b111febd4160}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{6a13747c-b6f0-44af-ba24-f65d654bb7fd}.xml" />
     <None Include="Assets\FMOD\Threa FMOD\Metadata\AudioFile\{d51a3a13-2e85-4a44-8247-3ff1045fcb76}.xml" />

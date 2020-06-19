@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1246172987379207754}
   - component: {fileID: 7786808443211609212}
   - component: {fileID: 4552229302697461893}
+  - component: {fileID: 5699953000319828451}
   m_Layer: 0
   m_Name: train_station_variation
   m_TagString: Untagged
@@ -79,6 +80,29 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &5699953000319828451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2814769980010806361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Buildings/Train Station
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 1.8000001
 --- !u!1 &4620412846073150446
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,7 +160,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3613952377281041005}
   - component: {fileID: 279680422462435555}
-  - component: {fileID: 469016244042733839}
   - component: {fileID: 7889815828800840899}
   - component: {fileID: 7643542764911080976}
   - component: {fileID: 6327706966300190267}
@@ -182,29 +205,6 @@ MonoBehaviour:
   pollutionRemovalEffect: 0
   industryRemovalEffect: 0
   happinessRemovalEffect: 0
---- !u!114 &469016244042733839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6403839157077601926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  Event: event:/Buildings/Train Station
-  PlayEvent: 1
-  StopEvent: 2
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 0
-  OverrideMaxDistance: 1.8000001
 --- !u!114 &7889815828800840899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,6 +390,7 @@ GameObject:
   - component: {fileID: 6623646491820649130}
   - component: {fileID: 2787989694472016028}
   - component: {fileID: 8470255707810147429}
+  - component: {fileID: 1602271742639159495}
   m_Layer: 0
   m_Name: airport_model
   m_TagString: Untagged
@@ -458,3 +459,26 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &1602271742639159495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7904013870470895801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Buildings/Airport
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 1.8000001

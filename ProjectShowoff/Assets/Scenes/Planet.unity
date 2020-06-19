@@ -7268,7 +7268,7 @@ MonoBehaviour:
   Preload: 0
   Params:
   - Name: EN_pollution_up
-    Value: 0
+    Value: 1
   - Name: EN_water_level_rises
     Value: 0
   - Name: EN_pollution_fog_increases
