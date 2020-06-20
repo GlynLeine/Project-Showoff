@@ -33,7 +33,7 @@ public class FireWorks : MonoBehaviour
 
     IEnumerator DestroyEffect()
     {
-        yield return new WaitForSeconds(20f);
+        yield return new WaitForSeconds(15f);
 
         foreach (VisualEffect fireWork in fireWorks)
         {
