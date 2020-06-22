@@ -137,13 +137,6 @@ public class BuildingLocation : MonoBehaviour
 
     private void Start()
     {
-        Vector3 up = transform.up;
-        Vector3 forward = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
-        Vector3 right = Vector3.Cross(up, forward).normalized;
-        forward = Vector3.Cross(right, up).normalized;
-
-        transform.rotation = Quaternion.LookRotation(forward, up);
-
         system = FindObjectOfType<BuildingSystem>();
         if (system != null)
         {

@@ -19,7 +19,7 @@ public class FireWorks : MonoBehaviour
         while (GameManager.season < 1f)
             yield return null;
 
-        if (GameManager.industry >= 25)
+        if (GameManager.industry >= 10)
         {
             foreach (Building building in FindObjectsOfType<Building>())
             {

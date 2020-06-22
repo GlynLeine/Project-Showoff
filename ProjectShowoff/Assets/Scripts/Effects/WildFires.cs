@@ -23,14 +23,13 @@ public class WildFires : MonoBehaviour
 
         while (wildfires.Count > 0)
         {
-            for (int i = 0; i > wildfires.Count; i++)
+            for (int i = 0; i < wildfires.Count; i++)
             {
-                if (Random.value < 1f * GameManager.time)
-                {
-                    wildfires[i].gameObject.SetActive(true);
+                if (Random.value < 0.1f * GameManager.deltaTime)
+                {                    
+                    wildfires[i].Enable();
                     wildfires.RemoveAt(i);
                     i--;
-
                 }
             }
             yield return null; 

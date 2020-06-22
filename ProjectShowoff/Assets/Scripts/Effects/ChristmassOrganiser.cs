@@ -29,7 +29,7 @@ public class ChristmassOrganiser : MonoBehaviour
         santa.transform.position = Camera.main.transform.position.normalized * -santaAltitude;
         santa.travelSpeed = santaSpeed;
 
-        if (GameManager.industry >= 20f)
+        if (GameManager.industry >= 10f)
             foreach (ChristmassTree tree in trees)
                 tree.gameObject.SetActive(true);
     }
