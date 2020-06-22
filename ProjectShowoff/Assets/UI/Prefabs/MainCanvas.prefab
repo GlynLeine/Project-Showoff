@@ -7548,6 +7548,10 @@ MonoBehaviour:
   destroyButton: {fileID: 8872052277124362402}
   buildingSystem: {fileID: 0}
   tutorialBuildStep: 0
+  zoomIcon: {fileID: 21300000, guid: 55c73557f6a2124479ea2058f98565e2, type: 3}
+  creatureHead: {fileID: 21300000, guid: f28133e1c357a284992d18964bf81775, type: 3}
+  buildingIcon: {fileID: 21300000, guid: ac8015c9f967e1c4d9ecfaecfce80f9a, type: 3}
+  destroyIcon: {fileID: 21300000, guid: 1a2cd37c241a8f94ea1df8494b4dea12, type: 3}
   factorySprite: {fileID: 21300000, guid: 118807f199691564086c36324bb80d9d, type: 3}
   harborSprite: {fileID: 21300000, guid: d5176ee26ba948642b83c1038c702b2b, type: 3}
   mineSprite: {fileID: 21300000, guid: 8413d63425574b848acee63f546adb0e, type: 3}

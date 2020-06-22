@@ -17,7 +17,7 @@ public class QuestSystem : MonoBehaviour
     private bool English;
     private string dutchReward;
     private bool onBuildingPlacedCalled;
-    public Button onBuildingDestroy;
+    private Image questBoxImage;
     public GameObject blockerImage;
     public TMP_Text blockerText;
     public TMP_Text objectives;
@@ -71,7 +71,6 @@ public class QuestSystem : MonoBehaviour
         {
             English = true;
         }
-
         if (English)
         {
             forText.text = "for";
@@ -82,6 +81,8 @@ public class QuestSystem : MonoBehaviour
             forText.text = "voor";
             objectives.text = "Taken";
         }
+
+        questBoxImage = gameObject.GetComponent<Image>();
         StartCoroutine(QuestQueueSystem());
     }
 
@@ -161,6 +162,7 @@ public class QuestSystem : MonoBehaviour
             {
                 rewardImage.sprite = creatureSprite;
             }
+            StartCoroutine(QuestBoxFlash());
             StartCoroutine(TempUpdate());
             yield return new WaitForSeconds(waitTime);
             BuildingSystem.onBuildingPlaced -= OnBuildingPlaced;
@@ -414,5 +416,58 @@ public class QuestSystem : MonoBehaviour
             yield return null;
         }
         yield return null;
+    }
+    IEnumerator QuestBoxFlash()
+    {
+        float timer = 0;
+            while (timer < 0.5)
+            {
+                Color color = questBoxImage.color;
+                color.b -= 1f * Time.deltaTime;
+                questBoxImage.color = color;
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            while (timer < 1)
+            {
+                Color color = questBoxImage.color;
+                color.b += 1f * Time.deltaTime;
+                questBoxImage.color = color;
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            while (timer < 1.5)
+            {
+                Color color = questBoxImage.color;
+                color.b -= 1f * Time.deltaTime;
+                questBoxImage.color = color;
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            while (timer < 2)
+            {
+                Color color = questBoxImage.color;
+                color.b += 1f * Time.deltaTime;
+                questBoxImage.color = color;
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            while (timer < 2.5)
+            {
+                Color color = questBoxImage.color;
+                color.b -= 1f * Time.deltaTime;
+                questBoxImage.color = color;
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            while (timer < 3)
+            {
+                Color color = questBoxImage.color;
+                color.b += 1f * Time.deltaTime;
+                questBoxImage.color = color;
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            yield return null;;
     }
 }

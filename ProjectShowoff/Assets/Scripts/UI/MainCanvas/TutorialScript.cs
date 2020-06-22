@@ -30,14 +30,15 @@ public class TutorialScript : MonoBehaviour
     //tutorial step bools so we can check where the player is
     private bool tutorialRotationStep;
     private bool tutorialZoomStep;
-    public bool tutorialBuildStep;
-    private bool gameHasStarted;
-    private bool ifHarborBuilt;
-    private bool ifOilRigBuilt;
+    public bool tutorialBuildStep;//this is an old bool that doesnt do anything anymore and im only really using it to make the editor easier to look at
     private bool tutorialBuildingCheckStep;
     private bool tutorialDestroyStep;
     private bool tutorialBoxFlash;
-    
+
+    public Sprite zoomIcon;
+    public Sprite creatureHead;
+    public Sprite buildingIcon;
+    public Sprite destroyIcon;
     public Sprite factorySprite;
     public Sprite harborSprite;
     public Sprite mineSprite;
@@ -72,7 +73,6 @@ public class TutorialScript : MonoBehaviour
         {
             //basically sets the delay of the animations to 0 nd just throws em all in at the start
             tutorialDelaySeconds = 0;
-            tutorialBuildStep = true;
             tutorialZoomStep = true;
             tutorialRotationStep = true;
             GameManager.paused = false;
@@ -141,10 +141,11 @@ public class TutorialScript : MonoBehaviour
             }
             else
             {
-                questBoxTextTMP.text = "Zoom uit en kijk rond om een nieuwe plek te vinden om te bouwen!";
+                questBoxTextTMP.text = "Zoom uit en kijk rond om een nieuwe plek te vinden!";
             }
             slider.onValueChanged.AddListener(SliderTutorialChange);
             StartCoroutine(SliderAnimationStart());
+            iconImage.sprite = zoomIcon;
             BuildingSystem.onBuildingPlaced -= OnBuildingPlaced;
         }
         else if (buildingData.buildingType == BuildingType.Factory)
@@ -237,7 +238,6 @@ public class TutorialScript : MonoBehaviour
         }
         else if (buildingData.buildingType == BuildingType.OilRig)
         {
-            tutorialBuildStep = true;
             if (English)
             {
                 questBoxTextTMP.text = "Press on an existing building now!";
@@ -247,7 +247,7 @@ public class TutorialScript : MonoBehaviour
                 questBoxTextTMP.text = "Klik op een bestaand gebouw om meer informatie te zien!";
             }
             buildingSystem.enableStatsAndDestroy = true;
-            iconImage.sprite = emptyButton;
+            iconImage.sprite = buildingIcon;
             StartCoroutine(QuestBoxFlash());
             StartCoroutine(BuildingActivationWaiter());
         }
@@ -268,6 +268,7 @@ public class TutorialScript : MonoBehaviour
             }
             StartCoroutine(QuestBoxFlash());
             tutorialBuildingCheckStep = true;
+            iconImage.sprite = destroyIcon;
             destroyButton.onClick.AddListener(OnButtonPress);
         }
     }
@@ -285,6 +286,7 @@ public class TutorialScript : MonoBehaviour
         }
         StartCoroutine(QuestBoxFlash());
         tutorialDestroyStep = true;
+        iconImage.sprite = buildingIcon;
         destroyButton.onClick.RemoveListener(OnButtonPress);
     }
     
@@ -295,15 +297,10 @@ public class TutorialScript : MonoBehaviour
         {
             tutorialZoomStep = true;
             GameManager.paused = false;
+            //basically this is the end of the tutorial, so it activates all the coroutines to move everything else into place and activate the rest of the game
             StartCoroutine(TimerAnimationStart());
-            if (English)
-            {
-                questBoxTextTMP.text = "Good job, you can place what you want now, but you can help us more!";
-            }
-            else
-            {
-                questBoxTextTMP.text = "Goed gedaan, je kan nu doen wat je wilt! Maar je kunt ooks ons helpen!";
-            }
+            StartCoroutine(zoomWaiter());
+            //zoomwaiter = the text change, we wait one second before we confirm that you've done the tutorial, to give you a moment to zoom in and out
             StartCoroutine(QuestBoxFlash());
             StartCoroutine(QuestChanger());
             StartCoroutine(QuestBoxFlash());
@@ -365,6 +362,20 @@ public class TutorialScript : MonoBehaviour
         {
             child.gameObject.SetActive(true);
         }
+    }
+    //the zoom text disappeared just a bit too quickly, so we wait one sec before changing it
+    IEnumerator zoomWaiter()
+    {
+        yield return new WaitForSeconds(1);
+        if (English)
+        {
+            questBoxTextTMP.text = "Good job, but could you help us out some more?";
+        }
+        else
+        {
+            questBoxTextTMP.text = "Goed gedaan, maar zou je ons verder kunnen helpen?";
+        }
+        iconImage.sprite = creatureHead;
     }
     //makes the tutorial box flash on new tutorial steps, assuming its not currently flashing
     IEnumerator QuestBoxFlash()
