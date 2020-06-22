@@ -14,7 +14,7 @@ public class EndScreenCounter : MonoBehaviour
     public enum typeChoice
     {
         C02,
-        Ozone,
+        Happiness,
         Plants,
         BuildingsDestroyed,
         BuildingsPlaced
@@ -38,10 +38,10 @@ public class EndScreenCounter : MonoBehaviour
             yourValue = (float)GameManager.pollution;
             averageValue = 1500f;
         }
-        else if (counterType == typeChoice.Ozone)
+        else if (counterType == typeChoice.Happiness)
         {
-            yourValue = (float)GameManager.ozone;
-            averageValue = 0.5f;
+            yourValue = (float)GameManager.happiness;
+            averageValue = 120;
         }
         else if (counterType == typeChoice.Plants)
         {
