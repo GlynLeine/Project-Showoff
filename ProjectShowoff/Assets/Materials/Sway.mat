@@ -42,13 +42,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_2D628DC9: 0.01
-    - Vector1_78B90FFD: 0.004
-    - Vector1_E077492: 2
-    - Vector1_F4D4ED74: 0.64
-    - _NoiseScale: 1.3
-    - _Pollution: 0.1496529
+    - Vector1_78B90FFD: 0.005
+    - Vector1_E077492: 2.13
+    - Vector1_F4D4ED74: 0.35
+    - _NoiseScale: 1
+    - _Pollution: 0
     - _SeasonTime: 0
-    - _SnowThreshold: 2.96
+    - _SnowThreshold: 0.5
     m_Colors:
     - Vector2_A9925A27: {r: 1, g: 1, b: 0, a: 0}
     - _WorldCenter: {r: 0, g: 0, b: 0, a: 0}
