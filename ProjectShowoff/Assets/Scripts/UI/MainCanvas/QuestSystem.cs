@@ -17,7 +17,7 @@ public class QuestSystem : MonoBehaviour
     private bool English;
     private string dutchReward;
     private bool onBuildingPlacedCalled;
-    private Image questBoxImage;
+    public Image questBoxImage;
     public GameObject blockerImage;
     public TMP_Text blockerText;
     public TMP_Text objectives;
@@ -81,8 +81,6 @@ public class QuestSystem : MonoBehaviour
             forText.text = "voor";
             objectives.text = "Taken";
         }
-
-        questBoxImage = gameObject.GetComponent<Image>();
         StartCoroutine(QuestQueueSystem());
     }
 
