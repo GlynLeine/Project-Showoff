@@ -7,7 +7,7 @@ public class FlightPlanner : MonoBehaviour
 {
     bool planning = false;
 
-    public GameObject airPlanePrefab;
+    public GameObject[] airPlanePrefabs;
     public float minFlightInterval;
     public float maxFlightInterval;
     public float planeAcceleration;
@@ -44,7 +44,7 @@ public class FlightPlanner : MonoBehaviour
                 TrainStation destination = options[Random.Range(0, options.Count)];
                 destination.arrival = true;
 
-                AirPlane airPlane = Instantiate(airPlanePrefab).GetComponent<AirPlane>();
+                AirPlane airPlane = Instantiate(airPlanePrefabs[Random.Range(0, airPlanePrefabs.Length)]).GetComponent<AirPlane>();
                 airPlane.gameObject.name = "Airplane " + AirPlane.airplanes;
                 airPlane.origin = origin;
                 airPlane.destination = destination;

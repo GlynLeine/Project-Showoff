@@ -4163,6 +4163,7 @@ MonoBehaviour:
   buildUI: {fileID: 1735929963}
   startLocation: {fileID: 8229691318014617715}
   selectedLocation: {fileID: 0}
+  enableStatsAndDestroy: 0
 --- !u!4 &576086917
 Transform:
   m_ObjectHideFlags: 0

@@ -77,6 +77,7 @@
     <Compile Include="Assets\Scripts\Buildings\BuildingLocation.cs" />
     <Compile Include="Assets\Scripts\Buildings\BuildingPlacer.cs" />
     <Compile Include="Assets\Scripts\Buildings\BuildingSystem.cs" />
+    <Compile Include="Assets\Scripts\Buildings\BuildingVariation.cs" />
     <Compile Include="Assets\Scripts\Characters\Character.cs" />
     <Compile Include="Assets\Scripts\Characters\CharacterSystem.cs" />
     <Compile Include="Assets\Scripts\Characters\Pokable.cs" />
@@ -103,6 +104,8 @@
     <Compile Include="Assets\Scripts\Effects\Spaceship.cs" />
     <Compile Include="Assets\Scripts\Effects\Technology.cs" />
     <Compile Include="Assets\Scripts\Effects\TrainStation.cs" />
+    <Compile Include="Assets\Scripts\Effects\WildFire_Get.cs" />
+    <Compile Include="Assets\Scripts\Effects\WildFires.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\UI\EndScreen\EndScreenCounter.cs" />
     <Compile Include="Assets\Scripts\UI\EndScreen\EndScreenCounterWater.cs" />
