@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -10523,6 +10523,7 @@ GameObject:
   - component: {fileID: 1234615125}
   - component: {fileID: 1234615126}
   - component: {fileID: 1234615127}
+  - component: {fileID: 1234615128}
   m_Layer: 10
   m_Name: Effects
   m_TagString: Untagged
@@ -10677,10 +10678,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   airPlanePrefab: {fileID: 8217335834629710215, guid: 2995165b360e5d340b10af8a039558a1,
     type: 3}
-  minFlightInterval: 5
-  maxFlightInterval: 5
+  minFlightInterval: 3
+  maxFlightInterval: 6
   planeAcceleration: 0.1
   apexHeight: 1.3
+--- !u!114 &1234615128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234615117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e00d0b83322df6b4a80f2cdd7fe6de1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spaceshipPrefab: {fileID: 7935481384116412509, guid: c54effe1a11ff4141b7f3507add101bb,
+    type: 3}
+  minExpeditionInterval: 5
+  maxExpeditionInterval: 5
+  acceleration: 0.2
 --- !u!1 &1237391434
 GameObject:
   m_ObjectHideFlags: 0

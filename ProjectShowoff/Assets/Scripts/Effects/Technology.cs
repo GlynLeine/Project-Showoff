@@ -17,8 +17,10 @@ public class Technology : MonoBehaviour
 
             foreach (TrainStation station in trainStations)
                 station.level = lvl;
-
-            GetComponent<FlightPlanner>().StartPlanningFlights(this);
+            if (lvl == 1)
+                GetComponent<FlightPlanner>().StartPlanningFlights(this);
+            else if(lvl > 1)
+                GetComponent<SpaceOrganisation>().StartPlanningExpeditions(this);
         }
     }
 

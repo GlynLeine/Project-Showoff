@@ -21,6 +21,7 @@ public class FlightPlanner : MonoBehaviour
 
     IEnumerator PlanFlights(Technology technology)
     {
+        Debug.Log("Started planning flights");
         planning = true;
 
         while (technology.level == 1)
@@ -58,5 +59,6 @@ public class FlightPlanner : MonoBehaviour
         }
 
         planning = false;
+        Debug.Log("Stopped planning flights");
     }
 }
