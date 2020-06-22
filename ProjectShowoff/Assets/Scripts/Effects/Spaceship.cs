@@ -15,7 +15,7 @@ public class Spaceship : MonoBehaviour
     private void Start()
     {
         spaceships++;
-        renderer = GetComponent<Renderer>();
+        renderer = GetComponentInChildren<Renderer>();
         velocity = new Vector3();
     }
 

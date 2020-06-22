@@ -7,7 +7,7 @@ public class SpaceOrganisation : MonoBehaviour
 {
     bool planning = false;
 
-    public GameObject spaceshipPrefab;
+    public GameObject[] spaceshipPrefabs;
     public float minExpeditionInterval;
     public float maxExpeditionInterval;
     public float acceleration;
@@ -29,7 +29,7 @@ public class SpaceOrganisation : MonoBehaviour
             {
                 TrainStation origin = technology.trainStations[Random.Range(0, technology.trainStations.Count)];
 
-                Spaceship spaceship = Instantiate(spaceshipPrefab).GetComponent<Spaceship>();
+                Spaceship spaceship = Instantiate(spaceshipPrefabs[Random.Range(0, spaceshipPrefabs.Length)]).GetComponent<Spaceship>();
                 spaceship.gameObject.name = "Spaceship " + Spaceship.spaceships;
                 spaceship.acceleration = acceleration;
 
