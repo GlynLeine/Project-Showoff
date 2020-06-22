@@ -46,6 +46,33 @@ public class BuildingSystem : MonoBehaviour
 
     //bool place = false;
 
+    bool enblCoasts;
+    public bool enableCoasts
+    {
+        get => enblCoasts;
+
+        set
+        {
+            enblCoasts = value;
+            if (!isBuilding)
+                UpdateConstructors();
+        }
+    }
+    bool enblNewCont;
+    public bool enableNewContinents
+    {
+        get => enblNewCont;
+
+        set
+        {
+            enblNewCont = value;
+            if (!isBuilding)
+                UpdateConstructors();
+        }
+    }
+
+    public bool enableStatsAndDestroy;
+
     private void Awake()
     {
         foreach (Building building in FindObjectsOfType<Building>())
@@ -108,7 +135,7 @@ public class BuildingSystem : MonoBehaviour
                         uiActive = true;
                     }
                 }
-                else
+                else if(enableStatsAndDestroy)
                 {
                     BuildingLocation location = hit.collider.transform.parent.parent.gameObject.GetComponent<BuildingLocation>();
                     if (location != null)
@@ -545,6 +572,7 @@ public class BuildingSystem : MonoBehaviour
 
     public List<BuildingLocation> GetPossibleBuildingLocations()
     {
+        List<BuildingLocation> possibilities;
         if (openSet.Count == 0)
         {
             if (unvisited.Count == 0)
@@ -556,10 +584,23 @@ public class BuildingSystem : MonoBehaviour
             if (closedSet.Count > 0 || GameManager.buildingsPlaced == 0)
                 GameManager.continentsDiscovered++;
 
-            return unvisited;
-        }
+            if (!enableNewContinents)
+                return new List<BuildingLocation>();
 
-        return openSet;
+            possibilities = unvisited.ToList();
+        }
+        else
+            possibilities = openSet.ToList();
+
+        if (!enableCoasts)
+            for (int i = 0; i < possibilities.Count; i++)
+                if (possibilities[i].locationType == LocationType.Coastal)
+                {
+                    possibilities.RemoveAt(i);
+                    i--;
+                }
+
+        return possibilities;
     }
 
     private void ConstructBuilding(BuildingLocation location, BuildingPlacer buildingData)
