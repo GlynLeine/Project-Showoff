@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2675174607037802616}
   - component: {fileID: 8510862435503690881}
   - component: {fileID: 5981093311825831139}
+  - component: {fileID: 5175332300483197532}
   m_Layer: 0
   m_Name: space_shuttle_model
   m_TagString: Untagged
@@ -103,3 +104,16 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 0
   OverrideMaxDistance: 2
+--- !u!114 &5175332300483197532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7935481384116412509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba633d1f9c4dcfd4281590746308a61e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  acceleration: 0
