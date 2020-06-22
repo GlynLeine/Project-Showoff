@@ -15,6 +15,14 @@ public class languagechecker : MonoBehaviour
         tmpText = this.GetComponent<TMP_Text>();
         dutchText = dutchText.Replace("//n", Environment.NewLine);
         englishText = englishText.Replace("//n", Environment.NewLine);
+        if (LanguageSelector.LanguageSelected == LanguageSelector.LanguageSelectorSelected.English)
+        {
+            tmpText.text = englishText;
+        }
+        if (LanguageSelector.LanguageSelected == LanguageSelector.LanguageSelectorSelected.Dutch)
+        {
+            tmpText.text = dutchText;
+        }
     }
 
     void Update()
