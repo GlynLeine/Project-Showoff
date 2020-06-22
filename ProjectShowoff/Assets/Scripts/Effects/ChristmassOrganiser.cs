@@ -6,6 +6,10 @@ public class ChristmassOrganiser : MonoBehaviour
 {
     ChristmassTree[] trees;
 
+    public GameObject santaPrefab;
+    public float santaAltitude;
+    public float santaSpeed;
+
     private void Start()
     {
         trees = FindObjectsOfType<ChristmassTree>();
@@ -20,6 +24,10 @@ public class ChristmassOrganiser : MonoBehaviour
     {
         while (GameManager.season < 0.8f)
             yield return null;
+
+        Santa santa = Instantiate(santaPrefab).GetComponent<Santa>();
+        santa.transform.position = Camera.main.transform.position.normalized * -santaAltitude;
+        santa.travelSpeed = santaSpeed;
 
         if (GameManager.industry >= 20f)
             foreach (ChristmassTree tree in trees)
