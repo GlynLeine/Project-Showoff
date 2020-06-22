@@ -17,6 +17,7 @@ public class QuestSystem : MonoBehaviour
     private bool English;
     private string dutchReward;
     private bool onBuildingPlacedCalled;
+    public GameObject questTutorial;
     public Image questBoxImage;
     public GameObject blockerImage;
     public TMP_Text blockerText;
@@ -45,7 +46,7 @@ public class QuestSystem : MonoBehaviour
 
     public enum RewardChoice
     {
-        Pollution,Nature,Happiness,Industry
+        Pollution,Nature,Happiness,Industry,Tutorial
     }
     public enum BuildOrDestroy
     {
@@ -160,6 +161,13 @@ public class QuestSystem : MonoBehaviour
             {
                 rewardImage.sprite = creatureSprite;
             }
+            else if (questList[i].reward == RewardChoice.Industry)
+            {
+                rewardImage.sprite = buildSprite;
+            } else if (questList[i].reward == RewardChoice.Tutorial)
+            {
+                rewardImage.sprite = creatureSprite;
+            }
             StartCoroutine(QuestBoxFlash());
             StartCoroutine(TempUpdate());
             yield return new WaitForSeconds(waitTime);
@@ -175,8 +183,23 @@ public class QuestSystem : MonoBehaviour
 
     public void QuestDone()
     {
+        blockerText.fontSize = 36;
         blockerImage.SetActive(true);
-        if (counterValue >= maxCounterValue)
+        if (questList[forLoopInt].reward == RewardChoice.Tutorial)
+        {
+            questTutorial.SetActive(false);
+            blockerText.fontSize = 28;
+            if (English)
+            {
+                blockerText.text = "Good job! And you can see back how your planet is doing in these bars!";
+            }
+            else
+            {
+                blockerText.text = "Goed gedaan! En hoe je planeet het doet kan je in deze balken terugzien!";
+            }
+            GameManager.happiness += 6;
+        }
+        else if (counterValue >= maxCounterValue)
         {
             if (questList[forLoopInt].addReward)
             {

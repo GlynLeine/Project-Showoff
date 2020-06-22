@@ -301,9 +301,6 @@ public class TutorialScript : MonoBehaviour
             StartCoroutine(TimerAnimationStart());
             StartCoroutine(zoomWaiter());
             //zoomwaiter = the text change, we wait one second before we confirm that you've done the tutorial, to give you a moment to zoom in and out
-            StartCoroutine(QuestBoxFlash());
-            StartCoroutine(QuestChanger());
-            StartCoroutine(QuestBoxFlash());
             StartCoroutine(ResetAnimationStart());
             buildingSystem.enableNewContinents = true;
             tutorialZoomStep = true;
@@ -367,15 +364,32 @@ public class TutorialScript : MonoBehaviour
     IEnumerator zoomWaiter()
     {
         yield return new WaitForSeconds(1);
+        StartCoroutine(QuestBoxFlash());
+        //flash is here because it should flash when it changes
         if (English)
         {
-            questBoxTextTMP.text = "Good job, but could you help us out some more?";
+            questBoxTextTMP.text = "At the top you can see the timer, both as a countdown and in the seasons! When it runs out, the game ends.";
         }
         else
         {
-            questBoxTextTMP.text = "Goed gedaan, maar zou je ons verder kunnen helpen?";
+            questBoxTextTMP.text = "Aan de bovenkant zie je de timer! Aftellend en als seizoenen. Zodra het op nul staat eindigt het spel!";
         }
-        iconImage.sprite = creatureHead;
+        iconImage.sprite = emptyButton;
+        StartCoroutine(PostTimer());
+    }
+
+    IEnumerator PostTimer()
+    {
+        yield return new WaitForSeconds(10);
+        if (English)
+        {
+            questBoxTextTMP.text = "We also have more tasks! Just build or destroy the building mentioned, and we'll give you a reward!";
+        }
+        else
+        {
+            questBoxTextTMP.text = "We hebben nog meer taken! Bouw of vernietig de gebouwen die we laten zien, en je krijgt een beloning!";
+        }
+        StartCoroutine(QuestChanger());
     }
     //makes the tutorial box flash on new tutorial steps, assuming its not currently flashing
     IEnumerator QuestBoxFlash()
