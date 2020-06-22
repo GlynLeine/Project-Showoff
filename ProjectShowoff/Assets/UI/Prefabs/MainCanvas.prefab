@@ -7545,6 +7545,7 @@ MonoBehaviour:
   ruralBuildings: {fileID: 8872052276598536428}
   coastalBuildings: {fileID: 9001626134141880646}
   questBoxImage: {fileID: 3415754310035426241}
+  destroyButton: {fileID: 8872052277124362402}
   tutorialBuildStep: 0
   factorySprite: {fileID: 21300000, guid: 118807f199691564086c36324bb80d9d, type: 3}
   harborSprite: {fileID: 21300000, guid: d5176ee26ba948642b83c1038c702b2b, type: 3}
