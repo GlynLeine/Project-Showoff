@@ -51,6 +51,7 @@ MonoBehaviour:
   natureRemovalEffect: 0
   pollutionRemovalEffect: 0
   industryRemovalEffect: 0
+  happinessRemovalEffect: 0
 --- !u!114 &4722547964567371512
 MonoBehaviour:
   m_ObjectHideFlags: 0
