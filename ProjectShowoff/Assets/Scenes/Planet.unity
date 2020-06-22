@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -8209,6 +8209,16 @@ GameObject:
   - component: {fileID: 980212960}
   - component: {fileID: 980212961}
   - component: {fileID: 980212962}
+  - component: {fileID: 980212972}
+  - component: {fileID: 980212971}
+  - component: {fileID: 980212970}
+  - component: {fileID: 980212969}
+  - component: {fileID: 980212968}
+  - component: {fileID: 980212967}
+  - component: {fileID: 980212966}
+  - component: {fileID: 980212965}
+  - component: {fileID: 980212964}
+  - component: {fileID: 980212963}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -8370,7 +8380,371 @@ MonoBehaviour:
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
-  Params: []
+  Params:
+  - Name: Pollution
+    Value: 0
+  - Name: Life Begins
+    Value: 0
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!114 &980212963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980212954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Voicelines/Tutorial_NL
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: NL_destroy
+    Value: 0
+  - Name: NL_zoom
+    Value: 0
+  - Name: NL_swipe
+    Value: 0
+  - Name: NL_build
+    Value: 0
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!114 &980212964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980212954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Voicelines/Tutorial_EN
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: EN_destroy
+    Value: 0
+  - Name: EN_swipe
+    Value: 0
+  - Name: EN_zoom
+    Value: 0
+  - Name: EN_build
+    Value: 0
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!114 &980212965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980212954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Voicelines/Time_base_triggers_NL
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: NL_season_change_winter
+    Value: 0
+  - Name: NL_season_change_autumn
+    Value: 0
+  - Name: NL_satellites_start_appearing
+    Value: 0
+  - Name: NL_season_change_summer
+    Value: 0
+  - Name: NL_season_change_spring
+    Value: 0
+  - Name: NL_airplanes _start_appearing
+    Value: 0
+  - Name: NL_first_building_on_new_area_(growth)
+    Value: 0
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!114 &980212966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980212954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Voicelines/Time_base_triggers_EN
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: EN_first_building_on_new_area_(growth)
+    Value: 0
+  - Name: EN_airplanes _start_appearing
+    Value: 0
+  - Name: EN_season_change_winter
+    Value: 0
+  - Name: EN_season_change_summer
+    Value: 0
+  - Name: EN_season_change_spring
+    Value: 0
+  - Name: EN_season_change_autumn
+    Value: 0
+  - Name: EN_satellites_start_appearing
+    Value: 0
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!114 &980212967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980212954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Voicelines/Play_action_triggers_NL
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: NL_new_solar_panel
+    Value: 0
+  - Name: NL_new_coast_building
+    Value: 0
+  - Name: NL_new_train_depot
+    Value: 0
+  - Name: NL_new_nuclear_power_plant
+    Value: 0
+  - Name: NL_new_nature_reserve
+    Value: 0
+  - Name: NL_new_factory
+    Value: 0
+  - Name: NL_new_coalmine
+    Value: 0
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!114 &980212968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980212954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Voicelines/Play_action_triggers_EN
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: NL_new_train_depot
+    Value: 0
+  - Name: NL_new_coast_building
+    Value: 0
+  - Name: NL_new_solar_panel
+    Value: 0
+  - Name: NL_new_nature_reserve
+    Value: 0
+  - Name: NL_new_nuclear_power_plant
+    Value: 0
+  - Name: NL_new_coalmine
+    Value: 0
+  - Name: NL_new_factory
+    Value: 0
+  - Name: EN_new_train_depot
+    Value: 0
+  - Name: EN_new_coast_building
+    Value: 0
+  - Name: EN_new_solar_panel
+    Value: 0
+  - Name: EN_new_nuclear_power_plant
+    Value: 0
+  - Name: EN_new_nature_reserve
+    Value: 0
+  - Name: EN_new_factory
+    Value: 0
+  - Name: EN_new_coalmine
+    Value: 0
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!114 &980212969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980212954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Voicelines/Miscellaneous_NL
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: NL_new_movie_comes_out
+    Value: 0
+  - Name: NL_lost_dog
+    Value: 0
+  - Name: NL_record_number_of_donuts_sold
+    Value: 0
+  - Name: NL_holiday
+    Value: 0
+  - Name: NL_president_eats_pizza
+    Value: 0
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!114 &980212970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980212954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Voicelines/Miscellaneous_EN
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: EN_new_movie_comes_out
+    Value: 0
+  - Name: EN_record_number_of_donuts_sold
+    Value: 0
+  - Name: EN_holiday
+    Value: 0
+  - Name: EN_lost_dog
+    Value: 0
+  - Name: EN_president_eats_pizza
+    Value: 0
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!114 &980212971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980212954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Voicelines/Global_warming_triggers_NL
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: NL_nature_decreases
+    Value: 0
+  - Name: NL_pollution_down
+    Value: 0
+  - Name: NL_pollution_fog_increases
+    Value: 0
+  - Name: NL_water_level_rises
+    Value: 0
+  - Name: NL_pollution_up
+    Value: 0
+  - Name: NL_nature_grows
+    Value: 0
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!114 &980212972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980212954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Voicelines/Global_warming_triggers_EN
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: EN_pollution_up
+    Value: 0
+  - Name: EN_water_level_rises
+    Value: 0
+  - Name: EN_pollution_fog_increases
+    Value: 0
+  - Name: EN_nature_decreases
+    Value: 0
+  - Name: EN_nature_grows
+    Value: 0
+  - Name: EN_pollution_down
+    Value: 0
   OverrideAttenuation: 0
   OverrideMinDistance: 0
   OverrideMaxDistance: 0
