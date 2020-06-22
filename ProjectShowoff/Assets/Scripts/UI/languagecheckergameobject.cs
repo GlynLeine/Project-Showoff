@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class languagechecker : MonoBehaviour
+public class languagecheckergameobject : MonoBehaviour
 {
-    private TMP_Text tmpText;
-    public string dutchText;
-    public string englishText;
+    public GameObject dutchObject;
+    public GameObject englishObject;
     public Button englishButton;
     public Button dutchButton;
 
@@ -20,16 +17,15 @@ public class languagechecker : MonoBehaviour
             englishButton.onClick.AddListener(ButtonClick);
             dutchButton.onClick.AddListener(ButtonClick);   
         }
-        tmpText = this.GetComponent<TMP_Text>();
-        dutchText = dutchText.Replace("//n", Environment.NewLine);
-        englishText = englishText.Replace("//n", Environment.NewLine);
         if (LanguageSelector.LanguageSelected == LanguageSelector.LanguageSelectorSelected.English)
         {
-            tmpText.text = englishText;
+            dutchObject.SetActive(false);
+            englishObject.SetActive(true);
         }
         if (LanguageSelector.LanguageSelected == LanguageSelector.LanguageSelectorSelected.Dutch)
         {
-            tmpText.text = dutchText;
+            englishObject.SetActive(false);
+            dutchObject.SetActive(true);
         }
     }
 
@@ -37,11 +33,13 @@ public class languagechecker : MonoBehaviour
     {
         if (LanguageSelector.LanguageSelected == LanguageSelector.LanguageSelectorSelected.English)
         {
-                tmpText.text = englishText;
+            dutchObject.SetActive(false);
+            englishObject.SetActive(true);
         }
         if (LanguageSelector.LanguageSelected == LanguageSelector.LanguageSelectorSelected.Dutch)
         {
-                tmpText.text = dutchText;
+            englishObject.SetActive(false);
+            dutchObject.SetActive(true);
         }
     }
 }
