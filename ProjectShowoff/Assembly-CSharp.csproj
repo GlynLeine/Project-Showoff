@@ -97,6 +97,8 @@
     <Compile Include="Assets\Scripts\Effects\IceCaps.cs" />
     <Compile Include="Assets\Scripts\Effects\PollutionSpheres.cs" />
     <Compile Include="Assets\Scripts\Effects\Snow.cs" />
+    <Compile Include="Assets\Scripts\Effects\WildFire_Get.cs" />
+    <Compile Include="Assets\Scripts\Effects\WildFires.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\UI\EndScreen\EndScreenCounter.cs" />
     <Compile Include="Assets\Scripts\UI\EndScreen\EndScreenCounterWater.cs" />
