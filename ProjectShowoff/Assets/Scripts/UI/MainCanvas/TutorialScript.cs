@@ -24,6 +24,7 @@ public class TutorialScript : MonoBehaviour
     public GameObject coastalBuildings;
     public Image questBoxImage;
     public Button destroyButton;
+    public BuildingSystem buildingSystem;
     private Slider slider;
     private float animationSpeed = 1; //reset at end of every animation, makes animations move faster as they go on
     //tutorial step bools so we can check where the player is
@@ -81,6 +82,9 @@ public class TutorialScript : MonoBehaviour
             StartCoroutine(TimerAnimationStart());
             StartCoroutine(ResetAnimationStart());
             StartCoroutine(SliderAnimationStart());
+            buildingSystem.enableNewContinents = true;
+            buildingSystem.enableCoasts = true;
+            buildingSystem.enableStatsAndDestroy = true;
             BuildingSystem.onBuildingPlaced -= OnBuildingPlaced;
 
         }
@@ -204,6 +208,7 @@ public class TutorialScript : MonoBehaviour
         }
         else if (buildingData.buildingType == BuildingType.SolarFarm)
         {
+            buildingSystem.enableCoasts = true;
             StartCoroutine(BuildingHarborWaiter(coastalBuildingsArray[0]));
             if (English)
             {
@@ -241,6 +246,7 @@ public class TutorialScript : MonoBehaviour
             {
                 questBoxTextTMP.text = "Klik op een bestaand gebouw om meer informatie te zien!";
             }
+            buildingSystem.enableStatsAndDestroy = true;
             iconImage.sprite = emptyButton;
             StartCoroutine(QuestBoxFlash());
             StartCoroutine(BuildingActivationWaiter());
@@ -302,6 +308,7 @@ public class TutorialScript : MonoBehaviour
             StartCoroutine(QuestChanger());
             StartCoroutine(QuestBoxFlash());
             StartCoroutine(ResetAnimationStart());
+            buildingSystem.enableNewContinents = true;
             tutorialZoomStep = true;
         }
         slider.onValueChanged.RemoveListener(SliderTutorialChange);
