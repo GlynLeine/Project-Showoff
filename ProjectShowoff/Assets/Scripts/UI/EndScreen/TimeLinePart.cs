@@ -20,7 +20,6 @@ public class TimeLinePart : MonoBehaviour
     private float timeLineBuildings;
     private float timeLineNature;
     private float maxPollution;
-    private float maxWaterLevel;
     private float maxBuildings;
     private float maxNature;
     private float buildingCounter;
@@ -43,7 +42,6 @@ public class TimeLinePart : MonoBehaviour
             timeLineBuildings = TimeLineSaver._springBuildings;
             timeLineNature = TimeLineSaver._springNature;
             maxPollution = 400;
-            maxWaterLevel = 1;
             maxBuildings = 12;
             maxNature = 150;
         }
@@ -54,7 +52,6 @@ public class TimeLinePart : MonoBehaviour
             timeLineBuildings = TimeLineSaver._summerBuildings;
             timeLineNature = TimeLineSaver._summerNature;
             maxPollution = 1000;
-            maxWaterLevel = 1;
             maxBuildings = 24;
             maxNature = 300;
         }
@@ -65,7 +62,6 @@ public class TimeLinePart : MonoBehaviour
             timeLineBuildings = TimeLineSaver._autumnBuildings;
             timeLineNature = TimeLineSaver._autumnNature;
             maxPollution = 1600;
-            maxWaterLevel = 1;
             maxBuildings = 36;
             maxNature = 450;
         }
@@ -76,7 +72,6 @@ public class TimeLinePart : MonoBehaviour
             timeLineBuildings = TimeLineSaver._winterBuildings;
             timeLineNature = TimeLineSaver._winterNature;
             maxPollution = 2300;
-            maxWaterLevel = 1;
             maxBuildings = 48;
             maxNature = 600;
         }
