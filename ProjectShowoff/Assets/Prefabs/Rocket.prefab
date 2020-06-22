@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionTag: 
-  Event: event:/Objects/Spaceship
+  Event: event:/Objects/Rocket
   PlayEvent: 1
   StopEvent: 2
   AllowFadeout: 1

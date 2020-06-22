@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class BuildingVariation : MonoBehaviour
 {
+    public GameObject[] models;
     // Start is called before the first frame update
     void Awake()
-    {
-        
-    }
+    {      
+        foreach (GameObject child in models)
+        {
+            child.SetActive(false);
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        int randomModel = Random.Range(0, models.Length);
+
+        models[randomModel].gameObject.SetActive(true);
         
     }
 }

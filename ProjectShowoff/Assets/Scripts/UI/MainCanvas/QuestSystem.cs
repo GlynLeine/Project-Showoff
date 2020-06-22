@@ -17,7 +17,8 @@ public class QuestSystem : MonoBehaviour
     private bool English;
     private string dutchReward;
     private bool onBuildingPlacedCalled;
-    public Button onBuildingDestroy;
+    public GameObject questTutorial;
+    public Image questBoxImage;
     public GameObject blockerImage;
     public TMP_Text blockerText;
     public TMP_Text objectives;
@@ -45,7 +46,7 @@ public class QuestSystem : MonoBehaviour
 
     public enum RewardChoice
     {
-        Pollution,Nature,Happiness,Industry
+        Pollution,Nature,Happiness,Industry,Tutorial
     }
     public enum BuildOrDestroy
     {
@@ -71,7 +72,6 @@ public class QuestSystem : MonoBehaviour
         {
             English = true;
         }
-
         if (English)
         {
             forText.text = "for";
@@ -161,6 +161,14 @@ public class QuestSystem : MonoBehaviour
             {
                 rewardImage.sprite = creatureSprite;
             }
+            else if (questList[i].reward == RewardChoice.Industry)
+            {
+                rewardImage.sprite = buildSprite;
+            } else if (questList[i].reward == RewardChoice.Tutorial)
+            {
+                rewardImage.sprite = creatureSprite;
+            }
+            StartCoroutine(QuestBoxFlash());
             StartCoroutine(TempUpdate());
             yield return new WaitForSeconds(waitTime);
             BuildingSystem.onBuildingPlaced -= OnBuildingPlaced;
@@ -175,8 +183,23 @@ public class QuestSystem : MonoBehaviour
 
     public void QuestDone()
     {
+        blockerText.fontSize = 36;
         blockerImage.SetActive(true);
-        if (counterValue >= maxCounterValue)
+        if (questList[forLoopInt].reward == RewardChoice.Tutorial)
+        {
+            questTutorial.SetActive(false);
+            blockerText.fontSize = 28;
+            if (English)
+            {
+                blockerText.text = "Good job! And you can see back how your planet is doing in these bars!";
+            }
+            else
+            {
+                blockerText.text = "Goed gedaan! En hoe je planeet het doet kan je in deze balken terugzien!";
+            }
+            GameManager.happiness += 6;
+        }
+        else if (counterValue >= maxCounterValue)
         {
             if (questList[forLoopInt].addReward)
             {
@@ -414,5 +437,58 @@ public class QuestSystem : MonoBehaviour
             yield return null;
         }
         yield return null;
+    }
+    IEnumerator QuestBoxFlash()
+    {
+        float timer = 0;
+            while (timer < 0.5)
+            {
+                Color color = questBoxImage.color;
+                color.b -= 1f * Time.deltaTime;
+                questBoxImage.color = color;
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            while (timer < 1)
+            {
+                Color color = questBoxImage.color;
+                color.b += 1f * Time.deltaTime;
+                questBoxImage.color = color;
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            while (timer < 1.5)
+            {
+                Color color = questBoxImage.color;
+                color.b -= 1f * Time.deltaTime;
+                questBoxImage.color = color;
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            while (timer < 2)
+            {
+                Color color = questBoxImage.color;
+                color.b += 1f * Time.deltaTime;
+                questBoxImage.color = color;
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            while (timer < 2.5)
+            {
+                Color color = questBoxImage.color;
+                color.b -= 1f * Time.deltaTime;
+                questBoxImage.color = color;
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            while (timer < 3)
+            {
+                Color color = questBoxImage.color;
+                color.b += 1f * Time.deltaTime;
+                questBoxImage.color = color;
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            yield return null;;
     }
 }

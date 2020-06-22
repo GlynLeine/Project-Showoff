@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 8200615614828764944}
   - component: {fileID: 3150613408667555521}
   - component: {fileID: 5129478509587004198}
+  - component: {fileID: 331464086518600567}
   m_Layer: 0
   m_Name: OilRig
   m_TagString: Untagged
@@ -125,6 +126,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7881878732810339359}
+  - {fileID: 7463170097234829448}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -141,13 +143,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingType: 0
-  natureEffect: 0
   pollutionEffect: 4
-  industryEffect: 1
   effectPeriod: 5
   natureRemovalEffect: 0
   pollutionRemovalEffect: 0
   industryRemovalEffect: 0
+  happinessRemovalEffect: 0
 --- !u!114 &8200615614828764944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,3 +218,132 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 0
   OverrideMaxDistance: 1.8000001
+--- !u!114 &331464086518600567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4877105559853464855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b6c4438331c2a343b9df0e0da9e98e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  models:
+  - {fileID: 2010726724239772991}
+  - {fileID: 5893479569388278427}
+--- !u!135 &3272379598092147371
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5893479569388278427}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.06
+  m_Center: {x: 0, y: -0.03, z: 0}
+--- !u!1001 &2515319112384007058
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2978747322017432060}
+    m_Modifications:
+    - target: {fileID: -4216859302048453862, guid: 117113682eecf30418d49235a6c8cc7f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 117113682eecf30418d49235a6c8cc7f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.033879
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 117113682eecf30418d49235a6c8cc7f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0031
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 117113682eecf30418d49235a6c8cc7f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 117113682eecf30418d49235a6c8cc7f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 117113682eecf30418d49235a6c8cc7f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 117113682eecf30418d49235a6c8cc7f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 117113682eecf30418d49235a6c8cc7f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 117113682eecf30418d49235a6c8cc7f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 117113682eecf30418d49235a6c8cc7f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 117113682eecf30418d49235a6c8cc7f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 117113682eecf30418d49235a6c8cc7f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.53114
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 117113682eecf30418d49235a6c8cc7f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.53114
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 117113682eecf30418d49235a6c8cc7f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.53114
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 117113682eecf30418d49235a6c8cc7f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8e3d59db0fd9a5e4f8b97d1741d09735, type: 2}
+    - target: {fileID: -927199367670048503, guid: 117113682eecf30418d49235a6c8cc7f,
+        type: 3}
+      propertyPath: m_Name
+      value: oil_rig_var1_Model
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 117113682eecf30418d49235a6c8cc7f, type: 3}
+--- !u!1 &5893479569388278427 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 117113682eecf30418d49235a6c8cc7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2515319112384007058}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7463170097234829448 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 117113682eecf30418d49235a6c8cc7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2515319112384007058}
+  m_PrefabAsset: {fileID: 0}
