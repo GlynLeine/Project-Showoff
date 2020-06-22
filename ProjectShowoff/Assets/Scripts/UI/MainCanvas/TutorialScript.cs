@@ -17,6 +17,7 @@ public class TutorialScript : MonoBehaviour
     public GameObject tutorialArrow;
     public GameObject tutorialHand;
     public TMP_Text questBoxTextTMP;
+    public Image iconImage;
     public GameObject questSystem;
     public GameObject ruralBuildings;
     public GameObject coastalBuildings;
@@ -32,6 +33,16 @@ public class TutorialScript : MonoBehaviour
     private bool ifOilRigBuilt;
     private bool tutorialBuildingCheckStep;
     private bool tutorialDestroyStep;
+    private bool tutorialBoxFlash;
+    
+    public Sprite factorySprite;
+    public Sprite harborSprite;
+    public Sprite mineSprite;
+    public Sprite natureReserveSprite;
+    public Sprite oilSprite;
+    public Sprite solarSprite;
+    public Sprite trainSprite;
+    public Sprite emptyButton;
     
     private float tutorialDelaySeconds = 2.5f;//how long you need to wait before you start a tutorial step, potentially redundant
     public bool tutorialSkip;//if active, start does all the tutorial steps right away
@@ -107,6 +118,7 @@ public class TutorialScript : MonoBehaviour
             {
                 questBoxTextTMP.text = "Klik op de paarse cirkel en plaats daar een fabriek!";
             }
+            iconImage.sprite = factorySprite;
         }
 
         //StartCoroutine(QuestBoxFlash());
@@ -122,12 +134,14 @@ public class TutorialScript : MonoBehaviour
             StartCoroutine(BuildingNatureReserveWaiter("Nature reserve"));
             if (English)
             {
-                questBoxTextTMP.text = "Good job! Now place a " + englishRuralBuildingsArray[ruralCount] + " to balance the pollution!";
+                questBoxTextTMP.text = "Now place a " + englishRuralBuildingsArray[ruralCount] + " to balance the pollution!";
             }
             else
             {
-                questBoxTextTMP.text = "Goed gedaan! Plaats nu een " + dutchRuralBuildingsArray[ruralCount] + " om vervuiling tegen te gaan.";
-            }   
+                questBoxTextTMP.text = "Plaats nu een " + dutchRuralBuildingsArray[ruralCount] + " om vervuiling te stoppen!";
+            }
+            iconImage.sprite = natureReserveSprite;
+            StartCoroutine(QuestBoxFlash());
         }
         else if (buildingCount == 2)
         {
@@ -141,7 +155,9 @@ public class TutorialScript : MonoBehaviour
             else
             {
                 questBoxTextTMP.text = "Netjes! Probeer nu eens een " + dutchRuralBuildingsArray[ruralCount] + " te bouwen.";
-            }  
+            }
+            iconImage.sprite = mineSprite;
+            StartCoroutine(QuestBoxFlash());
         }
         else if (buildingCount == 3)
         {
@@ -159,13 +175,16 @@ public class TutorialScript : MonoBehaviour
                 StartCoroutine(BuildingNatureReserveWaiter("Train station"));
             }
             if (English)
-                {
-                    questBoxTextTMP.text = "Wow! That smells! Try putting down a " + englishRuralBuildingsArray[ruralCount] + ".";
-                }
-                else
-                {
-                    questBoxTextTMP.text = "Wow... Dat stinkt! Probeer eens een " + dutchRuralBuildingsArray[ruralCount] + " te plaatsen.";
-                }
+            {
+                questBoxTextTMP.text = "That smells! Try putting down a " + englishRuralBuildingsArray[ruralCount] + ".";
+            }
+            else
+            {
+                questBoxTextTMP.text = "Dat stinkt! Probeer eens een " + dutchRuralBuildingsArray[ruralCount] + " te plaatsen.";
+            }
+            iconImage.sprite = trainSprite;
+            StartCoroutine(QuestBoxFlash());
+
         }
         else if (buildingCount == 4)
         {
@@ -191,6 +210,8 @@ public class TutorialScript : MonoBehaviour
             {
                 questBoxTextTMP.text = "Heel goed! Kun je ook een " + dutchRuralBuildingsArray[ruralCount] + " plaatsen?";
             }
+            iconImage.sprite = solarSprite;
+            StartCoroutine(QuestBoxFlash());
         }
         else if (buildingCount == 5)
         {
@@ -234,6 +255,8 @@ public class TutorialScript : MonoBehaviour
                     questBoxTextTMP.text = "We hebben ook gebouwen voor de kust, bouw een " + dutchCoastalBuildingsArray[coastalCount] + ".";
                 }
             }
+            iconImage.sprite = harborSprite;
+            StartCoroutine(QuestBoxFlash());
         }
         else if (buildingCount == 6)
         {
@@ -276,6 +299,8 @@ public class TutorialScript : MonoBehaviour
                     questBoxTextTMP.text = "Bijna klaar! Plaats nu een " + dutchCoastalBuildingsArray[coastalCount] + ".";
                 }
             }
+            iconImage.sprite = oilSprite;
+            StartCoroutine(QuestBoxFlash());
         }
         else if (buildingCount == 7)
         {
@@ -288,6 +313,8 @@ public class TutorialScript : MonoBehaviour
             {
                 questBoxTextTMP.text = "Klik op een bestaand gebouw om meer informatie te zien!";
             }
+            iconImage.sprite = emptyButton;
+            StartCoroutine(QuestBoxFlash());
             StartCoroutine(BuildingActivationWaiter());
         }
         else if (buildingCount >= 8)
@@ -304,6 +331,7 @@ public class TutorialScript : MonoBehaviour
             tutorialBuildingCheckStep = true;
             tutorialDestroyStep = true;
             StartCoroutine(QuestChanger());
+            StartCoroutine(QuestBoxFlash());
             if (!tutorialZoomStep)
             {
                 GameManager.paused = false;
@@ -349,6 +377,7 @@ public class TutorialScript : MonoBehaviour
             {
                 questBoxTextTMP.text = "Klik op de knop rechts om het gebouw te vernietigen!";
             }
+            StartCoroutine(QuestBoxFlash());
             tutorialBuildingCheckStep = true;
             StartCoroutine(FindNewLocationWaiter());
         }
@@ -367,6 +396,7 @@ public class TutorialScript : MonoBehaviour
             {
                 questBoxTextTMP.text = "Zoom uit en kijk rond om een nieuwe plek te vinden om te bouwen!";
             }
+            StartCoroutine(QuestBoxFlash());
             tutorialDestroyStep = true;
         }
     }
@@ -375,6 +405,7 @@ public class TutorialScript : MonoBehaviour
     {
         yield return new WaitForSeconds(6);
         questBoxTextTMP.gameObject.SetActive(false);
+        iconImage.gameObject.SetActive(false);
         questSystem.SetActive(true);
     }
     //waits one second before deactivating everything but the game object with the name, so it doesnt happen on screen and ppl dont notice
@@ -424,72 +455,60 @@ public class TutorialScript : MonoBehaviour
     //making it glow at the start - doesnt work rn? just does it instantly
     IEnumerator QuestBoxFlash()
     {
-        while (timer < 0.5)
+        if (!tutorialBoxFlash)
         {
-            Color color = questBoxImage.color;
-            color.b -= 1f * Time.deltaTime;
-            questBoxImage.color = color;
-            timer += Time.deltaTime;
-            yield return null;
+            tutorialBoxFlash = true;
+            while (timer < 0.5)
+            {
+                Color color = questBoxImage.color;
+                color.b -= 1f * Time.deltaTime;
+                questBoxImage.color = color;
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            while (timer < 1)
+            {
+                Color color = questBoxImage.color;
+                color.b += 1f * Time.deltaTime;
+                questBoxImage.color = color;
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            while (timer < 1.5)
+            {
+                Color color = questBoxImage.color;
+                color.b -= 1f * Time.deltaTime;
+                questBoxImage.color = color;
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            while (timer < 2)
+            {
+                Color color = questBoxImage.color;
+                color.b += 1f * Time.deltaTime;
+                questBoxImage.color = color;
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            while (timer < 2.5)
+            {
+                Color color = questBoxImage.color;
+                color.b -= 1f * Time.deltaTime;
+                questBoxImage.color = color;
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            while (timer < 3)
+            {
+                Color color = questBoxImage.color;
+                color.b += 1f * Time.deltaTime;
+                questBoxImage.color = color;
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            timer = 0;
+            tutorialBoxFlash = false;
         }
-        while (timer < 1)
-        {
-            Color color = questBoxImage.color;
-            color.b += 1f * Time.deltaTime;
-            questBoxImage.color = color;
-            timer += Time.deltaTime;
-            yield return null;
-        }
-        while (timer < 1.5)
-        {
-            Color color = questBoxImage.color;
-            color.b -= 1f * Time.deltaTime;
-            questBoxImage.color = color;
-            timer += Time.deltaTime;
-            yield return null;
-        }
-        while (timer < 2)
-        {
-            Color color = questBoxImage.color;
-            color.b += 1f * Time.deltaTime;
-            questBoxImage.color = color;
-            timer += Time.deltaTime;
-            yield return null;
-        }
-        while (timer < 2.5)
-        {
-            Color color = questBoxImage.color;
-            color.b -= 1f * Time.deltaTime;
-            questBoxImage.color = color;
-            timer += Time.deltaTime;
-            yield return null;
-        }
-        while (timer < 3)
-        {
-            Color color = questBoxImage.color;
-            color.b += 1f * Time.deltaTime;
-            questBoxImage.color = color;
-            timer += Time.deltaTime;
-            yield return null;
-        }
-        while (timer < 3.5)
-        {
-            Color color = questBoxImage.color;
-            color.b -= 1f * Time.deltaTime;
-            questBoxImage.color = color;
-            timer += Time.deltaTime;
-            yield return null;
-        }
-        while (timer < 4)
-        {
-            Color color = questBoxImage.color;
-            color.b += 1f * Time.deltaTime;
-            questBoxImage.color = color;
-            timer += Time.deltaTime;
-            yield return null;
-        }
-
-        timer = 0;
     }
     //everything below here is things moving
     IEnumerator SliderAnimationStart()
