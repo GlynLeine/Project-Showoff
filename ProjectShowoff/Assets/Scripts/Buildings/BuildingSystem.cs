@@ -135,7 +135,7 @@ public class BuildingSystem : MonoBehaviour
                         uiActive = true;
                     }
                 }
-                else if(enableStatsAndDestroy)
+                else if (enableStatsAndDestroy)
                 {
                     BuildingLocation location = hit.collider.transform.parent.parent.gameObject.GetComponent<BuildingLocation>();
                     if (location != null)
@@ -536,7 +536,9 @@ public class BuildingSystem : MonoBehaviour
         location.ocean = ocean;
 
         location.transform.parent = parent;
+
         location.transform.up = (location.transform.position - planet.position).normalized;
+
         locations[location.locationType].Add(location);
     }
 
@@ -616,8 +618,14 @@ public class BuildingSystem : MonoBehaviour
         if (source.scene.name == null || source.scene.rootCount == 0)
         {
             buildingObj = Instantiate(source, location.transform);
-            buildingObj.transform.localRotation = Quaternion.identity;
             buildingObj.transform.localPosition = Vector3.zero;
+
+            Vector3 up = location.transform.up;
+            Vector3 forward = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+            Vector3 right = Vector3.Cross(up, forward).normalized;
+            forward = Vector3.Cross(right, up).normalized;
+
+            buildingObj.transform.rotation = Quaternion.LookRotation(forward, up);
         }
         else
         {
