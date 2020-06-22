@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: d538fb6a9c8ac7142b7ca9a915dd4647
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Bamboo Brisk
+  fontNames:
+  - Bamboo Brisk
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: b8e88c2c0a2a0c841b6239c863c3fe5a, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
