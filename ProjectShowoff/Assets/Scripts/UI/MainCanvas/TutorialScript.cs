@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using Button = UnityEngine.UI.Button;
 using Image = UnityEngine.UI.Image;
 using Slider = UnityEngine.UI.Slider;
 
@@ -22,6 +23,8 @@ public class TutorialScript : MonoBehaviour
     public GameObject ruralBuildings;
     public GameObject coastalBuildings;
     public Image questBoxImage;
+    public Button destroyButton;
+    public BuildingSystem buildingSystem;
     private Slider slider;
     private float animationSpeed = 1; //reset at end of every animation, makes animations move faster as they go on
     //tutorial step bools so we can check where the player is
@@ -62,7 +65,6 @@ public class TutorialScript : MonoBehaviour
     {
         BuildingSystem.onBuildingPlaced += OnBuildingPlaced;
         slider = zoomSlider.GetComponent<Slider>();
-        slider.onValueChanged.AddListener(SliderTutorialChange);
         GameManager.paused = true;
         StartCoroutine(NewsCasterAnimationStart());
         StartCoroutine(HandAnimation());
@@ -80,6 +82,9 @@ public class TutorialScript : MonoBehaviour
             StartCoroutine(TimerAnimationStart());
             StartCoroutine(ResetAnimationStart());
             StartCoroutine(SliderAnimationStart());
+            buildingSystem.enableNewContinents = true;
+            buildingSystem.enableCoasts = true;
+            buildingSystem.enableStatsAndDestroy = true;
             BuildingSystem.onBuildingPlaced -= OnBuildingPlaced;
 
         }
@@ -127,182 +132,110 @@ public class TutorialScript : MonoBehaviour
     //this gets called when a building is placed 
     private void OnBuildingPlaced(BuildingLocation location, BuildingPlacer buildingData, Building building)
     {
-        buildingCount += 1;
-        if (buildingCount == 1)
+        //if youve destroyed a building, activate zoom step, else, check what building has just been placed to see what step theyre on
+        if (tutorialDestroyStep)
         {
-            ruralCount += 1;
-            StartCoroutine(BuildingNatureReserveWaiter("Nature reserve"));
             if (English)
             {
-                questBoxTextTMP.text = "Now place a " + englishRuralBuildingsArray[ruralCount] + " to balance the pollution!";
+                questBoxTextTMP.text = "Zoom out and look around to find a new place to build!";
             }
             else
             {
-                questBoxTextTMP.text = "Plaats nu een " + dutchRuralBuildingsArray[ruralCount] + " om vervuiling te stoppen!";
+                questBoxTextTMP.text = "Zoom uit en kijk rond om een nieuwe plek te vinden om te bouwen!";
             }
-            iconImage.sprite = natureReserveSprite;
-            StartCoroutine(QuestBoxFlash());
+            slider.onValueChanged.AddListener(SliderTutorialChange);
+            StartCoroutine(SliderAnimationStart());
+            BuildingSystem.onBuildingPlaced -= OnBuildingPlaced;
         }
-        else if (buildingCount == 2)
+        else if (buildingData.buildingType == BuildingType.Factory)
         {
-            ruralCount += 1;
-            StartCoroutine(BuildingNatureReserveWaiter("Coal mine"));
-            StartCoroutine(BuildingHarborWaiter(coastalBuildingsArray[coastalCount]));
+            {
+                StartCoroutine(BuildingNatureReserveWaiter(ruralBuildingsArray[1]));
+                if (English)
+                {
+                    questBoxTextTMP.text = "Now place a " + englishRuralBuildingsArray[1] + " to balance the pollution!";
+                }
+                else
+                {
+                    questBoxTextTMP.text = "Plaats nu een " + dutchRuralBuildingsArray[1] + " om vervuiling te stoppen!";
+                }
+                iconImage.sprite = natureReserveSprite;
+                StartCoroutine(QuestBoxFlash());
+            }
+        }
+        else if (buildingData.buildingType == BuildingType.NatureReserve)
+        {
+            StartCoroutine(BuildingNatureReserveWaiter(ruralBuildingsArray[2]));
+            StartCoroutine(BuildingHarborWaiter(""));
             if (English)
             {
-                questBoxTextTMP.text = "Nice! Try placing a " + englishRuralBuildingsArray[ruralCount] + " this time!";
+                questBoxTextTMP.text = "Nice! Try placing a " + englishRuralBuildingsArray[2] + " this time!";
             }
             else
             {
-                questBoxTextTMP.text = "Netjes! Probeer nu eens een " + dutchRuralBuildingsArray[ruralCount] + " te bouwen.";
+                questBoxTextTMP.text = "Netjes! Probeer nu eens een " + dutchRuralBuildingsArray[2] + " te bouwen.";
             }
             iconImage.sprite = mineSprite;
             StartCoroutine(QuestBoxFlash());
         }
-        else if (buildingCount == 3)
+        else if (buildingData.buildingType == BuildingType.CoalMine)
         {
-            if (buildingData.locationType == LocationType.Coastal)
-            {
-                if (coastalCount < 1)
-                {
-                    coastalCount += 1;
-                }
-                StartCoroutine(BuildingHarborWaiter(coastalBuildingsArray[coastalCount]));
-            }
-            else if (buildingData.locationType == LocationType.Rural)
-            {
-                ruralCount += 1;
-                StartCoroutine(BuildingNatureReserveWaiter("Train station"));
-            }
+            StartCoroutine(BuildingNatureReserveWaiter(ruralBuildingsArray[3]));
             if (English)
             {
-                questBoxTextTMP.text = "That smells! Try putting down a " + englishRuralBuildingsArray[ruralCount] + ".";
+                questBoxTextTMP.text = "That smells! Try putting down a " + englishRuralBuildingsArray[3] + ".";
             }
             else
             {
-                questBoxTextTMP.text = "Dat stinkt! Probeer eens een " + dutchRuralBuildingsArray[ruralCount] + " te plaatsen.";
+                questBoxTextTMP.text = "Dat stinkt! Probeer eens een " + dutchRuralBuildingsArray[3] + " te plaatsen.";
             }
             iconImage.sprite = trainSprite;
             StartCoroutine(QuestBoxFlash());
-
         }
-        else if (buildingCount == 4)
+        else if (buildingData.buildingType == BuildingType.TrainStation)
         {
-            
-            if (buildingData.locationType == LocationType.Coastal)
-            {
-                if (coastalCount < 1)
-                {
-                    coastalCount += 1;
-                }
-                StartCoroutine(BuildingHarborWaiter(coastalBuildingsArray[coastalCount]));
-            }
-            else if (buildingData.locationType == LocationType.Rural)
-            {
-                ruralCount += 1;
-                StartCoroutine(BuildingNatureReserveWaiter(ruralBuildingsArray[ruralCount]));
-            }
+            StartCoroutine(BuildingNatureReserveWaiter(ruralBuildingsArray[4]));
             if (English)
             {
-                questBoxTextTMP.text = "Good! Now put down a " + englishRuralBuildingsArray[ruralCount] + "!";
+                questBoxTextTMP.text = "Good! Now put down a " + englishRuralBuildingsArray[4] + "!";
             }
             else
             {
-                questBoxTextTMP.text = "Heel goed! Kun je ook een " + dutchRuralBuildingsArray[ruralCount] + " plaatsen?";
+                questBoxTextTMP.text = "Heel goed! Kun je ook een " + dutchRuralBuildingsArray[4] + " plaatsen?";
             }
             iconImage.sprite = solarSprite;
             StartCoroutine(QuestBoxFlash());
         }
-        else if (buildingCount == 5)
+        else if (buildingData.buildingType == BuildingType.SolarFarm)
         {
-            
-            if (buildingData.locationType == LocationType.Coastal)
+            buildingSystem.enableCoasts = true;
+            StartCoroutine(BuildingHarborWaiter(coastalBuildingsArray[0]));
+            if (English)
             {
-                if (coastalCount < 1)
-                {
-                    coastalCount += 1;
-                }
-                StartCoroutine(BuildingHarborWaiter(coastalBuildingsArray[coastalCount]));
-            }
-            else if (buildingData.locationType == LocationType.Rural)
-            {
-                if (ruralCount < 5)
-                {
-                    StartCoroutine(BuildingNatureReserveWaiter(ruralBuildingsArray[ruralCount]));
-                }
-                ruralCount += 1;
-            }
-
-            if (ruralCount < 5)
-            {
-                if (English)
-                {
-                    questBoxTextTMP.text = "Wow! You already know about coastal buildings? Place a " + englishRuralBuildingsArray[ruralCount] + " instead!";
-                }
-                else
-                {
-                    questBoxTextTMP.text = "Wow! Je weet al wat kust gebouwen zijn? Plaats dan maar een " + dutchRuralBuildingsArray[ruralCount] + ".";
-                }
+                questBoxTextTMP.text = "We also have coastal buildings, place a " + englishCoastalBuildingsArray[0] + ".";
             }
             else
-            {
-                if (English)
-                {
-                    questBoxTextTMP.text = "We also have coastal buildings, place a " + englishCoastalBuildingsArray[coastalCount] + ".";
-                }
-                else
-                {
-                    questBoxTextTMP.text = "We hebben ook gebouwen voor de kust, bouw een " + dutchCoastalBuildingsArray[coastalCount] + ".";
-                }
+            { 
+                questBoxTextTMP.text = "We hebben ook gebouwen voor de kust, bouw een " + dutchCoastalBuildingsArray[0] + ".";
             }
             iconImage.sprite = harborSprite;
             StartCoroutine(QuestBoxFlash());
         }
-        else if (buildingCount == 6)
+        else if (buildingData.buildingType == BuildingType.Harbor)
         {
-            
-            if (buildingData.locationType == LocationType.Coastal)
+            StartCoroutine(BuildingHarborWaiter(coastalBuildingsArray[1]));
+            if (English)
             {
-                if (coastalCount < 1)
-                {
-                    coastalCount += 1;
-                }
-                StartCoroutine(BuildingHarborWaiter(coastalBuildingsArray[coastalCount]));
-            }
-            else if (buildingData.locationType == LocationType.Rural)
-            {
-                if (ruralCount < 5)
-                {
-                    StartCoroutine(BuildingNatureReserveWaiter(ruralBuildingsArray[ruralCount]));
-                }
-                ruralCount += 1;
-            }
-            if (ruralCount < 5)
-            {
-                if (English)
-                {
-                    questBoxTextTMP.text = "Good! Now put down a " + englishRuralBuildingsArray[ruralCount] + "!";
-                }
-                else
-                {
-                    questBoxTextTMP.text = "Goed! Probeer nu eens een " + dutchRuralBuildingsArray[ruralCount] + " te plaatsen.";
-                }
+                questBoxTextTMP.text = "Almost done! Try placing a "+ englishCoastalBuildingsArray[1] + ".";
             }
             else
             {
-                if (English)
-                {
-                    questBoxTextTMP.text = "Almost done! Try placing a "+ englishCoastalBuildingsArray[coastalCount] + ".";
-                }
-                else
-                {
-                    questBoxTextTMP.text = "Bijna klaar! Plaats nu een " + dutchCoastalBuildingsArray[coastalCount] + ".";
-                }
+                questBoxTextTMP.text = "Bijna klaar! Plaats nu een " + dutchCoastalBuildingsArray[1] + ".";
             }
             iconImage.sprite = oilSprite;
             StartCoroutine(QuestBoxFlash());
         }
-        else if (buildingCount == 7)
+        else if (buildingData.buildingType == BuildingType.OilRig)
         {
             tutorialBuildStep = true;
             if (English)
@@ -313,58 +246,14 @@ public class TutorialScript : MonoBehaviour
             {
                 questBoxTextTMP.text = "Klik op een bestaand gebouw om meer informatie te zien!";
             }
+            buildingSystem.enableStatsAndDestroy = true;
             iconImage.sprite = emptyButton;
             StartCoroutine(QuestBoxFlash());
             StartCoroutine(BuildingActivationWaiter());
         }
-        else if (buildingCount >= 8)
-        {
-            if (English)
-            {
-                questBoxTextTMP.text = "Good job, you can place what you want now, but you can help us more!";
-            }
-            else
-            {
-                questBoxTextTMP.text = "Goed gedaan, je kan nu doen wat je wilt! Maar je kunt ooks ons helpen!";
-            }
-            StartCoroutine(SliderAnimationStart());
-            tutorialBuildingCheckStep = true;
-            tutorialDestroyStep = true;
-            StartCoroutine(QuestChanger());
-            StartCoroutine(QuestBoxFlash());
-            if (!tutorialZoomStep)
-            {
-                GameManager.paused = false;
-                StartCoroutine(TimerAnimationStart());
-                StartCoroutine(ResetAnimationStart());
-                tutorialZoomStep = true;
-            }
-            BuildingSystem.onBuildingPlaced -= OnBuildingPlaced;
-        }
-    }
-    //on slider change, this gets called, but since it only needs to be called when the user touches the slider for the first time it also unsubs from the slider
-    public void SliderTutorialChange(float value)
-    {
-        if (!tutorialZoomStep)
-        {
-            tutorialZoomStep = true;
-            GameManager.paused = false;
-            StartCoroutine(TimerAnimationStart());
-        }
-        slider.onValueChanged.RemoveListener(SliderTutorialChange);
-    }
-    //gets called when you press a button, keeping it here for now if i need that again so i dont need to go through the hassle of adding all the buttons again
-    public void BuildingTutorialButton()
-    {
-        /*if (!tutorialBuildStep)
-        {
-            GameManager.paused = false;
-            tutorialBuildStep = true;
-            StartCoroutine(TimerAnimationStart());
-            StartCoroutine(ResetAnimationStart());
-        }*/
     }
 
+    //this function gets called in the script that pops up the building data, its the first step post-building buidlings
     public void BuildingCheckTutorial()
     {
         if (!tutorialBuildingCheckStep)
@@ -379,27 +268,52 @@ public class TutorialScript : MonoBehaviour
             }
             StartCoroutine(QuestBoxFlash());
             tutorialBuildingCheckStep = true;
-            StartCoroutine(FindNewLocationWaiter());
+            destroyButton.onClick.AddListener(OnButtonPress);
         }
     }
 
-    IEnumerator FindNewLocationWaiter()
+    //gets called when you press the destroy button aka when you destroy a building
+    public void OnButtonPress()
     {
-        yield return new WaitForSeconds(6);
-        if (!tutorialDestroyStep)
+        if (English)
         {
+            questBoxTextTMP.text = "Place a new building on the destroyed spot now!";
+        }
+        else
+        {
+            questBoxTextTMP.text = "Plaats nu een nieuw gebouw op de oude plek!";
+        }
+        StartCoroutine(QuestBoxFlash());
+        tutorialDestroyStep = true;
+        destroyButton.onClick.RemoveListener(OnButtonPress);
+    }
+    
+    //gets called when you touch the slider, aka when you zoom
+    public void SliderTutorialChange(float value)
+    {
+        if (!tutorialZoomStep)
+        {
+            tutorialZoomStep = true;
+            GameManager.paused = false;
+            StartCoroutine(TimerAnimationStart());
             if (English)
             {
-                questBoxTextTMP.text = "Zoom out and look around to find a new place to build!";
+                questBoxTextTMP.text = "Good job, you can place what you want now, but you can help us more!";
             }
             else
             {
-                questBoxTextTMP.text = "Zoom uit en kijk rond om een nieuwe plek te vinden om te bouwen!";
+                questBoxTextTMP.text = "Goed gedaan, je kan nu doen wat je wilt! Maar je kunt ooks ons helpen!";
             }
             StartCoroutine(QuestBoxFlash());
-            tutorialDestroyStep = true;
+            StartCoroutine(QuestChanger());
+            StartCoroutine(QuestBoxFlash());
+            StartCoroutine(ResetAnimationStart());
+            buildingSystem.enableNewContinents = true;
+            tutorialZoomStep = true;
         }
+        slider.onValueChanged.RemoveListener(SliderTutorialChange);
     }
+    
     //does what it says on the tin, called when you finish the tutorial to change the tutorial box to the quest system
     IEnumerator QuestChanger()
     {
@@ -439,7 +353,7 @@ public class TutorialScript : MonoBehaviour
             }
         }
     }
-    //same as above, just for activating everything
+    //same as above, just for activating everything once the building tutorial section is done
     IEnumerator BuildingActivationWaiter()
     {
         yield return new WaitForSeconds(1);
@@ -452,7 +366,7 @@ public class TutorialScript : MonoBehaviour
             child.gameObject.SetActive(true);
         }
     }
-    //making it glow at the start - doesnt work rn? just does it instantly
+    //makes the tutorial box flash on new tutorial steps, assuming its not currently flashing
     IEnumerator QuestBoxFlash()
     {
         if (!tutorialBoxFlash)
@@ -510,7 +424,7 @@ public class TutorialScript : MonoBehaviour
             tutorialBoxFlash = false;
         }
     }
-    //everything below here is things moving
+    //everything below here is things moving into place
     IEnumerator SliderAnimationStart()
     {
         while (zoomSlider.transform.localPosition.x > 810)

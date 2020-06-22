@@ -6831,6 +6831,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 24.681013
       objectReference: {fileID: 0}
+    - target: {fileID: 2946203210707287117, guid: 9a1544356b636fe478f34b9a6bb8508d,
+        type: 3}
+      propertyPath: buildingSystem
+      value: 
+      objectReference: {fileID: 576086916}
     - target: {fileID: 3169854686054731884, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
       propertyPath: cameraRotationObject
@@ -11051,8 +11056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd43466f21eb14342aab1928cb322e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  airPlanePrefab: {fileID: 8217335834629710215, guid: 2995165b360e5d340b10af8a039558a1,
-    type: 3}
+  airPlanePrefabs: []
   minFlightInterval: 3
   maxFlightInterval: 6
   planeAcceleration: 0.1
@@ -11069,8 +11073,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e00d0b83322df6b4a80f2cdd7fe6de1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaceshipPrefab: {fileID: 7935481384116412509, guid: c54effe1a11ff4141b7f3507add101bb,
-    type: 3}
+  spaceshipPrefabs: []
   minExpeditionInterval: 5
   maxExpeditionInterval: 5
   acceleration: 0.2
