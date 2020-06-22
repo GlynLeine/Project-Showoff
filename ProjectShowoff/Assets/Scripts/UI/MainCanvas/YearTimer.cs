@@ -17,22 +17,22 @@ public class YearTimer : MonoBehaviour
 
     void Update()
     {
-        GameManager.SetSeasonTime(Mathf.Clamp01((GameManager.time - 37.5f / timeScale) / (225f / timeScale)));
-        if (GameManager.time <= 75f / timeScale)
+        GameManager.SetSeasonTime(Mathf.Clamp01((GameManager.time - 30f / timeScale) / (180f / timeScale)));
+        if (GameManager.time <= 60f / timeScale)
         {
-            springGrayscaleImage.fillAmount = 1f - GameManager.time / (75f / timeScale);
+            springGrayscaleImage.fillAmount = 1f - GameManager.time / (60f / timeScale);
         }
-        else if (GameManager.time <= 150f / timeScale)
+        else if (GameManager.time <= 120f / timeScale)
         {
-            summerGrayscaleImage.fillAmount = 1f - (GameManager.time - (75f / timeScale)) / (75f / timeScale);
+            summerGrayscaleImage.fillAmount = 1f - (GameManager.time - (60f / timeScale)) / (60f / timeScale);
         }
-        else if (GameManager.time <= 225f / timeScale)
+        else if (GameManager.time <= 180f / timeScale)
         {
-            fallGrayscaleImage.fillAmount = 1f - (GameManager.time - (150f / timeScale)) / (75f / timeScale);
+            fallGrayscaleImage.fillAmount = 1f - (GameManager.time - (120f / timeScale)) / (60f / timeScale);
         }
-        else if (GameManager.time <= 300f / timeScale)
+        else if (GameManager.time <= 240f / timeScale)
         {
-            winterGrayscaleImage.fillAmount = 1f - (GameManager.time - (225f / timeScale)) / (75f / timeScale);
+            winterGrayscaleImage.fillAmount = 1f - (GameManager.time - (180f / timeScale)) / (60f / timeScale);
         }
         else if (!endScreenActivated)
         {

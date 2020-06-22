@@ -526,6 +526,93 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &749824993267050392
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4315773510805484385}
+  - component: {fileID: 6270672972083692039}
+  - component: {fileID: 2693959343972102390}
+  - component: {fileID: 2634704186886126290}
+  m_Layer: 5
+  m_Name: transition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4315773510805484385
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749824993267050392}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 25, y: 12, z: 0}
+  m_Children: []
+  m_Father: {fileID: 8872052277425209312}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &6270672972083692039
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749824993267050392}
+  m_CullTransparentMesh: 0
+--- !u!114 &2693959343972102390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749824993267050392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 3b97a1e2c54bb4b42a42f6540d6e1527, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!225 &2634704186886126290
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749824993267050392}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &896321243010555612
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,7 +1165,7 @@ MonoBehaviour:
   natureEffect: 0
   pollutionEffect: 4
   industryEffect: 1
-  cooldownEffect: -0.05
+  happinessEffect: 0
 --- !u!114 &519313145166615632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1745,26 +1832,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b80be42fbdaca147a96c9d23318d36b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingIcon: {fileID: 6542626864887728967}
-  taskText: {fileID: 0}
+  onBuildingDestroy: {fileID: 0}
+  blockerImage: {fileID: 0}
+  blockerText: {fileID: 0}
+  objectives: {fileID: 0}
+  buildingOrDestroy: {fileID: 0}
   counterText: {fileID: 6167337352802637470}
+  buildingIcon: {fileID: 6542626864887728967}
+  forText: {fileID: 0}
+  plusMinusImage: {fileID: 0}
+  rewardImage: {fileID: 0}
   timerText: {fileID: 1651219731120601553}
+  buildSprite: {fileID: 0}
+  destroySprite: {fileID: 0}
+  pollutionSprite: {fileID: 0}
+  natureSprite: {fileID: 21300000, guid: 959f947416341b046afd1233ede6cbfd, type: 3}
+  creatureSprite: {fileID: 0}
   factorySprite: {fileID: 21300000, guid: 118807f199691564086c36324bb80d9d, type: 3}
   harborSprite: {fileID: 21300000, guid: d5176ee26ba948642b83c1038c702b2b, type: 3}
   mineSprite: {fileID: 21300000, guid: 8413d63425574b848acee63f546adb0e, type: 3}
-  natureSprite: {fileID: 21300000, guid: 959f947416341b046afd1233ede6cbfd, type: 3}
+  natureReserveSprite: {fileID: 0}
   oilSprite: {fileID: 21300000, guid: e7503849313b5fe42b555c2e67ea7974, type: 3}
   solarSprite: {fileID: 21300000, guid: 70a107c2dd653914f9fd00402b6137b8, type: 3}
   trainSprite: {fileID: 21300000, guid: 009b393aa17409a4ab7b62b4f857dec3, type: 3}
+  plusSprite: {fileID: 0}
+  minusSprite: {fileID: 0}
   questList:
   - buildingType: 2
+    buildOrDestroy: 0
     buildHowMany: 3
     maxTimeInSeconds: 30
     waitTimeInSeconds: 10
+    addReward: 0
+    reward: 0
   - buildingType: 4
+    buildOrDestroy: 0
     buildHowMany: 4
     maxTimeInSeconds: 30
     waitTimeInSeconds: 10
+    addReward: 0
+    reward: 0
 --- !u!1 &2766883279786236331
 GameObject:
   m_ObjectHideFlags: 0
@@ -2298,7 +2405,7 @@ MonoBehaviour:
   natureEffect: 0
   pollutionEffect: 0
   industryEffect: 1
-  cooldownEffect: -0.05
+  happinessEffect: 0
 --- !u!114 &1965620292275756017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4757,7 +4864,7 @@ MonoBehaviour:
   natureEffect: 25
   pollutionEffect: 0
   industryEffect: 0
-  cooldownEffect: 0
+  happinessEffect: 0
 --- !u!114 &9039077146645611166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5286,7 +5393,7 @@ MonoBehaviour:
   natureEffect: 0
   pollutionEffect: 0
   industryEffect: 1
-  cooldownEffect: 0
+  happinessEffect: 0
 --- !u!114 &538938839970897234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6359,7 +6466,7 @@ MonoBehaviour:
   natureEffect: 0
   pollutionEffect: 4
   industryEffect: 1
-  cooldownEffect: -0.05
+  happinessEffect: 0
 --- !u!114 &6125047934237583473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6477,6 +6584,7 @@ GameObject:
   - component: {fileID: 8872052277272169928}
   - component: {fileID: 8872052277272169926}
   - component: {fileID: 2492309369576556696}
+  - component: {fileID: 6995273035738759507}
   m_Layer: 5
   m_Name: TimeImages
   m_TagString: Untagged
@@ -6537,6 +6645,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a281b3d23c18747adc68832447e53a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &6995273035738759507
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872052277272169929}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2966f7f7508f9fd4c9f58cd16154347a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8872052277295596727
 GameObject:
   m_ObjectHideFlags: 0
@@ -7020,7 +7147,7 @@ GameObject:
   - component: {fileID: 5088064781938175821}
   - component: {fileID: 3169854686054731884}
   m_Layer: 5
-  m_Name: AnimationMainCanvas
+  m_Name: AnimationMainCanvas 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7049,6 +7176,7 @@ RectTransform:
   - {fileID: 5388504969268413816}
   - {fileID: 359013031667045953}
   - {fileID: 213114576509048048}
+  - {fileID: 4315773510805484385}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7170,7 +7298,7 @@ Animator:
   m_GameObject: {fileID: 8872052277425209316}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3d2370e9201f6f24b9e35cfd1f45fee0, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8d59fa29058f5a04c84d351c4666f309, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -7639,7 +7767,7 @@ MonoBehaviour:
   natureEffect: 0
   pollutionEffect: 0
   industryEffect: 1
-  cooldownEffect: 0
+  happinessEffect: 0
 --- !u!114 &2939018981580030789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8269,7 +8397,7 @@ MonoBehaviour:
   natureEffect: 0
   pollutionEffect: 0
   industryEffect: 1
-  cooldownEffect: -0.05
+  happinessEffect: 0
 --- !u!114 &8235950987674732319
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -19,7 +19,7 @@ public class FireWorks : MonoBehaviour
         while (GameManager.season < 1f)
             yield return null;
 
-        if (GameManager.industry > 200)
+        if (GameManager.industry >= 25)
         {
             foreach (Building building in FindObjectsOfType<Building>())
             {
@@ -33,12 +33,12 @@ public class FireWorks : MonoBehaviour
 
     IEnumerator DestroyEffect()
     {
-        yield return new WaitForSeconds(20f);
+        yield return new WaitForSeconds(15f);
 
         foreach (VisualEffect fireWork in fireWorks)
         {
             fireWork.Stop();
-            fireWork.GetComponent<FMODUnity.StudioEventEmitter>().Stop();
+            //fireWork.GetComponent<FMODUnity.StudioEventEmitter>().Stop();
         }
 
         yield return new WaitForSeconds(2.5f);
