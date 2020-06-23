@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -312,7 +312,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1058062965}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &17763529
 Mesh:
@@ -3603,7 +3603,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 985299841}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &532328298
 Mesh:
@@ -8488,6 +8488,18 @@ PrefabInstance:
       objectReference: {fileID: 921524682}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99dc1534db5838f4681b9194e5060f7e, type: 3}
+--- !u!114 &937201614 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8841718047115693533, guid: 99dc1534db5838f4681b9194e5060f7e,
+    type: 3}
+  m_PrefabInstance: {fileID: 937201613}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edb8f6d74ae3144438712af6d9c74a8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &953967159
 Mesh:
   m_ObjectHideFlags: 0
@@ -14121,6 +14133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1407889432}
+  - component: {fileID: 1407889433}
   m_Layer: 0
   m_Name: Boat Controller
   m_TagString: Untagged
@@ -14146,6 +14159,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1407889433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407889431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07326d3df735beb4f9a668c388c10e69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boats:
+  - {fileID: 937201614}
+  - {fileID: 1951277012}
 --- !u!43 &1426297330
 Mesh:
   m_ObjectHideFlags: 0
@@ -19328,7 +19356,12 @@ PrefabInstance:
     - target: {fileID: 5870629246381154990, guid: 6080f184e1a338c4da7e502969d99ef1,
         type: 3}
       propertyPath: length
-      value: 3.351796
+      value: 3.3517952
+      objectReference: {fileID: 0}
+    - target: {fileID: 5870629246381154990, guid: 6080f184e1a338c4da7e502969d99ef1,
+        type: 3}
+      propertyPath: recalculateOnRunTime
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5870629246381154991, guid: 6080f184e1a338c4da7e502969d99ef1,
         type: 3}
@@ -20539,6 +20572,18 @@ PrefabInstance:
       objectReference: {fileID: 921524682}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99dc1534db5838f4681b9194e5060f7e, type: 3}
+--- !u!114 &1951277012 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8841718047115693533, guid: 99dc1534db5838f4681b9194e5060f7e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1951277011}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edb8f6d74ae3144438712af6d9c74a8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1955812736
 Mesh:
   m_ObjectHideFlags: 0
