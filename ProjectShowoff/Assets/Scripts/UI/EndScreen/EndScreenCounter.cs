@@ -32,31 +32,34 @@ public class EndScreenCounter : MonoBehaviour
         foreach (Transform child in theirFill.transform) {
             Destroy(child.gameObject);
         }
+
+        GameState averageState = GameManager.LoadAverages();
+
         //reflection
         if (counterType == typeChoice.C02)
         {
             yourValue = (float)GameManager.pollution;
-            averageValue = 1500f;
+            averageValue = averageState.pollution;
         }
         else if (counterType == typeChoice.Happiness)
         {
             yourValue = (float)GameManager.happiness;
-            averageValue = 120;
+            averageValue = averageState.happiness;
         }
         else if (counterType == typeChoice.Plants)
         {
             yourValue = (float)GameManager.nature;
-            averageValue = 225f;
+            averageValue = averageState.nature;
         }
         else if (counterType == typeChoice.Industry)
         {
             yourValue = (float)GameManager.industry;
-            averageValue = 21f;
+            averageValue = averageState.industry;
         }
         else if (counterType == typeChoice.BuildingsPlaced)
         {
             yourValue = (float)GameManager.buildingsPlaced;
-            averageValue = 53f;
+            averageValue = averageState.buildingsPlaced;
         }
         tickAmount = maxAmount / 5;
         for (float i = 0; i < yourValue; i+=tickAmount)

@@ -3,6 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+
+[System.Serializable]
+public class GameState
+{
+    public float nature;
+    public float pollution;
+    public float industry;
+    public float happiness;
+    public float waterLevel;
+    public float buildingsPlaced;
+    public ulong userCount;
+}
 
 public class GameManager : MonoBehaviour
 {
@@ -63,6 +78,104 @@ public class GameManager : MonoBehaviour
 
     private float t;
     private float prevPollut = 0;
+
+
+    static float AppendAverage(float average, float newData, ulong count)
+    {
+        if (count == 0)
+            return newData;
+
+        decimal contribution = 1m / count;
+        decimal newAverage = (decimal)newData * contribution;
+        newAverage /= 1m + contribution;
+        return (float)newAverage;
+    }
+
+    static public void AppendDataAndOverwrite()
+    {
+        GameState averageState = LoadAverages();
+
+        averageState.nature = AppendAverage(averageState.nature, nature, averageState.userCount);
+        averageState.pollution = AppendAverage(averageState.pollution, pollution, averageState.userCount);
+        averageState.industry = AppendAverage(averageState.industry, industry, averageState.userCount);
+        averageState.happiness = AppendAverage(averageState.happiness, happiness, averageState.userCount);
+        averageState.waterLevel = AppendAverage(averageState.waterLevel, waterLevel, averageState.userCount);
+        averageState.buildingsPlaced = AppendAverage(averageState.buildingsPlaced, buildingsPlaced, averageState.userCount);
+
+        if (averageState.userCount < ulong.MaxValue)
+            averageState.userCount++;
+
+        string path = Application.persistentDataPath + "/Data/";
+        if (!Directory.Exists(path))
+            Directory.CreateDirectory(path);
+
+        FileStream file = File.Create(path + "gamestate.data");
+
+        try
+        {
+            new BinaryFormatter().Serialize(file, averageState);
+        }
+        catch (SerializationException e)
+        {
+            Debug.LogWarning(e.Message);
+        }
+        finally
+        {
+            file.Close();
+        }
+
+    }
+
+    private static GameState averageStateCache;
+
+    static public GameState LoadAverages()
+    {
+        if (averageStateCache != null)
+            return averageStateCache;
+
+        string path = Application.persistentDataPath + "/Data/";
+        if (!Directory.Exists(path))
+            Directory.CreateDirectory(path);
+        path += "gamestate.data";
+
+        GameState averageState = new GameState();
+
+        if (File.Exists(path))
+        {
+            Debug.Log("Loading file: " + path);
+            FileStream file = File.Open(path, FileMode.Open);
+
+            try
+            {
+                averageState = (GameState)new BinaryFormatter().Deserialize(file);
+                averageStateCache = averageState;
+
+                Debug.Log("average nature" + averageState.nature);
+                Debug.Log("average pollution" + averageState.pollution);
+                Debug.Log("average industry" + averageState.industry);
+                Debug.Log("average happiness" + averageState.happiness);
+                Debug.Log("average waterLevel" + averageState.waterLevel);
+                Debug.Log("average buildingsPlaced" + averageState.buildingsPlaced);
+                Debug.Log("average userCount" + averageState.userCount);
+
+                Debug.Log("Loaded file: " + path);
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogWarning(e.Message);
+            }
+            finally
+            {
+                file.Close();
+            }
+        }
+        else
+        {
+            Debug.LogWarning("File not found");
+        }
+
+        return averageState;
+    }
 
     static public void SetSeasonTime(float seasonTime)
     {
@@ -127,6 +240,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        averageStateCache = null;
+
         SetCloudState(0.25f);
         SetOzoneState(0f);
         SetSeasonTime(0f);
