@@ -75,12 +75,12 @@ public class ClickableBarPopup : MonoBehaviour
     {
         if (building.effectPeriod > 0)
         {
-            statDisplay.SetHappiness(building.industryRemovalEffect / 2f);
+            statDisplay.SetHappiness(building.happinessRemovalEffect / 4f);
             statDisplay.SetPollution((building.pollutionEffect - building.natureRemovalEffect) / building.effectPeriod);
         }
         else
         {
-            statDisplay.SetHappiness(building.industryRemovalEffect / 2f);
+            statDisplay.SetHappiness(building.happinessRemovalEffect / 4f);
             statDisplay.SetPollution(-building.natureRemovalEffect);
         }
         StartCoroutine(BuildingOnClickAnimationStart());

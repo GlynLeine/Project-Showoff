@@ -127,7 +127,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1012243649972231456}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
@@ -423,7 +423,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1355803843282730651}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
@@ -598,7 +598,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4c40db276ede07a418b5b046cc124618, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 20ca6df754b10cc4391a0a63727492b6, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -625,7 +625,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5825485985832185703
 RectTransform:
   m_ObjectHideFlags: 0
@@ -826,7 +826,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2193778255877699602}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
@@ -2315,13 +2315,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Hoi! Welkom op Threa!\n\n Het is een leuke planeet, maar een beetje leeg!\n
-    Jij hebt de kracht om dingen te bouwen en het een leuke plek te maken\nvoor de
-    bewoners op de planeet!\n\nMaar wees voorzichtig met wat je bouwt,\nwant meer
-    gebouwen\n\n\n kan minder natuur betekenen\n\nSommige dingen die jij kunt bouwen
-    kunnen vervuilend zijn en aan de klimaatverandering op de planeet bijdragen.
-    Andere dingen die jij kunt bouwen helpen om de klimaatverandering tegen te gaan!
-    \r\n\nHet lot van Threa ligt in jouw handen!\n"
+  m_text: "Hoi! Welkom op Threa!\n\n Het is een leuke planeet, maar een beetje leeg!\nJij
+    hebt de kracht om dingen te bouwen en het een leuke plek te maken\nvoor de bewoners
+    op de planeet!\n\nMaar wees voorzichtig met wat je bouwt,\nwant meer gebouwen\n\n\nkan
+    minder natuur betekenen\n\nSommige dingen die jij kunt bouwen kunnen vervuilend
+    zijn en aan de klimaatverandering op de planeet bijdragen. Andere dingen die
+    jij kunt bouwen helpen om de klimaatverandering tegen te gaan! \r\n\nHet lot
+    van Threa ligt in jouw handen!\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fdb0e902fdaab4d459a263f9ec1559f5, type: 2}
   m_sharedMaterial: {fileID: -7682532693208452417, guid: fdb0e902fdaab4d459a263f9ec1559f5,
@@ -2391,9 +2391,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: -18.194435, z: 0, w: -59.20525}
   m_textInfo:
     textComponent: {fileID: 4748929572737475838}
-    characterCount: 502
+    characterCount: 500
     spriteCount: 0
-    spaceCount: 96
+    spaceCount: 94
     wordCount: 86
     linkCount: 0
     lineCount: 16
