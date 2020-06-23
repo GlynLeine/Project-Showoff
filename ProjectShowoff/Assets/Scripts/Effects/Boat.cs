@@ -8,9 +8,21 @@ public class Boat : MonoBehaviour
     public float speed;
     public SphereCollider oceanCollider;
 
-    // Start is called before the first frame update
+    public Renderer[] models;
+    [HideInInspector]
+    public int activeModel;
+    [HideInInspector]
+    public bool active;
+
+    public void ResetPosition()
+    {
+        transform.position = boatSpline.GetWorldPointAtDistance(0);
+        transform.up = transform.position.normalized;
+    }
+
     void Start()
     {
+        models[activeModel].gameObject.SetActive(true);
         StartCoroutine(Travel());
     }
 

@@ -99,6 +99,7 @@
     <Compile Include="Assets\Scripts\Effects\CloudEffect.cs" />
     <Compile Include="Assets\Scripts\Effects\FireWorks.cs" />
     <Compile Include="Assets\Scripts\Effects\FlightPlanner.cs" />
+    <Compile Include="Assets\Scripts\Effects\HarbourManager.cs" />
     <Compile Include="Assets\Scripts\Effects\IceCaps.cs" />
     <Compile Include="Assets\Scripts\Effects\PollutionSpheres.cs" />
     <Compile Include="Assets\Scripts\Effects\Santa.cs" />
@@ -128,6 +129,7 @@
     <Compile Include="Assets\Scripts\UI\MainCanvas\ButtonFill.cs" />
     <Compile Include="Assets\Scripts\UI\MainCanvas\ClickableBarPopup.cs" />
     <Compile Include="Assets\Scripts\UI\MainCanvas\CountDownTimer.cs" />
+    <Compile Include="Assets\Scripts\UI\MainCanvas\DisplayingStatsScript.cs" />
     <Compile Include="Assets\Scripts\UI\MainCanvas\PauseUnpauseButton.cs" />
     <Compile Include="Assets\Scripts\UI\MainCanvas\PlanetReset.cs" />
     <Compile Include="Assets\Scripts\UI\MainCanvas\QuestSystem.cs" />
