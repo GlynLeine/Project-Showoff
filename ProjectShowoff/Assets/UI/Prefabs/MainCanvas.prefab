@@ -159,6 +159,7 @@ GameObject:
   - component: {fileID: 6220617129369946964}
   - component: {fileID: 4506142336344328096}
   - component: {fileID: 7428495532442919433}
+  - component: {fileID: 400554523568368671}
   m_Layer: 5
   m_Name: Image (2)
   m_TagString: Untagged
@@ -222,6 +223,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &400554523568368671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365804909306214780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c1fc4f3281e35043960af6bda2329c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  airPortSprite: {fileID: 21300000, guid: d2750827813dc0a4ebe3a4f59104eb89, type: 3}
+  spaceStationSprite: {fileID: 21300000, guid: 2dc086e88c1bef74294be16453e6566a, type: 3}
+  trainStationSprite: {fileID: 21300000, guid: 009b393aa17409a4ab7b62b4f857dec3, type: 3}
+  thisImage: {fileID: 7428495532442919433}
 --- !u!1 &415774792071946704
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,6 +524,7 @@ MonoBehaviour:
   airPortSprite: {fileID: 21300000, guid: d2750827813dc0a4ebe3a4f59104eb89, type: 3}
   spaceStationSprite: {fileID: 21300000, guid: 2dc086e88c1bef74294be16453e6566a, type: 3}
   trainStationSprite: {fileID: 21300000, guid: 009b393aa17409a4ab7b62b4f857dec3, type: 3}
+  thisImage: {fileID: 2963465084867040521}
 --- !u!1 &492894689416817206
 GameObject:
   m_ObjectHideFlags: 0
@@ -1921,11 +1939,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5080701257146403196}
-  - component: {fileID: 8028517317617342297}
   - component: {fileID: 8784173390351595215}
   - component: {fileID: 123349151256527280}
   - component: {fileID: 8311615384886667635}
   - component: {fileID: 6879235294525841828}
+  - component: {fileID: 8608412632354588726}
   m_Layer: 5
   m_Name: StatDisplayGO
   m_TagString: Untagged
@@ -1955,23 +1973,6 @@ RectTransform:
   m_AnchoredPosition: {x: 270, y: -50}
   m_SizeDelta: {x: 520, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8028517317617342297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2354118238642265083}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8920c7eaa61ff13409a06d85de8a269d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  happinessFill: {fileID: 2867652402970268392}
-  pollutionFill: {fileID: 1474562298189656810}
-  industryImage: {fileID: 4167516807857943296}
-  happiness: 0
-  pollution: 0
 --- !u!114 &8784173390351595215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2054,6 +2055,23 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &8608412632354588726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2354118238642265083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84979464fa3f77d428c9c1a41b3a67c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  happinessFill: {fileID: 2867652402970268392}
+  pollutionFill: {fileID: 1474562298189656810}
+  industryImage: {fileID: 4167516807857943296}
+  happiness: 0
+  pollution: 0
 --- !u!1 &2427180683102806792
 GameObject:
   m_ObjectHideFlags: 0
@@ -9304,6 +9322,7 @@ MonoBehaviour:
   airPortSprite: {fileID: 21300000, guid: d2750827813dc0a4ebe3a4f59104eb89, type: 3}
   spaceStationSprite: {fileID: 21300000, guid: 2dc086e88c1bef74294be16453e6566a, type: 3}
   trainStationSprite: {fileID: 21300000, guid: 009b393aa17409a4ab7b62b4f857dec3, type: 3}
+  thisImage: {fileID: 8872052276772569452}
 --- !u!1 &8872052276810132837
 GameObject:
   m_ObjectHideFlags: 0
@@ -11171,7 +11190,7 @@ MonoBehaviour:
   coastalBuildings: {fileID: 9001626134141880646}
   destroyBar: {fileID: 5133413115055181115}
   harbour: {fileID: 3253924448904002968}
-  statDisplay: {fileID: 8028517317617342297}
+  statDisplay: {fileID: 8608412632354588726}
   buildingSystem: {fileID: 0}
 --- !u!95 &5088064781938175821
 Animator:
