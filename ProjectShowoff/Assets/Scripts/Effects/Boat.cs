@@ -43,7 +43,7 @@ public class Boat : MonoBehaviour
                 transform.position += (target - transform.position).normalized * speed * Time.deltaTime;
 
                 Vector3 forward = (transform.position - prevPos).normalized;
-                Vector3 up = transform.position.normalized;
+                Vector3 up = (transform.position - oceanCollider.bounds.center).normalized;
                 transform.rotation = Quaternion.LookRotation(forward, up);
 
                 yield return null;
