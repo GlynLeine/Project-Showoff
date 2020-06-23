@@ -87,6 +87,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5452849734163598052}
     m_Modifications:
+    - target: {fileID: 1259529396818622303, guid: 4b1c2b5239fddb34bb0d84e503a42974,
+        type: 3}
+      propertyPath: noSnow
+      value: 
+      objectReference: {fileID: 2100000, guid: 73941833cd394454b82e684b3711913f, type: 2}
+    - target: {fileID: 1259529396818622303, guid: 4b1c2b5239fddb34bb0d84e503a42974,
+        type: 3}
+      propertyPath: Snow
+      value: 
+      objectReference: {fileID: 2100000, guid: bb7f84d8313a58a41af89c63c55bc1dd, type: 2}
     - target: {fileID: 3213464783160228770, guid: 4b1c2b5239fddb34bb0d84e503a42974,
         type: 3}
       propertyPath: m_LocalPosition.x
