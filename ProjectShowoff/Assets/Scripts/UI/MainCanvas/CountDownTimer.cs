@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -11,10 +12,24 @@ public class CountDownTimer : MonoBehaviour
     private int secondsLeft;
     private string secondsLeftString;
     private float timer;
+    private bool english;
     void Start()
     {
         timerText = gameObject.GetComponent<TMP_Text>();
     }
+
+    private void OnEnable()
+    {
+        if (LanguageSelector.LanguageSelected == LanguageSelector.LanguageSelectorSelected.English)
+        {
+            english = true;
+        }
+        else
+        {
+            english = false;
+        }
+    }
+
     void Update()
     {
         timer += GameManager.deltaTime;
@@ -28,6 +43,24 @@ public class CountDownTimer : MonoBehaviour
         {
             secondsLeftString = secondsLeft.ToString();
         }
-        timerText.text = minutesLeft + ":" + secondsLeftString;
+
+        if (GameManager.paused)
+        {
+            if (LanguageSelector.LanguageSelected == LanguageSelector.LanguageSelectorSelected.English)
+            {
+                if (english)
+                {
+                    timerText.text = "PAUSED";
+                }
+                else
+                {
+                    timerText.text = "GEPAUZEERD";
+                }
+            }
+        }
+        else
+        {
+            timerText.text = minutesLeft + ":" + secondsLeftString;
+        }
     }
 }
