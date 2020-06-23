@@ -59,6 +59,13 @@ public class SplineEditor : Editor
             spline.AutoTangents = autoControls;
         }
 
+        bool isClosed = GUILayout.Toggle(spline.Closed, "Close spline to loop");
+        if (isClosed != spline.Closed)
+        {
+            Undo.RecordObject(spline, "toggle spline closed");
+            spline.Closed = isClosed;
+        }
+
         bool newHide = GUILayout.Toggle(hideMainTool, "Hide object handle");
         if (newHide != hideMainTool)
         {
