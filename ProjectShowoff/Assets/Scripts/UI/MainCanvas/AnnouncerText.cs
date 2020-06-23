@@ -8,7 +8,7 @@ public class AnnouncerText : MonoBehaviour
 {
     public int announcerTextSpeed = 1;
     [SerializeField] private GameObject announcerTextBox = null;
-    private Vector3 announcerPosition;
+    private Vector2 announcerPosition;
     private RectTransform announcerRectTransform;
     private float announcerTextWidth;
     private TMP_Text announcerTextText;
@@ -19,23 +19,24 @@ public class AnnouncerText : MonoBehaviour
     {
         announcerRectTransform = (RectTransform)announcerTextBox.transform;
         announcerTextText = announcerTextBox.GetComponent<TMP_Text>();
-        announcerTextWidth = announcerRectTransform.sizeDelta.x;
+        announcerTextWidth = announcerRectTransform.rect.width;
     }
 
     void Update()
     {
-        announcerTextBox.transform.Translate(-announcerTextSpeed * GameManager.deltaTime, 0, 0);
-        announcerPosition = announcerTextBox.transform.localPosition;
-        if (announcerPosition.x <= (-announcerTextWidth + -100))
+        announcerPosition = announcerRectTransform.anchoredPosition;
+        announcerPosition.x -= announcerTextSpeed * GameManager.deltaTime;
+        announcerRectTransform.anchoredPosition = announcerPosition;
+        if (announcerPosition.x <= -announcerTextWidth)
         {
             if (textChangeRequest)
             {
-                announcerTextText.text = textChange;
-                announcerTextWidth = announcerRectTransform.sizeDelta.x;
+                StartCoroutine(TextChangeSetter());
                 textChangeRequest = false;
             }
+            announcerPosition = announcerRectTransform.anchoredPosition;
             announcerPosition.x = 120;
-            announcerTextBox.transform.localPosition = announcerPosition;
+            announcerRectTransform.anchoredPosition = announcerPosition;
         }
     }
 
@@ -43,5 +44,14 @@ public class AnnouncerText : MonoBehaviour
     {
         textChangeRequest = true;
         textChange = newText;
+    }
+
+    IEnumerator TextChangeSetter()
+    {
+        announcerTextText.text = textChange;
+        //we need to give it one frame to change the width before we get the width
+        yield return null;
+        announcerTextWidth = announcerRectTransform.rect.width + 100;
+
     }
 }
