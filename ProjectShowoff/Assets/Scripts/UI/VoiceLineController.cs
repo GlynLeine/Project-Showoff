@@ -810,6 +810,10 @@ public class VoiceLineController : MonoBehaviour
         }
         if (!isAudioPlaying)
         {
+            if (GameManager.time > 300)
+            {
+                yield break;
+            }
             if (!dogBool)
             {
                 if (English)
