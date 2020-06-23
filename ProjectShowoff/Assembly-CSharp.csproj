@@ -111,6 +111,8 @@
     <Compile Include="Assets\Scripts\UI\EndScreen\EndScreenCounter.cs" />
     <Compile Include="Assets\Scripts\UI\EndScreen\EndScreenCounterWater.cs" />
     <Compile Include="Assets\Scripts\UI\EndScreen\EndScreenPlanetMove.cs" />
+    <Compile Include="Assets\Scripts\UI\EndScreen\InfoColourToggle.cs" />
+    <Compile Include="Assets\Scripts\UI\EndScreen\InfoToggle.cs" />
     <Compile Include="Assets\Scripts\UI\EndScreen\SceneChanger.cs" />
     <Compile Include="Assets\Scripts\UI\EndScreen\TimeLinePart.cs" />
     <Compile Include="Assets\Scripts\UI\EndScreen\TimeLineSaver.cs" />
@@ -132,6 +134,7 @@
     <Compile Include="Assets\Scripts\UI\UIController.cs" />
     <Compile Include="Assets\Scripts\UI\VoiceLineController.cs" />
     <Compile Include="Assets\Scripts\UI\languagechecker.cs" />
+    <Compile Include="Assets\Scripts\UI\languagecheckergameobject.cs" />
     <Compile Include="Assets\Scripts\Util\Focus.cs" />
     <Compile Include="Assets\Scripts\Util\InputRedirect.cs" />
     <Compile Include="Assets\Scripts\Util\Orbit.cs" />
