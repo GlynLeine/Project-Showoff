@@ -73,6 +73,14 @@ public class ClickableBarPopup : MonoBehaviour
     }
     public void DestroyStart(Building building)
     {
+        if (building.industryRemovalEffect > 0)
+        {
+            statDisplay.SetIndustry(true);
+        }
+        else
+        {
+            statDisplay.SetIndustry(false);
+        }
         if (building.effectPeriod > 0)
         {
             statDisplay.SetHappiness(building.happinessRemovalEffect / 4f);
