@@ -247,12 +247,13 @@ public class VoiceLineController : MonoBehaviour
         //subscribe to onbuildingplaced and onbuildingdestroyed
         //first set all the variables to their appropriate language then call slow update function
         //we want to have an update, but its not in a rush so we do a slow update every 1sec
-        StartCoroutine(slowUpdate());
+        StartCoroutine(SubscribeWaiter());
+        StartCoroutine(SlowUpdate());
     }
 
     private void OnDisable()
     {
-        //unsubscribe
+        BuildingSystem.onBuildingPlaced -= OnBuildingPlaced;
     }
 
     //basically this is called whenever a voice line is ready, each voice line does an if check and if true, it sets its own bool to false aka it has played
@@ -281,8 +282,180 @@ public class VoiceLineController : MonoBehaviour
             isAudioPlaying = false;
     }
     //everything below here are triggers
+    //this is the building trigger, checks if a building is built and what building has been built - loads of if else's
+    private void OnBuildingPlaced(BuildingLocation location, BuildingPlacer buildingData, Building building)
+    {
+        if (GameManager.industry >= 15 && !airplanesBool)
+        {
+            if (VoiceLinePlay(timeTriggers,airplanes))
+            {
+                if (English)
+                {
+                    atScript.TextChanger("Was that a bird? No it’s a plane! Local kid reports.");
+                }
+                else
+                {
+                    atScript.TextChanger("Was dat een vogel? Nee, het is een vliegtuig!  meldt lokaal kind.");
+                }
+                airplanesBool = true;
+            }
+        }
+        else if (GameManager.industry >= 30 && !satellitesBool)
+        {
+            if (VoiceLinePlay(timeTriggers,satellites))
+            {
+                if (English)
+                {
+                    atScript.TextChanger("Satellites improve our communication and they look cool, Scientist says.");
+                }
+                else
+                {
+                    atScript.TextChanger("Satellieten verbeteren onze communicatie en ze zien er cool uit, zegt de wetenschapper.");
+                }
+                satellitesBool = true;
+            }
+        }
+        //i think this is the first time ive used a switch in any code i have, ive gotten super addicted to if else if else if else if else if else but this is way clearer
+        switch (buildingData.buildingType)
+        {
+            case BuildingType.Factory:
+            {
+                if (!factoryBool)
+                {
+                    if (VoiceLinePlay(playTriggers,factory))
+                    {
+                        if (English)
+                        {
+                            atScript.TextChanger("Who wants a job? We have nice jobs for everybody in our new factory, bring your own lunch.");
+                        }
+                        else
+                        {
+                            atScript.TextChanger("Wie wil er een baan? We hebben leuke banen voor iedereen in onze nieuwe fabriek, breng je eigen lunch mee.");
+                        }
+                        factoryBool = true;
+                    }
+                }
+                break;
+            }
+            case BuildingType.Harbor:
+            {
+                if (!coastBool)
+                {
+                    if (VoiceLinePlay(playTriggers,coast))
+                    {
+                        if (English)
+                        {
+                            atScript.TextChanger("Our town has reached the sea! I didn’t know the ocean was this big! fisherman responds.");
+                        }
+                        else
+                        {
+                            atScript.TextChanger("Onze stad heeft de zee bereikt! Ik wist niet dat de oceaan zo groot was! Verteld visser.");
+                        }
+                        coastBool = true;
+                    }
+                }
+                break;
+            }
+            case BuildingType.CoalMine:
+            {
+                if (!mineBool)
+                {
+                    if (VoiceLinePlay(playTriggers,mine))
+                    {
+                        if (English)
+                        {
+                            atScript.TextChanger("We’re now using coal to power our towns!  All of my clothes are now black, worker complains.");
+                        }
+                        else
+                        {
+                            atScript.TextChanger("We gebruiken nu steenkool om onze steden van stroom te voorzien! Al mijn kleren zijn nu zwart!, klaagt  medewerker.");
+                        }
+                        mineBool = true;
+                    }
+                }
+                break;
+            }
+            case BuildingType.NatureReserve:
+            {
+                if (!natureReserveBool)
+                {
+                    if (VoiceLinePlay(playTriggers,natureReserve))
+                    {
+                        if (English)
+                        {
+                            atScript.TextChanger("Our nature reserve is planted and looking beautiful! Those raccoons having been partying every night this week! Complains neighbour.");
+                        }
+                        else
+                        {
+                            atScript.TextChanger("Ons natuurgebied is aangeplant en ziet er prachtig uit! Die wasberen hebben deze week elke avond gefeest! Klaagt buurman.");
+                        }
+                        natureReserveBool = true;
+                    }
+                }
+                break;
+            }
+            case BuildingType.OilRig:
+            {
+                if (!coastBool)
+                {
+                    if (VoiceLinePlay(playTriggers,coast))
+                    {
+                        if (English)
+                        {
+                            atScript.TextChanger("Our town has reached the sea! I didn’t know the ocean was this big! fisherman responds.");
+                        }
+                        else
+                        {
+                            atScript.TextChanger("Onze stad heeft de zee bereikt! Ik wist niet dat de oceaan zo groot was! Verteld visser.");
+                        }
+                        coastBool = true;
+                    }
+                }
+                break;
+            }
+            case BuildingType.SolarFarm:
+            {
+                if (!solarPanelBool)
+                {
+                    if (VoiceLinePlay(playTriggers,solarPanel))
+                    {
+                        if (English)
+                        {
+                            atScript.TextChanger("our town now has solar energy panels, mayor reports. Can I skateboard on those? local girl asks.");
+                        }
+                        else
+                        {
+                            atScript.TextChanger("'onze stad heeft nu zonne-energie panelen, meldt burgemeester, kan ik daarop skateboarden?' vraagt lokaal meisje.");
+                        }
+                        solarPanelBool = true;
+                    }
+                }
+                break;
+            }
+            case BuildingType.TrainStation:
+            {
+                if (!trainStationBool)
+                {
+                    if (VoiceLinePlay(playTriggers,trainStation))
+                    {
+                        if (English)
+                        {
+                            atScript.TextChanger("I’m never going  be late for work again! reports man who was late for this interview.");
+                        }
+                        else
+                        {
+                            atScript.TextChanger("Ik kom nooit meer te laat op mijn werk! meldt man die te laat was voor dit interview.");
+                        }
+                        trainStationBool = true;
+                    }
+                }
+                break;
+            }
+            default: break;
+        }
+    }
     //the purpose for this is because theres no reason to check for voice line availability every frame, but it needs to be checked often enough that we can catch them when relevant
-    IEnumerator slowUpdate()
+    private IEnumerator SlowUpdate()
     {
         while (updateBool)
         {
@@ -441,5 +614,14 @@ public class VoiceLineController : MonoBehaviour
             }
             yield return new WaitForSeconds(1);
         }
+    }
+
+    private IEnumerator SubscribeWaiter()
+    {
+        while(GameManager.time < 1)
+        {
+            yield return new WaitForSeconds(1);
+        }
+        BuildingSystem.onBuildingPlaced += OnBuildingPlaced;
     }
 }
