@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -8721,6 +8721,7 @@ GameObject:
   - component: {fileID: 980212964}
   - component: {fileID: 980212963}
   - component: {fileID: 980212973}
+  - component: {fileID: 980212974}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -8877,7 +8878,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollisionTag: 
   Event: event:/Music/Main Music
-  PlayEvent: 1
+  PlayEvent: 0
   StopEvent: 2
   AllowFadeout: 1
   TriggerOnce: 0
@@ -9274,6 +9275,18 @@ MonoBehaviour:
   dutchTimeTriggers: event:/Voicelines/Time_base_triggers_NL
   englishTutorial: event:/Voicelines/Tutorial_EN
   dutchTutorial: event:/Voicelines/Tutorial_NL
+--- !u!114 &980212974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980212954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4737610a006f1fc428cd64ef3449c5f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &996930926
 Mesh:
   m_ObjectHideFlags: 0
