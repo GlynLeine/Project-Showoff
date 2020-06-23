@@ -14,6 +14,7 @@ public class AnnouncerText : MonoBehaviour
     private TMP_Text announcerTmpText;
     private bool textChangeRequest = false;
     private string textChange = null;
+    private bool textBeingChanged;
 
     private void Start()
     {
@@ -32,7 +33,6 @@ public class AnnouncerText : MonoBehaviour
             if (textChangeRequest)
             {
                 StartCoroutine(TextChangeSetter());
-                textChangeRequest = false;
             }
             else
             {
@@ -53,10 +53,15 @@ public class AnnouncerText : MonoBehaviour
 
     IEnumerator TextChangeSetter()
     {
-        announcerTmpText.text = textChange;
-        //we need to give it one frame to change the width before we get the width
-        yield return null;
-        announcerTextWidth = -(announcerRectTransform.rect.width + 120);
-
+        if (!textBeingChanged)
+        {
+            textBeingChanged = true;
+            announcerTmpText.text = textChange;
+            //we need to give it one frame to change the width before we get the width
+            yield return null;
+            announcerTextWidth = -(announcerRectTransform.rect.width + 120);
+            textChangeRequest = false;
+            textBeingChanged = false;
+        }
     }
 }
