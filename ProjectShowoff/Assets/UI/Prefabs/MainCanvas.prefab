@@ -920,8 +920,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 46.399998, y: 0}
-  m_SizeDelta: {x: -227.20001, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -320, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &210050237428651315
 CanvasRenderer:
@@ -1141,8 +1141,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -24.8, y: 0}
-  m_SizeDelta: {x: -270.4, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -320, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1621649959023652009
 CanvasRenderer:
@@ -1927,7 +1927,7 @@ GameObject:
   - component: {fileID: 8311615384886667635}
   - component: {fileID: 6879235294525841828}
   m_Layer: 5
-  m_Name: StatDisplay
+  m_Name: StatDisplayGO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1964,14 +1964,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2354118238642265083}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8779ec371a7181747b1d5df359929dbd, type: 3}
+  m_Script: {fileID: 11500000, guid: 8920c7eaa61ff13409a06d85de8a269d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   happinessFill: {fileID: 2867652402970268392}
   pollutionFill: {fileID: 1474562298189656810}
   industryImage: {fileID: 4167516807857943296}
-  happiness: -0.31
-  pollution: 0.58
+  happiness: 0
+  pollution: 0
 --- !u!114 &8784173390351595215
 MonoBehaviour:
   m_ObjectHideFlags: 0
