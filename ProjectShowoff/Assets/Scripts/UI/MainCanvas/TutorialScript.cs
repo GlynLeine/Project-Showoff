@@ -99,7 +99,6 @@ public class TutorialScript : MonoBehaviour
     public void OnEnable()
     {
         StartCoroutine(QuestBoxFlash());
-        StartCoroutine(ResetAnimationStart());
         if (LanguageSelector.LanguageSelected == LanguageSelector.LanguageSelectorSelected.English)
         {
             English = true;
