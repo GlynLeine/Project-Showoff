@@ -100,6 +100,7 @@
     <Compile Include="Assets\Scripts\Effects\IceCaps.cs" />
     <Compile Include="Assets\Scripts\Effects\PollutionSpheres.cs" />
     <Compile Include="Assets\Scripts\Effects\Santa.cs" />
+    <Compile Include="Assets\Scripts\Effects\Satellite.cs" />
     <Compile Include="Assets\Scripts\Effects\Snow.cs" />
     <Compile Include="Assets\Scripts\Effects\SpaceOrganisation.cs" />
     <Compile Include="Assets\Scripts\Effects\Spaceship.cs" />
