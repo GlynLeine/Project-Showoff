@@ -46,8 +46,8 @@ Material:
     - Vector1_E077492: 2.13
     - Vector1_F4D4ED74: 0.35
     - _NoiseScale: 1
-    - _Pollution: 0.6404879
-    - _SeasonTime: 0
+    - _Pollution: 0.16203833
+    - _SeasonTime: 1
     - _SnowThreshold: 0.5
     m_Colors:
     - Vector2_A9925A27: {r: 1, g: 1, b: 0, a: 0}

@@ -38,7 +38,7 @@ Material:
     - Vector1_C6F6AFC7: 10
     - Vector1_EB11D386: 1.9
     - Vector1_EE31E8D5: 0.3
-    - _Growth: 0.35
+    - _Growth: 0.40534276
     m_Colors:
     - Color_493CEB21: {r: 0.5, g: 0.5, b: 0.5, a: 0}
     - Color_D7D97403: {r: 0.5754717, g: 0.4881994, b: 0.3990299, a: 1}

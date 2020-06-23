@@ -9,6 +9,6 @@ public class SceneChanger : MonoBehaviour
 
     public void sceneChangeClick()
     {
-        SceneManager.LoadSceneAsync(scene.name);
+        SceneManager.LoadScene(0);
     }
 }
