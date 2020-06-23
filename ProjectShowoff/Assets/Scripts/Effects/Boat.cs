@@ -18,16 +18,10 @@ public class Boat : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if (distance > boatSpline.length)
-        {
-            direction = -1f;
-        }
-        else if(distance < 0)
-        {
-            direction = 1f;
-        }
+    {     
         distance += speed * direction * Time.deltaTime;
-        transform.position = boatSpline.GetWorldPointAtDistance(distance);
+        Vector3 position = boatSpline.GetWorldPointAtDistance(distance);
+        position = position.normalized * (1f + GameManager.waterLevel * 0.07f);
+        transform.position = position;
     }
 }
