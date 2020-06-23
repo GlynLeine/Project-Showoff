@@ -7,6 +7,8 @@ public class WildFires : MonoBehaviour
 {
     List<WildFire_Get> wildfires;
     bool fire;
+
+
     private void Start()
     {
         wildfires = new List<WildFire_Get>(FindObjectsOfType<WildFire_Get>());
@@ -23,28 +25,30 @@ public class WildFires : MonoBehaviour
             StartCoroutine(Enable(true));
         else if (fire && GameManager.ozone <= 0.7f)
             StartCoroutine(Enable(false));
-    }
 
-    IEnumerator Enable(bool enable)
-    {
-        fire = enable;
-        int burnCount = 0;
-        while (burnCount < wildfires.Count)
+
+
+        IEnumerator Enable(bool enable)
         {
-            for (int i = 0; i < wildfires.Count; i++)
+            fire = enable;
+            int burnCount = 0;
+            while (burnCount < wildfires.Count)
             {
-                if (wildfires[i].burning != enable)
-                    if (Random.value < 0.01f * GameManager.deltaTime)
-                    {
-                        if (enable)
-                            wildfires[i].Enable();
-                        else
-                            wildfires[i].Disable();
+                for (int i = 0; i < wildfires.Count; i++)
+                {
+                    if (wildfires[i].burning != enable)
+                        if (Random.value < 0.01f * GameManager.deltaTime)
+                        {
+                            if (enable)
+                                wildfires[i].Enable();
+                            else
+                                wildfires[i].Disable();
 
-                        burnCount++;
-                    }
+                            burnCount++;
+                        }
+                }
+                yield return null;
             }
-            yield return null;
         }
     }
 }

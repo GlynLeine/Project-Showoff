@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ab4411bff183f4748b47b03ecc115741, type: 2}
+  - {fileID: 2100000, guid: bb7f84d8313a58a41af89c63c55bc1dd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -109,7 +109,7 @@ Transform:
   m_GameObject: {fileID: 7475549045977349679}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0027, y: 0.0052, z: -0.001}
-  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
+  m_LocalScale: {x: 1.1, y: 1.0999999, z: 1.1}
   m_Children: []
   m_Father: {fileID: 396685834301939288}
   m_RootOrder: 0
@@ -180,6 +180,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 396685834301939288}
     m_Modifications:
+    - target: {fileID: 1259529396818622303, guid: 4b1c2b5239fddb34bb0d84e503a42974,
+        type: 3}
+      propertyPath: burning
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1259529396818622303, guid: 4b1c2b5239fddb34bb0d84e503a42974,
+        type: 3}
+      propertyPath: Snow
+      value: 
+      objectReference: {fileID: 2100000, guid: bb7f84d8313a58a41af89c63c55bc1dd, type: 2}
+    - target: {fileID: 1259529396818622303, guid: 4b1c2b5239fddb34bb0d84e503a42974,
+        type: 3}
+      propertyPath: noSnow
+      value: 
+      objectReference: {fileID: 2100000, guid: 73941833cd394454b82e684b3711913f, type: 2}
     - target: {fileID: 3213464783160228770, guid: 4b1c2b5239fddb34bb0d84e503a42974,
         type: 3}
       propertyPath: m_LocalPosition.x
