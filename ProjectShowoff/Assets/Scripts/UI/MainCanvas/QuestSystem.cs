@@ -7,16 +7,13 @@ using UnityEngine.UI;
 
 public class QuestSystem : MonoBehaviour
 {
-    private BuildingType SelectedBuildingType;
     private int counterValue = 0;
-    private int maxCounterValue;
     private float waitTime = 0;
-    private int forLoopInt = 0;
+    private int currentQuest = 0;
     private string timerValue;
     private string rewardPlusMinus;
     private bool English;
     private string dutchReward;
-    private bool onBuildingPlacedCalled;
     public GameObject questTutorial;
     public Image questBoxImage;
     public GameObject blockerImage;
@@ -46,26 +43,28 @@ public class QuestSystem : MonoBehaviour
 
     public enum RewardChoice
     {
-        Pollution,Nature,Happiness,Industry,Tutorial
+        Pollution, Nature, Happiness, Industry, Tutorial
     }
     public enum BuildOrDestroy
     {
-        Build,Destroy
+        Build, Destroy
     }
-    [Serializable] 
+    [Serializable]
     public class Quest
     {
         public BuildingType buildingType;
-        public BuildOrDestroy buildOrDestroy;
-        public int buildHowMany;
+        public bool build;
+        public int requiredAmount;
         public int maxTimeInSeconds;
         public int waitTimeInSeconds;
         [Tooltip("Set to true if reward should get added, false if it should get removed. Punishment simply acts as the reverse")]
         public bool addReward;
         [Tooltip("This will be the punishment as well")]
         public RewardChoice reward;
+        [HideInInspector] public bool done;
     }
     public Quest[] questList;
+
     void OnEnable()
     {
         if (LanguageSelector.LanguageSelected == LanguageSelector.LanguageSelectorSelected.English)
@@ -94,270 +93,186 @@ public class QuestSystem : MonoBehaviour
     {
         for (int i = 0; i < questList.Length; i++)
         {
+            questList[i].done = false;
             blockerImage.SetActive(false);
-            forLoopInt = i;
-            if (questList[i].buildOrDestroy == BuildOrDestroy.Build)
-            {
-                buildingOrDestroy.sprite = buildSprite;
-            }
-            else
-            {
-                buildingOrDestroy.sprite = destroySprite;
-                
-            }
+            currentQuest = i;
+
             counterValue = 0;
-            SelectedBuildingType = questList[i].buildingType;
-            maxCounterValue = questList[i].buildHowMany;
             waitTime = questList[i].maxTimeInSeconds;
-            counterText.text = "X" + (maxCounterValue - counterValue);
-            if (questList[i].buildOrDestroy == BuildOrDestroy.Build)
-            {
-                onBuildingPlacedCalled = true;
+            counterText.text = "X" + questList[i].requiredAmount;
+
+            if (questList[i].build)
                 BuildingSystem.onBuildingPlaced += OnBuildingPlaced;
-            }
-            else if (questList[i].buildOrDestroy == BuildOrDestroy.Destroy)
-            {
-                onBuildingPlacedCalled = false;
+            else
                 BuildingSystem.onBuildingDestroyed += OnBuildingDestroyed;
+
+            switch (questList[i].buildingType)
+            {
+                case BuildingType.Factory:
+                    buildingIcon.sprite = factorySprite;
+                    break;
+                case BuildingType.Harbor:
+                    buildingIcon.sprite = harborSprite;
+                    break;
+                case BuildingType.CoalMine:
+                    buildingIcon.sprite = mineSprite;
+                    break;
+                case BuildingType.NatureReserve:
+                    buildingIcon.sprite = natureReserveSprite;
+                    break;
+                case BuildingType.OilRig:
+                    buildingIcon.sprite = oilSprite;
+                    break;
+                case BuildingType.SolarFarm:
+                    buildingIcon.sprite = solarSprite;
+                    break;
+                case BuildingType.TrainStation:
+                    buildingIcon.sprite = trainSprite;
+                    break;
+                default:
+                    break;
             }
 
-            if (questList[i].buildingType == BuildingType.Factory)
+            switch (questList[i].reward)
             {
-                buildingIcon.sprite = factorySprite;
-            } else if (questList[i].buildingType == BuildingType.Harbor)
-            {
-                buildingIcon.sprite = harborSprite;
-            } else if (questList[i].buildingType == BuildingType.CoalMine)
-            {
-                buildingIcon.sprite = mineSprite;
-            } else if (questList[i].buildingType == BuildingType.NatureReserve)
-            {
-                buildingIcon.sprite = natureReserveSprite;
-            } else if (questList[i].buildingType == BuildingType.OilRig)
-            {
-                buildingIcon.sprite = oilSprite;
-            } else if (questList[i].buildingType == BuildingType.SolarFarm)
-            {
-                buildingIcon.sprite = solarSprite;
-            } else if (questList[i].buildingType == BuildingType.TrainStation)
-            {
-                buildingIcon.sprite = trainSprite;
-            }
-            if (questList[i].addReward)
-            {
-                plusMinusImage.sprite = plusSprite;
-            }else
-            {
-                plusMinusImage.sprite = minusSprite;
+                case RewardChoice.Pollution:
+                    rewardImage.sprite = pollutionSprite;
+                    break;
+                case RewardChoice.Nature:
+                    rewardImage.sprite = natureSprite;
+                    break;
+                case RewardChoice.Happiness:
+                    rewardImage.sprite = creatureSprite;
+                    break;
+                case RewardChoice.Industry:
+                    rewardImage.sprite = buildSprite;
+                    break;
+                case RewardChoice.Tutorial:
+                    rewardImage.sprite = creatureSprite;
+                    break;
             }
 
-            if (questList[i].reward == RewardChoice.Pollution)
-            {
-                rewardImage.sprite = pollutionSprite;
-            }else if (questList[i].reward == RewardChoice.Nature)
-            {
-                rewardImage.sprite = natureSprite;
-            }else if (questList[i].reward == RewardChoice.Happiness)
-            {
-                rewardImage.sprite = creatureSprite;
-            }
-            else if (questList[i].reward == RewardChoice.Industry)
-            {
-                rewardImage.sprite = buildSprite;
-            } else if (questList[i].reward == RewardChoice.Tutorial)
-            {
-                rewardImage.sprite = creatureSprite;
-            }
+            buildingOrDestroy.sprite = questList[i].build ? buildSprite : destroySprite;
+            plusMinusImage.sprite = questList[i].addReward ? plusSprite : minusSprite;
+
             StartCoroutine(QuestBoxFlash());
-            StartCoroutine(TempUpdate());
-            yield return new WaitForSeconds(waitTime);
-            BuildingSystem.onBuildingPlaced -= OnBuildingPlaced;
-            BuildingSystem.onBuildingDestroyed -= OnBuildingDestroyed;
-            if (counterValue < maxCounterValue)
+
+            bool colorFlashDone = false;
+            while (waitTime > 0)
             {
-                QuestDone();
+                waitTime -= GameManager.deltaTime;
+
+                if (waitTime < 10 && waitTime > 9)
+                {
+                    if (!colorFlashDone)
+                    {
+                        StartCoroutine(TextColorFlash());
+                        colorFlashDone = true;
+                    }
+                }
+                if (waitTime <= 9)
+                {
+                    timerValue = "0" + Mathf.Ceil(waitTime);
+                }
+                else
+                {
+                    timerValue = Mathf.Ceil(waitTime).ToString();
+                }
+
+                timerText.text = "Time Remaining " + timerValue;
+                yield return null;
             }
+
+            QuestDone(currentQuest, false);
+
             yield return new WaitForSeconds(questList[i].waitTimeInSeconds);
         }
     }
 
-    public void QuestDone()
+    public void QuestDone(int questIndex, bool success)
     {
+        if (questList[questIndex].done)
+            return;
+
+        waitTime = 0;
+        BuildingSystem.onBuildingPlaced -= OnBuildingPlaced;
+        BuildingSystem.onBuildingDestroyed -= OnBuildingDestroyed;
+
+        questList[questIndex].done = true;
+
         blockerText.fontSize = 36;
         blockerImage.SetActive(true);
-        if (questList[forLoopInt].reward == RewardChoice.Tutorial)
+
+        if (questList[questIndex].reward == RewardChoice.Tutorial)
         {
             questTutorial.SetActive(false);
             blockerText.fontSize = 28;
-            if (English)
-            {
-                blockerText.text = "Good job! And you can see back how your planet is doing in these bars!";
-            }
-            else
-            {
-                blockerText.text = "Goed gedaan! En hoe je planeet het doet kan je in deze balken terugzien!";
-            }
-            GameManager.happiness += 6;
-        }
-        else if (counterValue >= maxCounterValue)
-        {
-            if (questList[forLoopInt].addReward)
-            {
-                if (English)
-                {
-                    rewardPlusMinus = "increased";
-                }
-                else
-                {
-                    rewardPlusMinus = "is gestegen";
-                }
-                if (questList[forLoopInt].reward == RewardChoice.Happiness)
-                {
-                    dutchReward = "Blijdschap";
-                    GameManager.happiness += 8;
-                }
-                else if (questList[forLoopInt].reward == RewardChoice.Nature)
-                {
-                    dutchReward = "Natuur";
-                    GameManager.nature += 50;
-                }
-                else if (questList[forLoopInt].reward == RewardChoice.Industry){
-                 dutchReward = "Technologie";
-                 GameManager.industry += 2;
-                }
-            }
-            else
-            {
-                if (English)
-                {
-                    rewardPlusMinus = "decreased";
-                }
-                else
-                {
-                    rewardPlusMinus = "is gedaald";
-                }
-                if (questList[forLoopInt].reward == RewardChoice.Pollution)
-                {
-                    dutchReward = "Vervuiling";
-                    GameManager.pollution -= 100;
-                }
-            }
 
-            if (English)
-            {
-                blockerText.text = "Success! " + questList[forLoopInt].reward + " " + rewardPlusMinus + "!";
-            }
-            else
-            {
-                blockerText.text = "Succes! " + dutchReward + " " + rewardPlusMinus + "!";
-            }
+            blockerText.text = English ? "Good job! And you can see back how your planet is doing in these bars!" :
+                "Goed gedaan! En hoe je planeet het doet kan je in deze balken terugzien!";
+
+            GameManager.happiness += 6;
+            return;
         }
+
+        if (questList[questIndex].addReward ^ !success)
+            rewardPlusMinus = English ? "increased" : "is gestegen";
         else
+            rewardPlusMinus = English ? "decreased" : "is gedaald";
+
+        switch (questList[questIndex].reward)
         {
-            
-            if (questList[forLoopInt].addReward)
-            {
-                if (questList[forLoopInt].reward == RewardChoice.Happiness)
-                {
-                    dutchReward = "Blijdschap";
-                    GameManager.happiness -= 6;
-                }
-                else if (questList[forLoopInt].reward == RewardChoice.Nature)
-                {
-                    dutchReward = "Natuur";
-                    GameManager.nature -= 25;
-                }
-                else if (questList[forLoopInt].reward == RewardChoice.Industry){
-                 dutchReward = "Technologie";
-                 GameManager.industry -= 1;
-                }
-                if (English)
-                {
-                    rewardPlusMinus = "decreased";
-                }
-                else
-                {
-                    rewardPlusMinus = "is gedaald";
-                }
-            }
-            else
-            {
-                if (English)
-                {
-                    rewardPlusMinus = "increased";
-                }
-                else
-                {
-                    rewardPlusMinus = "is gestegen";
-                }
-                if (questList[forLoopInt].reward == RewardChoice.Pollution)
-                {
-                    dutchReward = "Vervuiling";
-                    GameManager.pollution += 100;
-                }
-            }
-            if (English)
-            {
-                blockerText.text = "Oh no! " + questList[forLoopInt].reward + " " + rewardPlusMinus + "!";
-            }
-            else
-            {
-                blockerText.text = "Oh jee! " + dutchReward + " " + rewardPlusMinus + "!";
-            }
+            case RewardChoice.Happiness:
+                dutchReward = "Blijdschap";
+                GameManager.happiness += success ? 8 : -6;
+                break;
+            case RewardChoice.Nature:
+                dutchReward = "Natuur";
+                GameManager.nature += success ? 50 : -25;
+                break;
+            case RewardChoice.Industry:
+                dutchReward = "Technologie";
+                GameManager.industry += success ? 2 : -1;
+                break;
+            case RewardChoice.Pollution:
+                dutchReward = "Vervuiling";
+                GameManager.pollution += success ? 100 : -100;
+                break;
+            default:
+                break;
         }
+
+        if (English)
+            blockerText.text = (success ? "Success! " : "Oh no! ") + questList[questIndex].reward + " " + rewardPlusMinus + "!";
+        else
+            blockerText.text = (success ? "Succes! " : "Oh jee! ") + dutchReward + " " + rewardPlusMinus + "!";
+
     }
     private void OnBuildingPlaced(BuildingLocation location, BuildingPlacer buildingData, Building building)
     {
-        if (buildingData.buildingType == SelectedBuildingType)
+        Debug.Log("placed");
+        if (buildingData.buildingType == questList[currentQuest].buildingType)
         {
             counterValue += 1;
-            counterText.text = "X" + (maxCounterValue - counterValue);
-            if (counterValue == maxCounterValue)
+            counterText.text = "X" + (questList[currentQuest].requiredAmount - counterValue);
+            if (counterValue >= questList[currentQuest].requiredAmount)
             {
-                QuestDone();
+                QuestDone(currentQuest, true);
             }
-        }    
+        }
     }
 
     private void OnBuildingDestroyed(BuildingLocation location, BuildingPlacer buildingData, Building building)
     {
-        if (building.buildingType == SelectedBuildingType)
+        Debug.Log("destroyed");
+        if (building.buildingType == questList[currentQuest].buildingType)
         {
             counterValue += 1;
-            counterText.text = "X" + (maxCounterValue - counterValue);
-            if (counterValue == maxCounterValue)
+            counterText.text = "X" + (questList[currentQuest].requiredAmount - counterValue);
+            if (counterValue >= questList[currentQuest].requiredAmount)
             {
-                QuestDone();
+                QuestDone(currentQuest, true);
             }
-        }    
-    }
-    
-
-    IEnumerator TempUpdate()
-    {
-        bool colorFlashDone = false;
-        while (waitTime > 0)
-        {
-            if (waitTime < 10 && waitTime > 9)
-            {
-                if (!colorFlashDone)
-                {
-                    StartCoroutine(TextColorFlash());
-                    colorFlashDone = true;
-                }
-            }
-            if (waitTime <= 9)
-            {
-                timerValue = "0" + Mathf.Ceil(waitTime);
-            }
-            else
-            {
-                timerValue = Mathf.Ceil(waitTime).ToString();
-            }
-
-            timerText.text = "Time Remaining " + timerValue;
-            waitTime -= GameManager.deltaTime;
-            yield return null;
         }
     }
 
@@ -441,54 +356,54 @@ public class QuestSystem : MonoBehaviour
     IEnumerator QuestBoxFlash()
     {
         float timer = 0;
-            while (timer < 0.5)
-            {
-                Color color = questBoxImage.color;
-                color.b -= 1f * Time.deltaTime;
-                questBoxImage.color = color;
-                timer += Time.deltaTime;
-                yield return null;
-            }
-            while (timer < 1)
-            {
-                Color color = questBoxImage.color;
-                color.b += 1f * Time.deltaTime;
-                questBoxImage.color = color;
-                timer += Time.deltaTime;
-                yield return null;
-            }
-            while (timer < 1.5)
-            {
-                Color color = questBoxImage.color;
-                color.b -= 1f * Time.deltaTime;
-                questBoxImage.color = color;
-                timer += Time.deltaTime;
-                yield return null;
-            }
-            while (timer < 2)
-            {
-                Color color = questBoxImage.color;
-                color.b += 1f * Time.deltaTime;
-                questBoxImage.color = color;
-                timer += Time.deltaTime;
-                yield return null;
-            }
-            while (timer < 2.5)
-            {
-                Color color = questBoxImage.color;
-                color.b -= 1f * Time.deltaTime;
-                questBoxImage.color = color;
-                timer += Time.deltaTime;
-                yield return null;
-            }
-            while (timer < 3)
-            {
-                Color color = questBoxImage.color;
-                color.b += 1f * Time.deltaTime;
-                questBoxImage.color = color;
-                timer += Time.deltaTime;
-                yield return null;
-            }
-            yield return null;;
+        while (timer < 0.5)
+        {
+            Color color = questBoxImage.color;
+            color.b -= 1f * Time.deltaTime;
+            questBoxImage.color = color;
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        while (timer < 1)
+        {
+            Color color = questBoxImage.color;
+            color.b += 1f * Time.deltaTime;
+            questBoxImage.color = color;
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        while (timer < 1.5)
+        {
+            Color color = questBoxImage.color;
+            color.b -= 1f * Time.deltaTime;
+            questBoxImage.color = color;
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        while (timer < 2)
+        {
+            Color color = questBoxImage.color;
+            color.b += 1f * Time.deltaTime;
+            questBoxImage.color = color;
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        while (timer < 2.5)
+        {
+            Color color = questBoxImage.color;
+            color.b -= 1f * Time.deltaTime;
+            questBoxImage.color = color;
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        while (timer < 3)
+        {
+            Color color = questBoxImage.color;
+            color.b += 1f * Time.deltaTime;
+            questBoxImage.color = color;
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        yield return null; ;
     }
 }
