@@ -7032,12 +7032,12 @@ PrefabInstance:
     - target: {fileID: 1474562298189656810, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 46.399998
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1474562298189656810, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: -227.20001
+      value: -320
       objectReference: {fileID: 0}
     - target: {fileID: 1474855390959325105, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
@@ -7247,12 +7247,12 @@ PrefabInstance:
     - target: {fileID: 2867652402970268392, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -24.800003
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2867652402970268392, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: -270.4
+      value: -320
       objectReference: {fileID: 0}
     - target: {fileID: 2915452704134269548, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
@@ -11969,7 +11969,7 @@ MonoBehaviour:
   - {fileID: 157550738007846215, guid: 02df9de6b277c014db17c6f7262a1548, type: 3}
   minExpeditionInterval: 5
   maxExpeditionInterval: 5
-  acceleration: 0.2
+  acceleration: 0.05
   satellitePrefab: {fileID: 8379158738176422556, guid: fa9fb94579f659d45b7fb427ad42acf7,
     type: 3}
   satelliteOrbitSpeed: 0.1
