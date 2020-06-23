@@ -13,6 +13,7 @@ public class CountDownTimer : MonoBehaviour
     private string secondsLeftString;
     private float timer;
     private bool english;
+    private bool flashingHappened;
     void Start()
     {
         timerText = gameObject.GetComponent<TMP_Text>();
@@ -44,6 +45,14 @@ public class CountDownTimer : MonoBehaviour
             secondsLeftString = secondsLeft.ToString();
         }
 
+        if (minutesLeft > 1)
+        {
+            if (!flashingHappened)
+            {
+                StartCoroutine(CountDownAnimation());
+            }
+        }
+
         if (GameManager.paused)
         {
             if (LanguageSelector.LanguageSelected == LanguageSelector.LanguageSelectorSelected.English)
@@ -62,5 +71,10 @@ public class CountDownTimer : MonoBehaviour
         {
             timerText.text = minutesLeft + ":" + secondsLeftString;
         }
+    }
+
+    private IEnumerator CountDownAnimation()
+    {
+        yield return null;
     }
 }
