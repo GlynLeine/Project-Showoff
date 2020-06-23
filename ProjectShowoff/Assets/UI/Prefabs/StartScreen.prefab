@@ -127,7 +127,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1012243649972231456}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
@@ -182,8 +182,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 15, y: 225}
-  m_SizeDelta: {x: 60, y: 60}
+  m_AnchoredPosition: {x: 11, y: 241}
+  m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1587344940491929029
 CanvasRenderer:
@@ -256,7 +256,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9, y: -123}
+  m_AnchoredPosition: {x: 5, y: -121}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1159689708494589632
@@ -423,7 +423,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1355803843282730651}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
@@ -625,7 +625,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5825485985832185703
 RectTransform:
   m_ObjectHideFlags: 0
@@ -764,9 +764,9 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_subTextObjects:
   - {fileID: 0}
+  - {fileID: 4305368307720651804}
+  - {fileID: 1129008961799857320}
   - {fileID: 4090128683310167286}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -826,7 +826,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2193778255877699602}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
@@ -864,7 +864,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &786120020378977986
 RectTransform:
   m_ObjectHideFlags: 0
@@ -882,7 +882,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 90}
+  m_AnchoredPosition: {x: 0, y: 87}
   m_SizeDelta: {x: 1100, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6870745393578471531
@@ -2315,10 +2315,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Hoi! Welkom op Threa!\n\n\n Het is een leuke planeet, maar een beetje
-    leeg!\n Jij hebt de kracht om dingen te bouwen en het een leuke plek te maken\nvoor
-    de bewoners op de planeet!\n\nMaar wees voorzicht met wat je bouwt,\nwant meer
-    gebouwen\n\n kan minder natuur betekenen\n\nSommige dingen die jij kunt bouwen
+  m_text: "Hoi! Welkom op Threa!\n\n Het is een leuke planeet, maar een beetje leeg!\n
+    Jij hebt de kracht om dingen te bouwen en het een leuke plek te maken\nvoor de
+    bewoners op de planeet!\n\nMaar wees voorzichtig met wat je bouwt,\nwant meer
+    gebouwen\n\n\n kan minder natuur betekenen\n\nSommige dingen die jij kunt bouwen
     kunnen vervuilend zijn en aan de klimaatverandering op de planeet bijdragen.
     Andere dingen die jij kunt bouwen helpen om de klimaatverandering tegen te gaan!
     \r\n\nHet lot van Threa ligt in jouw handen!\n"
@@ -2388,10 +2388,10 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: -18.194435, z: 0, w: -22.443474}
+  m_margin: {x: 0, y: -18.194435, z: 0, w: -59.20525}
   m_textInfo:
     textComponent: {fileID: 4748929572737475838}
-    characterCount: 500
+    characterCount: 502
     spriteCount: 0
     spaceCount: 96
     wordCount: 86
@@ -2448,8 +2448,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 205, y: 87}
-  m_SizeDelta: {x: 60, y: 60}
+  m_AnchoredPosition: {x: 7, y: 95}
+  m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4637317500864980211
 CanvasRenderer:
@@ -2586,7 +2586,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: -48}
+  m_AnchoredPosition: {x: 7, y: -32}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5267617318986712243
