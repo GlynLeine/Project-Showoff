@@ -538,6 +538,7 @@ GameObject:
   - component: {fileID: 6270672972083692039}
   - component: {fileID: 2693959343972102390}
   - component: {fileID: 2634704186886126290}
+  - component: {fileID: 7175078597077905164}
   m_Layer: 5
   m_Name: transition
   m_TagString: Untagged
@@ -613,6 +614,25 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!95 &7175078597077905164
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749824993267050392}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8d59fa29058f5a04c84d351c4666f309, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &896321243010555612
 GameObject:
   m_ObjectHideFlags: 0
@@ -1860,19 +1880,21 @@ MonoBehaviour:
   minusSprite: {fileID: 0}
   questList:
   - buildingType: 2
-    buildOrDestroy: 0
-    buildHowMany: 3
+    build: 0
+    requiredAmount: 0
     maxTimeInSeconds: 30
     waitTimeInSeconds: 10
     addReward: 0
     reward: 0
+    done: 0
   - buildingType: 4
-    buildOrDestroy: 0
-    buildHowMany: 4
+    build: 0
+    requiredAmount: 0
     maxTimeInSeconds: 30
     waitTimeInSeconds: 10
     addReward: 0
     reward: 0
+    done: 0
 --- !u!1 &2766883279786236331
 GameObject:
   m_ObjectHideFlags: 0
@@ -6547,6 +6569,8 @@ MonoBehaviour:
   winterGrayscaleImage: {fileID: 8872052277918405793}
   endScreenCanvas: {fileID: 0}
   mainCanvas: {fileID: 8872052277425209316}
+  endAnimation: {fileID: 0}
+  endTransition: {fileID: 0}
 --- !u!114 &2492309369576556696
 MonoBehaviour:
   m_ObjectHideFlags: 0
