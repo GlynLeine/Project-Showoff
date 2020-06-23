@@ -346,6 +346,7 @@ MonoBehaviour:
   - {x: 0, y: 1, z: 0}
   - {x: 0, y: 1, z: 0}
   automaticTangents: 0
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -465,7 +466,6 @@ GameObject:
   - component: {fileID: 6623646491820649130}
   - component: {fileID: 2787989694472016028}
   - component: {fileID: 8470255707810147429}
-  - component: {fileID: 5627395526249821970}
   m_Layer: 0
   m_Name: airport_model
   m_TagString: Untagged
@@ -534,19 +534,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &5627395526249821970
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7904013870470895801}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.112584025
-  m_Center: {x: -0.021917343, y: 0, z: -0.000000007450581}
 --- !u!1001 &3777506273950902056
 PrefabInstance:
   m_ObjectHideFlags: 0
