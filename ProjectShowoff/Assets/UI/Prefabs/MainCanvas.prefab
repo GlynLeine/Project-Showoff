@@ -2039,6 +2039,7 @@ MonoBehaviour:
     waitTimeInSeconds: 10
     addReward: 1
     reward: 4
+    done: 0
   - buildingType: 3
     build: 1
     requiredAmount: 3
@@ -2046,6 +2047,7 @@ MonoBehaviour:
     waitTimeInSeconds: 10
     addReward: 1
     reward: 2
+    done: 0
   - buildingType: 5
     build: 1
     requiredAmount: 2
@@ -2053,6 +2055,7 @@ MonoBehaviour:
     waitTimeInSeconds: 10
     addReward: 1
     reward: 1
+    done: 0
   - buildingType: 1
     build: 1
     requiredAmount: 3
@@ -2060,6 +2063,7 @@ MonoBehaviour:
     waitTimeInSeconds: 10
     addReward: 1
     reward: 2
+    done: 0
   - buildingType: 0
     build: 0
     requiredAmount: 2
@@ -2067,6 +2071,7 @@ MonoBehaviour:
     waitTimeInSeconds: 10
     addReward: 0
     reward: 0
+    done: 0
   - buildingType: 4
     build: 1
     requiredAmount: 2
@@ -2074,6 +2079,7 @@ MonoBehaviour:
     waitTimeInSeconds: 10
     addReward: 0
     reward: 0
+    done: 0
 --- !u!1 &2766883279786236331
 GameObject:
   m_ObjectHideFlags: 0
@@ -9746,7 +9752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfed3c2f0a6f7f1419707c8e78af66e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  announcerTextSpeed: 40
+  announcerTextSpeed: 70
   announcerTextBox: {fileID: 8872052277587456257}
 --- !u!1 &8872052277614703284
 GameObject:
