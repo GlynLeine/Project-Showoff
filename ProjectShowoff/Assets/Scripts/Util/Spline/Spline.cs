@@ -389,11 +389,6 @@ public class Spline : MonoBehaviour
             }
         }
 
-        vertices.Add(points[points.Count - 1]);
-        vertNormals.Add(normals[normals.Count - 1]);
-        length += Vector3.Distance(vertices[vertices.Count - 2], vertices[vertices.Count - 1]);
-        distances.Add(length);
-
         if (isClosed)
         {
             vertices.Add(points[0]);
@@ -402,8 +397,14 @@ public class Spline : MonoBehaviour
             length += Vector3.Distance(vertices[vertices.Count - 2], vertices[vertices.Count - 1]);
             distances.Add(length);
         }
+        else
+        {
+            vertices.Add(points[points.Count - 1]);
+            vertNormals.Add(normals[normals.Count - 1]);
+            length += Vector3.Distance(vertices[vertices.Count - 2], vertices[vertices.Count - 1]);
+            distances.Add(length);
+        }
 
-        
 
         for (int i = 0; i < vertices.Count; i++)
         {
