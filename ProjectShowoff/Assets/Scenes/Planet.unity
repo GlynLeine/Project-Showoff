@@ -7123,6 +7123,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 26.808226
       objectReference: {fileID: 0}
+    - target: {fileID: 2354118238642265083, guid: 9a1544356b636fe478f34b9a6bb8508d,
+        type: 3}
+      propertyPath: m_Name
+      value: StatDisplayGO
+      objectReference: {fileID: 0}
     - target: {fileID: 2401111477791887876, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -7246,7 +7251,7 @@ PrefabInstance:
     - target: {fileID: 2867652402970268392, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -24.800003
+      value: -24.8
       objectReference: {fileID: 0}
     - target: {fileID: 2867652402970268392, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
@@ -7707,6 +7712,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 24.681013
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028517317617342297, guid: 9a1544356b636fe478f34b9a6bb8508d,
+        type: 3}
+      propertyPath: happiness
+      value: -0.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028517317617342297, guid: 9a1544356b636fe478f34b9a6bb8508d,
+        type: 3}
+      propertyPath: pollution
+      value: 0.58
       objectReference: {fileID: 0}
     - target: {fileID: 8494155604022913428, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
@@ -15275,7 +15290,7 @@ MonoBehaviour:
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
   resolution: 1
-  length: 3.988447
+  length: 3.762917
 --- !u!4 &1549940836
 Transform:
   m_ObjectHideFlags: 0
@@ -19306,7 +19321,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 1, b: 0.6627451, a: 1}
   m_Intensity: 1
   m_Range: 13
   m_SpotAngle: 30
