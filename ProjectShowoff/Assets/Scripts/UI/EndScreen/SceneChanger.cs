@@ -9,6 +9,7 @@ public class SceneChanger : MonoBehaviour
 
     public void sceneChangeClick()
     {
+        GameManager.AppendDataAndOverwrite();
         SceneManager.LoadScene(0);
     }
 }

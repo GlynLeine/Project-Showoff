@@ -11107,6 +11107,7 @@ MonoBehaviour:
   questBoxImage: {fileID: 3415754310035426241}
   destroyButton: {fileID: 8872052277124362402}
   buildingSystem: {fileID: 0}
+  infoIcon: {fileID: 5255672061396027717}
   tutorialBuildStep: 0
   zoomIcon: {fileID: 21300000, guid: 55c73557f6a2124479ea2058f98565e2, type: 3}
   creatureHead: {fileID: 21300000, guid: f28133e1c357a284992d18964bf81775, type: 3}

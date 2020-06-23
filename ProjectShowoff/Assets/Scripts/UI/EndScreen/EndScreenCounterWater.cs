@@ -13,7 +13,7 @@ public class EndScreenCounterWater : MonoBehaviour
     private void OnEnable()
     {
         yourValue = GameManager.waterLevel;
-        averageValue = 0.5f;
+        averageValue = GameManager.LoadAverages().waterLevel;
         rectTransform = (RectTransform)yourFill.transform;
         Vector3 waterTransform = rectTransform.anchoredPosition;
         waterTransform.y += 50 * yourValue;
