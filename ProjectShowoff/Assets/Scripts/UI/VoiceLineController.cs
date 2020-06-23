@@ -549,6 +549,10 @@ public class VoiceLineController : MonoBehaviour
         }
         while (updateBool)
         {
+            if (GameManager.time > 304)
+            {
+                yield break;
+            }
             if (!springBool && GameManager.time > 1)
             {
                 if (English)
