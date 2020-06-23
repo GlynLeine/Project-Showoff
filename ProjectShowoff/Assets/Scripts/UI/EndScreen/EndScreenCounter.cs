@@ -16,7 +16,7 @@ public class EndScreenCounter : MonoBehaviour
         C02,
         Happiness,
         Plants,
-        BuildingsDestroyed,
+        Industry,
         BuildingsPlaced
     };
     public float maxAmount;
@@ -48,10 +48,10 @@ public class EndScreenCounter : MonoBehaviour
             yourValue = (float)GameManager.nature;
             averageValue = 225f;
         }
-        else if (counterType == typeChoice.BuildingsDestroyed)
+        else if (counterType == typeChoice.Industry)
         {
-            yourValue = (float)GameManager.buildingsDestroyed - (float)GameManager.buildingsFlooded;
-            averageValue = 7f;
+            yourValue = (float)GameManager.industry;
+            averageValue = 21f;
         }
         else if (counterType == typeChoice.BuildingsPlaced)
         {

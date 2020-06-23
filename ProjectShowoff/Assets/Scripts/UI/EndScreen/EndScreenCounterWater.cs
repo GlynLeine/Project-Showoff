@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class EndScreenCounterWater : MonoBehaviour
 {
-    private float yourValue = 0.1f;
-    private float averageValue = 0.3f;
+    private float yourValue;
+    private float averageValue = 0.1f;
     public GameObject yourFill;
     public GameObject theirFill;
     private RectTransform rectTransform;
     private void OnEnable()
     {
-        yourValue = (float)GameManager.waterLevel;
+        yourValue = GameManager.waterLevel;
         averageValue = 0.5f;
         rectTransform = (RectTransform)yourFill.transform;
         Vector3 waterTransform = rectTransform.anchoredPosition;
