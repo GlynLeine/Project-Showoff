@@ -21606,7 +21606,7 @@ PrefabInstance:
       objectReference: {fileID: 1192269616}
     - target: {fileID: 1334090413, guid: 93ae5ed2473471e41b4a257c7bc4bd13, type: 3}
       propertyPath: length
-      value: 0.33506027
+      value: 0.33506024
       objectReference: {fileID: 0}
     - target: {fileID: 1334090414, guid: 93ae5ed2473471e41b4a257c7bc4bd13, type: 3}
       propertyPath: mesh
@@ -21962,7 +21962,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1778506320, guid: 93ae5ed2473471e41b4a257c7bc4bd13, type: 3}
       propertyPath: length
-      value: 0.4365423
+      value: 0.43654233
       objectReference: {fileID: 0}
     - target: {fileID: 1778506323, guid: 93ae5ed2473471e41b4a257c7bc4bd13, type: 3}
       propertyPath: m_Mesh
