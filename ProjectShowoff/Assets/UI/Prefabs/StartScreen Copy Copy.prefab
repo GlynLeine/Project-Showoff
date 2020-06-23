@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -46}
+  m_AnchoredPosition: {x: 13, y: -36}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1727415726787647228
@@ -108,8 +108,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5, y: 242}
-  m_SizeDelta: {x: 40, y: 40}
+  m_AnchoredPosition: {x: 15, y: 225}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1587344940491929029
 CanvasRenderer:
@@ -182,7 +182,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4, y: -123}
+  m_AnchoredPosition: {x: 9, y: -123}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1159689708494589632
@@ -420,7 +420,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5, y: -136}
+  m_AnchoredPosition: {x: 9, y: -114}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5284975673237684783
@@ -499,7 +499,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 5}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1050, y: 550}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3012726238010701150
@@ -531,7 +531,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Hi! This is planet Threa!\r\n\nIt\u2019s a nice planet but a bit empty..
     \r\nYou have the power to create things and make it a great place\n to live for
-    the creatures on it. \r\n\nbut, be careful what you build because,\n\n more buildings
+    the creatures on it. \r\n\nbut, be careful what you build because,\n more buildings
     \n\nmight mean less nature\u2026 \r\n\n\nSome things that you can build can be
     polluting the planet and contribute to global warming. Other things that you
     can build can help to fight global warming!\r\nThe fate of Threa is in your hands!"
@@ -601,15 +601,15 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -17.118319, y: -23.506514, z: -25.670275, w: -27.097902}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 3796460173286661516}
-    characterCount: 448
+    characterCount: 447
     spriteCount: 0
-    spaceCount: 93
+    spaceCount: 92
     wordCount: 82
     linkCount: 0
-    lineCount: 16
+    lineCount: 15
     pageCount: 1
     materialCount: 2
   m_isUsingLegacyAnimationComponent: 0
@@ -680,7 +680,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2063131140092378165}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
@@ -735,7 +735,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 241}
+  m_AnchoredPosition: {x: 0, y: 222}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5292667450320093281
@@ -792,7 +792,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &786120020378977986
 RectTransform:
   m_ObjectHideFlags: 0
@@ -939,8 +939,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8, y: 96}
-  m_SizeDelta: {x: 40, y: 40}
+  m_AnchoredPosition: {x: 205, y: 96}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4665058343191893745
 CanvasRenderer:
@@ -1989,7 +1989,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3115899141147614848
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2135,7 +2135,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 5}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1050, y: 550}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7534279018911346573
@@ -2165,13 +2165,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Hoi! Welkom op Threa!\n\n Het is een leuke planeet, maar een beetje leeg!\n
-    Jij hebt de kracht om dingen te bouwen en het een leuke plek te maken\nvoor de
-    bewoners op de planeet!\n\nMaar wees voorzicht met wat je bouwt,\nwant meer gebouwen\n\n\n
-    kan minder natuur betekenen\n\n\nSommige dingen die jij kunt bouwen kunnen vervuilend
-    zijn en aan de klimaatverandering op de planeet bijdragen. Andere dingen die
-    jij kunt bouwen helpen om de klimaatverandering tegen te gaan! \r\nHet lot van
-    Threa ligt in jouw handen!\n"
+  m_text: "Hoi! Welkom op Threa!\n\n\n Het is een leuke planeet, maar een beetje
+    leeg!\n Jij hebt de kracht om dingen te bouwen en het een leuke plek te maken\n
+    voor de bewoners op de planeet!\n\nMaar wees voorzicht met wat je bouwt,\nwant
+    meer gebouwen\n\n kan minder natuur betekenen\n\nSommige dingen die jij kunt
+    bouwen kunnen vervuilend zijn en aan de klimaatverandering op de planeet bijdragen.
+    Andere dingen die jij kunt bouwen helpen om de klimaatverandering tegen te gaan!
+    \r\n\nHet lot van Threa ligt in jouw handen!\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fdb0e902fdaab4d459a263f9ec1559f5, type: 2}
   m_sharedMaterial: {fileID: -7682532693208452417, guid: fdb0e902fdaab4d459a263f9ec1559f5,
@@ -2238,12 +2238,12 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: -16.621304, z: 0, w: -28.821926}
+  m_margin: {x: 0, y: -18.194435, z: 0, w: -22.443474}
   m_textInfo:
     textComponent: {fileID: 4748929572737475838}
-    characterCount: 500
+    characterCount: 501
     spriteCount: 0
-    spaceCount: 96
+    spaceCount: 97
     wordCount: 86
     linkCount: 0
     lineCount: 16
@@ -2298,8 +2298,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2, y: 100}
-  m_SizeDelta: {x: 40, y: 40}
+  m_AnchoredPosition: {x: 205, y: 87}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4637317500864980211
 CanvasRenderer:
@@ -2436,7 +2436,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3, y: -35}
+  m_AnchoredPosition: {x: 10, y: -48}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5267617318986712243
