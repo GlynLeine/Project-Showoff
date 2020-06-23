@@ -5,23 +5,38 @@ using UnityEngine;
 public class Boat : MonoBehaviour
 {
     public Spline boatSpline;
-
-    float distance;
     public float speed;
-    float direction;
+    public SphereCollider oceanCollider;
 
     // Start is called before the first frame update
     void Start()
     {
-        direction = 1f;
+        StartCoroutine(Travel());
     }
 
     // Update is called once per frame
-    void Update()
-    {     
-        distance += speed * direction * Time.deltaTime;
-        Vector3 position = boatSpline.GetWorldPointAtDistance(distance);
-        position = position.normalized * (1f + GameManager.waterLevel * 0.07f);
-        transform.position = position;
+    IEnumerator Travel()
+    {
+        float distance = 0;
+        Vector3 prevPos;
+        while (true)
+        {
+            distance += speed * Time.deltaTime;
+            Vector3 target = boatSpline.GetWorldPointAtDistance(distance);
+            target = oceanCollider.bounds.center + target.normalized * oceanCollider.radius * (1f + GameManager.waterLevel * 0.07f);
+
+            while (Vector3.Distance(target, transform.position) > speed * Time.deltaTime)
+            {
+                prevPos = transform.position;
+                transform.position += (target - transform.position).normalized * speed * Time.deltaTime;
+
+                Vector3 forward = (transform.position - prevPos).normalized;
+                Vector3 up = transform.position.normalized;
+                transform.rotation = Quaternion.LookRotation(forward, up);
+
+                yield return null;
+            }
+            yield return null;
+        }
     }
 }
