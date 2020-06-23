@@ -167,11 +167,13 @@ public class VoiceLineController : MonoBehaviour
     private bool destroyBool;
     private bool swipeBool;
     private bool zoomBool;
+    private bool English;
     
     void Start()
     {
         if (LanguageSelector.LanguageSelected == LanguageSelector.LanguageSelectorSelected.English)
         {
+            English = true;
             globalWarming = FMODUnity.RuntimeManager.CreateInstance(englishGlobalWarming);
             misc = FMODUnity.RuntimeManager.CreateInstance(englishMisc);
             playTriggers = FMODUnity.RuntimeManager.CreateInstance(englishPlayTriggers);
@@ -254,7 +256,7 @@ public class VoiceLineController : MonoBehaviour
     }
 
     //basically this is called whenever a voice line is ready, each voice line does an if check and if true, it sets its own bool to false aka it has played
-    private bool VoiceLinePlay(FMOD.Studio.EventInstance e, string eventName)
+    private bool VoiceLinePlay(FMOD.Studio.EventInstance e, string eventName/*,int animationPlayTime*/)
     {
         if (!isAudioPlaying)
         {
@@ -270,7 +272,7 @@ public class VoiceLineController : MonoBehaviour
         }
     }
     //once the voice line is playing we wait for the wait time before stopping the audio and opening it back up for play again
-    IEnumerator VoiceLineWait(FMOD.Studio.EventInstance e, string eventName)
+    IEnumerator VoiceLineWait(FMOD.Studio.EventInstance e, string eventName/*,int animationPlayTime*/)
     {
             yield return new WaitForSeconds(audioWaitTime);
             e.setParameterByName(eventName, 0);
@@ -278,23 +280,99 @@ public class VoiceLineController : MonoBehaviour
             yield return null;//redundant safety check but seems to have eliminated some weird errors
             isAudioPlaying = false;
     }
-
+    //everything below here are triggers
     //the purpose for this is because theres no reason to check for voice line availability every frame, but it needs to be checked often enough that we can catch them when relevant
     IEnumerator slowUpdate()
     {
         while (updateBool)
         {
+            if (!springBool && GameManager.time > 1)
+            {
+                if (VoiceLinePlay(timeTriggers,spring))
+                {
+                    if (English)
+                    {
+                        atScript.TextChanger("And it’s spring again, time to clean your house.");
+                    }
+                    else
+                    {
+                        atScript.TextChanger("En het is weer lente, tijd om je huis schoon te maken.");
+                    }
+                    springBool = true;
+                }
+            }
+            else if (!summerBool && GameManager.time >= 75 && GameManager.time <= 90)
+            {
+                if (VoiceLinePlay(timeTriggers,summer))
+                {
+                    if (English)
+                    {
+                        atScript.TextChanger("It’s summer time, don’t forget your sunscreen!");
+                    }
+                    else
+                    {
+                        atScript.TextChanger("Het is zomer, vergeet je zonnebrandcrème niet!");
+                    }
+                    summerBool = true;
+                }
+            }
+            else if (!autumnBool && GameManager.time >= 150 && GameManager.time <= 165)
+            {
+                if (VoiceLinePlay(timeTriggers,autumn))
+                {
+                    if (English)
+                    {
+                        atScript.TextChanger("Autumn is here, bring an umbrella.");
+                    }
+                    else
+                    {
+                        atScript.TextChanger("Herfst is hier, neem een paraplu mee.");
+                    }
+                    autumnBool = true;
+                }
+            }
+            else if (!winterBool && GameManager.time >= 225 && GameManager.time <= 240)
+            {
+                if (VoiceLinePlay(timeTriggers,summer))
+                {
+                    if (English)
+                    {
+                        atScript.TextChanger("It’s winter, who wants hot coco?");
+                    }
+                    else
+                    {
+                        atScript.TextChanger("Het is winter, wie wil er warme chocolademelk?");
+                    }
+                    winterBool = true;
+                }
+            }
             if (!pollutionUpBool && GameManager.pollution > 400)
             {
                 if (VoiceLinePlay(globalWarming, pollutionUp))
                 {
+                    if (English)
+                    {
+                        atScript.TextChanger("Nature is looking a bit sad, but our new stuff looks nice! Reports citizen");
+                    }
+                    else
+                    {
+                        atScript.TextChanger("De natuur ziet er een beetje triest uit, maar onze nieuwe spullen zien er cool uit! Zegt lokale man");
+                    }
                     pollutionUpBool = true;
                 }
             }
-            if (!pollutionDownBool && pollutionUpBool && GameManager.pollution < 400)
+            else if (!pollutionDownBool && pollutionUpBool && GameManager.pollution < 400)
             {
                 if (VoiceLinePlay(globalWarming, pollutionDown))
                 {
+                    if (English)
+                    {
+                        atScript.TextChanger("Study shows that less industry means more rainbows!");
+                    }
+                    else
+                    {
+                        atScript.TextChanger("Onderzoek toont aan dat minder industrie meer regenbogen betekent!");
+                    }
                     pollutionDownBool = true;
                 }
             }
@@ -303,6 +381,14 @@ public class VoiceLineController : MonoBehaviour
             {
                 if (VoiceLinePlay(globalWarming, waterLevelUp))
                 {
+                    if (English)
+                    {
+                        atScript.TextChanger("Planet temperatures are up and the water level is rising reports show. Time for the beach or time for a change?");
+                    }
+                    else
+                    {
+                        atScript.TextChanger("Planeet temperaturen stijgen en het waterpeil stijgt, laten rapporten zien. Tijd voor het strand of tijd voor verandering? ");
+                    }
                     waterUpBool = true;
                 }
             }
@@ -311,6 +397,14 @@ public class VoiceLineController : MonoBehaviour
             {
                 if (VoiceLinePlay(globalWarming, fogIncrease))
                 {
+                    if (English)
+                    {
+                        atScript.TextChanger("Study shows smog is increasing. Sunglasses are out of fashion anyway, Factory owner responds.");
+                    }
+                    else
+                    {
+                        atScript.TextChanger("Uit onderzoek blijkt dat smog toeneemt. Zonnebrillen zijn sowieso uit de mode, reageert de fabriekseigenaar.");
+                    }
                     fogIncreaseBool = true;
                 }
             }
@@ -319,14 +413,29 @@ public class VoiceLineController : MonoBehaviour
             {
                 if (VoiceLinePlay(globalWarming, natureUp))
                 {
+                    if (English)
+                    {
+                        atScript.TextChanger("Family lost in forest hike for 2 days; this forest used to be smaller! Mother responded.");
+                    }
+                    else
+                    {
+                        atScript.TextChanger("Familie verdwaald in boswandeling gedurende 2 dagen; Dit bos was vroeger kleiner! reageert Moeder.");
+                    }
                     natureUpBool = true;
                 }
             }
-
-            if (!natureDownBool && natureUpBool && GameManager.nature < 100)
+            else if (!natureDownBool && natureUpBool && GameManager.nature < 100)
             {
                 if (VoiceLinePlay(globalWarming, natureDown))
                 {
+                    if (English)
+                    {
+                        atScript.TextChanger("I can’t find my house, Squirrel reports, Where did all the trees go?");
+                    }
+                    else
+                    {
+                        atScript.TextChanger("Ik kan mijn huis niet vinden, meldt eekhoorn, Waar zijn alle bomen gebleven?");
+                    }
                     natureDownBool = true;
                 }
             }
