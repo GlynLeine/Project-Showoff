@@ -169,9 +169,30 @@ public class VoiceLineController : MonoBehaviour
     private bool swipeBool;
     private bool zoomBool;
     private bool English;
-    
+    private bool StartScreenDone;
+
     void Start()
     {
+        StartCoroutine(SlowStartUpdate());
+    }
+
+    IEnumerator SlowStartUpdate()
+    {
+        while (GameManager.time < 0.5f)
+        {
+            //do nothing but wait
+            yield return null;
+        }
+        //cant call this more than once but just for safety
+        if (!StartScreenDone)
+        {
+            OnStartScreenDone();
+        }
+    }
+    void OnStartScreenDone()
+    {
+        StartScreenDone = true;
+        //set all the lines to the appropriate ones, set the event instances to the appropriate ones
         if (LanguageSelector.LanguageSelected == LanguageSelector.LanguageSelectorSelected.English)
         {
             English = true;
@@ -258,6 +279,8 @@ public class VoiceLineController : MonoBehaviour
     }
 
     //basically this is called whenever a voice line is ready, each voice line does an if check and if true, it sets its own bool to false aka it has played
+    //the reason its a bool is so that each voice line can execute its own specific code, honestly most of that code could probably be added to this as well
+    //dont know how long the audio each lasts
     private bool VoiceLinePlay(FMOD.Studio.EventInstance e, string eventName/*,int animationPlayTime*/)
     {
         if (!isAudioPlaying)
