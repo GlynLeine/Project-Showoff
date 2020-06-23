@@ -8,6 +8,7 @@ public class VoiceLineController : MonoBehaviour
     private bool isAudioPlaying;
     private bool updateBool = true;
     public int audioWaitTime = 15;
+    public AnnouncerText atScript;
     [FMODUnity.EventRef] //basically everything is repeated as english and dutch versions
     //event strings
     public string englishGlobalWarming = "event:/Voicelines/Global_warming_triggers_EN";
@@ -166,6 +167,7 @@ public class VoiceLineController : MonoBehaviour
     private bool destroyBool;
     private bool swipeBool;
     private bool zoomBool;
+    
     void Start()
     {
         if (LanguageSelector.LanguageSelected == LanguageSelector.LanguageSelectorSelected.English)
@@ -321,7 +323,7 @@ public class VoiceLineController : MonoBehaviour
                 }
             }
 
-            if (!natureDownBool && natureUpBool && GameManager.nature > 100)
+            if (!natureDownBool && natureUpBool && GameManager.nature < 100)
             {
                 if (VoiceLinePlay(globalWarming, natureDown))
                 {

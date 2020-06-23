@@ -1653,6 +1653,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 901982509905598187, guid: 9fb465733fae2c347b26706d6086402f,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 901982509905598187, guid: 9fb465733fae2c347b26706d6086402f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 901982509905598187, guid: 9fb465733fae2c347b26706d6086402f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 901982509905598187, guid: 9fb465733fae2c347b26706d6086402f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4414116870773137905, guid: 9fb465733fae2c347b26706d6086402f,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4414116870773137905, guid: 9fb465733fae2c347b26706d6086402f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4414116870773137905, guid: 9fb465733fae2c347b26706d6086402f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4414116870773137905, guid: 9fb465733fae2c347b26706d6086402f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5427768028051060016, guid: 9fb465733fae2c347b26706d6086402f,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -1827,6 +1867,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6826602249514542331, guid: 9fb465733fae2c347b26706d6086402f,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6826602249514542331, guid: 9fb465733fae2c347b26706d6086402f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6826602249514542331, guid: 9fb465733fae2c347b26706d6086402f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6826602249514542331, guid: 9fb465733fae2c347b26706d6086402f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fb465733fae2c347b26706d6086402f, type: 3}
@@ -8665,6 +8725,7 @@ GameObject:
   - component: {fileID: 980212965}
   - component: {fileID: 980212964}
   - component: {fileID: 980212963}
+  - component: {fileID: 980212973}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -9194,6 +9255,30 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 0
   OverrideMaxDistance: 0
+--- !u!114 &980212973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980212954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46bfeccbf16dc64badce9fb5bdeb130, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioWaitTime: 15
+  atScript: {fileID: 1670186085}
+  englishGlobalWarming: event:/Voicelines/Global_warming_triggers_EN
+  dutchGlobalWarming: event:/Voicelines/Global_warming_triggers_NL
+  englishMisc: event:/Voicelines/Miscellaneous_EN
+  dutchMisc: event:/Voicelines/Miscellaneous_NL
+  englishPlayTriggers: event:/Voicelines/Play_action_triggers_EN
+  dutchPlayTriggers: event:/Voicelines/Play_action_triggers_NL
+  englishTimeTriggers: event:/Voicelines/Time_base_triggers_EN
+  dutchTimeTriggers: event:/Voicelines/Time_base_triggers_NL
+  englishTutorial: event:/Voicelines/Tutorial_EN
+  dutchTutorial: event:/Voicelines/Tutorial_NL
 --- !u!43 &996930926
 Mesh:
   m_ObjectHideFlags: 0
@@ -18631,6 +18716,18 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &1670186085 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8872052277587456508, guid: 9a1544356b636fe478f34b9a6bb8508d,
+    type: 3}
+  m_PrefabInstance: {fileID: 913900900}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfed3c2f0a6f7f1419707c8e78af66e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1706542759
 Mesh:
   m_ObjectHideFlags: 0
