@@ -23,12 +23,14 @@ public class VoiceLineController : MonoBehaviour
     public string englishTutorial = "event:/Voicelines/Tutorial_EN";
     public string dutchTutorial = "event:/Voicelines/Tutorial_NL";
 
+    public Animator newsCasterAnimator;
+
     private FMOD.Studio.EventInstance globalWarming;
     private FMOD.Studio.EventInstance misc;
     private FMOD.Studio.EventInstance playTriggers;
     private FMOD.Studio.EventInstance timeTriggers;
     private FMOD.Studio.EventInstance tutorial;
-    
+
     //English audio
     //global warming triggers
     private string ePollutionUp = "EN_pollution_up";
@@ -64,7 +66,7 @@ public class VoiceLineController : MonoBehaviour
     private string eDestroy = "EN_destroy";
     private string eSwipe = "EN_swipe";
     private string eZoom = "EN_zoom";
-    
+
     //Dutch audio
     private string nlPollutionUp = "NL_pollution_up";
     private string nlWaterLevelUp = "NL_water_level_rises";
@@ -99,7 +101,7 @@ public class VoiceLineController : MonoBehaviour
     private string nlDestroy = "NL_destroy";
     private string nlSwipe = "NL_swipe";
     private string nlZoom = "NL_zoom";
-    
+
     //the actual strings that set stuff, these get set to English or Dutch equivelant at enable
     private string pollutionUp;
     private string waterLevelUp;
@@ -288,24 +290,32 @@ public class VoiceLineController : MonoBehaviour
             isAudioPlaying = true;
             e.start();
             e.setParameterByName(eventName, 1);
-            StartCoroutine(VoiceLineWait(e,eventName));
+            newsCasterAnimator.SetBool("Talk", true);
+            StartCoroutine(StopAnimation(animationPlayTime));
+            StartCoroutine(VoiceLineWait(e, eventName));
             return true;
         }
-        else
-        {
-            return false;
-        }
+
+        return false;
     }
+
+    IEnumerator StopAnimation(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        newsCasterAnimator.SetBool("Talk", false);
+    }
+
+
     //once the voice line is playing we wait for the wait time before stopping the audio and opening it back up for play again
     IEnumerator VoiceLineWait(FMOD.Studio.EventInstance e, string eventName/*,int animationPlayTime*/)
     {
-            yield return new WaitForSeconds(audioWaitTime);
-            e.setParameterByName(eventName, 0);
-            e.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-            yield return null;//redundant safety check but seems to have eliminated some weird errors
-            isAudioPlaying = false;
-            //this coroutine waits 7 seconds and then attempts to start their lines, aka if no voice lines for 7 seconds, play a misc line
-            StartCoroutine(IdlePlayer());
+        yield return new WaitForSeconds(audioWaitTime);
+        e.setParameterByName(eventName, 0);
+        e.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        yield return null;//redundant safety check but seems to have eliminated some weird errors
+        isAudioPlaying = false;
+        //this coroutine waits 7 seconds and then attempts to start their lines, aka if no voice lines for 7 seconds, play a misc line
+        StartCoroutine(IdlePlayer());
     }
     //everything below here are triggers
     //this is the building trigger, checks if a building is built and what building has been built - loads of if else's
@@ -314,27 +324,27 @@ public class VoiceLineController : MonoBehaviour
         if (GameManager.industry >= 15 && !airplanesBool)
         {
             if (English)
+            {
+                if (VoiceLinePlay(timeTriggers, airplanes, 4))
                 {
-                    if (VoiceLinePlay(timeTriggers, airplanes,4))
-                    {
-                        atScript.TextChanger("Was that a bird? No it’s a plane! Local kid reports.");
-                        airplanesBool = true;
-                    }
+                    atScript.TextChanger("Was that a bird? No it’s a plane! Local kid reports.");
+                    airplanesBool = true;
                 }
-                else
+            }
+            else
+            {
+                if (VoiceLinePlay(timeTriggers, airplanes, 4))
                 {
-                    if (VoiceLinePlay(timeTriggers, airplanes,4))
-                    {
-                        atScript.TextChanger("Was dat een vogel? Nee, het is een vliegtuig!  meldt lokaal kind.");
-                        airplanesBool = true;
-                    }
+                    atScript.TextChanger("Was dat een vogel? Nee, het is een vliegtuig!  meldt lokaal kind.");
+                    airplanesBool = true;
                 }
+            }
         }
         else if (GameManager.industry >= 30 && !satellitesBool)
         {
             if (English)
             {
-                if (VoiceLinePlay(timeTriggers,satellites,5))
+                if (VoiceLinePlay(timeTriggers, satellites, 5))
                 {
                     atScript.TextChanger("Satellites improve our communication and they look cool, Scientist says.");
                     airplanesBool = true;
@@ -342,7 +352,7 @@ public class VoiceLineController : MonoBehaviour
             }
             else
             {
-                if (VoiceLinePlay(timeTriggers,satellites,5))
+                if (VoiceLinePlay(timeTriggers, satellites, 5))
                 {
                     atScript.TextChanger("Satellieten verbeteren onze communicatie en ze zien er cool uit, zegt de wetenschapper.");
                     airplanesBool = true;
@@ -353,189 +363,189 @@ public class VoiceLineController : MonoBehaviour
         switch (buildingData.buildingType)
         {
             case BuildingType.Factory:
-            {
-                if (!factoryBool)
                 {
-                    if (English)
+                    if (!factoryBool)
                     {
-                        if (VoiceLinePlay(playTriggers,factory,6))
+                        if (English)
                         {
-                            atScript.TextChanger("Who wants a job? We have nice jobs for everybody in our new factory, bring your own lunch.");
-                            factoryBool = true;
+                            if (VoiceLinePlay(playTriggers, factory, 6))
+                            {
+                                atScript.TextChanger("Who wants a job? We have nice jobs for everybody in our new factory, bring your own lunch.");
+                                factoryBool = true;
+                            }
+                        }
+                        else
+                        {
+                            if (VoiceLinePlay(playTriggers, factory, 6))
+                            {
+                                atScript.TextChanger("Wie wil er een baan? We hebben leuke banen voor iedereen in onze nieuwe fabriek, breng je eigen lunch mee.");
+                                factoryBool = true;
+                            }
                         }
                     }
-                    else
+                    else if (!donutsBool)
                     {
-                        if (VoiceLinePlay(playTriggers,factory,6))
+                        if (English)
                         {
-                            atScript.TextChanger("Wie wil er een baan? We hebben leuke banen voor iedereen in onze nieuwe fabriek, breng je eigen lunch mee.");
-                            factoryBool = true;
+                            if (VoiceLinePlay(misc, donuts, 7))
+                            {
+                                atScript.TextChanger("A record number of donuts has been sold this week! What do they do with the holes they cut out? Hungry man asks.");
+                                donutsBool = true;
+                            }
                         }
+                        else
+                        {
+                            if (VoiceLinePlay(misc, donuts, 7))
+                            {
+                                atScript.TextChanger("Er is deze week een recordaantal donuts verkocht! Wat doen ze met de gaten die ze hebben uitgesneden? Vraagt een hongerige man.");
+                                donutsBool = true;
+                            }
+                        }
+
                     }
+                    break;
                 }
-                else if (!donutsBool)
-                {
-                    if (English)
-                    {
-                        if (VoiceLinePlay(misc, donuts,7))
-                        {
-                            atScript.TextChanger("A record number of donuts has been sold this week! What do they do with the holes they cut out? Hungry man asks.");
-                            donutsBool = true;
-                        }
-                    }
-                    else
-                    {
-                        if (VoiceLinePlay(misc, donuts,7))
-                        {
-                            atScript.TextChanger("Er is deze week een recordaantal donuts verkocht! Wat doen ze met de gaten die ze hebben uitgesneden? Vraagt een hongerige man.");
-                            donutsBool = true;
-                        }
-                    }
-                    
-                }
-                break;
-            }
             case BuildingType.Harbor:
-            {
-                if (!coastBool)
                 {
-                    if (English)
+                    if (!coastBool)
                     {
-                        if (VoiceLinePlay(playTriggers,coast,6))
+                        if (English)
                         {
-                            coastBool = true;
-                            atScript.TextChanger("Our town has reached the sea! I didn’t know the ocean was this big! fisherman responds.");
+                            if (VoiceLinePlay(playTriggers, coast, 6))
+                            {
+                                coastBool = true;
+                                atScript.TextChanger("Our town has reached the sea! I didn’t know the ocean was this big! fisherman responds.");
 
+                            }
                         }
-                    }
-                    else
-                    {
-                        if (VoiceLinePlay(playTriggers,coast,6))
+                        else
                         {
-                            coastBool = true;
-                            atScript.TextChanger("Onze stad heeft de zee bereikt! Ik wist niet dat de oceaan zo groot was! Verteld visser.");
+                            if (VoiceLinePlay(playTriggers, coast, 6))
+                            {
+                                coastBool = true;
+                                atScript.TextChanger("Onze stad heeft de zee bereikt! Ik wist niet dat de oceaan zo groot was! Verteld visser.");
+                            }
                         }
                     }
+                    break;
                 }
-                break;
-            }
             case BuildingType.CoalMine:
-            {
-                if (!mineBool)
                 {
-                    if (English)
+                    if (!mineBool)
                     {
-                        if (VoiceLinePlay(playTriggers,mine,6))
+                        if (English)
                         {
-                            atScript.TextChanger("We’re now using coal to power our towns!  All of my clothes are now black, worker complains.");
-                            mineBool = true;
+                            if (VoiceLinePlay(playTriggers, mine, 6))
+                            {
+                                atScript.TextChanger("We’re now using coal to power our towns!  All of my clothes are now black, worker complains.");
+                                mineBool = true;
+                            }
+                        }
+                        else
+                        {
+                            if (VoiceLinePlay(playTriggers, mine, 7))
+                            {
+                                atScript.TextChanger("We gebruiken nu steenkool om onze steden van stroom te voorzien! Al mijn kleren zijn nu zwart!, klaagt  medewerker.");
+                                mineBool = true;
+                            }
                         }
                     }
-                    else
-                    {
-                        if (VoiceLinePlay(playTriggers,mine,7))
-                        {
-                            atScript.TextChanger("We gebruiken nu steenkool om onze steden van stroom te voorzien! Al mijn kleren zijn nu zwart!, klaagt  medewerker.");
-                            mineBool = true;
-                        }
-                    }
+                    break;
                 }
-                break;
-            }
             case BuildingType.NatureReserve:
-            {
-                if (!natureReserveBool)
                 {
-                    if (English)
+                    if (!natureReserveBool)
                     {
-                        if (VoiceLinePlay(playTriggers,natureReserve,8))
+                        if (English)
                         {
-                            atScript.TextChanger("Our nature reserve is planted and looking beautiful! Those raccoons having been partying every night this week! Complains neighbour.");
-                            natureReserveBool = true;
+                            if (VoiceLinePlay(playTriggers, natureReserve, 8))
+                            {
+                                atScript.TextChanger("Our nature reserve is planted and looking beautiful! Those raccoons having been partying every night this week! Complains neighbour.");
+                                natureReserveBool = true;
+                            }
+                        }
+                        else
+                        {
+                            if (VoiceLinePlay(playTriggers, natureReserve, 8))
+                            {
+                                atScript.TextChanger("Ons natuurgebied is aangeplant en ziet er prachtig uit! Die wasberen hebben deze week elke avond gefeest! Klaagt buurman.");
+                                natureReserveBool = true;
+                            }
                         }
                     }
-                    else
-                    {
-                        if (VoiceLinePlay(playTriggers,natureReserve,8))
-                        {
-                            atScript.TextChanger("Ons natuurgebied is aangeplant en ziet er prachtig uit! Die wasberen hebben deze week elke avond gefeest! Klaagt buurman.");
-                            natureReserveBool = true;
-                        }
-                    }
+                    break;
                 }
-                break;
-            }
             case BuildingType.OilRig:
-            {
-                if (!coastBool)
                 {
-                    if (English)
+                    if (!coastBool)
                     {
-                        if (VoiceLinePlay(playTriggers,coast,6))
+                        if (English)
                         {
-                            coastBool = true;
-                            atScript.TextChanger("Our town has reached the sea! I didn’t know the ocean was this big! fisherman responds.");
+                            if (VoiceLinePlay(playTriggers, coast, 6))
+                            {
+                                coastBool = true;
+                                atScript.TextChanger("Our town has reached the sea! I didn’t know the ocean was this big! fisherman responds.");
 
+                            }
+                        }
+                        else
+                        {
+                            if (VoiceLinePlay(playTriggers, coast, 6))
+                            {
+                                coastBool = true;
+                                atScript.TextChanger("Onze stad heeft de zee bereikt! Ik wist niet dat de oceaan zo groot was! Verteld visser.");
+
+                            }
                         }
                     }
-                    else
-                    {
-                        if (VoiceLinePlay(playTriggers,coast,6))
-                        {
-                            coastBool = true;
-                            atScript.TextChanger("Onze stad heeft de zee bereikt! Ik wist niet dat de oceaan zo groot was! Verteld visser.");
-
-                        }
-                    }
+                    break;
                 }
-                break;
-            }
             case BuildingType.SolarFarm:
-            {
-                if (!solarPanelBool)
                 {
-                    if (English)
+                    if (!solarPanelBool)
                     {
-                        if (VoiceLinePlay(playTriggers,solarPanel,7))
+                        if (English)
                         {
-                            atScript.TextChanger("our town now has solar energy panels, mayor reports. “Can I skateboard on those?” local girl asks.");
-                            solarPanelBool = true;
+                            if (VoiceLinePlay(playTriggers, solarPanel, 7))
+                            {
+                                atScript.TextChanger("our town now has solar energy panels, mayor reports. “Can I skateboard on those?” local girl asks.");
+                                solarPanelBool = true;
+                            }
+                        }
+                        else
+                        {
+                            if (VoiceLinePlay(playTriggers, solarPanel, 7))
+                            {
+                                atScript.TextChanger("onze stad heeft nu zonne-energie panelen, meldt burgemeester, “kan ik daarop skateboarden?” vraagt lokaal meisje.");
+                                solarPanelBool = true;
+                            }
                         }
                     }
-                    else
-                    {
-                        if (VoiceLinePlay(playTriggers,solarPanel,7))
-                        {
-                            atScript.TextChanger("onze stad heeft nu zonne-energie panelen, meldt burgemeester, “kan ik daarop skateboarden?” vraagt lokaal meisje.");
-                            solarPanelBool = true;
-                        }
-                    }
+                    break;
                 }
-                break;
-            }
             case BuildingType.TrainStation:
-            {
-                if (!trainStationBool)
                 {
-                    if (English)
+                    if (!trainStationBool)
                     {
-                        if (VoiceLinePlay(playTriggers,trainStation,5))
+                        if (English)
                         {
-                            atScript.TextChanger("I’m never going  be late for work again! reports man who was late for this interview.");
-                            trainStationBool = true;
+                            if (VoiceLinePlay(playTriggers, trainStation, 5))
+                            {
+                                atScript.TextChanger("I’m never going  be late for work again! reports man who was late for this interview.");
+                                trainStationBool = true;
+                            }
+                        }
+                        else
+                        {
+                            if (VoiceLinePlay(playTriggers, trainStation, 5))
+                            {
+                                atScript.TextChanger("Ik kom nooit meer te laat op mijn werk! meldt man die te laat was voor dit interview.");
+                                trainStationBool = true;
+                            }
                         }
                     }
-                    else
-                    {
-                        if (VoiceLinePlay(playTriggers,trainStation,5))
-                        {
-                            atScript.TextChanger("Ik kom nooit meer te laat op mijn werk! meldt man die te laat was voor dit interview.");
-                            trainStationBool = true;
-                        }
-                    }
+                    break;
                 }
-                break;
-            }
             default: break;
         }
     }
@@ -545,7 +555,7 @@ public class VoiceLineController : MonoBehaviour
         if (isAudioPlaying)
         {
             //no point in checking if audio is gonna be playing, so wait, -1 because potentially itll have been triggered a second late
-            yield return new WaitForSeconds(audioWaitTime-1);
+            yield return new WaitForSeconds(audioWaitTime - 1);
         }
         while (updateBool)
         {
@@ -557,7 +567,7 @@ public class VoiceLineController : MonoBehaviour
             {
                 if (English)
                 {
-                    if (VoiceLinePlay(timeTriggers,spring,3))
+                    if (VoiceLinePlay(timeTriggers, spring, 3))
                     {
                         atScript.TextChanger("And it’s spring again, time to clean your house.");
                         springBool = true;
@@ -565,7 +575,7 @@ public class VoiceLineController : MonoBehaviour
                 }
                 else
                 {
-                    if (VoiceLinePlay(timeTriggers,spring,3))
+                    if (VoiceLinePlay(timeTriggers, spring, 3))
                     {
                         atScript.TextChanger("En het is weer lente, tijd om je huis schoon te maken.");
                         springBool = true;
@@ -576,16 +586,16 @@ public class VoiceLineController : MonoBehaviour
             {
                 if (English)
                 {
-                    if (VoiceLinePlay(timeTriggers,summer,3))
-                    {                    
+                    if (VoiceLinePlay(timeTriggers, summer, 3))
+                    {
                         atScript.TextChanger("It’s summer time, don’t forget your sunscreen!");
                         summerBool = true;
                     }
                 }
                 else
                 {
-                    if (VoiceLinePlay(timeTriggers,summer,3))
-                    {                   
+                    if (VoiceLinePlay(timeTriggers, summer, 3))
+                    {
                         atScript.TextChanger("Het is zomer, vergeet je zonnebrandcrème niet!");
                         summerBool = true;
                     }
@@ -595,7 +605,7 @@ public class VoiceLineController : MonoBehaviour
             {
                 if (English)
                 {
-                    if (VoiceLinePlay(timeTriggers,autumn,3))
+                    if (VoiceLinePlay(timeTriggers, autumn, 3))
                     {
                         autumnBool = true;
                         atScript.TextChanger("Autumn is here, bring an umbrella.");
@@ -604,7 +614,7 @@ public class VoiceLineController : MonoBehaviour
                 }
                 else
                 {
-                    if (VoiceLinePlay(timeTriggers,autumn,3))
+                    if (VoiceLinePlay(timeTriggers, autumn, 3))
                     {
                         autumnBool = true;
                         atScript.TextChanger("Herfst is hier, neem een paraplu mee.");
@@ -616,8 +626,8 @@ public class VoiceLineController : MonoBehaviour
             {
                 if (English)
                 {
-                    if (VoiceLinePlay(timeTriggers,winter,3))
-                    {            
+                    if (VoiceLinePlay(timeTriggers, winter, 3))
+                    {
                         atScript.TextChanger("Het is winter, wie wil er warme chocolademelk?");
                         winterBool = true;
                     }
@@ -625,7 +635,7 @@ public class VoiceLineController : MonoBehaviour
                 }
                 else
                 {
-                    if (VoiceLinePlay(timeTriggers,winter,3))
+                    if (VoiceLinePlay(timeTriggers, winter, 3))
                     {
                         atScript.TextChanger("Het is winter, wie wil er warme chocolademelk?");
                         winterBool = true;
@@ -637,7 +647,7 @@ public class VoiceLineController : MonoBehaviour
             {
                 if (English)
                 {
-                    if (VoiceLinePlay(misc, holiday,5))
+                    if (VoiceLinePlay(misc, holiday, 5))
                     {
                         holidayBool = true;
                         atScript.TextChanger("Today is our national holiday! Please don’t light fireworks in your parents bed.");
@@ -646,7 +656,7 @@ public class VoiceLineController : MonoBehaviour
                 }
                 else
                 {
-                    if (VoiceLinePlay(misc, holiday,6))
+                    if (VoiceLinePlay(misc, holiday, 6))
                     {
                         holidayBool = true;
                         atScript.TextChanger("Vandaag is onze nationale feestdag! Steek alsjeblieft geen vuurwerk aan in het bed van je ouders.");
@@ -658,7 +668,7 @@ public class VoiceLineController : MonoBehaviour
             {
                 if (English)
                 {
-                    if (VoiceLinePlay(globalWarming, pollutionUp,5))
+                    if (VoiceLinePlay(globalWarming, pollutionUp, 5))
                     {
                         atScript.TextChanger("Nature is looking a bit sad, but our new stuff looks nice! Reports citizen");
                         pollutionUpBool = true;
@@ -666,7 +676,7 @@ public class VoiceLineController : MonoBehaviour
                 }
                 else
                 {
-                    if (VoiceLinePlay(globalWarming, pollutionUp,6))
+                    if (VoiceLinePlay(globalWarming, pollutionUp, 6))
                     {
                         atScript.TextChanger("De natuur ziet er een beetje triest uit, maar onze nieuwe spullen zien er cool uit! Zegt lokale man");
                         pollutionUpBool = true;
@@ -677,7 +687,7 @@ public class VoiceLineController : MonoBehaviour
             {
                 if (English)
                 {
-                    if (VoiceLinePlay(globalWarming, pollutionDown,4))
+                    if (VoiceLinePlay(globalWarming, pollutionDown, 4))
                     {
                         atScript.TextChanger("Study shows that less industry means more rainbows!");
                         pollutionDownBool = true;
@@ -685,7 +695,7 @@ public class VoiceLineController : MonoBehaviour
                 }
                 else
                 {
-                    if (VoiceLinePlay(globalWarming, pollutionDown,4))
+                    if (VoiceLinePlay(globalWarming, pollutionDown, 4))
                     {
                         atScript.TextChanger("Onderzoek toont aan dat minder industrie meer regenbogen betekent!");
                         pollutionDownBool = true;
@@ -697,7 +707,7 @@ public class VoiceLineController : MonoBehaviour
             {
                 if (English)
                 {
-                    if (VoiceLinePlay(globalWarming, waterLevelUp,7))
+                    if (VoiceLinePlay(globalWarming, waterLevelUp, 7))
                     {
                         atScript.TextChanger("Planet temperatures are up and the water level is rising reports show. Time for the beach or time for a change?");
 
@@ -706,7 +716,7 @@ public class VoiceLineController : MonoBehaviour
                 }
                 else
                 {
-                    if (VoiceLinePlay(globalWarming, waterLevelUp,7))
+                    if (VoiceLinePlay(globalWarming, waterLevelUp, 7))
                     {
                         atScript.TextChanger("Planeet temperaturen stijgen en het waterpeil stijgt, laten rapporten zien. Tijd voor het strand of tijd voor verandering? ");
 
@@ -719,7 +729,7 @@ public class VoiceLineController : MonoBehaviour
             {
                 if (English)
                 {
-                    if (VoiceLinePlay(globalWarming, fogIncrease,7))
+                    if (VoiceLinePlay(globalWarming, fogIncrease, 7))
                     {
                         atScript.TextChanger("Study shows smog is increasing. Sunglasses are out of fashion anyway, Factory owner responds.");
 
@@ -728,7 +738,7 @@ public class VoiceLineController : MonoBehaviour
                 }
                 else
                 {
-                    if (VoiceLinePlay(globalWarming, fogIncrease,7))
+                    if (VoiceLinePlay(globalWarming, fogIncrease, 7))
                     {
                         atScript.TextChanger("Uit onderzoek blijkt dat smog toeneemt. Zonnebrillen zijn sowieso uit de mode, reageert de fabriekseigenaar.");
 
@@ -741,7 +751,7 @@ public class VoiceLineController : MonoBehaviour
             {
                 if (English)
                 {
-                    if (VoiceLinePlay(globalWarming, natureUp,7))
+                    if (VoiceLinePlay(globalWarming, natureUp, 7))
                     {
                         atScript.TextChanger("Family lost in forest hike for 2 days; this forest used to be smaller! Mother responded.");
 
@@ -750,7 +760,7 @@ public class VoiceLineController : MonoBehaviour
                 }
                 else
                 {
-                    if (VoiceLinePlay(globalWarming, natureUp,7))
+                    if (VoiceLinePlay(globalWarming, natureUp, 7))
                     {
                         atScript.TextChanger("Familie verdwaald in boswandeling gedurende 2 dagen; Dit bos was vroeger kleiner! reageert Moeder.");
 
@@ -762,7 +772,7 @@ public class VoiceLineController : MonoBehaviour
             {
                 if (English)
                 {
-                    if (VoiceLinePlay(globalWarming, natureDown,5))
+                    if (VoiceLinePlay(globalWarming, natureDown, 5))
                     {
                         atScript.TextChanger("I can’t find my house, Squirrel reports, Where did all the trees go?");
 
@@ -771,7 +781,7 @@ public class VoiceLineController : MonoBehaviour
                 }
                 else
                 {
-                    if (VoiceLinePlay(globalWarming, natureDown,4))
+                    if (VoiceLinePlay(globalWarming, natureDown, 4))
                     {
                         atScript.TextChanger("Ik kan mijn huis niet vinden, meldt eekhoorn, Waar zijn alle bomen gebleven?");
 
@@ -784,7 +794,7 @@ public class VoiceLineController : MonoBehaviour
             {
                 if (English)
                 {
-                    if (VoiceLinePlay(misc, pizza,8))
+                    if (VoiceLinePlay(misc, pizza, 8))
                     {
                         atScript.TextChanger("This just came in; The president ate an entire pizza for breakfast That’s a man I can follow, local woman says.");
 
@@ -793,7 +803,7 @@ public class VoiceLineController : MonoBehaviour
                 }
                 else
                 {
-                    if (VoiceLinePlay(misc, pizza,8))
+                    if (VoiceLinePlay(misc, pizza, 8))
                     {
                         atScript.TextChanger("'Dit is net binnen; De president at een hele pizza als ontbijt, dat is een man die ik kan volgen, zegt een lokale vrouw.");
 
@@ -822,7 +832,7 @@ public class VoiceLineController : MonoBehaviour
             {
                 if (English)
                 {
-                    if (VoiceLinePlay(misc,dog,8))
+                    if (VoiceLinePlay(misc, dog, 8))
                     {
                         atScript.TextChanger("We have a report of a lost dog, he responds to the name “Fire” please help find him by calling for him in your neighbourhood.");
                         dogBool = true;
@@ -830,7 +840,7 @@ public class VoiceLineController : MonoBehaviour
                 }
                 else
                 {
-                    if (VoiceLinePlay(misc,dog,8))
+                    if (VoiceLinePlay(misc, dog, 8))
                     {
                         atScript.TextChanger("We hebben een melding van een verloren hond, hij reageert op de naam “Brand”, help hem te vinden door hem in uw buurt te roepen.");
                         dogBool = true;
@@ -841,7 +851,7 @@ public class VoiceLineController : MonoBehaviour
             {
                 if (English)
                 {
-                    if (VoiceLinePlay(misc,movie,7))
+                    if (VoiceLinePlay(misc, movie, 7))
                     {
                         movieBool = true;
                     }
@@ -849,7 +859,7 @@ public class VoiceLineController : MonoBehaviour
                 }
                 else
                 {
-                    if (VoiceLinePlay(misc,movie,8))
+                    if (VoiceLinePlay(misc, movie, 8))
                     {
                         movieBool = true;
                     }
@@ -860,7 +870,7 @@ public class VoiceLineController : MonoBehaviour
     }
     private IEnumerator SubscribeWaiter()
     {
-        while(GameManager.time < 1)
+        while (GameManager.time < 1)
         {
             yield return new WaitForSeconds(1);
         }
