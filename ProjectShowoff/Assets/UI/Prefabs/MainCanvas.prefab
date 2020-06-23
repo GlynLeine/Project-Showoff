@@ -1141,7 +1141,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -24.800003, y: 0}
+  m_AnchoredPosition: {x: -24.8, y: 0}
   m_SizeDelta: {x: -270.4, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1621649959023652009
@@ -1964,7 +1964,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2354118238642265083}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8779ec371a7181747b1d5df359929dbd, type: 3}
+  m_Script: {fileID: 11500000, guid: 8920c7eaa61ff13409a06d85de8a269d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   happinessFill: {fileID: 2867652402970268392}
