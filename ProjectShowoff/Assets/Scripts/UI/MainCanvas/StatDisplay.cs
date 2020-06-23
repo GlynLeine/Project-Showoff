@@ -6,6 +6,8 @@ public class StatDisplay : MonoBehaviour
 {
     public RectTransform happinessFill;
     public RectTransform pollutionFill;
+    public GameObject industryImage;
+    
 
     public float happiness;
     public float pollution;
@@ -16,6 +18,16 @@ public class StatDisplay : MonoBehaviour
         SetPollution(pollution);
     }
 
+    public void SetIndustry(bool value){
+        if (value)
+        {
+            industryImage.SetActive(true);
+        }
+        else
+        {
+            industryImage.SetActive(false);
+        }
+    }
     public void SetHappiness(float value)
     {
         happiness = Mathf.Clamp(value, -1f, 1f);

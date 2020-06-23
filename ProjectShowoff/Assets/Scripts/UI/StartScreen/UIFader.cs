@@ -67,7 +67,7 @@ public class UIFader : MonoBehaviour
 
     IEnumerator ContextMoveAway()
     {
-        while (contextFrame.transform.localPosition.x < 1600)
+        while (contextFrame.transform.localPosition.x < 1700)
         {
             Vector3 tempLocalPosition = contextFrame.transform.localPosition;
             tempLocalPosition.x += 2400 * Time.deltaTime;
