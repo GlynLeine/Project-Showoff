@@ -92,6 +92,7 @@
     <Compile Include="Assets\Scripts\Editors\SplineEditor.cs" />
     <Compile Include="Assets\Scripts\Editors\SplineMeshEditor.cs" />
     <Compile Include="Assets\Scripts\Effects\AirPlane.cs" />
+    <Compile Include="Assets\Scripts\Effects\Boat.cs" />
     <Compile Include="Assets\Scripts\Effects\BuildingCloudEffect.cs" />
     <Compile Include="Assets\Scripts\Effects\ChristmassOrganiser.cs" />
     <Compile Include="Assets\Scripts\Effects\ChristmassTree.cs" />
