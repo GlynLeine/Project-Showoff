@@ -8725,6 +8725,7 @@ GameObject:
   - component: {fileID: 980212965}
   - component: {fileID: 980212964}
   - component: {fileID: 980212963}
+  - component: {fileID: 980212973}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -9254,6 +9255,30 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 0
   OverrideMaxDistance: 0
+--- !u!114 &980212973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980212954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46bfeccbf16dc64badce9fb5bdeb130, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioWaitTime: 15
+  atScript: {fileID: 1670186085}
+  englishGlobalWarming: event:/Voicelines/Global_warming_triggers_EN
+  dutchGlobalWarming: event:/Voicelines/Global_warming_triggers_NL
+  englishMisc: event:/Voicelines/Miscellaneous_EN
+  dutchMisc: event:/Voicelines/Miscellaneous_NL
+  englishPlayTriggers: event:/Voicelines/Play_action_triggers_EN
+  dutchPlayTriggers: event:/Voicelines/Play_action_triggers_NL
+  englishTimeTriggers: event:/Voicelines/Time_base_triggers_EN
+  dutchTimeTriggers: event:/Voicelines/Time_base_triggers_NL
+  englishTutorial: event:/Voicelines/Tutorial_EN
+  dutchTutorial: event:/Voicelines/Tutorial_NL
 --- !u!43 &996930926
 Mesh:
   m_ObjectHideFlags: 0
@@ -18691,6 +18716,18 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &1670186085 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8872052277587456508, guid: 9a1544356b636fe478f34b9a6bb8508d,
+    type: 3}
+  m_PrefabInstance: {fileID: 913900900}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfed3c2f0a6f7f1419707c8e78af66e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1706542759
 Mesh:
   m_ObjectHideFlags: 0
