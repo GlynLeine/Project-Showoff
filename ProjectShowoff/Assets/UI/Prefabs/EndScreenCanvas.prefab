@@ -397,7 +397,7 @@ MonoBehaviour:
     type: 3}
   yourFill: {fileID: 9168478116555624732}
   theirFill: {fileID: 8672702413241550266}
-  maxAmount: 625
+  maxAmount: 650
   counterType: 2
 --- !u!1 &343654164985102315
 GameObject:
