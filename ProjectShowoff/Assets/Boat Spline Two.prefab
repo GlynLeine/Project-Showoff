@@ -73,6 +73,6 @@ MonoBehaviour:
   isClosed: 1
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
-  recalculateOnRunTime: 1
+  recalculateOnRunTime: 0
   resolution: 100
   length: 3.351805

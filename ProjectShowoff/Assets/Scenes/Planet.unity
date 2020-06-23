@@ -8466,6 +8466,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boats
       objectReference: {fileID: 0}
+    - target: {fileID: 7504103915401692545, guid: 99dc1534db5838f4681b9194e5060f7e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8841718047115693533, guid: 99dc1534db5838f4681b9194e5060f7e,
         type: 3}
       propertyPath: boatSpline
@@ -19356,12 +19361,7 @@ PrefabInstance:
     - target: {fileID: 5870629246381154990, guid: 6080f184e1a338c4da7e502969d99ef1,
         type: 3}
       propertyPath: length
-      value: 3.3517952
-      objectReference: {fileID: 0}
-    - target: {fileID: 5870629246381154990, guid: 6080f184e1a338c4da7e502969d99ef1,
-        type: 3}
-      propertyPath: recalculateOnRunTime
-      value: 0
+      value: 3.351796
       objectReference: {fileID: 0}
     - target: {fileID: 5870629246381154991, guid: 6080f184e1a338c4da7e502969d99ef1,
         type: 3}
@@ -20549,6 +20549,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Boats 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504103915401692545, guid: 99dc1534db5838f4681b9194e5060f7e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8841718047115693533, guid: 99dc1534db5838f4681b9194e5060f7e,
         type: 3}
