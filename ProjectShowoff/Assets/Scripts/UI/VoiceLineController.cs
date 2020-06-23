@@ -304,6 +304,8 @@ public class VoiceLineController : MonoBehaviour
             e.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
             yield return null;//redundant safety check but seems to have eliminated some weird errors
             isAudioPlaying = false;
+            //this coroutine waits 7 seconds and then attempts to start their lines, aka if no voice lines for 7 seconds, play a misc line
+            StartCoroutine(IdlePlayer());
     }
     //everything below here are triggers
     //this is the building trigger, checks if a building is built and what building has been built - loads of if else's
