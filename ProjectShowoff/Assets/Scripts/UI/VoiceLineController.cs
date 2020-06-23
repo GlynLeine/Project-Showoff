@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 
 public class VoiceLineController : MonoBehaviour
@@ -335,6 +336,21 @@ public class VoiceLineController : MonoBehaviour
                         factoryBool = true;
                     }
                 }
+                else if (!donutsBool)
+                {
+                    if (VoiceLinePlay(misc, donuts))
+                    {
+                        if (English)
+                        {
+                            atScript.TextChanger("A record number of donuts has been sold this week! What do they do with the holes they cut out? Hungry man asks.");
+                        }
+                        else
+                        {
+                            atScript.TextChanger("Er is deze week een recordaantal donuts verkocht! Wat doen ze met de gaten die ze hebben uitgesneden? Vraagt een hongerige man.");
+                        }
+                        donutsBool = true;
+                    }
+                }
                 break;
             }
             case BuildingType.Harbor:
@@ -421,11 +437,11 @@ public class VoiceLineController : MonoBehaviour
                     {
                         if (English)
                         {
-                            atScript.TextChanger("our town now has solar energy panels, mayor reports. Can I skateboard on those? local girl asks.");
+                            atScript.TextChanger("our town now has solar energy panels, mayor reports. “Can I skateboard on those?” local girl asks.");
                         }
                         else
                         {
-                            atScript.TextChanger("'onze stad heeft nu zonne-energie panelen, meldt burgemeester, kan ik daarop skateboarden?' vraagt lokaal meisje.");
+                            atScript.TextChanger("onze stad heeft nu zonne-energie panelen, meldt burgemeester, “kan ik daarop skateboarden?” vraagt lokaal meisje.");
                         }
                         solarPanelBool = true;
                     }
@@ -457,6 +473,11 @@ public class VoiceLineController : MonoBehaviour
     //the purpose for this is because theres no reason to check for voice line availability every frame, but it needs to be checked often enough that we can catch them when relevant
     private IEnumerator SlowUpdate()
     {
+        if (isAudioPlaying)
+        {
+            //no point in checking if audio is gonna be playing, so wait, -1 because potentially itll have been triggered a second late
+            yield return new WaitForSeconds(audioWaitTime-1);
+        }
         while (updateBool)
         {
             if (!springBool && GameManager.time > 1)
@@ -506,7 +527,7 @@ public class VoiceLineController : MonoBehaviour
             }
             else if (!winterBool && GameManager.time >= 225 && GameManager.time <= 240)
             {
-                if (VoiceLinePlay(timeTriggers,summer))
+                if (VoiceLinePlay(timeTriggers,winter))
                 {
                     if (English)
                     {
@@ -517,6 +538,21 @@ public class VoiceLineController : MonoBehaviour
                         atScript.TextChanger("Het is winter, wie wil er warme chocolademelk?");
                     }
                     winterBool = true;
+                }
+            }
+            else if (!holidayBool && GameManager.time > 262.5 && GameManager.time < 280)
+            {
+                if (VoiceLinePlay(misc, holiday))
+                {
+                    if (English)
+                    {
+                        atScript.TextChanger("Today is our national holiday! Please don’t light fireworks in your parents bed.");
+                    }
+                    else
+                    {
+                        atScript.TextChanger("Vandaag is onze nationale feestdag! Steek alsjeblieft geen vuurwerk aan in het bed van je ouders.");
+                    }
+                    holidayBool = true;
                 }
             }
             if (!pollutionUpBool && GameManager.pollution > 400)
@@ -612,10 +648,67 @@ public class VoiceLineController : MonoBehaviour
                     natureDownBool = true;
                 }
             }
+
+            if (!pizzaBool && GameManager.happiness > 25)
+            {
+                if (VoiceLinePlay(misc, pizza))
+                {
+                    if (English)
+                    {
+                        atScript.TextChanger("This just came in; The president ate an entire pizza for breakfast That’s a man I can follow, local woman says.");
+                    }
+                    else
+                    {
+                        atScript.TextChanger("'Dit is net binnen; De president at een hele pizza als ontbijt, dat is een man die ik kan volgen, zegt een lokale vrouw.");
+                    }
+                    pizzaBool = true;
+                }
+            }
             yield return new WaitForSeconds(1);
         }
     }
 
+    private IEnumerator IdlePlayer()
+    {
+        if (!dogBool && !movieBool)
+        {
+            yield return new WaitForSeconds(7);
+            //if no audio is playing after 7 seconds after the last one was finished, do one of the misc ones
+        }
+        if (!isAudioPlaying)
+        {
+            if (!dogBool)
+            {
+                if (VoiceLinePlay(misc,dog))
+                {
+                    if (English)
+                    {
+                        atScript.TextChanger("We have a report of a lost dog, he responds to the name “Fire” please help find him by calling for him in your neighbourhood.");
+                    }
+                    else
+                    {
+                        atScript.TextChanger("We hebben een melding van een verloren hond, hij reageert op de naam “Brand”, help hem te vinden door hem in uw buurt te roepen.");
+                    }
+                    dogBool = true;
+                }
+            }
+            else if (!movieBool)
+            {
+                if (VoiceLinePlay(misc,movie))
+                {
+                    if (English)
+                    {
+                        atScript.TextChanger("A new movie is coming out this weekend! It’s about how newscasters should make more money and it’s starring me");
+                    }
+                    else
+                    {
+                        atScript.TextChanger("'Dit weekend komt er een nieuwe film uit! Het gaat over hoe nieuwslezers meer geld zouden moeten verdienen en ik speel de hoofdrol.");
+                    }
+                    movieBool = true;
+                }
+            }
+        }
+    }
     private IEnumerator SubscribeWaiter()
     {
         while(GameManager.time < 1)

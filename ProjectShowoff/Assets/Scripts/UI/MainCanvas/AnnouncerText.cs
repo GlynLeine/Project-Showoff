@@ -11,14 +11,14 @@ public class AnnouncerText : MonoBehaviour
     private Vector2 announcerPosition;
     private RectTransform announcerRectTransform;
     private float announcerTextWidth;
-    private TMP_Text announcerTextText;
+    private TMP_Text announcerTmpText;
     private bool textChangeRequest = false;
     private string textChange = null;
 
     private void Start()
     {
         announcerRectTransform = (RectTransform)announcerTextBox.transform;
-        announcerTextText = announcerTextBox.GetComponent<TMP_Text>();
+        announcerTmpText = announcerTextBox.GetComponent<TMP_Text>();
         announcerTextWidth = announcerRectTransform.rect.width;
     }
 
@@ -27,12 +27,17 @@ public class AnnouncerText : MonoBehaviour
         announcerPosition = announcerRectTransform.anchoredPosition;
         announcerPosition.x -= announcerTextSpeed * GameManager.deltaTime;
         announcerRectTransform.anchoredPosition = announcerPosition;
-        if (announcerPosition.x <= -announcerTextWidth)
+        if (announcerPosition.x <= announcerTextWidth)
         {
             if (textChangeRequest)
             {
                 StartCoroutine(TextChangeSetter());
                 textChangeRequest = false;
+            }
+            else
+            {
+                announcerTmpText.text = "";
+                announcerTextWidth = 120;
             }
             announcerPosition = announcerRectTransform.anchoredPosition;
             announcerPosition.x = 120;
@@ -48,10 +53,10 @@ public class AnnouncerText : MonoBehaviour
 
     IEnumerator TextChangeSetter()
     {
-        announcerTextText.text = textChange;
+        announcerTmpText.text = textChange;
         //we need to give it one frame to change the width before we get the width
         yield return null;
-        announcerTextWidth = announcerRectTransform.rect.width + 100;
+        announcerTextWidth = -(announcerRectTransform.rect.width + 120);
 
     }
 }
