@@ -9,7 +9,7 @@ public class IconChangerOnEnable : MonoBehaviour
     public Sprite airPortSprite;
     public Sprite spaceStationSprite;
     public Sprite trainStationSprite;
-    private Image thisImage;
+    public Image thisImage;
     void Start()
     {
         thisImage = gameObject.GetComponent<Image>();

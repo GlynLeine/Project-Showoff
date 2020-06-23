@@ -9,30 +9,33 @@ public class IconChanger : MonoBehaviour
     public Sprite airPortSprite;
     public Sprite spaceStationSprite;
     public Sprite trainStationSprite;
-    private Image thisImage;
+    public Image thisImage;
     void Start()
     {
         thisImage = gameObject.GetComponent<Image>();
-        BuildingSystem.onBuildingPlaced += OnBuildingPlaced;
     }
 
-    private void OnDisable()
+    void OnEnable()
     {
-        BuildingSystem.onBuildingPlaced -= OnBuildingPlaced;
+        StartCoroutine(SlowerUpdate());
     }
 
-    private void OnBuildingPlaced(BuildingLocation location, BuildingPlacer buildingData, Building building)
+    IEnumerator SlowerUpdate()
     {
-        if (GameManager.industry >= 30)
+        while (gameObject.activeSelf)
         {
-            thisImage.sprite = spaceStationSprite;
-        } else if (GameManager.industry >= 15)
-        {
-            thisImage.sprite = airPortSprite;
-        }
-        else
-        {
-            thisImage.sprite = trainStationSprite;
+            if (GameManager.industry >= 30)
+            {
+                thisImage.sprite = spaceStationSprite;
+            } else if (GameManager.industry >= 15)
+            {
+                thisImage.sprite = airPortSprite;
+            }
+            else
+            {
+                thisImage.sprite = trainStationSprite;
+            }
+            yield return new WaitForSeconds(0.5f);
         }
     }
 

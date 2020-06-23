@@ -3416,6 +3416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boatSpline: {fileID: 741187984}
   speed: 10
+  oceanCollider: {fileID: 921524682}
 --- !u!65 &451975590
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7123,11 +7124,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 26.808226
       objectReference: {fileID: 0}
-    - target: {fileID: 2354118238642265083, guid: 9a1544356b636fe478f34b9a6bb8508d,
-        type: 3}
-      propertyPath: m_Name
-      value: StatDisplayGO
-      objectReference: {fileID: 0}
     - target: {fileID: 2401111477791887876, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -7251,7 +7247,7 @@ PrefabInstance:
     - target: {fileID: 2867652402970268392, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -24.8
+      value: -24.800003
       objectReference: {fileID: 0}
     - target: {fileID: 2867652402970268392, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
@@ -7712,16 +7708,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 24.681013
-      objectReference: {fileID: 0}
-    - target: {fileID: 8028517317617342297, guid: 9a1544356b636fe478f34b9a6bb8508d,
-        type: 3}
-      propertyPath: happiness
-      value: -0.31
-      objectReference: {fileID: 0}
-    - target: {fileID: 8028517317617342297, guid: 9a1544356b636fe478f34b9a6bb8508d,
-        type: 3}
-      propertyPath: pollution
-      value: 0.58
       objectReference: {fileID: 0}
     - target: {fileID: 8494155604022913428, guid: 9a1544356b636fe478f34b9a6bb8508d,
         type: 3}
@@ -8305,6 +8291,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8470285393691920762}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &921524681 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 921524681, guid: 93ae5ed2473471e41b4a257c7bc4bd13,
+    type: 3}
+  m_PrefabInstance: {fileID: 8470285393691920762}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &921524682 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 921524676, guid: 93ae5ed2473471e41b4a257c7bc4bd13,
+    type: 3}
+  m_PrefabInstance: {fileID: 8470285393691920762}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &925971154
 Mesh:
   m_ObjectHideFlags: 0
@@ -8468,6 +8466,95 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1001 &937201613
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1901734747717204291, guid: 99dc1534db5838f4681b9194e5060f7e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1901734747717204291, guid: 99dc1534db5838f4681b9194e5060f7e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1901734747717204291, guid: 99dc1534db5838f4681b9194e5060f7e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1901734747717204291, guid: 99dc1534db5838f4681b9194e5060f7e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1901734747717204291, guid: 99dc1534db5838f4681b9194e5060f7e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1901734747717204291, guid: 99dc1534db5838f4681b9194e5060f7e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1901734747717204291, guid: 99dc1534db5838f4681b9194e5060f7e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1901734747717204291, guid: 99dc1534db5838f4681b9194e5060f7e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1901734747717204291, guid: 99dc1534db5838f4681b9194e5060f7e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1901734747717204291, guid: 99dc1534db5838f4681b9194e5060f7e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1901734747717204291, guid: 99dc1534db5838f4681b9194e5060f7e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504103915401692545, guid: 99dc1534db5838f4681b9194e5060f7e,
+        type: 3}
+      propertyPath: m_Name
+      value: Boats
+      objectReference: {fileID: 0}
+    - target: {fileID: 8841718047115693533, guid: 99dc1534db5838f4681b9194e5060f7e,
+        type: 3}
+      propertyPath: boatSpline
+      value: 
+      objectReference: {fileID: 1549940835}
+    - target: {fileID: 8841718047115693533, guid: 99dc1534db5838f4681b9194e5060f7e,
+        type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8841718047115693533, guid: 99dc1534db5838f4681b9194e5060f7e,
+        type: 3}
+      propertyPath: ocean
+      value: 
+      objectReference: {fileID: 921524681}
+    - target: {fileID: 8841718047115693533, guid: 99dc1534db5838f4681b9194e5060f7e,
+        type: 3}
+      propertyPath: oceanCollider
+      value: 
+      objectReference: {fileID: 921524682}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 99dc1534db5838f4681b9194e5060f7e, type: 3}
 --- !u!43 &953967159
 Mesh:
   m_ObjectHideFlags: 0
@@ -15275,8 +15362,6 @@ MonoBehaviour:
   - {x: 0.13224399, y: -0.58155966, z: -0.8316258}
   - {x: 0.15479931, y: -0.693549, z: -0.50079256}
   - {x: 0.08410971, y: -0.6992315, z: -0.39032647}
-  - {x: 0.04470959, y: -0.7023988, z: -0.3287562}
-  - {x: 0.08801976, y: -0.9955167, z: -0.3999705}
   normals:
   - {x: 0, y: 1, z: 0}
   - {x: 0, y: 1, z: 0}
@@ -15285,12 +15370,12 @@ MonoBehaviour:
   - {x: 0, y: 1, z: 0}
   - {x: 0, y: 1, z: 0}
   automaticTangents: 0
-  isClosed: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
-  resolution: 1
-  length: 3.762917
+  resolution: 100
+  length: 3.5996742
 --- !u!4 &1549940836
 Transform:
   m_ObjectHideFlags: 0
@@ -19321,7 +19406,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 0.6627451, a: 1}
+  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 13
   m_SpotAngle: 30
