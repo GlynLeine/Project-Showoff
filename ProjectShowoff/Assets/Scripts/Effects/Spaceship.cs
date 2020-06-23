@@ -9,12 +9,11 @@ public class Spaceship : MonoBehaviour
     new Renderer renderer;
 
     public float acceleration;
-
+    public bool carryingSatellite;
     Vector3 velocity;
 
     private void Start()
     {
-        spaceships++;
         renderer = GetComponentInChildren<Renderer>();
         velocity = new Vector3();
     }
@@ -24,6 +23,9 @@ public class Spaceship : MonoBehaviour
         velocity += transform.up * Time.deltaTime * acceleration;
 
         transform.position += velocity * Time.deltaTime;
+
+        if (carryingSatellite)
+            return;
 
         Bounds bounds = renderer.bounds;
         Vector3 screenCenter = Camera.main.WorldToViewportPoint(bounds.center);
@@ -35,6 +37,5 @@ public class Spaceship : MonoBehaviour
             return;
 
         Destroy(gameObject);
-        spaceships--;
     }
 }

@@ -12,6 +12,8 @@ public class YearTimer : MonoBehaviour
     public GameObject endScreenCanvas;
     public GameObject mainCanvas;
     private bool endScreenActivated;
+    public Animator endAnimation;
+    public Animator endTransition;
 
     float timeScale = 1f;
 
@@ -36,10 +38,20 @@ public class YearTimer : MonoBehaviour
         }
         else if (!endScreenActivated)
         {
-            endScreenCanvas.SetActive(true);
-            endScreenActivated = true;
+            StartCoroutine(EndTransitionCountdown());
             GameManager.paused = true;
-            mainCanvas.SetActive(false);
         }
+    }
+
+    IEnumerator EndTransitionCountdown()
+    {
+        endAnimation.Play("Base Layer.timeImages_animation",0);
+        yield return new WaitForSeconds(3);
+        endTransition.gameObject.SetActive(true);
+        endTransition.Play("Base Layer.AnimationCanvas_transitionAnimation",0);
+        yield return new WaitForSeconds(6);
+        endScreenCanvas.SetActive(true);
+        endScreenActivated = true;
+        mainCanvas.SetActive(false);
     }
 }

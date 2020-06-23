@@ -10,7 +10,7 @@ public class StatBarScript : MonoBehaviour
     public Image creatureBar;
     void Update()
     {
-        pollutionBar.fillAmount = Mathf.Clamp(GameManager.pollution / 3400, 0, 1);
+        pollutionBar.fillAmount = Mathf.Clamp(GameManager.pollution / 2000, 0, 1);
         natureBar.fillAmount = Mathf.Clamp(GameManager.nature / 500, 0, 1);
         creatureBar.fillAmount = Mathf.Clamp(GameManager.happiness / 240, 0, 1);
     }

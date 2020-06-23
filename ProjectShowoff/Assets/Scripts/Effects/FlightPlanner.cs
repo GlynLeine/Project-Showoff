@@ -24,7 +24,7 @@ public class FlightPlanner : MonoBehaviour
         Debug.Log("Started planning flights");
         planning = true;
 
-        while (technology.level == 1)
+        while (technology.level >= 1)
         {
             List<TrainStation> options = technology.trainStations.ToList();
             for (int i = 0; i < options.Count; i++)
