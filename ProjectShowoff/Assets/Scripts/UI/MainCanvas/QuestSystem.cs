@@ -250,7 +250,6 @@ public class QuestSystem : MonoBehaviour
     }
     private void OnBuildingPlaced(BuildingLocation location, BuildingPlacer buildingData, Building building)
     {
-        Debug.Log("placed");
         if (buildingData.buildingType == questList[currentQuest].buildingType)
         {
             counterValue += 1;
@@ -264,7 +263,6 @@ public class QuestSystem : MonoBehaviour
 
     private void OnBuildingDestroyed(BuildingLocation location, BuildingPlacer buildingData, Building building)
     {
-        Debug.Log("destroyed");
         if (building.buildingType == questList[currentQuest].buildingType)
         {
             counterValue += 1;
@@ -351,6 +349,7 @@ public class QuestSystem : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
+        timerText.color = Color.white;
         yield return null;
     }
     IEnumerator QuestBoxFlash()
@@ -404,6 +403,7 @@ public class QuestSystem : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
+        questBoxImage.color = Color.white;
         yield return null; ;
     }
 }
