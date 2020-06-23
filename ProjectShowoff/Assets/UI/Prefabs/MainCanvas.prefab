@@ -428,6 +428,7 @@ GameObject:
   - component: {fileID: 1680942050080406666}
   - component: {fileID: 4012303223791862015}
   - component: {fileID: 2963465084867040521}
+  - component: {fileID: 322649020414541385}
   m_Layer: 5
   m_Name: Image (4)
   m_TagString: Untagged
@@ -491,6 +492,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &322649020414541385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430290778223905462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c1fc4f3281e35043960af6bda2329c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  airPortSprite: {fileID: 21300000, guid: d2750827813dc0a4ebe3a4f59104eb89, type: 3}
+  spaceStationSprite: {fileID: 21300000, guid: 2dc086e88c1bef74294be16453e6566a, type: 3}
+  trainStationSprite: {fileID: 21300000, guid: 009b393aa17409a4ab7b62b4f857dec3, type: 3}
 --- !u!1 &492894689416817206
 GameObject:
   m_ObjectHideFlags: 0
