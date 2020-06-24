@@ -675,13 +675,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Hi! This is planet Threa!\r\n\nIt\u2019s a nice planet but a bit empty..
-    \r\nYou have the power to create things and make it a great place\n to live for
-    the creatures on it. \r\n\nbut, be careful what you build because,\n more buildings
-    \n\nmight mean less nature\u2026 \r\n\nSome things that you can build can be
-    polluting the planet and contribute to global warming. Other things that you
-    can build can help to fight global warming!\r\n\nThe fate of Threa is in your
-    hands!"
+  m_text: "Hi! This is planet Threa!\r\n\nIt\u2019s a nice planet but a bit empty...
+    \r\nYou have the power to create things and make it a great place\n for the creatures.
+    \r\n\nbut, be careful what you build because,\n more buildings \n\nmight mean
+    less nature... \r\n\nSome things that you can build can be polluting the planet
+    and contribute to global warming. Other things that you can build can help to
+    fight global warming!\r\n\nThe fate of Threa is in your hands!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fdb0e902fdaab4d459a263f9ec1559f5, type: 2}
   m_sharedMaterial: {fileID: -7682532693208452417, guid: fdb0e902fdaab4d459a263f9ec1559f5,
