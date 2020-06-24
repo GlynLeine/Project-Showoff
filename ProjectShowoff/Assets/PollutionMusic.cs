@@ -8,7 +8,7 @@ public class PollutionMusic : MonoBehaviour
     [FMODUnity.EventRef] 
     private FMOD.Studio.EventInstance mainMusic;
     private string pollutionParameter = "Pollution";
-    private string lifeBegins = "Life Begins";
+    private string lifeBegins = "Life_begins";
     private int buildingCounter;
 
     void Start()
