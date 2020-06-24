@@ -6041,20 +6041,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "       This factory produces stuff for your creatures, it makes them happy
-    but it\u2019s a bad for nature because \n       of the smoke and the garbage
-    it produces\r\n\n       This coalmine creates energy for the other buildings,
-    it\u2019s cheap and easy to use but \n        it causes a lot of pollution and
-    damage to the environment\r\n\n       The nature reserves are a safe place for
-    trees and plants to grow and provide fresh air for the world\r\n\n       Solar
-    panels are a nice way to provide clean energy, they catch sunrays and convert
-    those into electricity,\n       they\u2019re expensive to make but worth it over
-    a longer period of time\r\n\n       Trainstations are a good way to transportation
-    around the planet, they don\u2019t cause much pollution and are very efficient\r\n\n       
-    This harbour is a place for boats to load and unload goods from different islands,
-    these ships cause some pollution\n        but it\u2019s a cheap way to transport.\r\n\n       
-    Oil rigs use mechanical drills and pumps to get oil out of the planet, this oil
-    is used as fuel and for plastic material,\n        it\u2019s bad for the environment
-    but good for technology\r\n"
+    but it is bad for nature because \n       of the smoke and the garbage it produces\r\n\n      
+    This coalmine creates energy for the other buildings, it is cheap and easy to
+    use but \n        it causes a lot of pollution and damage to the environment\r\n\n      
+    The nature reserves are a safe place for trees and plants to grow and provide
+    fresh air for the world\r\n\n       Solar panels are a nice way to provide clean
+    energy, they catch sunrays and convert those into electricity,\n       they\u2019re
+    expensive to make but worth it over a longer period of time\r\n\n       Trainstations
+    are a good way to transportation around the planet, they don\u2019t cause much
+    pollution and are very efficient\r\n\n       This harbour is a place for boats
+    to load and unload goods from different islands, these ships cause some pollution\n      
+    but it is a cheap way to transport\r\n\n       Oil rigs use mechanical drills
+    and pumps to get oil out of the planet, this oil is used as fuel and for plastic
+    material,\n        it is bad for the environment but good for technology\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fdb0e902fdaab4d459a263f9ec1559f5, type: 2}
   m_sharedMaterial: {fileID: -7682532693208452417, guid: fdb0e902fdaab4d459a263f9ec1559f5,
