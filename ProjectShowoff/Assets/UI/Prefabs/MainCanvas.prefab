@@ -2159,7 +2159,7 @@ MonoBehaviour:
     addReward: 1
     reward: 4
     done: 0
-  - buildingType: 3
+  - buildingType: 1
     build: 1
     requiredAmount: 3
     maxTimeInSeconds: 45
@@ -2175,7 +2175,7 @@ MonoBehaviour:
     addReward: 1
     reward: 1
     done: 0
-  - buildingType: 1
+  - buildingType: 3
     build: 1
     requiredAmount: 3
     maxTimeInSeconds: 45
