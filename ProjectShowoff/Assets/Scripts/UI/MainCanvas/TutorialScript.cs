@@ -247,6 +247,7 @@ public class TutorialScript : MonoBehaviour
             {
                 questBoxTextTMP.text = "Klik op een bestaand gebouw om meer informatie te zien!";
             }
+            tutorialBuildStep = true;
             buildingSystem.enableStatsAndDestroy = true;
             iconImage.sprite = buildingIcon;
             StartCoroutine(QuestBoxFlash());
