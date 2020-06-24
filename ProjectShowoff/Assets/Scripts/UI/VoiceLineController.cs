@@ -828,7 +828,8 @@ public class VoiceLineController : MonoBehaviour
             {
                 yield break;
             }
-            /*if (!dogBool)
+
+            if (!dogBool)
             {
                 if (English)
                 {
@@ -844,26 +845,7 @@ public class VoiceLineController : MonoBehaviour
                     {
                         atScript.TextChanger("We hebben een melding van een verloren hond, hij reageert op de naam “Brand”, help hem te vinden door hem in uw buurt te roepen.");
                         dogBool = true;
-                    }
-                }
-            }*/
-            else if (!movieBool)
-            {
-                if (English)
-                {
-                    if (VoiceLinePlay(misc, movie, 7))
-                    {
-                        movieBool = true;
-                        atScript.TextChanger("A new movie is coming out this weekend! It’s about how newscasters should make more money and it’s starring me");
-                    }
-                }
-                else
-                {
-                    if (VoiceLinePlay(misc, movie, 8))
-                    {
-                        movieBool = true;
-                        atScript.TextChanger("'Dit weekend komt er een nieuwe film uit! Het gaat over hoe nieuwslezers meer geld zouden moeten verdienen en ik speel de hoofdrol.");
-                    }
+                    }   
                 }
             }
         }
