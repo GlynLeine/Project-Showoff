@@ -346,8 +346,8 @@ public class VoiceLineController : MonoBehaviour
             {
                 if (VoiceLinePlay(timeTriggers, satellites, 5))
                 {
-                    atScript.TextChanger("Satellites improve our communication and they look cool, Scientist says.");
-                    airplanesBool = true;
+                    atScript.TextChanger("Satellites improve our communication and they look cool, Scientist says."); 
+                    satellitesBool = true;
                 }
             }
             else
@@ -355,7 +355,7 @@ public class VoiceLineController : MonoBehaviour
                 if (VoiceLinePlay(timeTriggers, satellites, 5))
                 {
                     atScript.TextChanger("Satellieten verbeteren onze communicatie en ze zien er cool uit, zegt de wetenschapper.");
-                    airplanesBool = true;
+                    satellitesBool = true;
                 }
             }
         }
