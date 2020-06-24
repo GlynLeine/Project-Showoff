@@ -12,7 +12,7 @@ public class Pokable : MonoBehaviour
 
     void OnEnable()
     {
-        Debug.Log("instantiated");
+        //Debug.Log("instantiated");
         //pokeEvent = FMODUnity.RuntimeManager.CreateInstance("event:/Player/Robot poked");
     }
     IEnumerator reset()
