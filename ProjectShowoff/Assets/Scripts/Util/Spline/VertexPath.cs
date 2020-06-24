@@ -110,13 +110,13 @@ public struct VertexPath
     }
 
 
-    private int LoopIndex(int i)
+    public int LoopIndex(int i)
     {
         int count = vertices.Length;
         return (((Mathf.Abs(i) % count) * (int)Mathf.Sign(i)) + count) % count;
     }
 
-    private float LoopDistance(float distance)
+    public float LoopDistance(float distance)
     {
         return (((Mathf.Abs(distance) % length) * Mathf.Sign(distance)) + length) % length;
     }
