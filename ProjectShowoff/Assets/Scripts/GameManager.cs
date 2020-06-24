@@ -150,6 +150,17 @@ public class GameManager : MonoBehaviour
                 averageState = (GameState)new BinaryFormatter().Deserialize(file);
                 averageStateCache = averageState;
 
+                if (averageState.userCount == 0)
+                {
+                    averageState.userCount++;
+                    averageState.nature = 250f;
+                    averageState.pollution = 780f;
+                    averageState.industry = 21f;
+                    averageState.happiness = 80f;
+                    averageState.waterLevel = 0.17f;
+                    averageState.buildingsPlaced = 47f;
+                }
+
                 Debug.Log("average nature" + averageState.nature);
                 Debug.Log("average pollution" + averageState.pollution);
                 Debug.Log("average industry" + averageState.industry);

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class VoiceLineSetterEndScreen : MonoBehaviour
 {
-    private AnnouncerText announcerText;
+    public AnnouncerText announcerText;
     private bool english;
     void Start()
     {

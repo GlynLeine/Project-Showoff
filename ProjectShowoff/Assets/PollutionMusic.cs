@@ -28,8 +28,13 @@ public class PollutionMusic : MonoBehaviour
     {
         while (true)
         {
+            Debug.Log("called too");
             mainMusic.setParameterByName(pollutionParameter,Mathf.Clamp(GameManager.pollution/20,0,100));
-            yield return new WaitForSeconds(1);   
+            yield return new WaitForSeconds(1);
+            if (!gameObject.activeSelf)
+            {
+                break;
+            }
         }
     }
 
@@ -39,6 +44,7 @@ public class PollutionMusic : MonoBehaviour
         if (buildingCounter >= 3)
         {
             mainMusic.setParameterByName(lifeBegins, 1);
+            Debug.Log("called");
             StartCoroutine(SlowUpdate());
             BuildingSystem.onBuildingPlaced -= OnBuildingPlaced;
         }
