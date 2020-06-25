@@ -21,6 +21,8 @@ public class PollutionMusic : MonoBehaviour
     private void OnDisable()
     {
         BuildingSystem.onBuildingPlaced -= OnBuildingPlaced;
+        mainMusic.release();
+        mainMusic.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 
     // called in every flame closest to one second later, as pollution is a slow variable to update so no need to match the music one to one
