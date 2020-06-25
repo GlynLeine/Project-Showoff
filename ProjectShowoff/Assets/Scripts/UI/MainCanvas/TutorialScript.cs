@@ -416,7 +416,7 @@ public class TutorialScript : MonoBehaviour
             {
                 Color color = infoIcon.color;
                 color.b -= 1f * Time.deltaTime;
-                color.r -= 1f * Time.deltaTime;
+                color.g -= 1f * Time.deltaTime;
                 infoIcon.color = color;
                 timer += Time.deltaTime;
                 yield return null;
@@ -425,7 +425,7 @@ public class TutorialScript : MonoBehaviour
             {
                 Color color = infoIcon.color;
                 color.b += 1f * Time.deltaTime;
-                color.r += 1f * Time.deltaTime;
+                color.g += 1f * Time.deltaTime;
                 infoIcon.color = color;
                 timer += Time.deltaTime;
                 yield return null;
@@ -434,7 +434,7 @@ public class TutorialScript : MonoBehaviour
             {
                 Color color = infoIcon.color;
                 color.b -= 1f * Time.deltaTime;
-                color.r -= 1f * Time.deltaTime;
+                color.g -= 1f * Time.deltaTime;
                 infoIcon.color = color;
                 timer += Time.deltaTime;
                 yield return null;
@@ -443,7 +443,7 @@ public class TutorialScript : MonoBehaviour
             {
                 Color color = infoIcon.color;
                 color.b += 1f * Time.deltaTime;
-                color.r += 1f * Time.deltaTime;
+                color.g += 1f * Time.deltaTime;
                 infoIcon.color = color;
                 timer += Time.deltaTime;
                 yield return null;
@@ -452,7 +452,7 @@ public class TutorialScript : MonoBehaviour
             {
                 Color color = infoIcon.color;
                 color.b -= 1f * Time.deltaTime;
-                color.r -= 1f * Time.deltaTime;
+                color.g -= 1f * Time.deltaTime;
                 infoIcon.color = color;
                 timer += Time.deltaTime;
                 yield return null;
@@ -461,7 +461,25 @@ public class TutorialScript : MonoBehaviour
             {
                 Color color = infoIcon.color;
                 color.b += 1f * Time.deltaTime;
-                color.r += 1f * Time.deltaTime;
+                color.g += 1f * Time.deltaTime;
+                infoIcon.color = color;
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            while (timer < 3.5)
+            {
+                Color color = infoIcon.color;
+                color.b -= 1f * Time.deltaTime;
+                color.g -= 1f * Time.deltaTime;
+                infoIcon.color = color;
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            while (timer < 4)
+            {
+                Color color = infoIcon.color;
+                color.b += 1f * Time.deltaTime;
+                color.g += 1f * Time.deltaTime;
                 infoIcon.color = color;
                 timer += Time.deltaTime;
                 yield return null;
