@@ -8,7 +8,7 @@ public class PollutionMusic : MonoBehaviour
     [FMODUnity.EventRef] 
     private FMOD.Studio.EventInstance mainMusic;
     private string pollutionParameter = "Pollution";
-    private string lifeBegins = "Life Begins";
+    private string lifeBegins = "Life_begins";
     private int buildingCounter;
 
     void Start()
@@ -29,7 +29,11 @@ public class PollutionMusic : MonoBehaviour
         while (true)
         {
             mainMusic.setParameterByName(pollutionParameter,Mathf.Clamp(GameManager.pollution/20,0,100));
-            yield return new WaitForSeconds(1);   
+            yield return new WaitForSeconds(1);
+            if (!gameObject.activeSelf)
+            {
+                break;
+            }
         }
     }
 

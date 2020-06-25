@@ -397,7 +397,7 @@ MonoBehaviour:
     type: 3}
   yourFill: {fileID: 9168478116555624732}
   theirFill: {fileID: 8672702413241550266}
-  maxAmount: 625
+  maxAmount: 650
   counterType: 2
 --- !u!1 &343654164985102315
 GameObject:
@@ -1703,8 +1703,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ecec1132078ac3488e2fc35b735d815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dutchText: Dutch sample text
-  englishText: English sample text
+  dutchText: Hier laat het zien hoeveel vervuiling er in jouw wereld was, hierdoor
+    is het waterpeil gestegen, is de natuur verzwakt en is de ozonlaag beschadigd.
+  englishText: Here it shows how much pollution was in your world, this will have
+    caused the water level to rise, nature to weaken and the ozone layer to be damaged.
   englishButton: {fileID: 0}
   dutchButton: {fileID: 0}
 --- !u!1 &833371651128565099
@@ -2448,8 +2450,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ecec1132078ac3488e2fc35b735d815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dutchText: Dutch sample text
-  englishText: English sample text
+  dutchText: Dit is hoeveel technologie jouw planeet had, dit zorgde ervoor dat vliegtuigen
+    en ruimteschepen verschenen, wat bijdroeg aan geluk maar ook aan vervuiling.
+  englishText: This is how much technology your planet had, this caused boats, airplanes
+    and rockets to appear, adding to happiness but also to pollution.
   englishButton: {fileID: 0}
   dutchButton: {fileID: 0}
 --- !u!1 &1283279858337811900
@@ -3138,6 +3142,7 @@ GameObject:
   - component: {fileID: 7871075090960303825}
   - component: {fileID: 1976060329222809240}
   - component: {fileID: 7670311691579458441}
+  - component: {fileID: 4527497109428517078}
   m_Layer: 5
   m_Name: Other Planets
   m_TagString: Untagged
@@ -3220,8 +3225,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3284,6 +3289,22 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4527497109428517078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577513727173278074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ecec1132078ac3488e2fc35b735d815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dutchText: Andere Planeten
+  englishText: Other Planets
+  englishButton: {fileID: 0}
+  dutchButton: {fileID: 0}
 --- !u!1 &1589413813647651675
 GameObject:
   m_ObjectHideFlags: 0
@@ -3805,8 +3826,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 455, y: 150}
+  m_AnchoredPosition: {x: 0, y: -20}
+  m_SizeDelta: {x: 800, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7055136897961460227
 CanvasRenderer:
@@ -3912,7 +3933,7 @@ MonoBehaviour:
     spaceCount: 31
     wordCount: 33
     linkCount: 0
-    lineCount: 4
+    lineCount: 3
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -3942,8 +3963,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ecec1132078ac3488e2fc35b735d815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dutchText: Dutch sample text
-  englishText: English sample text
+  dutchText: Dit is de tijdlijn van jouw wereld door de seizoenen heen, het laat
+    zien hoeveel vervuiling er was, hoeveel gebouwen er op je planeet waren en hoe
+    hoog het water steeg.
+  englishText: This is the timeline of your world through the seasons, it shows how
+    much pollution there was, how many buildings were on your planet and how high
+    the water rose.
   englishButton: {fileID: 0}
   dutchButton: {fileID: 0}
 --- !u!1 &1917612786640862649
@@ -4360,8 +4385,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ecec1132078ac3488e2fc35b735d815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dutchText: Dutch sample text
-  englishText: English sample text
+  dutchText: Hier zie je hoe hoog het waterpeil in jouw wereld was, dit gebeurde
+    door stijgende hitte waardoor de ijskappen smolten.
+  englishText: Here you see how high the water level was in your world, this happened
+    because of rising heat that caused the ice caps to melt.
   englishButton: {fileID: 0}
   dutchButton: {fileID: 0}
 --- !u!1 &2181645554263509872
@@ -5128,8 +5155,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ecec1132078ac3488e2fc35b735d815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dutchText: Dutch sample text
-  englishText: English sample text
+  dutchText: Dit is hoeveel gebouwen je hebt gemaakt, dit had invloed op de vervuiling,
+    het waterpeil en het gat in de ozonlaag.
+  englishText: This is how many buildings you created, this had influence on the
+    pollution, water level and the hole in the ozone layer.
   englishButton: {fileID: 0}
   dutchButton: {fileID: 0}
 --- !u!1 &2485647305555851654
@@ -5143,6 +5172,7 @@ GameObject:
   - component: {fileID: 6520253823111870417}
   - component: {fileID: 4541219530236814709}
   - component: {fileID: 888534630252102253}
+  - component: {fileID: 6251185687871353311}
   m_Layer: 5
   m_Name: Other Planets
   m_TagString: Untagged
@@ -5225,8 +5255,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5289,6 +5319,22 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6251185687871353311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2485647305555851654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ecec1132078ac3488e2fc35b735d815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dutchText: Andere Planeten
+  englishText: Other Planets
+  englishButton: {fileID: 0}
+  dutchButton: {fileID: 0}
 --- !u!1 &2550319828265773407
 GameObject:
   m_ObjectHideFlags: 0
@@ -5461,8 +5507,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ecec1132078ac3488e2fc35b735d815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dutchText: Dutch sample text
-  englishText: English sample text
+  dutchText: Dit is hoeveel natuur er in jouw wereld was, als je natuurreservaten
+    bouwt, heeft dit positieve effecten op je planeet gehad.
+  englishText: This is how much nature was in your world, if you build nature reserves
+    this will have had positive effects on your planet.
   englishButton: {fileID: 0}
   dutchButton: {fileID: 0}
 --- !u!1 &2603183298273988395
@@ -5550,6 +5598,7 @@ GameObject:
   - component: {fileID: 2605960070815771638}
   - component: {fileID: 9026958358715132014}
   - component: {fileID: 1188302801297860152}
+  - component: {fileID: 6912139702017249564}
   m_Layer: 5
   m_Name: Other PlanetsText
   m_TagString: Untagged
@@ -5632,8 +5681,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5696,6 +5745,22 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6912139702017249564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2655107264991223540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ecec1132078ac3488e2fc35b735d815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dutchText: Andere Planeten
+  englishText: Other Planets
+  englishButton: {fileID: 0}
+  dutchButton: {fileID: 0}
 --- !u!1 &2734306155715648365
 GameObject:
   m_ObjectHideFlags: 0
@@ -7144,6 +7209,7 @@ GameObject:
   - component: {fileID: 1155255759288567796}
   - component: {fileID: 2208001985660898593}
   - component: {fileID: 5773957978792211687}
+  - component: {fileID: 650020641772831277}
   m_Layer: 5
   m_Name: Your Planet
   m_TagString: Untagged
@@ -7226,8 +7292,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7290,6 +7356,22 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &650020641772831277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3901701178193787970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ecec1132078ac3488e2fc35b735d815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dutchText: Jouw Planeet
+  englishText: Your Planet
+  englishButton: {fileID: 0}
+  dutchButton: {fileID: 0}
 --- !u!1 &3925961527540642245
 GameObject:
   m_ObjectHideFlags: 0
@@ -8101,6 +8183,7 @@ GameObject:
   - component: {fileID: 1471675986892236646}
   - component: {fileID: 1498202005596469960}
   - component: {fileID: 4525407379665682081}
+  - component: {fileID: 4668772369661114637}
   m_Layer: 5
   m_Name: Other Planets
   m_TagString: Untagged
@@ -8183,8 +8266,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8247,6 +8330,22 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4668772369661114637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4417432541541532419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ecec1132078ac3488e2fc35b735d815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dutchText: Andere Planeten
+  englishText: Other Planets
+  englishButton: {fileID: 0}
+  dutchButton: {fileID: 0}
 --- !u!1 &4452345489493585061
 GameObject:
   m_ObjectHideFlags: 0
@@ -8494,6 +8593,7 @@ GameObject:
   - component: {fileID: 7229364913586422835}
   - component: {fileID: 69722634458913292}
   - component: {fileID: 2412688052821427008}
+  - component: {fileID: 1494193181096165633}
   m_Layer: 5
   m_Name: Other Planets
   m_TagString: Untagged
@@ -8576,8 +8676,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8640,6 +8740,22 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1494193181096165633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4528064464482980007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ecec1132078ac3488e2fc35b735d815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dutchText: Andere Planeten
+  englishText: Other Planets
+  englishButton: {fileID: 0}
+  dutchButton: {fileID: 0}
 --- !u!1 &4560151448353123293
 GameObject:
   m_ObjectHideFlags: 0
@@ -9216,8 +9332,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ecec1132078ac3488e2fc35b735d815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dutchText: Dutch sample text
-  englishText: English sample text
+  dutchText: Dit laat zien hoe gelukkig de wezens op jouw planeet waren, dit werd
+    veroorzaakt doordat je missies voltooide en bouwde wat ze wilden.
+  englishText: 'This shows how happy the creatures on your planet were, this was
+    caused by you finishing quests and building what they wanted.  '
   englishButton: {fileID: 0}
   dutchButton: {fileID: 0}
 --- !u!1 &4773391551687685294
@@ -9807,6 +9925,7 @@ GameObject:
   - component: {fileID: 524131797794776903}
   - component: {fileID: 7980401200244373193}
   - component: {fileID: 2802335474085961600}
+  - component: {fileID: 7486818446036419450}
   m_Layer: 5
   m_Name: Your Planet
   m_TagString: Untagged
@@ -9889,8 +10008,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -9953,6 +10072,22 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7486818446036419450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5003380035009122983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ecec1132078ac3488e2fc35b735d815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dutchText: Jouw Planeet
+  englishText: Your Planet
+  englishButton: {fileID: 0}
+  dutchButton: {fileID: 0}
 --- !u!1 &5042888259171567188
 GameObject:
   m_ObjectHideFlags: 0
@@ -10038,6 +10173,7 @@ GameObject:
   - component: {fileID: 3669346344185377588}
   - component: {fileID: 4945611645635946598}
   - component: {fileID: 7209649300356389873}
+  - component: {fileID: 1775708057641844647}
   m_Layer: 5
   m_Name: Other Planets
   m_TagString: Untagged
@@ -10120,8 +10256,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -10184,6 +10320,22 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1775708057641844647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5044944542967139368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ecec1132078ac3488e2fc35b735d815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dutchText: Andere Planeten
+  englishText: Other Planets
+  englishButton: {fileID: 0}
+  dutchButton: {fileID: 0}
 --- !u!1 &5056521149866643839
 GameObject:
   m_ObjectHideFlags: 0
@@ -10835,7 +10987,6 @@ GameObject:
   - component: {fileID: 5059465098003941351}
   - component: {fileID: 5059465098003941146}
   - component: {fileID: 5059465098003941349}
-  - component: {fileID: 5059465098003941348}
   m_Layer: 5
   m_Name: AnnouncerScreen
   m_TagString: Untagged
@@ -10899,20 +11050,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5059465098003941348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5059465098003941350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e530c99ca73372e49bcdf97d1387ce86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blablaVoiceLines: 0
-  textScript: {fileID: 5059465098653224687}
 --- !u!1 &5059465098265058638
 GameObject:
   m_ObjectHideFlags: 0
@@ -11686,6 +11823,7 @@ GameObject:
   - component: {fileID: 5059465098653224675}
   - component: {fileID: 5059465098653224674}
   - component: {fileID: 5059465098653224685}
+  - component: {fileID: 5232933258947068976}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -11741,8 +11879,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bb1e9d906a8929b4aa579587e79030d4, type: 2}
+  m_sharedMaterial: {fileID: -7823598556839873956, guid: bb1e9d906a8929b4aa579587e79030d4,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -11859,6 +11998,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   announcerTextSpeed: 40
   announcerTextBox: {fileID: 5059465098653224687}
+--- !u!114 &5232933258947068976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5059465098653224687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5440ecf7cc98574d8f476424b0ee11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  announcerText: {fileID: 5059465098653224685}
 --- !u!1 &5059465098660912948
 GameObject:
   m_ObjectHideFlags: 0
@@ -12001,6 +12153,7 @@ GameObject:
   - component: {fileID: 3606365835527909461}
   - component: {fileID: 6300393035768900978}
   - component: {fileID: 1950127039502043482}
+  - component: {fileID: 1472490648258641691}
   m_Layer: 5
   m_Name: Your Planet
   m_TagString: Untagged
@@ -12083,8 +12236,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -12147,6 +12300,22 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1472490648258641691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5162677635472990824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ecec1132078ac3488e2fc35b735d815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dutchText: Jouw Planeet
+  englishText: Your Planet
+  englishButton: {fileID: 0}
+  dutchButton: {fileID: 0}
 --- !u!1 &5206543972829558580
 GameObject:
   m_ObjectHideFlags: 0
@@ -12231,6 +12400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2787418440705219642}
   - component: {fileID: 3972993406801195846}
+  - component: {fileID: 6140765978402460548}
   m_Layer: 5
   m_Name: OtherPlanets
   m_TagString: Untagged
@@ -12286,6 +12456,22 @@ MonoBehaviour:
   m_Spacing: {x: 10, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 1
+--- !u!114 &6140765978402460548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5236034198680574327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ecec1132078ac3488e2fc35b735d815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dutchText: Andere Planeten
+  englishText: Other Planets
+  englishButton: {fileID: 0}
+  dutchButton: {fileID: 0}
 --- !u!1 &5238432057395669992
 GameObject:
   m_ObjectHideFlags: 0
@@ -13774,6 +13960,7 @@ GameObject:
   - component: {fileID: 5792663203217003271}
   - component: {fileID: 7801905944783131288}
   - component: {fileID: 1478259862566571519}
+  - component: {fileID: 6313994692945908567}
   m_Layer: 5
   m_Name: Your PlanetText
   m_TagString: Untagged
@@ -13856,8 +14043,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -13920,6 +14107,22 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6313994692945908567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6166908780374178255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ecec1132078ac3488e2fc35b735d815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dutchText: Jouw Planeet
+  englishText: Your Planet
+  englishButton: {fileID: 0}
+  dutchButton: {fileID: 0}
 --- !u!1 &6171089568526327920
 GameObject:
   m_ObjectHideFlags: 0
@@ -14466,6 +14669,7 @@ GameObject:
   - component: {fileID: 3265900991836347387}
   - component: {fileID: 8574898426553285296}
   - component: {fileID: 5825256111304880627}
+  - component: {fileID: 7176683914387081260}
   m_Layer: 5
   m_Name: OtherPlanets
   m_TagString: Untagged
@@ -14542,6 +14746,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7176683914387081260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6421910895014800515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ecec1132078ac3488e2fc35b735d815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dutchText: Andere Planeten
+  englishText: Other Planets
+  englishButton: {fileID: 0}
+  dutchButton: {fileID: 0}
 --- !u!1 &6431144792416943725
 GameObject:
   m_ObjectHideFlags: 0
@@ -16524,7 +16744,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &192385115323458523
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17323,6 +17543,7 @@ GameObject:
   - component: {fileID: 8991138974953253622}
   - component: {fileID: 6066136306078140787}
   - component: {fileID: 7594459358974997196}
+  - component: {fileID: 5639024660060453592}
   m_Layer: 5
   m_Name: Your Planet
   m_TagString: Untagged
@@ -17405,8 +17626,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -17469,6 +17690,22 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5639024660060453592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7930911684930404341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ecec1132078ac3488e2fc35b735d815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dutchText: Jouw Planeet
+  englishText: Your Planet
+  englishButton: {fileID: 0}
+  dutchButton: {fileID: 0}
 --- !u!1 &8083537975600026811
 GameObject:
   m_ObjectHideFlags: 0
@@ -19455,6 +19692,7 @@ GameObject:
   - component: {fileID: 3755954369536084011}
   - component: {fileID: 2359419996078264083}
   - component: {fileID: 2072608350500222707}
+  - component: {fileID: 1060257219025643424}
   m_Layer: 5
   m_Name: Your Planet
   m_TagString: Untagged
@@ -19537,8 +19775,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -19601,6 +19839,22 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1060257219025643424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9027236067489519262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ecec1132078ac3488e2fc35b735d815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dutchText: Jouw Planeet
+  englishText: Your Planet
+  englishButton: {fileID: 0}
+  dutchButton: {fileID: 0}
 --- !u!1 &9127377738744993546
 GameObject:
   m_ObjectHideFlags: 0

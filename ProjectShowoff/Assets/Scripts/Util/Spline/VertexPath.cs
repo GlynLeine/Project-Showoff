@@ -18,16 +18,13 @@ public struct VertexPath
 
     public int VertexCount => vertices.Length;
 
-    public Vector3 this[int index] => vertices[index];
+    public Vector3 this[int index] => vertices[LoopIndex(index)];
 
     public Vector3 up { get; private set; }
 
     public Vector3 GetPositionAtDistance(float distance)
     {
-        if (distance < 0)
-            return vertices[0];
-        if (distance > distances[distances.Length - 1])
-            return vertices[vertices.Length - 1];
+        distance = LoopDistance(distance);
 
         for (int i = 0; i < vertices.Length - 1; i++)
         {
@@ -52,30 +49,20 @@ public struct VertexPath
         Vector3 forward = Vector3.forward;
         Vector3 right = Vector3.right;
 
-        if (distance < 0)
-        {
-            forward = tangents[0];
-            right = normals[0];
-        }
-        else if (distance > distances[distances.Length - 1])
-        {
-            forward = tangents[tangents.Length - 1];
-            right = normals[normals.Length - 1];
-        }
-        else
-        {
-            for (int i = 0; i < vertices.Length - 1; i++)
-            {
-                if (distances[i] <= distance && distances[i + 1] >= distance)
-                {
-                    float distanceBetweenPoints = distances[i + 1] - distances[i];
-                    float distanceSinceLastPoint = distance - distances[i];
+        distance = LoopDistance(distance);
 
-                    forward = Vector3.Slerp(tangents[i], tangents[i + 1], distanceSinceLastPoint / distanceBetweenPoints);
-                    right = Vector3.Slerp(normals[i], normals[i + 1], distanceSinceLastPoint / distanceBetweenPoints);
-                }
+        for (int i = 0; i < vertices.Length - 1; i++)
+        {
+            if (distances[i] <= distance && distances[i + 1] >= distance)
+            {
+                float distanceBetweenPoints = distances[i + 1] - distances[i];
+                float distanceSinceLastPoint = distance - distances[i];
+
+                forward = Vector3.Slerp(tangents[i], tangents[i + 1], distanceSinceLastPoint / distanceBetweenPoints);
+                right = Vector3.Slerp(normals[i], normals[i + 1], distanceSinceLastPoint / distanceBetweenPoints);
             }
         }
+
 
         Vector3 up = Vector3.Cross(forward, right);
         return Quaternion.LookRotation(forward, up);
@@ -90,7 +77,7 @@ public struct VertexPath
         up = spline.transform.up;
 
         float resolution = spline.resolution;
-        if(resolution % 1 == 0)
+        if (resolution % 1 == 0)
             resolution += 0.001f;
 
         SplineVertexData vertexData = spline.CalculateEvenlySpacedPoints(length / resolution);
@@ -104,23 +91,34 @@ public struct VertexPath
 
     public Vector3 GetTangent(int index)
     {
-        return tangents[index];
+        return tangents[LoopIndex(index)];
     }
 
     public Vector3 GetNormal(int index)
     {
-        return normals[index];
+        return normals[LoopIndex(index)];
     }
 
     public float GetTime(int index)
     {
-        return distances[index] / length;
+        return distances[LoopIndex(index)] / length;
     }
 
     public float GetDistance(int index)
     {
-        return distances[index];
+        return distances[LoopIndex(index)];
     }
 
+
+    public int LoopIndex(int i)
+    {
+        int count = vertices.Length;
+        return (((Mathf.Abs(i) % count) * (int)Mathf.Sign(i)) + count) % count;
+    }
+
+    public float LoopDistance(float distance)
+    {
+        return (((Mathf.Abs(distance) % length) * Mathf.Sign(distance)) + length) % length;
+    }
 }
 

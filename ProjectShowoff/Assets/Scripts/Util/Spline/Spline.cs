@@ -19,11 +19,12 @@ public class Spline : MonoBehaviour
 
     [SerializeField, HideInInspector]
     bool automaticTangents;
+    [SerializeField, HideInInspector]
+    bool isClosed;
 
     public bool gaussianNormalInterpolation;
     public bool sphericalNormalInterpolation = true;
     public bool recalculateOnRunTime = false;
-
     private bool runtime = false;
 
     private void Awake()
@@ -33,7 +34,7 @@ public class Spline : MonoBehaviour
         length = vertexPath.length;
     }
 
-    [Range(0.01f, 10f)]
+    [Range(0.01f, 100f)]
     public float resolution = 1;
 
     VertexPath vertexPath;
@@ -76,9 +77,31 @@ public class Spline : MonoBehaviour
         }
     }
 
+    public bool Closed
+    {
+        get => isClosed;
+        set
+        {
+            if (isClosed == value)
+                return;
+
+            isClosed = value;
+
+            if (isClosed)
+            {
+                points.Add(points[points.Count - 1] * 2 - points[points.Count - 2]);
+                points.Add(points[0] * 2 - points[1]);
+            }
+            else
+            {
+                points.RemoveRange(points.Count - 2, 2);
+            }
+        }
+    }
+
     private void OnValidate()
     {
-        if(points == null || points.Count == 0)
+        if (points == null || points.Count == 0)
             Reset();
 
         UpdateVertexPath();
@@ -104,7 +127,7 @@ public class Spline : MonoBehaviour
     {
         get
         {
-            return points[index];
+            return points[LoopPointIndex(index)];
         }
     }
 
@@ -134,7 +157,7 @@ public class Spline : MonoBehaviour
 
     public Vector3 GetWorldPoint(int index)
     {
-        return transform.TransformPoint(points[index]);
+        return transform.TransformPoint(points[LoopPointIndex(index)]);
     }
 
     public Vector3 GetWorldForward(int index)
@@ -145,17 +168,17 @@ public class Spline : MonoBehaviour
     public Vector3 GetForward(int index)
     {
         if (index == 0)
-            return (points[index] - points[1]).normalized;
+            return (points[LoopPointIndex(index)] - points[1]).normalized;
         else if (index == points.Count - 1)
-            return (points[points.Count - 2] - points[index]).normalized;
+            return (points[points.Count - 2] - points[LoopPointIndex(index)]).normalized;
 
         Vector3 forward = Vector3.zero;
 
         if (index - 3 >= 0)
-            forward += (points[index - 3] - points[index]).normalized;
+            forward += (points[LoopPointIndex(index - 3)] - points[LoopPointIndex(index)]).normalized;
 
         if (index + 3 < points.Count)
-            forward -= (points[index + 3] - points[index]).normalized;
+            forward -= (points[LoopPointIndex(index + 3)] - points[LoopPointIndex(index)]).normalized;
 
         forward.Normalize();
         return forward;
@@ -163,12 +186,12 @@ public class Spline : MonoBehaviour
 
     public Vector3 GetWorldNormal(int index)
     {
-        return transform.TransformDirection(normals[index]);
+        return transform.TransformDirection(normals[LoopAnchorIndex(index)]);
     }
 
     public Vector3 GetNormal(int index)
     {
-        return normals[index];
+        return normals[LoopAnchorIndex(index)];
     }
 
     public Vector3 GetPointAtDistance(float d)
@@ -203,18 +226,18 @@ public class Spline : MonoBehaviour
 
     public void SetWorldNormal(int index, Vector3 normal)
     {
-        normals[index] = transform.InverseTransformDirection(normal);
+        normals[LoopAnchorIndex(index)] = transform.InverseTransformDirection(normal);
     }
 
     public void SetNormal(int index, Vector3 normal)
     {
-        normals[index] = normal;
+        normals[LoopAnchorIndex(index)] = normal;
     }
 
     public void SplitSegment(Vector3 anchor, int segmentIndex)
     {
-        points.InsertRange(segmentIndex * 3 + 2, new Vector3[] { Vector3.zero, anchor, Vector3.zero });
-        normals.Insert(segmentIndex, transform.up);
+        points.InsertRange(LoopPointIndex(segmentIndex * 3 + 2), new Vector3[] { Vector3.zero, anchor, Vector3.zero });
+        normals.Insert(LoopAnchorIndex(segmentIndex), transform.up);
         if (automaticTangents)
         {
             SetTangentsAuto(segmentIndex * 3 + 3);
@@ -228,6 +251,8 @@ public class Spline : MonoBehaviour
     {
         if (SegmentCount < 2)
             return;
+
+        anchorIndex = LoopAnchorIndex(anchorIndex);
 
         if (anchorIndex == 0)
             points.RemoveRange(0, 3);
@@ -252,12 +277,12 @@ public class Spline : MonoBehaviour
 
     public Vector3[] GetPointsInSegment(int i)
     {
-        return new Vector3[] { points[i * 3], points[i * 3 + 1], points[i * 3 + 2], points[i * 3 + 3] };
+        return new Vector3[] { points[LoopPointIndex(i * 3)], points[LoopPointIndex(i * 3 + 1)], points[LoopPointIndex(i * 3 + 2)], points[LoopPointIndex(i * 3 + 3)] };
     }
 
     public Vector3[] GetWorldPointsInSegment(int i)
     {
-        return new Vector3[] { transform.TransformPoint(points[i * 3]), transform.TransformPoint(points[i * 3 + 1]), transform.TransformPoint(points[i * 3 + 2]), transform.TransformPoint(points[i * 3 + 3]) };
+        return new Vector3[] { transform.TransformPoint(points[LoopPointIndex(i * 3)]), transform.TransformPoint(points[LoopPointIndex(i * 3 + 1)]), transform.TransformPoint(points[LoopPointIndex(i * 3 + 2)]), transform.TransformPoint(points[LoopPointIndex(i * 3 + 3)]) };
     }
 
     public void MovePoint(int index, Vector3 position)
@@ -265,9 +290,9 @@ public class Spline : MonoBehaviour
         if (automaticTangents && index % 3 != 0)
             return;
 
-        Vector3 deltaPos = position - points[index];
+        Vector3 deltaPos = position - points[LoopPointIndex(index)];
 
-        points[index] = position;
+        points[LoopPointIndex(index)] = position;
 
         if (automaticTangents)
         {
@@ -329,8 +354,8 @@ public class Spline : MonoBehaviour
             float estimatedCurveLength = Vector3.Distance(p[0], p[3]) + controlNetLength / 2f;
             int divisions = Mathf.CeilToInt(estimatedCurveLength * resolution * 20 * (1f / resolution));
             float t = 0;
-            Vector3 currentNormal = normals[segmentIndex];
-            Vector3 nextNormal = normals[segmentIndex + 1];
+            Vector3 currentNormal = normals[LoopAnchorIndex(segmentIndex)];
+            Vector3 nextNormal = normals[LoopAnchorIndex(segmentIndex + 1)];
             while (t <= 1)
             {
                 t += 1f / divisions;
@@ -364,8 +389,16 @@ public class Spline : MonoBehaviour
             }
         }
 
-        vertices.Add(points[points.Count - 1]);
-        vertNormals.Add(normals[normals.Count - 1]);
+        if (isClosed)
+        {
+            vertices.Add(points[0]);
+            vertNormals.Add(normals[0]);
+        }
+        else
+        {
+            vertices.Add(points[points.Count - 1]);
+            vertNormals.Add(normals[normals.Count - 1]);
+        }
 
         length += Vector3.Distance(vertices[vertices.Count - 2], vertices[vertices.Count - 1]);
         distances.Add(length);
@@ -434,20 +467,20 @@ public class Spline : MonoBehaviour
             return;
         }
 
-        Vector3 anchor = points[anchorIndex];
+        Vector3 anchor = points[LoopPointIndex(anchorIndex)];
         Vector3 direction = Vector3.zero;
         float[] neighbourDistances = new float[2];
 
-        if (anchorIndex - 3 >= 0)
+        if (anchorIndex - 3 >= 0 || isClosed)
         {
-            Vector3 offset = points[anchorIndex - 3] - anchor;
+            Vector3 offset = points[LoopPointIndex(anchorIndex - 3)] - anchor;
             direction += offset.normalized;
             neighbourDistances[0] = offset.magnitude;
         }
 
-        if (anchorIndex + 3 < points.Count)
+        if (anchorIndex + 3 < points.Count || isClosed)
         {
-            Vector3 offset = points[anchorIndex + 3] - anchor;
+            Vector3 offset = points[LoopPointIndex(anchorIndex + 3)] - anchor;
             direction -= offset.normalized;
             neighbourDistances[1] = -offset.magnitude;
         }
@@ -457,10 +490,22 @@ public class Spline : MonoBehaviour
         for (int i = 0; i < 2; i++)
         {
             int tangentIndex = anchorIndex + i * 2 - 1;
-            if (tangentIndex >= 0 || tangentIndex < points.Count)
+            if (tangentIndex >= 0 || tangentIndex < points.Count || isClosed)
             {
-                points[tangentIndex] = anchor + direction * neighbourDistances[i] * 0.5f;
+                points[LoopPointIndex(tangentIndex)] = anchor + direction * neighbourDistances[i] * 0.5f;
             }
         }
+    }
+
+    int LoopPointIndex(int i)
+    {
+        int count = points.Count;
+        return (((Mathf.Abs(i) % count) * (int)Mathf.Sign(i)) + count) % count;
+    }
+
+    int LoopAnchorIndex(int i)
+    {
+        int count = points.Count / 3;
+        return (((Mathf.Abs(i) % count) * (int)Mathf.Sign(i)) + count) % count;
     }
 }

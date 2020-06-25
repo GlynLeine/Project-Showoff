@@ -9,7 +9,7 @@ public class ClickableBarPopup : MonoBehaviour
     public GameObject coastalBuildings;
     public GameObject destroyBar;
     public GameObject harbour;
-    public StatDisplay statDisplay;
+    public DisplayingStatsScript statDisplay;
     public BuildingSystem buildingSystem;
     private float animationSpeed = 1;
     private bool testHasStarted;

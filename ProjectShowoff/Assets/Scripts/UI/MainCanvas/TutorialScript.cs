@@ -25,6 +25,7 @@ public class TutorialScript : MonoBehaviour
     public Image questBoxImage;
     public Button destroyButton;
     public BuildingSystem buildingSystem;
+    public Image infoIcon;
     private Slider slider;
     private float animationSpeed = 1; //reset at end of every animation, makes animations move faster as they go on
     //tutorial step bools so we can check where the player is
@@ -54,6 +55,7 @@ public class TutorialScript : MonoBehaviour
     private int buildingCount;//for the tutorial steps, how many buildings have you placed yet?
     private int coastalCount;
     private int ruralCount;
+    private bool infoIconPlaying;
     private float timer;
     private string[] coastalBuildingsArray = {"Harbor","Oil rig"};
     private string[] ruralBuildingsArray = {"Factory","Nature reserve","Coal mine","Train station","Solar farm"};
@@ -245,6 +247,7 @@ public class TutorialScript : MonoBehaviour
             {
                 questBoxTextTMP.text = "Klik op een bestaand gebouw om meer informatie te zien!";
             }
+            tutorialBuildStep = true;
             buildingSystem.enableStatsAndDestroy = true;
             iconImage.sprite = buildingIcon;
             StartCoroutine(QuestBoxFlash());
@@ -374,9 +377,23 @@ public class TutorialScript : MonoBehaviour
             questBoxTextTMP.text = "Aan de bovenkant zie je de timer! Aftellend en als seizoenen. Zodra het op nul staat eindigt het spel!";
         }
         iconImage.sprite = emptyButton;
-        StartCoroutine(PostTimer());
+        StartCoroutine(HelpForgotten());
     }
 
+    IEnumerator HelpForgotten()
+    {
+        yield return new WaitForSeconds(6);
+        if (English)
+        {
+            questBoxTextTMP.text = "If you need any refreshers on the buildings, just click on the info on the left! This pauses the game.";
+        }
+        else
+        {
+            questBoxTextTMP.text = "Als je iets vergeten bent, klik dan op de info knop aan de linkerkant! Dit pauzeert ook het spel.";
+        }
+        StartCoroutine(InfoIconFlash());
+        StartCoroutine(PostTimer());
+    }
     IEnumerator PostTimer()
     {
         yield return new WaitForSeconds(10);
@@ -389,6 +406,70 @@ public class TutorialScript : MonoBehaviour
             questBoxTextTMP.text = "We hebben nog meer taken! Bouw of vernietig de gebouwen die we laten zien, en je krijgt een beloning!";
         }
         StartCoroutine(QuestChanger());
+    }
+    IEnumerator InfoIconFlash()
+    {
+        if (!infoIconPlaying)
+        {
+            infoIconPlaying = true;
+            while (timer < 0.5)
+            {
+                Color color = infoIcon.color;
+                color.b -= 1f * Time.deltaTime;
+                color.r -= 1f * Time.deltaTime;
+                infoIcon.color = color;
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            while (timer < 1)
+            {
+                Color color = infoIcon.color;
+                color.b += 1f * Time.deltaTime;
+                color.r += 1f * Time.deltaTime;
+                infoIcon.color = color;
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            while (timer < 1.5)
+            {
+                Color color = infoIcon.color;
+                color.b -= 1f * Time.deltaTime;
+                color.r -= 1f * Time.deltaTime;
+                infoIcon.color = color;
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            while (timer < 2)
+            {
+                Color color = infoIcon.color;
+                color.b += 1f * Time.deltaTime;
+                color.r += 1f * Time.deltaTime;
+                infoIcon.color = color;
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            while (timer < 2.5)
+            {
+                Color color = infoIcon.color;
+                color.b -= 1f * Time.deltaTime;
+                color.r -= 1f * Time.deltaTime;
+                infoIcon.color = color;
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            while (timer < 3)
+            {
+                Color color = infoIcon.color;
+                color.b += 1f * Time.deltaTime;
+                color.r += 1f * Time.deltaTime;
+                infoIcon.color = color;
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            infoIcon.color = Color.white;
+            timer = 0;
+            infoIconPlaying = false;
+        }
     }
     //makes the tutorial box flash on new tutorial steps, assuming its not currently flashing
     IEnumerator QuestBoxFlash()
@@ -444,6 +525,7 @@ public class TutorialScript : MonoBehaviour
                 timer += Time.deltaTime;
                 yield return null;
             }
+            questBoxImage.color = Color.white;
             timer = 0;
             tutorialBoxFlash = false;
         }

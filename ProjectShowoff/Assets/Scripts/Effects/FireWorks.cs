@@ -16,7 +16,7 @@ public class FireWorks : MonoBehaviour
 
     IEnumerator Spawn()
     {
-        while (GameManager.season < 1f)
+        while (GameManager.season < 0.85f)
             yield return null;
 
         if (GameManager.industry >= 10)

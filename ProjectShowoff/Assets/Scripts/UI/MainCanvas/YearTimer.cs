@@ -19,7 +19,7 @@ public class YearTimer : MonoBehaviour
 
     void Update()
     {
-        GameManager.SetSeasonTime(Mathf.Clamp01((GameManager.time - 37.5f / timeScale) / (225f / timeScale)));
+        GameManager.SetSeasonTime(Mathf.Clamp01((GameManager.time - 75f / timeScale) / (225f / timeScale)));
         if (GameManager.time <= 75f / timeScale)
         {
             springGrayscaleImage.fillAmount = 1f - GameManager.time / (75f / timeScale);
