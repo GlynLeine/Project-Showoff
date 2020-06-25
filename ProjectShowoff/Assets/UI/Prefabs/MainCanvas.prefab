@@ -9946,6 +9946,7 @@ GameObject:
   - component: {fileID: 8872052277187047086}
   - component: {fileID: 8872052277187047084}
   - component: {fileID: 8872052277187047085}
+  - component: {fileID: 1096064633925042573}
   m_Layer: 5
   m_Name: HeadlineText
   m_TagString: Untagged
@@ -10091,6 +10092,22 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1096064633925042573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872052277187047087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ecec1132078ac3488e2fc35b735d815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dutchText: 'Wereld gaat resetten in:'
+  englishText: 'World is resetting in:'
+  englishButton: {fileID: 0}
+  dutchButton: {fileID: 0}
 --- !u!1 &8872052277227303862
 GameObject:
   m_ObjectHideFlags: 0
@@ -10746,6 +10763,7 @@ GameObject:
   - component: {fileID: 8872052277417721618}
   - component: {fileID: 8872052277417721616}
   - component: {fileID: 8872052277417721617}
+  - component: {fileID: 114658324077145714}
   m_Layer: 5
   m_Name: ButtonText
   m_TagString: Untagged
@@ -10891,6 +10909,22 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &114658324077145714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872052277417721619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ecec1132078ac3488e2fc35b735d815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dutchText: Niet Resetten
+  englishText: Don't Reset
+  englishButton: {fileID: 0}
+  dutchButton: {fileID: 0}
 --- !u!1 &8872052277420283537
 GameObject:
   m_ObjectHideFlags: 0
@@ -12678,8 +12712,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 60}
-  m_SizeDelta: {x: 345, y: 144}
+  m_AnchoredPosition: {x: 0, y: 59}
+  m_SizeDelta: {x: 345, y: 142}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7506602893099243143
 CanvasRenderer:
