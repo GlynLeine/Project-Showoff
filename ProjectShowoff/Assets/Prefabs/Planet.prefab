@@ -60,6 +60,7 @@ MonoBehaviour:
   - {x: 0.43064126, y: 0.16219394, z: -0.88775474}
   - {x: 0.42560422, y: 0.16029684, z: -0.877371}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -274,6 +275,7 @@ MonoBehaviour:
   - {x: -0.23765405, y: 0.9532691, z: -0.1865258}
   - {x: -0.23301385, y: 0.93465656, z: -0.1828839}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -418,6 +420,7 @@ MonoBehaviour:
   - {x: 0.49440226, y: 0.57443434, z: -0.6451475}
   - {x: 0.49473822, y: 0.5748247, z: -0.64558595}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -562,6 +565,7 @@ MonoBehaviour:
   - {x: 0.3308482, y: 0.9331291, z: -0.011632708}
   - {x: 0.32970285, y: 0.9298987, z: -0.01159247}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -782,6 +786,7 @@ MonoBehaviour:
   - {x: 0.82033986, y: -0.04241074, z: -0.57018894}
   - {x: 0.81035644, y: -0.041894607, z: -0.5632498}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -934,6 +939,7 @@ MonoBehaviour:
   - {x: -0.7038478, y: 0.38683355, z: -0.58822703}
   - {x: -0.69083226, y: 0.37968022, z: -0.57734954}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -1225,6 +1231,7 @@ MonoBehaviour:
   - {x: -0.5331022, y: -0.3546972, z: 0.7677497}
   - {x: -0.52448833, y: -0.34896597, z: 0.7553444}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -1445,6 +1452,7 @@ MonoBehaviour:
   - {x: -0.6518656, y: -0.68834877, z: -0.3157823}
   - {x: -0.6355448, y: -0.67111456, z: -0.30787605}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -1593,6 +1601,7 @@ MonoBehaviour:
   - {x: 0.685132, y: -0.6621391, z: 0.24857488}
   - {x: 0, y: 0, z: 0}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -1816,6 +1825,7 @@ MonoBehaviour:
   - {x: 0.5995618, y: 0.59689635, z: 0.4745792}
   - {x: 0.6166594, y: 0.6139179, z: 0.48811266}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -1960,6 +1970,7 @@ MonoBehaviour:
   - {x: -0.5523061, y: -0.4721147, z: 0.68550426}
   - {x: -0.54279995, y: -0.46398878, z: 0.6737055}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -2178,6 +2189,7 @@ MonoBehaviour:
   - {x: 0.73161745, y: -0.5944504, z: 0.33154082}
   - {x: 0.71176773, y: -0.5783221, z: 0.3225457}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -2563,6 +2575,7 @@ MonoBehaviour:
   - {x: -0.8501612, y: -0.19467942, z: 0.48871514}
   - {x: -0.82763666, y: -0.18952152, z: 0.47576693}
   automaticTangents: 0
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -2795,6 +2808,7 @@ MonoBehaviour:
   - {x: 0.847939, y: 0.42164463, z: -0.29834953}
   - {x: 0.867044, y: 0.2885123, z: -0.19737355}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -2939,6 +2953,7 @@ MonoBehaviour:
   - {x: -0.52600163, y: 0.54611945, z: 0.64867496}
   - {x: -0.5222664, y: 0.5422414, z: 0.6440686}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -3302,6 +3317,7 @@ MonoBehaviour:
   - {x: 0.792079, y: -0.5874429, z: -0.16534846}
   - {x: 0.63153005, y: -0.6104213, z: -0.4446424}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -3658,6 +3674,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -3810,6 +3827,7 @@ MonoBehaviour:
   - {x: 0.09424023, y: 0.98943263, z: 0.08362393}
   - {x: 0, y: 0, z: 0}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -3962,6 +3980,7 @@ MonoBehaviour:
   - {x: 0.2489057, y: -0.30556726, z: -0.6716435}
   - {x: 0, y: 0, z: 0}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -4114,6 +4133,7 @@ MonoBehaviour:
   - {x: -0.8085682, y: 0.56211555, z: -0.16581962}
   - {x: 0.05481223, y: -0.7489355, z: 0.32362366}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -4258,6 +4278,7 @@ MonoBehaviour:
   - {x: -0.5710524, y: 0.17262015, z: -0.7989063}
   - {x: -0.57172966, y: 0.17282487, z: -0.7998539}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -4406,6 +4427,7 @@ MonoBehaviour:
   - {x: -0.11093493, y: -0.7867937, z: 0.59760904}
   - {x: -0.10739579, y: -0.26809403, z: -0.37616837}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -4702,6 +4724,7 @@ MonoBehaviour:
   - {x: 0.73043287, y: -0.5771274, z: 0.34975013}
   - {x: 0.7068086, y: -0.55846155, z: 0.33843824}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -4926,6 +4949,7 @@ MonoBehaviour:
   - {x: -0.008994228, y: 0.5499232, z: 0.452146}
   - {x: 0, y: 0, z: 0}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -5070,6 +5094,7 @@ MonoBehaviour:
   - {x: -0.26617616, y: 0.68616116, z: 0.6417667}
   - {x: -0.25282073, y: 0.6517329, z: 0.60956603}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -5312,6 +5337,7 @@ MonoBehaviour:
   - {x: 0.15261367, y: -0.49967554, z: -0.85123503}
   - {x: 0.1511786, y: -0.49497703, z: -0.84323084}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -5460,6 +5486,7 @@ MonoBehaviour:
   - {x: -0.53034574, y: -0.011728481, z: -0.83878857}
   - {x: -0.5021216, y: -0.011104328, z: -0.7941497}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -5687,6 +5714,7 @@ MonoBehaviour:
   - {x: 0.46682474, y: 0.51081246, z: 0.71772504}
   - {x: 0, y: 0, z: 0}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -5901,6 +5929,7 @@ MonoBehaviour:
   - {x: 0.3359972, y: -0.6423333, z: -0.6888318}
   - {x: 0.33146474, y: -0.63366854, z: -0.67953974}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -6045,6 +6074,7 @@ MonoBehaviour:
   - {x: 0.6688893, y: -0.19914031, z: -0.7146654}
   - {x: 0.6511409, y: -0.19385628, z: -0.69570243}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -6189,6 +6219,7 @@ MonoBehaviour:
   - {x: 0.22694671, y: -0.7255296, z: 0.64927024}
   - {x: 0.21854335, y: -0.6986647, z: 0.62522906}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -6482,6 +6513,7 @@ MonoBehaviour:
   - {x: 0.24567665, y: -0.07184064, z: -0.9658575}
   - {x: 0.24437906, y: -0.07146119, z: -0.96075606}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -6626,6 +6658,7 @@ MonoBehaviour:
   - {x: -0.70580006, y: -0.69017065, z: -0.13191257}
   - {x: -0.7019314, y: -0.6863878, z: -0.13118953}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -6871,6 +6904,7 @@ MonoBehaviour:
   - {x: -0.6538107, y: 0.71507156, z: -0.115399}
   - {x: -0.5277101, y: 0.7990752, z: -0.28659344}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -7085,6 +7119,7 @@ MonoBehaviour:
   - {x: -0.38042358, y: -0.22474386, z: 0.89644396}
   - {x: -0.37237352, y: -0.21998811, z: 0.8774745}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -7237,6 +7272,7 @@ MonoBehaviour:
   - {x: 0.9199058, y: -0.16446212, z: 0.29882753}
   - {x: 0.9347564, y: -0.16711713, z: 0.3036517}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -7454,6 +7490,7 @@ MonoBehaviour:
   - {x: -0.67856425, y: -0.4460428, z: -0.58252454}
   - {x: -0.6672072, y: -0.43857744, z: -0.5727749}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -7598,6 +7635,7 @@ MonoBehaviour:
   - {x: 0.50037664, y: -0.3627139, z: 0.786062}
   - {x: 0.49466386, y: -0.3585728, z: 0.77708757}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -7746,6 +7784,7 @@ MonoBehaviour:
   - {x: 0.67429316, y: 0.733037, z: -0.028237732}
   - {x: 0.6595183, y: 0.7169749, z: -0.027619004}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -7894,6 +7933,7 @@ MonoBehaviour:
   - {x: 0.7404883, y: -0.5304973, z: -0.41160613}
   - {x: 0.70839185, y: -0.5075029, z: -0.39376506}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -8119,6 +8159,7 @@ MonoBehaviour:
   - {x: -0.3374782, y: 0.08500919, z: 0.9322899}
   - {x: -0.3215775, y: 0.08100388, z: 0.88836396}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -8263,6 +8304,7 @@ MonoBehaviour:
   - {x: -0.13602716, y: 0.9317911, z: -0.33468783}
   - {x: -0.135615, y: 0.92896795, z: -0.33367378}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -8463,13 +8505,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   points:
   - {x: -0.7321953, y: 0.67526436, z: 0.0112371445}
-  - {x: -0.74664724, y: 0.6515119, z: -0.012605412}
-  - {x: -0.7610992, y: 0.62775946, z: -0.03644797}
-  - {x: -0.7733864, y: 0.5962063, z: -0.09850359}
-  - {x: -0.78196627, y: 0.57417357, z: -0.14183536}
-  - {x: -0.7719156, y: 0.5919365, z: -0.15120095}
+  - {x: -0.749797, y: 0.65499616, z: -0.013776125}
+  - {x: -0.7673986, y: 0.6347279, z: -0.038789395}
+  - {x: -0.77906775, y: 0.60246444, z: -0.10065091}
+  - {x: -0.78721505, y: 0.57993835, z: -0.14384207}
+  - {x: -0.77341515, y: 0.593412, z: -0.15197328}
   - {x: -0.77831036, y: 0.56490433, z: -0.19200616}
-  - {x: -0.78501016, y: 0.53658277, z: -0.23475772}
+  - {x: -0.78343636, y: 0.5350527, z: -0.23392636}
   - {x: -0.79549736, y: 0.5276648, z: -0.22500062}
   - {x: -0.7989589, y: 0.4886055, z: -0.2587213}
   - {x: -0.8040511, y: 0.43114626, z: -0.308327}
@@ -8482,11 +8524,12 @@ MonoBehaviour:
   - {x: -0.8370734, y: 0.30819935, z: -0.38522708}
   - {x: 0, y: 0, z: 0}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
   resolution: 5
-  length: 0.49910814
+  length: 0.49908292
 --- !u!33 &1128144251
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8630,6 +8673,7 @@ MonoBehaviour:
   - {x: -0.6426844, y: 0.7262932, z: 0.22804004}
   - {x: -0.6450427, y: 0.72895837, z: 0.22887683}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -8774,6 +8818,7 @@ MonoBehaviour:
   - {x: 0.97088337, y: -0.15973352, z: -0.17266467}
   - {x: 0.9567791, y: -0.15741304, z: -0.17015634}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -9036,6 +9081,7 @@ MonoBehaviour:
   - {x: 0.08102442, y: 0.8963222, z: -0.3733841}
   - {x: 0.08279518, y: 0.91591114, z: -0.38154435}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -9250,6 +9296,7 @@ MonoBehaviour:
   - {x: -0.9538302, y: -0.14100163, z: -0.25867146}
   - {x: -0.9409231, y: -0.13909358, z: -0.25517115}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -9394,6 +9441,7 @@ MonoBehaviour:
   - {x: 0.42329592, y: -0.89690477, z: 0.03932374}
   - {x: 0.42639902, y: -0.9034798, z: 0.039612003}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -9614,6 +9662,7 @@ MonoBehaviour:
   - {x: -0.41055807, y: -0.90824664, z: -0.07575083}
   - {x: -0.4034819, y: -0.8925925, z: -0.07444523}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -9829,6 +9878,7 @@ MonoBehaviour:
   - {x: 0.39576834, y: -0.3106567, z: -0.8621822}
   - {x: 0, y: 0, z: 0}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -9981,6 +10031,7 @@ MonoBehaviour:
   - {x: 0.75057924, y: -0.20454004, z: -0.6000443}
   - {x: 0.7119943, y: -0.19402526, z: -0.56919795}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -10129,6 +10180,7 @@ MonoBehaviour:
   - {x: 0.55790067, y: 0.8064013, z: 0.18595624}
   - {x: 0.5587729, y: 0.807662, z: 0.18624702}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -10273,6 +10325,7 @@ MonoBehaviour:
   - {x: -0.57792544, y: -0.5643829, z: -0.5892822}
   - {x: -0.5763382, y: -0.56283283, z: -0.5876637}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -10417,6 +10470,7 @@ MonoBehaviour:
   - {x: -0.0825271, y: -0.78393847, z: 0.61451817}
   - {x: -0.08091839, y: -0.768657, z: 0.6025392}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -10561,6 +10615,7 @@ MonoBehaviour:
   - {x: 0.5513242, y: 0.60560834, z: -0.5625239}
   - {x: 0.55470836, y: 0.60932565, z: -0.56597674}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -10757,6 +10812,7 @@ MonoBehaviour:
   - {x: -0.38067254, y: -0.922531, z: -0.055077784}
   - {x: 0, y: 1, z: 0}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -10913,6 +10969,7 @@ MonoBehaviour:
   - {x: -0.83651304, y: -0.18578085, z: -0.24319884}
   - {x: -0.54261917, y: -0.17306915, z: -0.14471702}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -11130,6 +11187,7 @@ MonoBehaviour:
   - {x: -0.78567725, y: -0.2429742, z: 0.5653398}
   - {x: -0.7827908, y: -0.24208155, z: 0.5632629}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -11352,6 +11410,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -11569,6 +11628,7 @@ MonoBehaviour:
   - {x: 0.06035689, y: -0.88523984, z: -0.45538718}
   - {x: 0.22829029, y: -0.9050561, z: -0.27026722}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -11844,6 +11904,7 @@ MonoBehaviour:
   - {x: -0.28850937, y: 0.88038045, z: -0.3748861}
   - {x: -0.24544635, y: 0.8214937, z: -0.4544942}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -11988,6 +12049,7 @@ MonoBehaviour:
   - {x: -0.50036216, y: 0.18987258, z: 0.8443354}
   - {x: -0.49125373, y: 0.1864162, z: 0.8289653}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -12278,6 +12340,7 @@ MonoBehaviour:
   - {x: 0.02242109, y: 0.9144271, z: -0.40248397}
   - {x: 0.11991088, y: 0.7671692, z: -0.5718324}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -12492,6 +12555,7 @@ MonoBehaviour:
   - {x: -0.36212626, y: 0.36103472, z: 0.85928786}
   - {x: -0.36065227, y: 0.35956517, z: 0.85579026}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -12648,6 +12712,7 @@ MonoBehaviour:
   - {x: -0.1246088, y: -0.16384208, z: 0.93699753}
   - {x: 0, y: 0, z: 0}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -12896,6 +12961,7 @@ MonoBehaviour:
   - {x: 0, y: 1, z: 0}
   - {x: 0, y: 0, z: 0}
   automaticTangents: 0
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -13120,6 +13186,7 @@ MonoBehaviour:
   - {x: -0.85846686, y: -0.15603493, z: -0.45389766}
   - {x: -0.87282544, y: -0.15864475, z: -0.4614895}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -13337,6 +13404,7 @@ MonoBehaviour:
   - {x: 0.91703826, y: -0.3704818, z: -0.14748052}
   - {x: 0.9132143, y: -0.36893693, z: -0.14686558}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -13489,6 +13557,7 @@ MonoBehaviour:
   - {x: 0.7446924, y: 0.6355987, z: -0.18866797}
   - {x: 0.76364404, y: 0.56730354, z: -0.18617941}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -13633,6 +13702,7 @@ MonoBehaviour:
   - {x: 0.57125455, y: -0.7790395, z: 0.25726327}
   - {x: 0.5659507, y: -0.7718065, z: 0.2548747}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -13887,6 +13957,7 @@ MonoBehaviour:
   - {x: -0.7251429, y: -0.11102375, z: 0.6752932}
   - {x: -0.7026106, y: -0.107573904, z: 0.6543099}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -14031,6 +14102,7 @@ MonoBehaviour:
   - {x: 0.76095766, y: -0.22917002, z: 0.60230076}
   - {x: 0.7511518, y: -0.22621684, z: 0.59453934}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -14175,6 +14247,7 @@ MonoBehaviour:
   - {x: -0.96780074, y: -0.2406408, z: 0.06812628}
   - {x: -0.9585105, y: -0.23833081, z: 0.06747232}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -14319,6 +14392,7 @@ MonoBehaviour:
   - {x: -0.7170664, y: -0.67595524, z: -0.099809475}
   - {x: -0.7237513, y: -0.6822569, z: -0.100739956}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -14680,6 +14754,7 @@ MonoBehaviour:
   - {x: 0.21173492, y: -0.42410263, z: -0.8225654}
   - {x: 0.21836588, y: -0.43738443, z: -0.8483259}
   automaticTangents: 0
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -14891,6 +14966,7 @@ MonoBehaviour:
   - {x: 0.821534, y: -0.25121677, z: -0.50802445}
   - {x: 0.8139154, y: -0.24888708, z: -0.50331324}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -15087,6 +15163,7 @@ MonoBehaviour:
   - {x: -0.8460395, y: -0.42867938, z: -0.29982212}
   - {x: -0.77895945, y: -0.3946906, z: -0.2760501}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -15380,6 +15457,7 @@ MonoBehaviour:
   - {x: -0.7529979, y: -0.64422816, z: -0.13230926}
   - {x: -0.74989426, y: -0.64157283, z: -0.13176394}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -15594,6 +15672,7 @@ MonoBehaviour:
   - {x: -0.35860536, y: -0.41669315, z: -0.83332705}
   - {x: -0.35689718, y: -0.4147083, z: -0.82935756}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -15746,6 +15825,7 @@ MonoBehaviour:
   - {x: 0.38241163, y: -0.06314522, z: -0.90091777}
   - {x: 0.35953042, y: -0.059366982, z: -0.8470123}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -15960,6 +16040,7 @@ MonoBehaviour:
   - {x: -0.2769521, y: 0.17122352, z: 0.94436777}
   - {x: -0.2755937, y: 0.17038372, z: 0.9397359}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -16188,6 +16269,7 @@ MonoBehaviour:
   - {x: 0.72804874, y: 0.6009894, z: -0.32978106}
   - {x: 0.6917427, y: 0.57101953, z: -0.3133357}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
@@ -16321,13 +16403,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   points:
   - {x: -0.49920437, y: 0.7716161, z: 0.3042385}
-  - {x: -0.4963197, y: 0.7636529, z: 0.31883776}
-  - {x: -0.49343508, y: 0.7556898, z: 0.33343703}
-  - {x: -0.49013004, y: 0.7404487, z: 0.36331627}
-  - {x: -0.48418903, y: 0.71305203, z: 0.4170258}
-  - {x: -0.47863656, y: 0.7218944, z: 0.42245272}
+  - {x: -0.49941373, y: 0.76792204, z: 0.32105207}
+  - {x: -0.49962312, y: 0.7642279, z: 0.33786568}
+  - {x: -0.4970671, y: 0.74992716, z: 0.36855564}
+  - {x: -0.4924838, y: 0.724284, z: 0.4235867}
+  - {x: -0.48038268, y: 0.72434205, z: 0.4237821}
   - {x: -0.48269597, y: 0.6869714, z: 0.47179335}
-  - {x: -0.48677912, y: 0.65184397, z: 0.5214229}
+  - {x: -0.48501137, y: 0.649567, z: 0.51984805}
   - {x: -0.48972812, y: 0.6536691, z: 0.52724975}
   - {x: -0.5061693, y: 0.6031506, z: 0.557104}
   - {x: -0.5189687, y: 0.56382227, z: 0.5803454}
@@ -16340,11 +16422,12 @@ MonoBehaviour:
   - {x: 0.82134, y: 0.3559737, z: 0.4435044}
   - {x: 0.81246364, y: 0.35212666, z: 0.4387114}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
   resolution: 5
-  length: 0.4092478
+  length: 0.41053492
 --- !u!33 &2083924506
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -16484,6 +16567,7 @@ MonoBehaviour:
   - {x: 0.50003815, y: -0.05778338, z: -0.8639553}
   - {x: 0.49339953, y: -0.057016216, z: -0.8524853}
   automaticTangents: 1
+  isClosed: 0
   gaussianNormalInterpolation: 0
   sphericalNormalInterpolation: 1
   recalculateOnRunTime: 0
